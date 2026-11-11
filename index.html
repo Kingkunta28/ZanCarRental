@@ -12,223 +12,400 @@
       name="keywords"
       content="car rental Zanzibar, airport pickup Zanzibar, hire a car Zanzibar, gari za kukodisha Zanzibar"
     />
-    <meta
-      property="og:title"
-      content="Zanzibar Drive | Car Rental in Zanzibar"
-    />
+    <meta property="og:title" content="Zanzibar Drive | Car Rental in Zanzibar" />
     <meta
       property="og:description"
       content="Clean cars delivered to the airport or your hotel. Book in a minute on WhatsApp."
     />
     <meta property="og:type" content="website" />
+    <meta property="og:image" content="images/hero.webp" />
+    <meta name="theme-color" content="#06364D" />
+    <script>document.documentElement.classList.add('js')</script>
+    <link rel="preload" as="image" href="images/hero.webp" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=Poppins:wght@500;600;700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap"
       rel="stylesheet"
     />
     <link rel="stylesheet" href="css.css" />
   </head>
   <body id="top">
-    <header>
+    <a class="skip" href="#main" data-i18n="skip"></a>
+
+    <!-- ============ Header ============ -->
+    <header class="hdr" id="hdr">
       <div class="wrap bar">
-        <a class="logo" href="#top">🌊 <span data-biz></span></a>
-        <nav class="nav" id="nav">
+        <a class="logo" href="#top">
+          <span class="logo-mark" aria-hidden="true">
+            <svg viewBox="0 0 32 32"><path d="M4 19c4-5 8-5 12 0s8 5 12 0" /><path d="M4 25c4-5 8-5 12 0s8 5 12 0" opacity=".55" /><circle cx="22" cy="9" r="4" /></svg>
+          </span>
+          <span data-biz></span>
+        </a>
+
+        <nav class="nav" id="nav" aria-label="Main">
           <a href="#fleetsec" data-i18n="nav_fleet"></a>
+          <a href="#how" data-i18n="nav_how"></a>
           <a href="#book" data-i18n="nav_book"></a>
           <a href="#terms" data-i18n="nav_terms"></a>
           <a href="#faq" data-i18n="nav_faq"></a>
           <a href="#contact" data-i18n="nav_contact"></a>
-          <a class="btn btn-wa sm" data-wa data-i18n="wa"></a>
+          <div class="nav-extra">
+            <select class="lang" aria-label="Language">
+              <option value="en">English</option>
+              <option value="sw">Kiswahili</option>
+              <option value="it">Italiano</option>
+              <option value="de">Deutsch</option>
+              <option value="fr">Français</option>
+              <option value="es">Español</option>
+            </select>
+            <a class="btn btn-wa" data-wa><span data-i18n="wa"></span></a>
+          </div>
         </nav>
+
         <div class="tools">
           <select class="lang" id="lang" aria-label="Language">
-            <option value="en">English</option>
-            <option value="sw">Kiswahili</option>
-            <option value="it">Italiano</option>
-            <option value="de">Deutsch</option>
-            <option value="fr">Français</option>
-            <option value="es">Español</option>
+            <option value="en">EN</option>
+            <option value="sw">SW</option>
+            <option value="it">IT</option>
+            <option value="de">DE</option>
+            <option value="fr">FR</option>
+            <option value="es">ES</option>
           </select>
+          <a class="btn btn-wa sm hide-m" data-wa><span data-i18n="wa"></span></a>
           <button class="menu" id="menu" type="button" aria-label="Menu" aria-controls="nav" aria-expanded="false">
-            ☰
+            <span></span><span></span>
           </button>
         </div>
       </div>
     </header>
 
-    <section class="hero">
-      <div class="blob b1"></div>
-      <div class="blob b2"></div>
-      <div class="wrap">
-        <h1 data-i18n="h1"></h1>
-        <p data-i18n="hero_p"></p>
-        <a class="btn btn-sand" href="#book" data-i18n="cta_book"></a>
-        <a class="btn btn-line" href="#fleetsec" data-i18n="cta_fleet"></a>
-        <ul class="trust">
-          <li><span data-i18n="w1t"></span></li>
-          <li><span data-i18n="w2t"></span></li>
-          <li><span data-i18n="w3t"></span></li>
-        </ul>
-      </div>
-      <div class="waves w3"></div>
-      <div class="waves w1"></div>
-      <div class="waves w2"></div>
-    </section>
+    <main id="main">
+      <!-- ============ Hero ============ -->
+      <section class="hero">
+        <div class="hero-bg" aria-hidden="true"></div>
+        <div class="blob b1" aria-hidden="true"></div>
+        <div class="blob b2" aria-hidden="true"></div>
 
-    <section id="fleetsec">
-      <div class="wrap">
-        <h2 data-i18n="fleet_h"></h2>
-        <p class="lead" data-i18n="fleet_p"></p>
-        <div class="grid" id="fleet"></div>
-      </div>
-    </section>
+        <div class="wrap hero-grid">
+          <div class="hero-copy">
+            <p class="kicker"><span class="pulse" aria-hidden="true"></span><span data-i18n="hero_kicker"></span></p>
+            <h1 data-i18n="h1"></h1>
+            <p class="hero-p" data-i18n="hero_p"></p>
+            <div class="hero-cta">
+              <a class="btn btn-sand lg" href="#book"><span data-i18n="cta_book"></span>
+                <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" /></svg></a>
+              <a class="btn btn-glass lg" href="#fleetsec" data-i18n="cta_fleet"></a>
+            </div>
+            <ul class="trust">
+              <li data-i18n="w1t"></li>
+              <li data-i18n="w3t"></li>
+              <li data-i18n="w4t"></li>
+            </ul>
+          </div>
 
-    <section class="sand" id="book">
-      <div class="wrap">
-        <h2 data-i18n="book_h"></h2>
-        <p class="lead" data-i18n="book_p"></p>
-        <form id="form" class="formcard" novalidate>
-          <div class="fields">
-            <label>
-              <span data-i18n="f_name"></span>
-              <input name="name" autocomplete="name" required />
-            </label>
-            <label>
-              <span data-i18n="f_phone"></span>
-              <input
-                name="phone"
-                type="tel"
-                autocomplete="tel"
-                placeholder="+255 ..."
-                required
-              />
-            </label>
-            <label class="full">
-              <span data-i18n="f_car"></span>
-              <select name="car" id="car" required></select>
-            </label>
-            <label>
-              <span data-i18n="f_pick"></span>
-              <input name="from" id="from" type="date" required />
-            </label>
-            <label>
-              <span data-i18n="f_ret"></span>
-              <input name="to" id="to" type="date" required />
-            </label>
-            <label>
-              <span data-i18n="f_loc"></span>
-              <select name="where">
-                <option value="airport" data-i18n="l_air"></option>
-                <option value="hotel" data-i18n="l_hotel"></option>
-                <option value="other" data-i18n="l_other"></option>
-              </select>
-            </label>
-            <label>
-              <span data-i18n="f_place"></span>
-              <input name="place" data-ph="f_place" />
-            </label>
-            <label class="full">
-              <span data-i18n="f_notes"></span>
-              <textarea name="notes" rows="2"></textarea>
-            </label>
-          </div>
-          <div class="est">
-            <img id="estImg" alt="" hidden />
-            <span data-i18n="est"></span><strong id="total"></strong>
-          </div>
-          <button class="btn btn-wa big" type="submit">
-            💬 <span data-i18n="send"></span>
-          </button>
-          <p class="msg" id="msg" role="status" aria-live="polite"></p>
-          <p class="small" data-i18n="note"></p>
-        </form>
-      </div>
-    </section>
-
-    <section>
-      <div class="wrap">
-        <h2 data-i18n="why_h"></h2>
-        <div class="grid why">
-          <div>
-            <span>🏷️</span>
-            <h3 data-i18n="w1t"></h3>
-            <p data-i18n="w1p"></p>
-          </div>
-          <div>
-            <span>✈️</span>
-            <h3 data-i18n="w2t"></h3>
-            <p data-i18n="w2p"></p>
-          </div>
-          <div>
-            <span>🕒</span>
-            <h3 data-i18n="w3t"></h3>
-            <p data-i18n="w3p"></p>
-          </div>
-          <div>
-            <span>🔧</span>
-            <h3 data-i18n="w4t"></h3>
-            <p data-i18n="w4p"></p>
+          <div class="hero-visual" aria-hidden="true">
+            <div class="sun"></div>
+            <img class="hero-car" src="images/Toyota Land Cruiser.png" alt="" width="612" height="408" />
+            <div class="float-chip chip-a">
+              <small data-i18n="stat_from"></small>
+              <b id="heroFrom"></b>
+            </div>
+            <div class="float-chip chip-b">
+              <span class="chip-ic">✈</span><span data-i18n="w2t"></span>
+            </div>
           </div>
         </div>
-      </div>
-    </section>
 
-    <section class="sand" id="terms">
-      <div class="wrap narrow">
-        <h2 data-i18n="terms_h"></h2>
-        <ul class="terms">
-          <li data-i18n="tm1"></li>
-          <li data-i18n="tm2"></li>
-          <li data-i18n="tm3"></li>
-          <li data-i18n="tm4"></li>
-        </ul>
-      </div>
-    </section>
-
-    <section>
-      <div class="wrap">
-        <h2 data-i18n="rev_h"></h2>
-        <!-- PLACEHOLDER reviews: replace with real customer reviews -->
-        <div class="grid reviews">
-          <blockquote data-i18n="r1"></blockquote>
-          <blockquote data-i18n="r2"></blockquote>
-          <blockquote data-i18n="r3"></blockquote>
+        <div class="wrap">
+          <dl class="stats">
+            <div><dt><b id="statCars" data-count="0">0</b></dt><dd data-i18n="stat_cars"></dd></div>
+            <div><dt><b id="statFrom" data-count="0" data-dec="0">0</b></dt><dd data-i18n="stat_from"></dd></div>
+            <div><dt><b>24/7</b></dt><dd data-i18n="stat_support"></dd></div>          </dl>
         </div>
-      </div>
-    </section>
 
-    <section class="sand" id="faq">
-      <div class="wrap narrow">
-        <h2 data-i18n="faq_h"></h2>
-        <details>
-          <summary data-i18n="q1"></summary>
-          <p data-i18n="a1"></p>
-        </details>
-        <details>
-          <summary data-i18n="q2"></summary>
-          <p data-i18n="a2"></p>
-        </details>
-        <details>
-          <summary data-i18n="q3"></summary>
-          <p data-i18n="a3"></p>
-        </details>
-      </div>
-    </section>
+        <div class="waves w3" aria-hidden="true"></div>
+        <div class="waves w1" aria-hidden="true"></div>
+        <div class="waves w2" aria-hidden="true"></div>
+      </section>
 
+      <!-- ============ How it works ============ -->
+      <section class="how" id="how">
+        <div class="wrap">
+          <div class="sec-head center reveal">
+            <h2 data-i18n="how_h"></h2>
+            <p class="lead" data-i18n="how_p"></p>
+          </div>
+          <ol class="steps">
+            <li class="step reveal" style="--i:0">
+              <span class="step-n">01</span>
+              <span class="step-ic" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 17h14M6 17l1.5-5.5A2 2 0 0 1 9.4 10h5.2a2 2 0 0 1 1.9 1.5L18 17M5 17v2M19 17v2" /><circle cx="8" cy="14.5" r=".8" /><circle cx="16" cy="14.5" r=".8" /></svg></span>
+              <h3 data-i18n="s1t"></h3>
+              <p data-i18n="s1p"></p>
+            </li>
+            <li class="step reveal" style="--i:1">
+              <span class="step-n">02</span>
+              <span class="step-ic" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z" /><path d="M8 11h.01M12 11h.01M16 11h.01" /></svg></span>
+              <h3 data-i18n="s2t"></h3>
+              <p data-i18n="s2p"></p>
+            </li>
+            <li class="step reveal" style="--i:2">
+              <span class="step-n">03</span>
+              <span class="step-ic" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 22s7-6.2 7-12a7 7 0 1 0-14 0c0 5.8 7 12 7 12Z" /><circle cx="12" cy="10" r="2.5" /></svg></span>
+              <h3 data-i18n="s3t"></h3>
+              <p data-i18n="s3p"></p>
+            </li>
+          </ol>
+        </div>
+      </section>
+
+      <!-- ============ Fleet ============ -->
+      <section class="fleet" id="fleetsec">
+        <div class="wrap">
+          <div class="sec-head split reveal">
+            <div>
+              <h2 data-i18n="fleet_h"></h2>
+              <p class="lead" data-i18n="fleet_p"></p>
+            </div>
+            <div class="filters" id="filters" role="group" aria-label="Filter"></div>
+          </div>
+          <div class="grid" id="fleet" aria-live="polite"></div>
+        </div>
+      </section>
+
+      <!-- ============ Booking ============ -->
+      <section class="book" id="book">
+        <div class="wrap">
+          <div class="sec-head reveal">
+            <h2 data-i18n="book_h"></h2>
+            <p class="lead" data-i18n="book_p"></p>
+          </div>
+
+          <div class="book-grid reveal">
+            <form id="form" class="formcard" novalidate>
+              <div class="fields">
+                <label>
+                  <span data-i18n="f_name"></span>
+                  <input name="name" autocomplete="name" required />
+                </label>
+                <label>
+                  <span data-i18n="f_phone"></span>
+                  <input name="phone" type="tel" autocomplete="tel" placeholder="+255 ..." required />
+                </label>
+                <label class="full">
+                  <span data-i18n="f_car"></span>
+                  <select name="car" id="car" required></select>
+                </label>
+                <label>
+                  <span data-i18n="f_pick"></span>
+                  <input name="from" id="from" type="date" required />
+                </label>
+                <label>
+                  <span data-i18n="f_ret"></span>
+                  <input name="to" id="to" type="date" required />
+                </label>
+                <label>
+                  <span data-i18n="f_loc"></span>
+                  <select name="where">
+                    <option value="airport" data-i18n="l_air"></option>
+                    <option value="hotel" data-i18n="l_hotel"></option>
+                    <option value="other" data-i18n="l_other"></option>
+                  </select>
+                </label>
+                <label>
+                  <span data-i18n="f_place"></span>
+                  <input name="place" data-ph="f_place" />
+                </label>
+                <label class="full">
+                  <span data-i18n="f_notes"></span>
+                  <textarea name="notes" rows="3"></textarea>
+                </label>
+              </div>
+              <p class="msg" id="msg" role="status" aria-live="polite"></p>
+            </form>
+
+            <aside class="summary" aria-labelledby="sumTitle">
+              <h3 id="sumTitle" data-i18n="sum_h"></h3>
+              <div class="sum-media">
+                <img id="estImg" alt="" hidden />
+                <div class="sum-ph" id="sumPh" aria-hidden="true">
+                  <svg viewBox="0 0 24 24"><path d="M5 17h14M6 17l1.5-5.5A2 2 0 0 1 9.4 10h5.2a2 2 0 0 1 1.9 1.5L18 17M5 17v2M19 17v2" /></svg>
+                </div>
+              </div>
+              <p class="sum-car"><b id="sumCar"></b><span id="sumRate"></span></p>
+              <dl class="sum-rows">
+                <div><dt data-i18n="f_pick"></dt><dd id="sumFrom">—</dd></div>
+                <div><dt data-i18n="f_ret"></dt><dd id="sumTo">—</dd></div>
+                <div><dt data-i18n="days"></dt><dd id="sumDays">—</dd></div>
+              </dl>
+              <div class="sum-total">
+                <span data-i18n="est"></span>
+                <strong id="total">—</strong>
+              </div>
+              <p class="sum-hint" id="sumHint"></p>
+              <button class="btn btn-wa big" id="sendBtn" type="submit" form="form">
+                <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z" /></svg>
+                <span data-i18n="send"></span>
+              </button>
+              <p class="small" data-i18n="note"></p>
+            </aside>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============ Why us ============ -->
+      <section class="why-sec">
+        <div class="wrap">
+          <div class="sec-head reveal">
+            <h2 data-i18n="why_h"></h2>
+            <p class="lead" data-i18n="why_p"></p>
+          </div>
+          <div class="bento">
+            <article class="b-card b-feature reveal" style="--i:0">
+              <div class="b-copy">
+                <span class="b-ic" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M17.8 19.2 16 11l3.5-3.5C21 6 21.5 4 21 3c-1-.5-3 0-4.5 1.5L13 8 4.8 6.2c-.5-.1-.9.1-1.1.5l-.3.5c-.2.5-.1 1 .3 1.3L9 12l-2 3H4l-1 1 3 2 2 3 1-1v-3l3-2 3.5 5.3c.3.4.8.5 1.3.3l.5-.2c.4-.3.6-.7.5-1.2z" /></svg></span>
+                <h3 data-i18n="w2t"></h3>
+                <p data-i18n="w2p"></p>
+              </div>
+            </article>
+            <article class="b-card reveal" style="--i:1">
+              <span class="b-ic" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12.6 2.6A2 2 0 0 0 11.2 2H4a2 2 0 0 0-2 2v7.2a2 2 0 0 0 .6 1.4l8.7 8.7a2.4 2.4 0 0 0 3.4 0l6.6-6.6a2.4 2.4 0 0 0 0-3.4z" /><circle cx="7.5" cy="7.5" r="1.2" /></svg></span>
+              <h3 data-i18n="w1t"></h3>
+              <p data-i18n="w1p"></p>
+            </article>
+            <article class="b-card reveal" style="--i:2">
+              <span class="b-ic" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" /><path d="M12 6v6l4 2" /></svg></span>
+              <h3 data-i18n="w3t"></h3>
+              <p data-i18n="w3p"></p>
+            </article>
+            <article class="b-card b-wide reveal" style="--i:3">
+              <span class="b-ic" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10Z" /><path d="m9 12 2 2 4-4" /></svg></span>
+              <div>
+                <h3 data-i18n="w4t"></h3>
+                <p data-i18n="w4p"></p>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============ Reviews ============ -->
+      <section class="reviews-sec">
+        <div class="wrap">
+          <div class="sec-head center reveal">
+            <h2 data-i18n="rev_h"></h2>
+          </div>
+          <!-- PLACEHOLDER reviews: replace with real customer reviews -->
+          <div class="reviews">
+            <blockquote class="reveal" style="--i:0" data-review="r1"></blockquote>
+            <blockquote class="reveal" style="--i:1" data-review="r2"></blockquote>
+            <blockquote class="reveal" style="--i:2" data-review="r3"></blockquote>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============ Terms + FAQ ============ -->
+      <section class="info">
+        <div class="wrap info-grid">
+          <div class="terms-card reveal" id="terms">
+            <h2 data-i18n="terms_h"></h2>
+            <ul class="terms">
+              <li data-i18n="tm1"></li>
+              <li data-i18n="tm2"></li>
+              <li data-i18n="tm3"></li>
+              <li data-i18n="tm4"></li>
+            </ul>
+          </div>
+          <div class="faq reveal" id="faq">
+            <h2 data-i18n="faq_h"></h2>
+            <details>
+              <summary data-i18n="q1"></summary>
+              <p data-i18n="a1"></p>
+            </details>
+            <details>
+              <summary data-i18n="q2"></summary>
+              <p data-i18n="a2"></p>
+            </details>
+            <details>
+              <summary data-i18n="q3"></summary>
+              <p data-i18n="a3"></p>
+            </details>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- ============ Footer ============ -->
     <footer id="contact">
       <div class="wrap">
-        <h2 data-i18n="contact_h"></h2>
-        <p data-i18n="contact_p"></p>
-        <div id="contactInfo"></div>
-        <p class="small">
-          © <span id="year"></span> <span data-biz></span>.
-          <span data-i18n="rights"></span>
+        <div class="cta-band reveal">
+          <div>
+            <h2 data-i18n="cta_h"></h2>
+            <p data-i18n="contact_p"></p>
+          </div>
+          <div class="cta-actions">
+            <a class="btn btn-sand lg" href="#book" data-i18n="cta_book"></a>
+            <a class="btn btn-wa lg" data-wa data-i18n="wa"></a>
+          </div>
+        </div>
+
+        <div class="foot-grid">
+          <div class="foot-brand">
+            <a class="logo" href="#top">
+              <span class="logo-mark" aria-hidden="true">
+                <svg viewBox="0 0 32 32"><path d="M4 19c4-5 8-5 12 0s8 5 12 0" /><path d="M4 25c4-5 8-5 12 0s8 5 12 0" opacity=".55" /><circle cx="22" cy="9" r="4" /></svg>
+              </span>
+              <span data-biz></span>
+            </a>
+            <p data-i18n="hero_p"></p>
+          </div>
+          <nav class="foot-links" aria-label="Footer">
+            <h3 data-i18n="foot_explore"></h3>
+            <a href="#fleetsec" data-i18n="nav_fleet"></a>
+            <a href="#how" data-i18n="nav_how"></a>
+            <a href="#book" data-i18n="nav_book"></a>
+            <a href="#terms" data-i18n="nav_terms"></a>
+            <a href="#faq" data-i18n="nav_faq"></a>
+          </nav>
+          <div class="foot-contact">
+            <h3 data-i18n="contact_h"></h3>
+            <div id="contactInfo"></div>
+          </div>
+        </div>
+
+        <p class="copy">
+          © <span id="year"></span> <span data-biz></span>. <span data-i18n="rights"></span>
         </p>
       </div>
     </footer>
 
-    <a class="float" data-wa aria-label="WhatsApp">💬 WhatsApp</a>
+    <!-- Car details modal -->
+    <dialog class="modal" id="carModal" aria-labelledby="mTitle">
+      <div class="modal-box">
+        <button class="modal-x" type="button" data-close data-i18n-label="close">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12" /></svg>
+        </button>
+        <div class="modal-media"><img id="mImg" alt="" /></div>
+        <div class="modal-body">
+          <span class="tag" id="mType"></span>
+          <h3 id="mTitle"></h3>
+          <ul class="specs" id="mSpecs"></ul>
+          <div class="modal-foot">
+            <p class="price" id="mPrice"></p>
+            <a class="btn btn-b" href="#book" id="mBook" data-car=""><span data-i18n="book_car"></span>
+              <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" /></svg></a>
+          </div>
+        </div>
+      </div>
+    </dialog>
+
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+    <a class="float" data-wa aria-label="WhatsApp">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z" /></svg>
+      <span>WhatsApp</span>
+    </a>
+
     <script src="scripts.js"></script>
   </body>
 </html>

@@ -1,24 +1,26 @@
 /* ===== CONFIG: edit this part ===== */
 const CONFIG = {
   business: 'Zanzibar Drive',          // your business name
-  whatsapp: '255700000000',            // international format, no + or spaces
-  address: 'Stone Town, Zanzibar',
+  whatsapp: '255715518980',            // international format, no + or spaces
+  phone: '+255 715 518 980',           // how the number is shown on the site
+  address: 'Zanzibar Airport',
   currency: '$',
+  // type: 'suv' | 'small' | 'van' | 'pickup' (used by the fleet filter)
   // image: '' uses a placeholder. To use a real photo: image: 'images/vitz.jpg'
   fleet: [
-    { id: 'nissan-e-class', name: 'Nissan E-Class', seats: 4, trans: 'Automatic', year: 2018, fuel: 'Petrol', price: 28.89, color: '#0B6E99', image: 'images/Nissan E-Class.jpeg' },
-    { id: 'rav4-2018', name: 'Toyota RAV4', seats: 5, trans: 'Automatic', year: 2018, fuel: 'Petrol', price: 26.88, color: '#2EC4D6', image: 'images/Toyota RAV4.jpeg' },
-    { id: 'rav4-2016', name: 'Toyota RAV4', seats: 2, trans: 'Automatic', year: 2016, fuel: 'Petrol', price: 23.70, color: '#06364D', image: 'images/Toyota RAV4 2doors.jpeg' },
-    { id: 'suzuki-escudo-2016', name: 'Suzuki Escudo', seats: 5, trans: 'Automatic', year: 2016, fuel: 'Petrol', price: 28.60, color: '#C9A36A', image: 'images/Toyota Escudo.jpg' },
-    { id: 'land-cruiser-2020', name: 'Toyota Land Cruiser', seats: 5, trans: 'Automatic', year: 2020, fuel: 'Petrol', price: 150.00, color: '#0B6E99', image: 'images/Toyota Land Cruiser.png' },
-    { id: 'suzuki-escudo-2019', name: 'Suzuki Escudo', seats: 3, trans: 'Automatic', year: 2019, fuel: 'Petrol', price: 26.50, color: '#2EC4D6', image: 'images/Suzuki Escudo 2doors.jpeg' },
-    { id: 'land-cruiser-2019', name: 'Toyota Land Cruiser', seats: 5, trans: 'Automatic', year: 2019, fuel: 'Diesel', price: 102.89, color: '#06364D', image: 'images/Toyota Land Cruiser.jpeg' },
-    { id: 'toyota-c-class', name: 'Toyota C-Class', seats: 5, trans: 'Automatic', year: 2010, fuel: 'Diesel', price: 90.00, color: '#C9A36A', image: 'images/Toyota C-Class.jpeg' },
-    { id: 'toyota-g-class', name: 'Toyota G-Class', seats: 5, trans: 'Automatic', year: 2015, fuel: 'Petrol', price: 35.00, color: '#0B6E99', image: 'images/Toyota G-Class.jpeg' },
-    { id: 'land-cruiser-2013', name: 'Toyota Land Cruiser', seats: 5, trans: 'Automatic', year: 2013, fuel: 'Petrol', price: 92.55, color: '#2EC4D6', image: 'images/Toyota Land Cruiser.jpeg' },
-    { id: 'toyota-escudo-2013', name: 'Toyota Escudo', seats: 5, trans: 'Automatic', year: 2013, fuel: 'Petrol', price: 25.89, color: '#06364D', image: 'images/Toyota Escudo.jpg' },
-    { id: 'toyota-ist', name: 'Toyota IST', seats: 5, trans: 'Automatic', year: 2018, fuel: 'Petrol', price: 20.00, color: '#C9A36A', image: 'images/Toyota Ist-card.jpg' },
-    { id: 'toyota-alphad', name: 'Toyota Alphad', seats: 8, trans: 'Automatic', year: 2013, fuel: 'Petrol', price: 35.00, color: '#0B6E99', image: 'images/Toyota Alphard.jpeg' }
+    { id: 'nissan-e-class', type: 'small', name: 'Nissan E-Class', seats: 4, trans: 'Automatic', year: 2018, fuel: 'Petrol', price: 28.89, color: '#0B6E99', image: 'images/Nissan E-Class.jpeg' },
+    { id: 'rav4-2018', type: 'suv', name: 'Toyota RAV4', seats: 5, trans: 'Automatic', year: 2018, fuel: 'Petrol', price: 26.88, color: '#2EC4D6', image: 'images/Toyota RAV4.jpeg' },
+    { id: 'rav4-2016', type: 'suv', name: 'Toyota RAV4', seats: 2, trans: 'Automatic', year: 2016, fuel: 'Petrol', price: 23.70, color: '#06364D', image: 'images/Toyota RAV4 2doors.jpeg' },
+    { id: 'suzuki-escudo-2016', type: 'suv', name: 'Suzuki Escudo', seats: 5, trans: 'Automatic', year: 2016, fuel: 'Petrol', price: 28.60, color: '#C9A36A', image: 'images/Toyota Escudo.jpg' },
+    { id: 'land-cruiser-2020', type: 'suv', name: 'Toyota Land Cruiser', seats: 5, trans: 'Automatic', year: 2020, fuel: 'Petrol', price: 150.00, color: '#0B6E99', image: 'images/Toyota Land Cruiser.png' },
+    { id: 'suzuki-escudo-2019', type: 'suv', name: 'Suzuki Escudo', seats: 3, trans: 'Automatic', year: 2019, fuel: 'Petrol', price: 26.50, color: '#2EC4D6', image: 'images/Suzuki Escudo 2doors.jpeg' },
+    { id: 'land-cruiser-2019', type: 'suv', name: 'Toyota Land Cruiser', seats: 5, trans: 'Automatic', year: 2019, fuel: 'Diesel', price: 102.89, color: '#06364D', image: 'images/Toyota Land Cruiser.jpeg' },
+    { id: 'toyota-c-class', type: 'pickup', name: 'Toyota C-Class', seats: 5, trans: 'Automatic', year: 2010, fuel: 'Diesel', price: 90.00, color: '#C9A36A', image: 'images/Toyota C-Class.jpeg' },
+    { id: 'toyota-g-class', type: 'suv', name: 'Toyota G-Class', seats: 5, trans: 'Automatic', year: 2015, fuel: 'Petrol', price: 35.00, color: '#0B6E99', image: 'images/Toyota G-Class.jpeg' },
+    { id: 'land-cruiser-2013', type: 'suv', name: 'Toyota Land Cruiser', seats: 5, trans: 'Automatic', year: 2013, fuel: 'Petrol', price: 92.55, color: '#2EC4D6', image: 'images/Toyota Land Cruiser.jpeg' },
+    { id: 'toyota-escudo-2013', type: 'suv', name: 'Toyota Escudo', seats: 5, trans: 'Automatic', year: 2013, fuel: 'Petrol', price: 25.89, color: '#06364D', image: 'images/Toyota Escudo.jpg' },
+    { id: 'toyota-ist', type: 'small', name: 'Toyota IST', seats: 5, trans: 'Automatic', year: 2018, fuel: 'Petrol', price: 20.00, color: '#C9A36A', image: 'images/Toyota Ist-card.jpg' },
+    { id: 'toyota-alphad', type: 'van', name: 'Toyota Alphad', seats: 8, trans: 'Automatic', year: 2013, fuel: 'Petrol', price: 35.00, color: '#0B6E99', image: 'images/Toyota Alphard.jpeg' }
   ]
 };
 
@@ -176,8 +178,86 @@ const T = {
   }
 };
 
+
+/* ===== Extra translations for the redesigned interface ===== */
+const T2 = {
+  en: {
+    skip: 'Skip to content', nav_how: 'How it works', hero_kicker: 'Car rental in Zanzibar',
+    stat_cars: 'cars in our fleet', stat_from: 'per day, from', stat_support: 'support on WhatsApp',
+    how_h: 'Book in three easy steps', how_p: 'No account and no paperwork online. Pick, message and drive.',
+    s1t: 'Choose your car', s1p: 'Compare cars, seats and daily prices.',
+    s2t: 'Send on WhatsApp', s2p: 'Your booking message is ready. Just press Send.',
+    s3t: 'We deliver it', s3p: 'Meet your car at the airport or your hotel.',
+    cat_all: 'All', cat_suv: 'SUV & 4x4', cat_small: 'Compact', cat_van: 'Minivan', cat_pickup: 'Pickup',
+    empty: 'No cars in this category right now.', details: 'View details', close: 'Close',
+    sum_h: 'Your booking', sum_none: 'No car selected yet', why_p: 'A small local team, simple rules and cars we look after ourselves.',
+    cta_h: 'Ready to explore Zanzibar?', foot_explore: 'Explore'
+  },
+  sw: {
+    skip: 'Ruka hadi maudhui', nav_how: 'Jinsi inavyofanya kazi', hero_kicker: 'Kukodisha magari Zanzibar',
+    stat_cars: 'magari ya kuchagua', stat_from: 'kwa siku, kuanzia', stat_support: 'msaada kupitia WhatsApp',
+    how_h: 'Weka nafasi kwa hatua tatu', how_p: 'Hakuna akaunti wala makaratasi. Chagua, tuma ujumbe, endesha.',
+    s1t: 'Chagua gari lako', s1p: 'Linganisha magari, viti na bei za kila siku.',
+    s2t: 'Tuma kupitia WhatsApp', s2p: 'Ujumbe wako uko tayari. Bonyeza Send tu.',
+    s3t: 'Tunakuletea', s3p: 'Pokea gari lako uwanja wa ndege au hotelini.',
+    cat_all: 'Yote', cat_suv: 'SUV na 4x4', cat_small: 'Magari madogo', cat_van: 'Minivan', cat_pickup: 'Pickup',
+    empty: 'Hakuna magari katika kundi hili kwa sasa.', details: 'Tazama maelezo', close: 'Funga',
+    sum_h: 'Nafasi yako', sum_none: 'Bado hujachagua gari', why_p: 'Timu ndogo ya hapa, masharti rahisi na magari tunayoyatunza wenyewe.',
+    cta_h: 'Uko tayari kuizunguka Zanzibar?', foot_explore: 'Gundua'
+  },
+  it: {
+    skip: 'Vai al contenuto', nav_how: 'Come funziona', hero_kicker: 'Noleggio auto a Zanzibar',
+    stat_cars: 'auto nella nostra flotta', stat_from: 'al giorno, da', stat_support: 'assistenza su WhatsApp',
+    how_h: 'Prenota in tre semplici passi', how_p: 'Nessun account e nessuna burocrazia online. Scegli, scrivi e guida.',
+    s1t: "Scegli l'auto", s1p: 'Confronta auto, posti e prezzi giornalieri.',
+    s2t: 'Invia su WhatsApp', s2p: 'Il messaggio è pronto. Premi solo Invia.',
+    s3t: 'Te la consegniamo', s3p: "Trovi l'auto in aeroporto o al tuo hotel.",
+    cat_all: 'Tutte', cat_suv: 'SUV e 4x4', cat_small: 'Compatte', cat_van: 'Monovolume', cat_pickup: 'Pick-up',
+    empty: 'Nessuna auto in questa categoria al momento.', details: 'Vedi dettagli', close: 'Chiudi',
+    sum_h: 'La tua prenotazione', sum_none: 'Nessuna auto selezionata', why_p: 'Un piccolo team locale, regole semplici e auto curate da noi.',
+    cta_h: 'Pronto a scoprire Zanzibar?', foot_explore: 'Esplora'
+  },
+  de: {
+    skip: 'Zum Inhalt springen', nav_how: "So funktioniert's", hero_kicker: 'Autovermietung auf Sansibar',
+    stat_cars: 'Autos in unserer Flotte', stat_from: 'pro Tag, ab', stat_support: 'Hilfe per WhatsApp',
+    how_h: 'In drei Schritten gebucht', how_p: 'Kein Konto, kein Papierkram. Auswählen, schreiben, losfahren.',
+    s1t: 'Auto wählen', s1p: 'Vergleiche Autos, Sitze und Tagespreise.',
+    s2t: 'Per WhatsApp senden', s2p: 'Deine Nachricht ist fertig. Einfach auf Senden tippen.',
+    s3t: 'Wir liefern', s3p: 'Übernimm dein Auto am Flughafen oder im Hotel.',
+    cat_all: 'Alle', cat_suv: 'SUV & 4x4', cat_small: 'Kompakt', cat_van: 'Van', cat_pickup: 'Pick-up',
+    empty: 'Derzeit keine Autos in dieser Kategorie.', details: 'Details ansehen', close: 'Schließen',
+    sum_h: 'Deine Buchung', sum_none: 'Noch kein Auto gewählt', why_p: 'Kleines lokales Team, einfache Regeln und Autos, die wir selbst pflegen.',
+    cta_h: 'Bereit, Sansibar zu entdecken?', foot_explore: 'Entdecken'
+  },
+  fr: {
+    skip: 'Aller au contenu', nav_how: 'Comment ça marche', hero_kicker: 'Location de voitures à Zanzibar',
+    stat_cars: 'voitures dans notre flotte', stat_from: 'par jour, dès', stat_support: 'assistance sur WhatsApp',
+    how_h: 'Réservez en trois étapes', how_p: 'Pas de compte, pas de paperasse. Choisissez, écrivez, roulez.',
+    s1t: 'Choisissez votre voiture', s1p: 'Comparez voitures, places et prix par jour.',
+    s2t: 'Envoyez sur WhatsApp', s2p: 'Votre message est prêt. Appuyez simplement sur Envoyer.',
+    s3t: 'Nous livrons', s3p: "Récupérez la voiture à l'aéroport ou à votre hôtel.",
+    cat_all: 'Toutes', cat_suv: 'SUV et 4x4', cat_small: 'Citadines', cat_van: 'Monospaces', cat_pickup: 'Pick-up',
+    empty: 'Aucune voiture dans cette catégorie pour le moment.', details: 'Voir les détails', close: 'Fermer',
+    sum_h: 'Votre réservation', sum_none: 'Aucune voiture choisie', why_p: 'Une petite équipe locale, des règles simples et des voitures que nous entretenons nous-mêmes.',
+    cta_h: 'Prêt à explorer Zanzibar ?', foot_explore: 'Explorer'
+  },
+  es: {
+    skip: 'Ir al contenido', nav_how: 'Cómo funciona', hero_kicker: 'Alquiler de coches en Zanzíbar',
+    stat_cars: 'coches en nuestra flota', stat_from: 'por día, desde', stat_support: 'ayuda por WhatsApp',
+    how_h: 'Reserva en tres pasos', how_p: 'Sin cuentas ni papeleo. Elige, escribe y conduce.',
+    s1t: 'Elige tu coche', s1p: 'Compara coches, plazas y precios por día.',
+    s2t: 'Envía por WhatsApp', s2p: 'Tu mensaje está listo. Solo pulsa Enviar.',
+    s3t: 'Te lo llevamos', s3p: 'Recoge el coche en el aeropuerto o en tu hotel.',
+    cat_all: 'Todos', cat_suv: 'SUV y 4x4', cat_small: 'Compactos', cat_van: 'Monovolúmenes', cat_pickup: 'Pick-up',
+    empty: 'No hay coches en esta categoría ahora.', details: 'Ver detalles', close: 'Cerrar',
+    sum_h: 'Tu reserva', sum_none: 'Aún no has elegido coche', why_p: 'Un pequeño equipo local, normas sencillas y coches que cuidamos nosotros.',
+    cta_h: '¿Listo para descubrir Zanzíbar?', foot_explore: 'Explorar'
+  }
+};
+Object.keys(T2).forEach(l => Object.assign(T[l], T2[l]));
+
 /* ===== Helpers ===== */
-let lang = 'en';
+let lang = 'en', filter = 'all';
 const $ = s => document.querySelector(s);
 const $$ = s => [...document.querySelectorAll(s)];
 const t = k => T[lang][k] || T.en[k] || k;
@@ -187,6 +267,24 @@ const dayCount = () => {
   const a = $('#from').value, b = $('#to').value;
   return a && b ? Math.round((new Date(b + 'T00:00') - new Date(a + 'T00:00')) / 864e5) : 0;
 };
+const reduceMotion = matchMedia('(prefers-reduced-motion: reduce)').matches;
+const esc = s => String(s).replace(/[&<>"']/g, ch => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[ch]));
+const fmtDate = iso => {
+  if (!iso) return '—';
+  try { return new Date(iso + 'T00:00').toLocaleDateString(lang, { weekday: 'short', day: 'numeric', month: 'short' }); }
+  catch (e) { return iso; }
+};
+
+// Line icons (24x24, stroke)
+const ICONS = {
+  seats: '<path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/>',
+  trans: '<circle cx="6" cy="6" r="2"/><circle cx="12" cy="6" r="2"/><circle cx="18" cy="6" r="2"/><circle cx="6" cy="18" r="2"/><circle cx="12" cy="18" r="2"/><path d="M6 8v8M12 8v8M18 8v3a1 1 0 0 1-1 1H6"/>',
+  fuel: '<path d="M3 22V4a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v18M2 22h14M6 7h6M15 10h2a2 2 0 0 1 2 2v5a1.5 1.5 0 0 0 3 0V8l-3-3"/>',
+  year: '<rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/>',
+  arrow: '<path d="M5 12h14M13 6l6 6-6 6"/>',
+  expand: '<path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/>'
+};
+const icon = n => `<svg class="ic" viewBox="0 0 24 24" aria-hidden="true">${ICONS[n]}</svg>`;
 
 // Placeholder car picture (used when image is empty)
 function carImg(c) {
@@ -195,54 +293,151 @@ function carImg(c) {
   return 'data:image/svg+xml,' + encodeURIComponent(svg);
 }
 
+const specsHTML = c => `
+  <li>${icon('seats')}${c.seats} ${esc(t('seats'))}</li>
+  <li>${icon('trans')}${esc(c.trans)}</li>
+  ${c.fuel ? `<li>${icon('fuel')}${esc(c.fuel)}</li>` : ''}
+  ${c.year ? `<li>${icon('year')}${c.year}</li>` : ''}`;
+
+/* ===== Scroll reveal ===== */
+const io = 'IntersectionObserver' in window && !reduceMotion
+  ? new IntersectionObserver(es => es.forEach(en => {
+    if (en.isIntersecting) { en.target.classList.add('in'); io.unobserve(en.target); }
+  }), { rootMargin: '0px 0px -8% 0px' })
+  : null;
+const observe = els => els.forEach(el => io ? io.observe(el) : el.classList.add('in'));
+
+/* ===== Fleet ===== */
+function renderFilters() {
+  const types = ['all', ...new Set(CONFIG.fleet.map(c => c.type).filter(Boolean))];
+  $('#filters').innerHTML = types.map(k => {
+    const n = k === 'all' ? CONFIG.fleet.length : CONFIG.fleet.filter(c => c.type === k).length;
+    return `<button type="button" class="fchip${k === filter ? ' on' : ''}" data-filter="${k}" aria-pressed="${k === filter}">${esc(t('cat_' + k))}<span>${n}</span></button>`;
+  }).join('');
+}
+
 function renderFleet() {
-  $('#fleet').innerHTML = CONFIG.fleet.map(c => `
-    <article class="card">
-      <img src="${carImg(c)}" alt="${c.name}" loading="lazy">
+  renderFilters();
+  const list = CONFIG.fleet.filter(c => filter === 'all' || c.type === filter);
+  $('#fleet').innerHTML = list.length ? list.map((c, i) => `
+    <article class="card reveal" style="--i:${i % 4}">
+      <button type="button" class="card-media" data-details="${c.id}" aria-label="${esc(t('details'))}: ${esc(c.name)}">
+        <img src="${carImg(c)}" alt="${esc(c.name)}" loading="lazy" decoding="async">
+        ${c.type ? `<span class="tag">${esc(t('cat_' + c.type))}</span>` : ''}
+        <span class="peek">${icon('expand')}</span>
+      </button>
       <div class="cb">
-        <h3>${c.name}</h3>
-        <div class="specs">
-          <span class="trans">${c.trans}</span>
-          <span class="seats">${c.seats} ${t('seats')}</span>
-          ${c.year ? `<span class="year">${c.year}</span>` : ''}
-          ${c.fuel ? `<span class="fuel">${c.fuel}</span>` : ''}
+        <h3>${esc(c.name)}</h3>
+        <ul class="specs">${specsHTML(c)}</ul>
+        <div class="card-foot">
+          <p class="price"><b>${money(c.price)}</b><span>${esc(t('per_day'))}</span></p>
+          <a class="btn btn-b" href="#book" data-car="${c.id}">${esc(t('book_car'))}${icon('arrow')}</a>
         </div>
-        <p class="price"><b>${money(c.price)}</b> ${t('per_day')}</p>
-        <a class="btn btn-b" href="#book" data-car="${c.id}">${t('book_car')}</a>
       </div>
-    </article>`).join('');
+    </article>`).join('')
+    : `<p class="empty">${esc(t('empty'))}</p>`;
+  observe($$('#fleet .reveal'));
+
   const sel = $('#car'), keep = sel.value;
-  sel.innerHTML = `<option value="">${t('f_choose')}</option>` +
-    CONFIG.fleet.map(c => `<option value="${c.id}">${c.name} (${money(c.price)} ${t('per_day')})</option>`).join('');
+  sel.innerHTML = `<option value="">${esc(t('f_choose'))}</option>` +
+    CONFIG.fleet.map(c => `<option value="${c.id}">${esc(c.name)} ${c.year ? '(' + c.year + ') ' : ''}· ${money(c.price)} ${esc(t('per_day'))}</option>`).join('');
   sel.value = keep;
 }
 
+/* ===== Car details modal ===== */
+const modal = $('#carModal');
+function openCar(id) {
+  const c = CONFIG.fleet.find(x => x.id === id);
+  if (!c || !modal.showModal) return;
+  $('#mImg').src = carImg(c); $('#mImg').alt = c.name;
+  $('#mType').textContent = c.type ? t('cat_' + c.type) : '';
+  $('#mTitle').textContent = c.name;
+  $('#mSpecs').innerHTML = specsHTML(c);
+  $('#mPrice').innerHTML = `<b>${money(c.price)}</b> <span>${esc(t('per_day'))}</span>`;
+  $('#mBook').dataset.car = c.id;
+  modal.showModal();
+  document.documentElement.classList.add('lock');
+}
+modal.addEventListener('close', () => document.documentElement.classList.remove('lock'));
+modal.addEventListener('click', e => { if (e.target === modal || e.target.closest('[data-close]')) modal.close(); });
+
+/* ===== Booking summary ===== */
 function estimate() {
   const c = CONFIG.fleet.find(x => x.id === $('#car').value), d = dayCount();
-  $('#total').textContent = c && d > 0 ? `${money(c.price * d)} (${d} ${t('days')})` : t('est_none');
+  $('#total').textContent = c && d > 0 ? money(c.price * d) : '—';
+  $('#sumDays').textContent = d > 0 ? `${d} ${t('days')}` : '—';
+  $('#sumFrom').textContent = fmtDate($('#from').value);
+  $('#sumTo').textContent = fmtDate($('#to').value);
+  $('#sumCar').textContent = c ? c.name : t('sum_none');
+  $('#sumRate').textContent = c ? `${money(c.price)} ${t('per_day')}` : '';
+  $('#sumHint').textContent = c && d > 0 ? '' : t('est_none');
   const img = $('#estImg');
-  img.hidden = !c;
+  img.hidden = !c; $('#sumPh').hidden = !!c;
   if (c) { img.src = carImg(c); img.alt = c.name; }
 }
 
+/* ===== Language ===== */
 function applyLang(l) {
   lang = l;
   document.documentElement.lang = l;
   $$('[data-i18n]').forEach(e => e.textContent = t(e.dataset.i18n));
   $$('[data-ph]').forEach(e => e.placeholder = t(e.dataset.ph));
-  $('#lang').value = l;
+  $$('[data-review]').forEach(e => {
+    const [q, who] = t(e.dataset.review).split('”');
+    e.innerHTML = `<p>${esc(q)}”</p>${who ? `<cite>${esc(who.trim())}</cite>` : ''}`;
+  });
+  $$('[data-i18n-label]').forEach(e => e.setAttribute('aria-label', t(e.dataset.i18nLabel)));
+  $$('.lang').forEach(s => s.value = l);
   renderFleet();
   estimate();
   try { localStorage.setItem('lang', l); } catch (e) { }
 }
 
+/* ===== Toast feedback ===== */
+let toastTimer;
+function toast(text, type) {
+  const el = $('#toast');
+  el.textContent = text; el.className = `toast ${type} show`;
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(() => el.classList.remove('show'), 4200);
+}
+
+/* ===== Counters ===== */
+function countUp(el) {
+  const end = parseFloat(el.dataset.count), dec = +el.dataset.dec || 0, pre = el.dataset.pre || '';
+  const out = v => el.textContent = pre + v.toFixed(dec);
+  if (reduceMotion) return out(end);
+  let start = null;
+  const step = ts => {
+    if (start === null) start = ts;
+    const p = Math.min((ts - start) / 1400, 1);
+    out(end * (1 - Math.pow(1 - p, 3)));
+    if (p < 1) requestAnimationFrame(step);
+  };
+  requestAnimationFrame(step);
+}
+
 /* ===== Init ===== */
+const hdr = $('#hdr');
 $$('[data-biz]').forEach(e => e.textContent = CONFIG.business);
 $$('[data-wa]').forEach(e => { e.href = waLink(); e.target = '_blank'; e.rel = 'noopener'; });
 $('#year').textContent = new Date().getFullYear();
 $('#contactInfo').innerHTML =
-  `<a class="btn btn-wa" href="${waLink()}" target="_blank" rel="noopener">💬 +${CONFIG.whatsapp}</a>
-   <a href="https://maps.google.com/?q=${encodeURIComponent(CONFIG.address)}" target="_blank" rel="noopener">📍 ${CONFIG.address}</a>`;
+  `<a class="btn btn-wa" href="${waLink()}" target="_blank" rel="noopener">💬 ${CONFIG.phone || "+" + CONFIG.whatsapp}</a>
+   <a class="addr" href="https://maps.google.com/?q=${encodeURIComponent(CONFIG.address)}" target="_blank" rel="noopener">📍 ${esc(CONFIG.address)}</a>`;
+
+// Hero stats come from the fleet data
+const minPrice = Math.min(...CONFIG.fleet.map(c => c.price));
+$('#statCars').dataset.count = CONFIG.fleet.length;
+$('#statFrom').dataset.count = minPrice;
+$('#statFrom').dataset.pre = CONFIG.currency;
+$('#heroFrom').textContent = money(minPrice);
+$('#statCars').textContent = CONFIG.fleet.length;
+$('#statFrom').textContent = CONFIG.currency + Math.round(minPrice);
+const statIO = 'IntersectionObserver' in window ? new IntersectionObserver(es => es.forEach(en => {
+  if (en.isIntersecting) { countUp(en.target); statIO.unobserve(en.target); }
+}), { threshold: .6 }) : null;
+$$('[data-count]').forEach(el => statIO ? statIO.observe(el) : countUp(el));
 
 // Date limits (local time)
 const now = new Date();
@@ -252,25 +447,37 @@ $('#from').addEventListener('change', e => { $('#to').min = e.target.value || to
 $('#to').addEventListener('change', estimate);
 $('#car').addEventListener('change', estimate);
 
-// "Book this car" buttons preselect the car
-document.addEventListener('click', e => {
-  const a = e.target.closest('[data-car]');
-  if (a) {
-    $('#car').value = a.dataset.car; estimate();
-    const fc = $('#form');
-    fc.classList.remove('flash'); void fc.offsetWidth; fc.classList.add('flash');
-    setTimeout(() => $('#form [name=name]').focus({ preventScroll: true }), 600);
-  }
-  if (e.target.closest('#nav a')) setMenu(false);
-});
-
+// Mobile menu
 const setMenu = open => {
   $('#nav').classList.toggle('open', open);
   $('#menu').setAttribute('aria-expanded', open);
-  $('#menu').textContent = open ? '✕' : '☰';
+  hdr.classList.toggle('menu-open', open);
+  document.documentElement.classList.toggle('lock', open);
 };
 $('#menu').addEventListener('click', () => setMenu(!$('#nav').classList.contains('open')));
-$('#lang').addEventListener('change', e => applyLang(e.target.value));
+addEventListener('keydown', e => { if (e.key === 'Escape' && $('#nav').classList.contains('open')) setMenu(false); });
+
+document.addEventListener('click', e => {
+  // "Book this car" buttons preselect the car
+  const a = e.target.closest('[data-car]');
+  if (a) {
+    if (modal.open) modal.close();
+    $('#car').value = a.dataset.car; $('#car').removeAttribute('aria-invalid'); estimate();
+    const fc = $('.book-grid');
+    fc.classList.remove('flash'); void fc.offsetWidth; fc.classList.add('flash');
+    setTimeout(() => $('#form [name=name]').focus({ preventScroll: true }), 700);
+  }
+  const d = e.target.closest('[data-details]');
+  if (d) openCar(d.dataset.details);
+  const f = e.target.closest('[data-filter]');
+  if (f && f.dataset.filter !== filter) { filter = f.dataset.filter; renderFleet(); }
+  if (e.target.closest('#nav a')) setMenu(false);
+});
+
+$$('.lang').forEach(s => s.addEventListener('change', e => applyLang(e.target.value)));
+
+// Clear the error state of a field as soon as the user fixes it
+['input', 'change'].forEach(ev => $('#form').addEventListener(ev, e => e.target.removeAttribute('aria-invalid')));
 
 // Submit: validate, then open WhatsApp with a prepared message
 $('#form').addEventListener('submit', e => {
@@ -280,6 +487,7 @@ $('#form').addEventListener('submit', e => {
   const today = new Date(); today.setHours(0, 0, 0, 0);
   const fail = (k, bad) => {
     msg.textContent = t(k); msg.className = 'msg err';
+    toast(t(k), 'err');
     bad.forEach(n => e.target.elements[n].setAttribute('aria-invalid', 'true'));
     e.target.elements[bad[0]].focus();
   };
@@ -297,16 +505,26 @@ $('#form').addEventListener('submit', e => {
     `Estimated total: ${money(c.price * dayCount())} (${dayCount()} days)`
   ].filter(Boolean).join('\n');
   msg.textContent = t('ok'); msg.className = 'msg ok';
+  toast(t('ok'), 'ok');
+  const btn = $('#sendBtn');
+  btn.classList.add('is-sent'); setTimeout(() => btn.classList.remove('is-sent'), 2400);
   window.open(waLink(text), '_blank', 'noopener');
 });
 
-// Clear the error state of a field as soon as the user fixes it
-$('#form').addEventListener('input', e => e.target.removeAttribute('aria-invalid'));
-$('#form').addEventListener('change', e => e.target.removeAttribute('aria-invalid'));
+// Header state, scroll spy and subtle hero parallax
+const heroBg = $('.hero-bg'), heroCar = $('.hero-visual');
+let ticking = false;
+const onScroll = () => {
+  hdr.classList.toggle('scrolled', scrollY > 24);
+  if (!reduceMotion && scrollY < innerHeight) {
+    heroBg.style.transform = `translate3d(0, ${scrollY * 0.3}px, 0) scale(1.08)`;
+    heroCar.style.transform = `translate3d(0, ${scrollY * -0.08}px, 0)`;
+  }
+  ticking = false;
+};
+addEventListener('scroll', () => { if (!ticking) { ticking = true; requestAnimationFrame(onScroll); } }, { passive: true });
+onScroll();
 
-// Header shadow on scroll + highlight the nav link of the section in view
-const onScroll = () => document.querySelector('header').classList.toggle('scrolled', scrollY > 8);
-addEventListener('scroll', onScroll, { passive: true }); onScroll();
 if ('IntersectionObserver' in window) {
   const links = $$('#nav a[href^="#"]');
   const spy = new IntersectionObserver(es => es.forEach(en => {
@@ -314,6 +532,8 @@ if ('IntersectionObserver' in window) {
   }), { rootMargin: '-45% 0px -50% 0px' });
   links.forEach(l => { const s = $(l.getAttribute('href')); if (s) spy.observe(s); });
 }
+
+observe($$('.reveal'));
 
 let saved = 'en';
 try { saved = localStorage.getItem('lang') || 'en'; } catch (e) { }
