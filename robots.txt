@@ -1,0 +1,5 @@
+# Rafiki Car Hire
+User-agent: *
+Allow: /
+
+Sitemap: https://kingkunta28.github.io/ZanCarRental/sitemap.xml

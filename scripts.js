@@ -1,15 +1,16 @@
 /* ===== CONFIG: edit this part ===== */
 const CONFIG = {
   business: 'Rafiki Car Hire',          // your business name
+  siteUrl: 'https://kingkunta28.github.io/ZanCarRental/', // live address (change if you get your own domain)
   whatsapp: '255715518980',            // international format, no + or spaces
   phone: '+255 715 518 980',           // how the number is shown on the site
-  address: 'Zanzibar Airport',
+  address: 'Abeid Amani Karume International Airport, Zanzibar',
   currency: '$',
   // Delivery / collection: free at locations marked free: true,
   // deliveryFee is charged separately for EACH location (pickup and return) outside the free zone.
   deliveryFee: 25,
   locations: [
-    { id: 'airport', i18n: 'l_air', name: 'Zanzibar Airport', free: true },
+    { id: 'airport', i18n: 'l_air', name: 'Abeid Amani Karume International Airport (Zanzibar)', free: true },
     { id: 'town', i18n: 'l_town', name: 'Zanzibar Town (Stone Town)', free: true },
     { id: 'nungwi', name: 'Nungwi' },
     { id: 'kendwa', name: 'Kendwa' },
@@ -25,17 +26,17 @@ const CONFIG = {
   // type: 'suv' | 'small' | 'van' | 'pickup' (used by the fleet filter)
   // image: '' uses a placeholder. To use a real photo: image: 'images/vitz.jpg'
   fleet: [
-    { id: 'nissan-e-class', type: 'small', name: 'Nissan Juke', seats: 4, trans: 'Automatic', year: 2018, fuel: 'Petrol', price: 25, color: '#0B6E99', image: 'images/Nissan E-Class.jpeg' },
-    { id: 'rav4-2018', type: 'suv', name: 'Toyota RAV4 New', seats: 5, trans: 'Automatic', year: 2018, fuel: 'Petrol', price: 35, color: '#2EC4D6', image: 'images/Toyota RAV4.jpeg' },
-    { id: 'vanguard-2018', type: 'suv', name: 'Toyota Vanguard ', seats: 5, trans: 'Automatic', year: 2018, fuel: 'Petrol', price: 40, color: '#0B6E99', image: 'images/Toyota RAV4_2.jpeg' },
-    { id: 'rav4-2016', type: 'suv', name: 'Toyota RAV4 ', seats: 2, trans: 'Automatic', year: 2016, fuel: 'Petrol', price: 30, color: '#06364D', image: 'images/Toyota RAV4 2doors.jpeg' },
-    { id: 'land-cruiser-2020', type: 'suv', name: 'Toyota Land Cruiser', seats: 5, trans: 'Automatic', year: 2020, fuel: 'Petrol', price: 150.00, color: '#0B6E99', image: 'images/Toyota Land Cruiser.png' },
-    { id: 'suzuki-escudo-2019', type: 'suv', name: 'Suzuki Escudo', seats: 3, trans: 'Automatic', year: 2019, fuel: 'Petrol', price: 26, color: '#2EC4D6', image: 'images/Suzuki Escudo 2doors.jpeg' },
+    { id: 'nissan-e-class', type: 'small', name: 'Nissan Juke', seats: 4, trans: 'Automatic', year: 2018, fuel: 'Petrol', price: 25, color: '#0B6E99', image: 'images/cars/nissan-juke-2018-car-hire-zanzibar.webp' },
+    { id: 'rav4-2018', type: 'suv', name: 'Toyota RAV4 New', seats: 5, trans: 'Automatic', year: 2018, fuel: 'Petrol', price: 35, color: '#2EC4D6', image: 'images/cars/toyota-rav4-2018-suv-rental-zanzibar.webp' },
+    { id: 'vanguard-2018', type: 'suv', name: 'Toyota Vanguard', seats: 5, trans: 'Automatic', year: 2018, fuel: 'Petrol', price: 40, color: '#0B6E99', image: 'images/cars/toyota-vanguard-2018-suv-rental-zanzibar.webp' },
+    { id: 'rav4-2016', type: 'suv', name: 'Toyota RAV4', seats: 2, trans: 'Automatic', year: 2016, fuel: 'Petrol', price: 30, color: '#06364D', image: 'images/cars/toyota-rav4-2016-3-door-rental-zanzibar.webp' },
+    { id: 'land-cruiser-2020', type: 'suv', name: 'Toyota Land Cruiser', seats: 5, trans: 'Automatic', year: 2020, fuel: 'Petrol', price: 150.00, color: '#0B6E99', image: 'images/cars/toyota-land-cruiser-2020-4x4-rental-zanzibar.webp' },
+    { id: 'suzuki-escudo-2019', type: 'suv', name: 'Suzuki Escudo', seats: 3, trans: 'Automatic', year: 2019, fuel: 'Petrol', price: 26, color: '#2EC4D6', image: 'images/cars/suzuki-escudo-2019-4x4-rental-zanzibar.webp' },
    
-    { id: 'toyota-c-class', type: 'pickup', name: 'Toyota Hilux', seats: 5, trans: 'Automatic', year: 2010, fuel: 'Diesel', price: 90.00, color: '#C9A36A', image: 'images/Toyota C-Class.jpeg' },
-    { id: 'toyota-g-class', type: 'suv', name: 'Toyota Harrier', seats: 5, trans: 'Automatic', year: 2015, fuel: 'Petrol', price: 45.00, color: '#0B6E99', image: 'images/Toyota G-Class.jpeg' },
-    { id: 'toyota-ist', type: 'small', name: 'Toyota IST', seats: 5, trans: 'Automatic', year: 2018, fuel: 'Petrol', price: 20.00, color: '#C9A36A', image: 'images/Toyota Ist-card.jpg' },
-    { id: 'toyota-alphad', type: 'van', name: 'Toyota Alphad', seats: 8, trans: 'Automatic', year: 2013, fuel: 'Petrol', price: 45.00, color: '#0B6E99', image: 'images/Toyota Alphard.jpeg' }
+    { id: 'toyota-c-class', type: 'pickup', name: 'Toyota Hilux', seats: 5, trans: 'Automatic', year: 2010, fuel: 'Diesel', price: 90.00, color: '#C9A36A', image: 'images/cars/toyota-hilux-pickup-rental-zanzibar.webp' },
+    { id: 'toyota-g-class', type: 'suv', name: 'Toyota Harrier', seats: 5, trans: 'Automatic', year: 2015, fuel: 'Petrol', price: 45.00, color: '#0B6E99', image: 'images/cars/toyota-harrier-2015-suv-rental-zanzibar.webp' },
+    { id: 'toyota-ist', type: 'small', name: 'Toyota IST', seats: 5, trans: 'Automatic', year: 2018, fuel: 'Petrol', price: 20.00, color: '#C9A36A', image: 'images/cars/toyota-ist-2018-compact-car-hire-zanzibar.webp' },
+    { id: 'toyota-alphad', type: 'van', name: 'Toyota Alphard', seats: 8, trans: 'Automatic', year: 2013, fuel: 'Petrol', price: 45.00, color: '#0B6E99', image: 'images/cars/toyota-alphard-minivan-rental-zanzibar.webp' }
   ]
 };
 
@@ -389,11 +390,72 @@ const T3 = {
 };
 Object.keys(T3).forEach(l => Object.assign(T[l], T3[l]));
 
+/* ===== SEO copy: delivery areas, fee FAQ, clearer headings ({fee} = delivery fee, {fee2} = twice the fee) ===== */
+const T4 = {
+  en: {
+    nav_home: 'Home',
+    hero_kicker: 'Self-drive car rental in Zanzibar', h1: 'Car hire in Zanzibar, your way',
+    fleet_h: 'Rental cars in Zanzibar', book_h: 'Book your Zanzibar car rental',
+    area_h: 'Where we deliver in Zanzibar',
+    area_p: 'Pick up your car at the airport, in Stone Town or at your beach hotel. Delivery is free at Zanzibar Airport and in Zanzibar Town, and {fee} per pickup or return anywhere else.',
+    area_paid: '{fee} each way', foot_areas: 'Car hire by area',
+    q12: 'Do you charge for delivery and collection?',
+    a12: 'Delivery and collection are free at Zanzibar Airport and in Zanzibar Town (Stone Town). Anywhere else costs {fee} for the pickup and {fee} for the return, so picking up in Nungwi and returning in Paje costs {fee2} in total. The booking summary shows these fees before you send your request.'
+  },
+  sw: {
+    nav_home: 'Nyumbani',
+    h1: 'Kodisha gari Zanzibar kwa uhuru wako',
+    area_h: 'Tunakoleta magari Zanzibar',
+    area_p: 'Chukua gari lako uwanja wa ndege, Stone Town au hotelini ufukweni. Kuleta ni bure uwanja wa ndege wa Zanzibar na Mji wa Zanzibar, na {fee} kwa kila kuleta au kurudisha maeneo mengine.',
+    area_paid: '{fee} kila upande', foot_areas: 'Magari kwa eneo',
+    q12: 'Je, mnatoza ada ya kuleta na kuchukua gari?',
+    a12: 'Kuleta na kuchukua gari ni bure uwanja wa ndege wa Zanzibar na Mji wa Zanzibar (Stone Town). Maeneo mengine ni {fee} kwa kuleta na {fee} kwa kurudisha, hivyo kuchukua Nungwi na kurudisha Paje ni {fee2} kwa jumla. Muhtasari wa nafasi unaonyesha ada hizi kabla hujatuma ombi lako.'
+  },
+  it: {
+    nav_home: 'Home',
+    h1: 'Noleggio auto a Zanzibar, a modo tuo',
+    area_h: 'Dove consegniamo a Zanzibar',
+    area_p: "Ritira l'auto in aeroporto, a Stone Town o al tuo hotel sulla spiaggia. La consegna è gratuita all'aeroporto di Zanzibar e a Zanzibar Town, e costa {fee} per ogni consegna o riconsegna altrove.",
+    area_paid: '{fee} a tratta', foot_areas: 'Noleggio per zona',
+    q12: 'Consegna e ritiro sono a pagamento?',
+    a12: "Consegna e ritiro sono gratuiti all'aeroporto di Zanzibar e a Zanzibar Town (Stone Town). Altrove costano {fee} per la consegna e {fee} per la riconsegna: ritiro a Nungwi e riconsegna a Paje costano {fee2} in totale. Il riepilogo mostra questi costi prima dell'invio della richiesta."
+  },
+  de: {
+    nav_home: 'Startseite',
+    h1: 'Mietwagen auf Sansibar, ganz nach deinem Plan',
+    area_h: 'Wohin wir auf Sansibar liefern',
+    area_p: 'Übernimm dein Auto am Flughafen, in Stone Town oder an deinem Strandhotel. Am Flughafen Sansibar und in Zanzibar Town ist die Lieferung kostenlos, überall sonst kostet jede Übergabe oder Rückgabe {fee}.',
+    area_paid: '{fee} pro Strecke', foot_areas: 'Mietwagen nach Region',
+    q12: 'Kosten Lieferung und Abholung extra?',
+    a12: 'Lieferung und Abholung sind am Flughafen Sansibar und in Zanzibar Town (Stone Town) kostenlos. Überall sonst kosten die Übergabe {fee} und die Rückgabe {fee}; Abholung in Nungwi und Rückgabe in Paje kosten also insgesamt {fee2}. Die Buchungsübersicht zeigt diese Gebühren, bevor du die Anfrage sendest.'
+  },
+  fr: {
+    nav_home: 'Accueil',
+    h1: 'Location de voiture à Zanzibar, à votre façon',
+    area_h: 'Où nous livrons à Zanzibar',
+    area_p: "Récupérez votre voiture à l'aéroport, à Stone Town ou à votre hôtel en bord de mer. La livraison est gratuite à l'aéroport de Zanzibar et à Zanzibar Town, et coûte {fee} par prise en charge ou retour ailleurs.",
+    area_paid: '{fee} par trajet', foot_areas: 'Location par région',
+    q12: 'La livraison et la reprise sont-elles payantes ?',
+    a12: "La livraison et la reprise sont gratuites à l'aéroport de Zanzibar et à Zanzibar Town (Stone Town). Ailleurs, elles coûtent {fee} pour la prise en charge et {fee} pour le retour : une prise en charge à Nungwi et un retour à Paje coûtent donc {fee2} au total. Le récapitulatif affiche ces frais avant l'envoi de votre demande."
+  },
+  es: {
+    nav_home: 'Inicio',
+    h1: 'Alquiler de coches en Zanzíbar, a tu manera',
+    area_h: 'Dónde entregamos en Zanzíbar',
+    area_p: 'Recoge tu coche en el aeropuerto, en Stone Town o en tu hotel de playa. La entrega es gratis en el aeropuerto de Zanzíbar y en Zanzibar Town, y cuesta {fee} por cada recogida o devolución en otros lugares.',
+    area_paid: '{fee} por trayecto', foot_areas: 'Alquiler por zona',
+    q12: '¿Cobráis por la entrega y la recogida?',
+    a12: 'La entrega y la recogida son gratis en el aeropuerto de Zanzíbar y en Zanzibar Town (Stone Town). En otros lugares cuestan {fee} la recogida y {fee} la devolución, así que recoger en Nungwi y devolver en Paje cuesta {fee2} en total. El resumen de la reserva muestra estos cargos antes de enviar tu solicitud.'
+  }
+};
+Object.keys(T4).forEach(l => Object.assign(T[l], T4[l]));
+
 /* ===== Helpers ===== */
 let lang = 'en', filter = 'all';
 const $ = s => document.querySelector(s);
 const $$ = s => [...document.querySelectorAll(s)];
-const t = k => T[lang][k] || T.en[k] || k;
+const t = k => String(T[lang][k] || T.en[k] || k)
+  .replace(/\{fee2\}/g, money(CONFIG.deliveryFee * 2)).replace(/\{fee\}/g, money(CONFIG.deliveryFee));
 const money = n => CONFIG.currency + Number(n).toFixed(2);
 const waLink = text => `https://wa.me/${CONFIG.whatsapp}` + (text ? `?text=${encodeURIComponent(text)}` : '');
 const dayCount = () => {
@@ -426,6 +488,12 @@ function carImg(c) {
   return 'data:image/svg+xml,' + encodeURIComponent(svg);
 }
 
+// Descriptive image text, e.g. "Toyota Hilux 2010 pickup for hire in Zanzibar"
+const TYPE_ALT = { suv: 'SUV', small: 'compact car', van: 'minivan', pickup: 'pickup' };
+const carAlt = c => `${c.name}${c.year ? ' ' + c.year : ''} ${TYPE_ALT[c.type] || 'car'} for hire in Zanzibar`;
+// Analytics hook (see analytics.js). Does nothing until a GA4 ID is set there.
+const track = (name, params) => { try { window.rafikiTrack && window.rafikiTrack(name, params); } catch (e) { } };
+
 const specsHTML = c => `
   <li>${icon('seats')}${c.seats} ${esc(t('seats'))}</li>
   <li>${icon('trans')}${esc(c.trans)}</li>
@@ -455,7 +523,7 @@ function renderFleet() {
   $('#fleet').innerHTML = list.length ? list.map((c, i) => `
     <article class="card reveal" style="--i:${i % 4}">
       <button type="button" class="card-media" data-details="${c.id}" aria-label="${esc(t('details'))}: ${esc(c.name)}">
-        <img src="${carImg(c)}" alt="${esc(c.name)}" loading="lazy" decoding="async">
+        <img src="${carImg(c)}" alt="${esc(carAlt(c))}" width="800" height="533" loading="lazy" decoding="async">
         ${c.type ? `<span class="tag">${esc(t('cat_' + c.type))}</span>` : ''}
         <span class="peek">${icon('expand')}</span>
       </button>
@@ -482,7 +550,8 @@ const modal = $('#carModal');
 function openCar(id) {
   const c = CONFIG.fleet.find(x => x.id === id);
   if (!c || !modal.showModal) return;
-  $('#mImg').src = carImg(c); $('#mImg').alt = c.name;
+  $('#mImg').src = carImg(c); $('#mImg').alt = carAlt(c);
+  track('view_item', { item_id: c.id, item_name: c.name, value: c.price, currency: 'USD' });
   $('#mType').textContent = c.type ? t('cat_' + c.type) : '';
   $('#mTitle').textContent = c.name;
   $('#mSpecs').innerHTML = specsHTML(c);
@@ -620,6 +689,7 @@ $$('[data-wa]').forEach(e => { e.href = waLink(); e.target = '_blank'; e.rel = '
 $('#year').textContent = new Date().getFullYear();
 $('#contactInfo').innerHTML =
   `<a class="btn btn-wa" href="${waLink()}" target="_blank" rel="noopener">💬 ${CONFIG.phone || "+" + CONFIG.whatsapp}</a>
+   <a class="addr" href="tel:+${CONFIG.whatsapp}">📞 ${esc(CONFIG.phone)}</a>
    <a class="addr" href="https://maps.google.com/?q=${encodeURIComponent(CONFIG.address)}" target="_blank" rel="noopener">📍 ${esc(CONFIG.address)}</a>`;
 
 // Hero stats come from the fleet data
@@ -703,7 +773,7 @@ $('#form').addEventListener('submit', e => {
   const where = (id, detail) => locName(id, false) + (detail.trim() ? ` (${detail.trim()})` : '');
   const fee = n => n === 0 ? 'FREE' : money(n);
   const booking = {
-    name: f.name.trim(), phone: f.phone.trim(), car: c.name, carId: c.id,
+    name: f.name.trim(), phone: fullPhone(f.phone, f.dial || '255'), car: c.name, carId: c.id,
     pickupDate: f.from, returnDate: f.to, days: q.days,
     pickupLocation: where(q.pickupLoc, f.place), returnLocation: where(q.returnLoc, f.return_place),
     rental: q.rental, pickupFee: q.pickupFee, returnFee: q.returnFee,
@@ -729,6 +799,7 @@ $('#form').addEventListener('submit', e => {
   toast(t('ok'), 'ok');
   const btn = $('#sendBtn');
   btn.classList.add('is-sent'); setTimeout(() => btn.classList.remove('is-sent'), 2400);
+  track('generate_lead', { value: booking.total, currency: 'USD', item_id: c.id, item_name: c.name, days: booking.days, pickup: q.pickupLoc, return: q.returnLoc });
   window.open(waLink(text), '_blank', 'noopener');
 });
 
@@ -749,13 +820,117 @@ onScroll();
 if ('IntersectionObserver' in window) {
   const links = $$('#nav a[href^="#"]');
   const spy = new IntersectionObserver(es => es.forEach(en => {
-    if (en.isIntersecting) links.forEach(l => l.classList.toggle('active', l.getAttribute('href') === '#' + en.target.id));
+    if (en.isIntersecting) { const id = en.target.classList.contains('hero') ? 'top' : en.target.id; links.forEach(l => l.classList.toggle('active', l.getAttribute('href') === '#' + id)); }
   }), { rootMargin: '-45% 0px -50% 0px' });
-  links.forEach(l => { const s = $(l.getAttribute('href')); if (s) spy.observe(s); });
+  links.forEach(l => { const h = l.getAttribute('href'); const s = h === '#top' ? $('.hero') : $(h); if (s) { if (h === '#top') s.id = s.id || 'top-hero'; spy.observe(s); } });
 }
 
 observe($$('.reveal'));
 
+// Pause the hero's animations while it is off-screen (saves battery and keeps scrolling smooth)
+if ('IntersectionObserver' in window) {
+  const heroEl = $('.hero');
+  new IntersectionObserver(([en]) => heroEl.classList.toggle('is-off', !en.isIntersecting)).observe(heroEl);
+}
+
 let saved = 'en';
 try { saved = localStorage.getItem('lang') || 'en'; } catch (e) { }
 applyLang(T[saved] ? saved : 'en');
+
+// Links from the location pages can preselect a car and pickup place: ?car=toyota-ist&pickup=nungwi#book
+(() => {
+  const p = new URLSearchParams(location.search);
+  const car = p.get('car'), pick = p.get('pickup');
+  if (car && CONFIG.fleet.some(c => c.id === car)) $('#car').value = car;
+  if (pick && findLoc(pick)) { $('#pickupLoc').value = pick; $('#returnLoc').value = pick; }
+  if (car || pick) estimate();
+})();
+
+/* ===== Phone country code picker (flags) ===== */
+Object.assign(T.en, { cc_search: 'Search country or code', cc_label: 'Country code' });
+Object.assign(T.sw, { cc_search: 'Tafuta nchi au namba', cc_label: 'Namba ya nchi' });
+Object.assign(T.it, { cc_search: 'Cerca paese o prefisso', cc_label: 'Prefisso internazionale' });
+Object.assign(T.de, { cc_search: 'Land oder Vorwahl suchen', cc_label: 'Ländervorwahl' });
+Object.assign(T.fr, { cc_search: 'Rechercher un pays ou un indicatif', cc_label: 'Indicatif du pays' });
+Object.assign(T.es, { cc_search: 'Buscar país o prefijo', cc_label: 'Prefijo del país' });
+
+const COUNTRIES = [
+  ['tz', 'Tanzania', '255'],
+  ['ar', 'Argentina', '54'], ['au', 'Australia', '61'], ['at', 'Austria', '43'], ['be', 'Belgium', '32'],
+  ['br', 'Brazil', '55'], ['ca', 'Canada', '1'], ['cn', 'China', '86'], ['cz', 'Czechia', '420'],
+  ['dk', 'Denmark', '45'], ['eg', 'Egypt', '20'], ['et', 'Ethiopia', '251'], ['fi', 'Finland', '358'],
+  ['fr', 'France', '33'], ['de', 'Germany', '49'], ['gr', 'Greece', '30'], ['hu', 'Hungary', '36'],
+  ['in', 'India', '91'], ['ie', 'Ireland', '353'], ['il', 'Israel', '972'], ['it', 'Italy', '39'],
+  ['jp', 'Japan', '81'], ['ke', 'Kenya', '254'], ['my', 'Malaysia', '60'], ['mx', 'Mexico', '52'],
+  ['nl', 'Netherlands', '31'], ['nz', 'New Zealand', '64'], ['ng', 'Nigeria', '234'], ['no', 'Norway', '47'],
+  ['om', 'Oman', '968'], ['pk', 'Pakistan', '92'], ['pl', 'Poland', '48'], ['pt', 'Portugal', '351'],
+  ['qa', 'Qatar', '974'], ['ro', 'Romania', '40'], ['ru', 'Russia', '7'], ['rw', 'Rwanda', '250'],
+  ['sa', 'Saudi Arabia', '966'], ['sg', 'Singapore', '65'], ['za', 'South Africa', '27'], ['kr', 'South Korea', '82'],
+  ['es', 'Spain', '34'], ['se', 'Sweden', '46'], ['ch', 'Switzerland', '41'], ['tr', 'Türkiye', '90'],
+  ['ug', 'Uganda', '256'], ['ua', 'Ukraine', '380'], ['ae', 'United Arab Emirates', '971'],
+  ['gb', 'United Kingdom', '44'], ['us', 'United States', '1']
+];
+const flag = iso => `<img class="cc-flag" src="https://flagcdn.com/w40/${iso}.png" alt="" width="24" height="18" loading="lazy" />`;
+
+const cc = { iso: 'tz', touched: false };
+const ccBtn = $('#ccBtn'), ccPop = $('#ccPop'), ccList = $('#ccList'), ccSearch = $('#ccSearch');
+
+function ccSet(iso, byUser) {
+  const c = COUNTRIES.find(x => x[0] === iso) || COUNTRIES[0];
+  cc.iso = c[0];
+  if (byUser) cc.touched = true;
+  $('#dial').value = c[2];
+  ccBtn.innerHTML = `${flag(c[0])}<span class="cc-code">+${c[2]}</span>`;
+  ccBtn.setAttribute('aria-label', `${t('cc_label')}: ${c[1]} +${c[2]}`);
+  $$('#ccList [role=option]').forEach(o => o.setAttribute('aria-selected', o.dataset.iso === c[0]));
+}
+
+function ccRender(filter = '') {
+  const q = filter.trim().toLowerCase().replace(/^\+/, '');
+  const rows = COUNTRIES.filter(([iso, name, dial]) => !q || name.toLowerCase().includes(q) || dial.startsWith(q) || iso === q);
+  ccList.innerHTML = rows.map(([iso, name, dial]) =>
+    `<li role="option" tabindex="-1" data-iso="${iso}" aria-selected="${iso === cc.iso}">${flag(iso)}<span class="cc-name">${esc(name)}</span><span class="cc-dial">+${dial}</span></li>`
+  ).join('');
+}
+
+function ccOpen(open) {
+  ccPop.hidden = !open;
+  ccBtn.setAttribute('aria-expanded', open);
+  if (open) { ccSearch.value = ''; ccRender(); ccSearch.focus(); }
+}
+
+function ccPick(li) {
+  if (!li) return;
+  ccSet(li.dataset.iso, true);
+  ccOpen(false);
+  $('#phone').focus();
+}
+
+ccBtn.addEventListener('click', () => ccOpen(ccPop.hidden));
+ccSearch.addEventListener('input', () => ccRender(ccSearch.value));
+ccList.addEventListener('click', e => ccPick(e.target.closest('[role=option]')));
+ccPop.addEventListener('keydown', e => {
+  const opts = [...ccList.querySelectorAll('[role=option]')];
+  const i = opts.indexOf(document.activeElement);
+  if (e.key === 'Escape') { e.preventDefault(); ccOpen(false); ccBtn.focus(); }
+  else if (e.key === 'ArrowDown') { e.preventDefault(); (opts[i + 1] || opts[0])?.focus(); }
+  else if (e.key === 'ArrowUp') { e.preventDefault(); i <= 0 ? ccSearch.focus() : opts[i - 1].focus(); }
+  else if (e.key === 'Enter') { e.preventDefault(); ccPick(i >= 0 ? opts[i] : opts[0]); }
+  else if (e.key === ' ' && i >= 0) { e.preventDefault(); ccPick(opts[i]); }
+});
+document.addEventListener('click', e => { if (!ccPop.hidden && !e.target.closest('#telGroup')) ccOpen(false); });
+
+// Suggest a country from the site language until the visitor picks one.
+const LANG_CC = { sw: 'tz', it: 'it', de: 'de', fr: 'fr', es: 'es', en: 'tz' };
+$$('.lang').forEach(s => s.addEventListener('change', () => ccSet(cc.touched ? cc.iso : (LANG_CC[s.value] || 'tz'))));
+ccRender();
+ccSet(LANG_CC[lang] || 'tz');
+$('#ccSearch').placeholder = t('cc_search');
+
+// Full international number for the booking: keeps a number typed with + or 00 as is.
+function fullPhone(raw, dial) {
+  const n = String(raw).trim();
+  if (n.startsWith('+')) return n;
+  if (n.startsWith('00')) return '+' + n.slice(2);
+  return `+${dial} ${n.replace(/^0+/, '')}`;
+}
