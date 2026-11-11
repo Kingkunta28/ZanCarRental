@@ -1,6 +1,6 @@
 /* ===== CONFIG: edit this part ===== */
 const CONFIG = {
-  business: 'Zanzibar Drive',          // your business name
+  business: 'Rafiki Car Hire',          // your business name
   whatsapp: '255715518980',            // international format, no + or spaces
   phone: '+255 715 518 980',           // how the number is shown on the site
   address: 'Zanzibar Airport',
@@ -25,19 +25,17 @@ const CONFIG = {
   // type: 'suv' | 'small' | 'van' | 'pickup' (used by the fleet filter)
   // image: '' uses a placeholder. To use a real photo: image: 'images/vitz.jpg'
   fleet: [
-    { id: 'nissan-e-class', type: 'small', name: 'Nissan Juke', seats: 4, trans: 'Automatic', year: 2018, fuel: 'Petrol', price: 28.89, color: '#0B6E99', image: 'images/Nissan E-Class.jpeg' },
-    { id: 'rav4-2018', type: 'suv', name: 'Toyota RAV4', seats: 5, trans: 'Automatic', year: 2018, fuel: 'Petrol', price: 26.88, color: '#2EC4D6', image: 'images/Toyota RAV4.jpeg' },
-    { id: 'rav4-2016', type: 'suv', name: 'Toyota RAV4', seats: 2, trans: 'Automatic', year: 2016, fuel: 'Petrol', price: 23.70, color: '#06364D', image: 'images/Toyota RAV4 2doors.jpeg' },
-    { id: 'suzuki-escudo-2016', type: 'suv', name: 'Suzuki Escudo', seats: 5, trans: 'Automatic', year: 2016, fuel: 'Petrol', price: 28.60, color: '#C9A36A', image: 'images/Toyota Escudo.jpg' },
+    { id: 'nissan-e-class', type: 'small', name: 'Nissan Juke', seats: 4, trans: 'Automatic', year: 2018, fuel: 'Petrol', price: 25, color: '#0B6E99', image: 'images/Nissan E-Class.jpeg' },
+    { id: 'rav4-2018', type: 'suv', name: 'Toyota RAV4 New', seats: 5, trans: 'Automatic', year: 2018, fuel: 'Petrol', price: 35, color: '#2EC4D6', image: 'images/Toyota RAV4.jpeg' },
+    { id: 'vanguard-2018', type: 'suv', name: 'Toyota Vanguard ', seats: 5, trans: 'Automatic', year: 2018, fuel: 'Petrol', price: 40, color: '#0B6E99', image: 'images/Toyota RAV4_2.jpeg' },
+    { id: 'rav4-2016', type: 'suv', name: 'Toyota RAV4 ', seats: 2, trans: 'Automatic', year: 2016, fuel: 'Petrol', price: 30, color: '#06364D', image: 'images/Toyota RAV4 2doors.jpeg' },
     { id: 'land-cruiser-2020', type: 'suv', name: 'Toyota Land Cruiser', seats: 5, trans: 'Automatic', year: 2020, fuel: 'Petrol', price: 150.00, color: '#0B6E99', image: 'images/Toyota Land Cruiser.png' },
-    { id: 'suzuki-escudo-2019', type: 'suv', name: 'Suzuki Escudo', seats: 3, trans: 'Automatic', year: 2019, fuel: 'Petrol', price: 26.50, color: '#2EC4D6', image: 'images/Suzuki Escudo 2doors.jpeg' },
-    { id: 'land-cruiser-2019', type: 'suv', name: 'Toyota Land Cruiser', seats: 5, trans: 'Automatic', year: 2019, fuel: 'Diesel', price: 102.89, color: '#06364D', image: 'images/Toyota Land Cruiser.jpeg' },
+    { id: 'suzuki-escudo-2019', type: 'suv', name: 'Suzuki Escudo', seats: 3, trans: 'Automatic', year: 2019, fuel: 'Petrol', price: 26, color: '#2EC4D6', image: 'images/Suzuki Escudo 2doors.jpeg' },
+   
     { id: 'toyota-c-class', type: 'pickup', name: 'Toyota Hilux', seats: 5, trans: 'Automatic', year: 2010, fuel: 'Diesel', price: 90.00, color: '#C9A36A', image: 'images/Toyota C-Class.jpeg' },
-    { id: 'toyota-g-class', type: 'suv', name: 'Toyota G-Class', seats: 5, trans: 'Automatic', year: 2015, fuel: 'Petrol', price: 35.00, color: '#0B6E99', image: 'images/Toyota G-Class.jpeg' },
-    { id: 'land-cruiser-2013', type: 'suv', name: 'Toyota Land Cruiser', seats: 5, trans: 'Automatic', year: 2013, fuel: 'Petrol', price: 92.55, color: '#2EC4D6', image: 'images/Toyota Land Cruiser.jpeg' },
-    { id: 'toyota-escudo-2013', type: 'suv', name: 'Toyota Escudo', seats: 5, trans: 'Automatic', year: 2013, fuel: 'Petrol', price: 25.89, color: '#06364D', image: 'images/Toyota Escudo.jpg' },
+    { id: 'toyota-g-class', type: 'suv', name: 'Toyota Harrier', seats: 5, trans: 'Automatic', year: 2015, fuel: 'Petrol', price: 45.00, color: '#0B6E99', image: 'images/Toyota G-Class.jpeg' },
     { id: 'toyota-ist', type: 'small', name: 'Toyota IST', seats: 5, trans: 'Automatic', year: 2018, fuel: 'Petrol', price: 20.00, color: '#C9A36A', image: 'images/Toyota Ist-card.jpg' },
-    { id: 'toyota-alphad', type: 'van', name: 'Toyota Alphad', seats: 8, trans: 'Automatic', year: 2013, fuel: 'Petrol', price: 35.00, color: '#0B6E99', image: 'images/Toyota Alphard.jpeg' }
+    { id: 'toyota-alphad', type: 'van', name: 'Toyota Alphad', seats: 8, trans: 'Automatic', year: 2013, fuel: 'Petrol', price: 45.00, color: '#0B6E99', image: 'images/Toyota Alphard.jpeg' }
   ]
 };
 
@@ -66,6 +64,14 @@ const T = {
     faq_h: 'Questions', q1: 'Can you deliver to my hotel?', a1: 'Yes. Add your hotel in the form and we will meet you there.',
     q2: 'How do I pay?', a2: 'Payment is arranged with us on WhatsApp after your booking is confirmed.',
     q3: 'Can I get a driver?', a3: 'Yes. Tell us in the notes and we will confirm the price.',
+    q4: "How old do I need to be to rent a car?", a4: "The minimum age to rent a car is 21 years. Drivers under 25 may incur a young driver surcharge. Maximum age is 80 years.",
+    q5: "What documents do I need to rent a car?", a5: "You need a valid driver's license, passport or ID card, and a credit card for the security deposit.",
+    q6: "Can I cancel my booking for free?", a6: "Yes, you can cancel for free up to 48 hours before your pickup time. Cancellations within 48 hours may incur a fee.",
+    q7: "How do I make a booking?", a7: "Choose a car, your dates and your pickup and return locations, then add your name and phone number. The summary shows your total, including any delivery fees. Tap \"Send on WhatsApp\" and send the message. We will confirm availability and payment with you on WhatsApp.",
+    q8: "Can I modify my booking after confirmation?", a8: "Yes, you can modify your booking by contacting our support team at least 24 hours before pickup.",
+    q9: "What payment methods do you accept?", a9: "We accept credit cards (Visa, Mastercard), bank transfers, and cash on delivery (for local bookings).",
+    q10: "Is my payment secure?", a10: "Yes, all payments are processed through secure PesaPal payment gateway. Your card details are never stored on our servers.",
+    q11: "What does the insurance cover?", a11: "Basic insurance includes CDW (Collision Damage Waiver) and Theft Protection. Full coverage adds zero excess and roadside assistance.",
     contact_h: 'Contact us', contact_p: 'Message us on WhatsApp or visit us in Zanzibar.', rights: 'All rights reserved.'
   },
   sw: {
@@ -91,6 +97,14 @@ const T = {
     faq_h: 'Maswali', q1: 'Mnaweza kuleta gari hotelini kwangu?', a1: 'Ndiyo. Weka hotel yako kwenye fomu nasi tutakutana nawe hapo.',
     q2: 'Nalipaje?', a2: 'Malipo hupangwa nasi kupitia WhatsApp baada ya nafasi yako kuthibitishwa.',
     q3: 'Naweza kupata dereva?', a3: 'Ndiyo. Tuandikie kwenye maelezo nasi tutathibitisha bei.',
+    q4: "Ninahitaji kuwa na umri gani kukodisha gari?", a4: "Umri wa chini wa kukodisha gari ni miaka 21. Madereva walio chini ya miaka 25 wanaweza kutozwa ada ya ziada ya dereva kijana. Umri wa juu ni miaka 80.",
+    q5: "Ninahitaji nyaraka gani kukodisha gari?", a5: "Unahitaji leseni halali ya udereva, pasipoti au kitambulisho, na kadi ya mkopo kwa ajili ya amana.",
+    q6: "Naweza kughairi nafasi yangu bila malipo?", a6: "Ndiyo, unaweza kughairi bila malipo hadi saa 48 kabla ya muda wa kuchukua gari. Kughairi ndani ya saa 48 kunaweza kutozwa ada.",
+    q7: "Ninawekaje nafasi?", a7: "Chagua gari, tarehe na mahali pa kuchukua na kurudisha, kisha weka jina na namba yako ya simu. Muhtasari unaonyesha jumla yako, pamoja na ada za kuleta gari. Bonyeza \"Tuma kupitia WhatsApp\" na utume ujumbe. Tutathibitisha upatikanaji na malipo nawe kupitia WhatsApp.",
+    q8: "Naweza kubadilisha nafasi yangu baada ya kuthibitishwa?", a8: "Ndiyo, unaweza kubadilisha nafasi yako kwa kuwasiliana na timu yetu ya msaada angalau saa 24 kabla ya kuchukua gari.",
+    q9: "Mnapokea njia gani za malipo?", a9: "Tunapokea kadi za mkopo (Visa, Mastercard), uhamisho wa benki, na pesa taslimu wakati wa kukabidhiwa gari (kwa nafasi za ndani).",
+    q10: "Je, malipo yangu ni salama?", a10: "Ndiyo, malipo yote hufanywa kupitia mfumo salama wa malipo wa PesaPal. Taarifa za kadi yako hazihifadhiwi kwenye seva zetu.",
+    q11: "Bima inashughulikia nini?", a11: "Bima ya msingi inajumuisha CDW (Collision Damage Waiver) na kinga dhidi ya wizi. Bima kamili huondoa gharama ya ziada (excess) na kuongeza msaada wa barabarani.",
     contact_h: 'Wasiliana nasi', contact_p: 'Tuandikie WhatsApp au tutembelee Zanzibar.', rights: 'Haki zote zimehifadhiwa.'
   },
   it: {
@@ -116,6 +130,14 @@ const T = {
     faq_h: "Domande", q1: "Consegnate al mio hotel?", a1: "Sì. Inserisci il tuo hotel nel modulo e ci incontreremo lì.",
     q2: "Come si paga?", a2: "Il pagamento si concorda con noi su WhatsApp dopo la conferma della prenotazione.",
     q3: "Posso avere un autista?", a3: "Sì. Scrivilo nelle note e ti confermeremo il prezzo.",
+    q4: "Quanti anni devo avere per noleggiare un'auto?", a4: "L'età minima per noleggiare un'auto è 21 anni. I conducenti sotto i 25 anni possono pagare un supplemento giovane conducente. L'età massima è 80 anni.",
+    q5: "Quali documenti servono per noleggiare un'auto?", a5: "Servono una patente valida, il passaporto o la carta d'identità e una carta di credito per il deposito cauzionale.",
+    q6: "Posso cancellare gratuitamente la prenotazione?", a6: "Sì, puoi cancellare gratuitamente fino a 48 ore prima dell'orario di ritiro. Le cancellazioni nelle 48 ore precedenti possono comportare un costo.",
+    q7: "Come faccio a prenotare?", a7: "Scegli l'auto, le date e i luoghi di ritiro e riconsegna, poi inserisci nome e numero di telefono. Il riepilogo mostra il totale, compresi eventuali costi di consegna. Tocca \"Invia su WhatsApp\" e invia il messaggio. Confermeremo con te disponibilità e pagamento su WhatsApp.",
+    q8: "Posso modificare la prenotazione dopo la conferma?", a8: "Sì, puoi modificarla contattando il nostro servizio clienti almeno 24 ore prima del ritiro.",
+    q9: "Quali metodi di pagamento accettate?", a9: "Accettiamo carte di credito (Visa, Mastercard), bonifici bancari e contanti alla consegna (per le prenotazioni locali).",
+    q10: "Il pagamento è sicuro?", a10: "Sì, tutti i pagamenti passano dal gateway di pagamento sicuro PesaPal. I dati della tua carta non vengono mai salvati sui nostri server.",
+    q11: "Cosa copre l'assicurazione?", a11: "L'assicurazione base include CDW (Collision Damage Waiver) e protezione furto. La copertura completa azzera la franchigia e aggiunge l'assistenza stradale.",
     contact_h: "Contattaci", contact_p: "Scrivici su WhatsApp o vieni a trovarci a Zanzibar.", rights: "Tutti i diritti riservati."
   },
   de: {
@@ -141,6 +163,14 @@ const T = {
     faq_h: "Fragen", q1: "Liefert ihr zu meinem Hotel?", a1: "Ja. Gib dein Hotel im Formular an, und wir treffen uns dort.",
     q2: "Wie bezahle ich?", a2: "Die Zahlung wird nach der Bestätigung deiner Buchung mit uns über WhatsApp vereinbart.",
     q3: "Kann ich einen Fahrer bekommen?", a3: "Ja. Schreib es in die Anmerkungen, und wir bestätigen den Preis.",
+    q4: "Wie alt muss ich sein, um ein Auto zu mieten?", a4: "Das Mindestalter für die Anmietung beträgt 21 Jahre. Für Fahrer unter 25 kann eine Jungfahrergebühr anfallen. Das Höchstalter beträgt 80 Jahre.",
+    q5: "Welche Dokumente brauche ich, um ein Auto zu mieten?", a5: "Du brauchst einen gültigen Führerschein, einen Reisepass oder Personalausweis und eine Kreditkarte für die Kaution.",
+    q6: "Kann ich meine Buchung kostenlos stornieren?", a6: "Ja, du kannst bis 48 Stunden vor der Abholung kostenlos stornieren. Bei Stornierungen innerhalb von 48 Stunden kann eine Gebühr anfallen.",
+    q7: "Wie buche ich?", a7: "Wähle ein Auto, deine Daten sowie Abhol- und Rückgabeort und gib Name und Telefonnummer ein. Die Übersicht zeigt deinen Gesamtpreis inklusive eventueller Liefergebühren. Tippe auf \"Über WhatsApp senden\" und schick die Nachricht ab. Verfügbarkeit und Zahlung bestätigen wir dir dann über WhatsApp.",
+    q8: "Kann ich meine Buchung nach der Bestätigung ändern?", a8: "Ja, du kannst deine Buchung ändern, indem du dich mindestens 24 Stunden vor der Abholung an unser Support-Team wendest.",
+    q9: "Welche Zahlungsmethoden akzeptiert ihr?", a9: "Wir akzeptieren Kreditkarten (Visa, Mastercard), Banküberweisungen und Barzahlung bei Übergabe (für lokale Buchungen).",
+    q10: "Ist meine Zahlung sicher?", a10: "Ja, alle Zahlungen laufen über das sichere Zahlungsportal PesaPal. Deine Kartendaten werden nie auf unseren Servern gespeichert.",
+    q11: "Was deckt die Versicherung ab?", a11: "Die Basisversicherung umfasst CDW (Collision Damage Waiver) und Diebstahlschutz. Der Vollschutz bietet null Selbstbeteiligung und Pannenhilfe.",
     contact_h: "Kontakt", contact_p: "Schreib uns auf WhatsApp oder besuche uns auf Sansibar.", rights: "Alle Rechte vorbehalten."
   },
   fr: {
@@ -166,6 +196,14 @@ const T = {
     faq_h: "Questions", q1: "Livrez-vous à mon hôtel ?", a1: "Oui. Indiquez votre hôtel dans le formulaire et nous vous retrouverons là-bas.",
     q2: "Comment payer ?", a2: "Le paiement est convenu avec nous sur WhatsApp une fois votre réservation confirmée.",
     q3: "Puis-je avoir un chauffeur ?", a3: "Oui. Dites-le-nous dans les remarques et nous confirmerons le prix.",
+    q4: "Quel âge faut-il avoir pour louer une voiture ?", a4: "L'âge minimum pour louer une voiture est de 21 ans. Les conducteurs de moins de 25 ans peuvent payer un supplément jeune conducteur. L'âge maximum est de 80 ans.",
+    q5: "Quels documents faut-il pour louer une voiture ?", a5: "Il vous faut un permis de conduire valide, un passeport ou une carte d'identité, et une carte de crédit pour la caution.",
+    q6: "Puis-je annuler ma réservation gratuitement ?", a6: "Oui, vous pouvez annuler gratuitement jusqu'à 48 heures avant l'heure de prise en charge. Une annulation dans les 48 heures peut entraîner des frais.",
+    q7: "Comment réserver ?", a7: "Choisissez une voiture, vos dates et vos lieux de prise en charge et de retour, puis indiquez votre nom et votre numéro de téléphone. Le récapitulatif affiche votre total, frais de livraison compris. Appuyez sur \"Envoyer sur WhatsApp\" et envoyez le message. Nous confirmerons la disponibilité et le paiement avec vous sur WhatsApp.",
+    q8: "Puis-je modifier ma réservation après confirmation ?", a8: "Oui, vous pouvez la modifier en contactant notre équipe d'assistance au moins 24 heures avant la prise en charge.",
+    q9: "Quels moyens de paiement acceptez-vous ?", a9: "Nous acceptons les cartes de crédit (Visa, Mastercard), les virements bancaires et le paiement en espèces à la livraison (pour les réservations locales).",
+    q10: "Mon paiement est-il sécurisé ?", a10: "Oui, tous les paiements passent par la passerelle de paiement sécurisée PesaPal. Vos données de carte ne sont jamais conservées sur nos serveurs.",
+    q11: "Que couvre l'assurance ?", a11: "L'assurance de base comprend la CDW (Collision Damage Waiver) et la protection vol. La couverture complète supprime la franchise et ajoute l'assistance routière.",
     contact_h: "Contactez-nous", contact_p: "Écrivez-nous sur WhatsApp ou rendez-nous visite à Zanzibar.", rights: "Tous droits réservés."
   },
   es: {
@@ -191,6 +229,14 @@ const T = {
     faq_h: "Preguntas", q1: "¿Entregáis en mi hotel?", a1: "Sí. Indica tu hotel en el formulario y nos veremos allí.",
     q2: "¿Cómo se paga?", a2: "El pago se acuerda con nosotros por WhatsApp tras confirmar tu reserva.",
     q3: "¿Puedo tener conductor?", a3: "Sí. Indícalo en las notas y confirmaremos el precio.",
+    q4: "¿Qué edad necesito para alquilar un coche?", a4: "La edad mínima para alquilar un coche es de 21 años. Los conductores menores de 25 años pueden pagar un recargo por conductor joven. La edad máxima es de 80 años.",
+    q5: "¿Qué documentos necesito para alquilar un coche?", a5: "Necesitas un carné de conducir válido, pasaporte o documento de identidad y una tarjeta de crédito para el depósito de garantía.",
+    q6: "¿Puedo cancelar mi reserva gratis?", a6: "Sí, puedes cancelar gratis hasta 48 horas antes de la hora de recogida. Las cancelaciones con menos de 48 horas pueden tener un coste.",
+    q7: "¿Cómo hago una reserva?", a7: "Elige un coche, las fechas y los lugares de recogida y devolución, y añade tu nombre y teléfono. El resumen muestra tu total, con los cargos de entrega incluidos. Pulsa \"Enviar por WhatsApp\" y envía el mensaje. Confirmaremos contigo la disponibilidad y el pago por WhatsApp.",
+    q8: "¿Puedo modificar mi reserva después de la confirmación?", a8: "Sí, puedes modificarla contactando con nuestro equipo de atención al menos 24 horas antes de la recogida.",
+    q9: "¿Qué métodos de pago aceptáis?", a9: "Aceptamos tarjetas de crédito (Visa, Mastercard), transferencias bancarias y pago en efectivo a la entrega (para reservas locales).",
+    q10: "¿Es seguro mi pago?", a10: "Sí, todos los pagos se procesan a través de la pasarela de pago segura PesaPal. Los datos de tu tarjeta nunca se guardan en nuestros servidores.",
+    q11: "¿Qué cubre el seguro?", a11: "El seguro básico incluye CDW (Collision Damage Waiver) y protección contra robo. La cobertura total elimina la franquicia y añade asistencia en carretera.",
     contact_h: "Contacto", contact_p: "Escríbenos por WhatsApp o visítanos en Zanzíbar.", rights: "Todos los derechos reservados."
   }
 };
@@ -278,6 +324,70 @@ const T2 = {
   }
 };
 Object.keys(T2).forEach(l => Object.assign(T[l], T2[l]));
+/* ===== "Before you rent" guide ===== */
+const T3 = {
+  en: {
+    g_k: 'Essential guide', g_h: 'Before you rent', g_p: 'Seven things to know before you rent and drive in Zanzibar.', nav_guide: 'Before you rent',
+    g1t: 'Driving permit', g1p: 'Every driver needs a Zanzibar driving permit ($25 per driver) on top of their home licence. We arrange it before you arrive.',
+    g2t: 'Transparent pricing', g2p: 'Compare the full cost, not just the daily rate. Our car rental prices show every total with the permit included and no deposit.',
+    g3t: 'Right vehicle', g3p: 'Check that the vehicle meets your travel needs. Consider terrain, passenger count and luggage space.',
+    g4t: 'Insurance coverage', g4p: 'Check what your rental insurance covers. Our cars have third-party insurance, the basic cover required by law, which does not cover damage to the rental car itself. Some travel insurance policies offer cover for rental car damage.',
+    g5t: 'Road rules and safety', g5p: 'Zanzibar drives on the left and police checkpoints are common.',
+    g6t: 'Pickup logistics', g6p: 'Confirm clear pickup and drop-off locations and times to avoid any delays or confusion.',
+    g7t: 'Book ahead', g7p: 'Reserve your vehicle in advance, especially during peak tourist season, to guarantee availability.'
+  },
+  sw: {
+    g_k: 'Mwongozo muhimu', g_h: 'Kabla ya kukodisha', g_p: 'Mambo saba ya kujua kabla ya kukodisha na kuendesha gari Zanzibar.', nav_guide: 'Kabla ya kukodisha',
+    g1t: 'Kibali cha udereva', g1p: 'Kila dereva anahitaji kibali cha udereva cha Zanzibar ($25 kwa kila dereva) pamoja na leseni ya nchini kwake. Tunakiandaa kabla hujafika.',
+    g2t: 'Bei za wazi', g2p: 'Linganisha gharama yote, si bei ya siku pekee. Bei zetu zinaonyesha jumla yote pamoja na kibali na bila amana.',
+    g3t: 'Gari linalokufaa', g3p: 'Hakikisha gari linakidhi mahitaji ya safari yako. Fikiria aina ya barabara, idadi ya abiria na nafasi ya mizigo.',
+    g4t: 'Bima', g4p: 'Hakikisha unajua bima ya gari inashughulikia nini. Magari yetu yana bima ya mtu wa tatu, bima ya msingi inayotakiwa kisheria, ambayo haishughulikii uharibifu wa gari lenyewe. Baadhi ya bima za safari hushughulikia uharibifu wa gari la kukodi.',
+    g5t: 'Sheria za barabarani na usalama', g5p: 'Zanzibar magari huendeshwa upande wa kushoto, na vizuizi vya polisi ni vya kawaida.',
+    g6t: 'Mpango wa kuchukua gari', g6p: 'Thibitisha mahali na muda wa kuchukua na kurudisha gari ili kuepuka ucheleweshaji au mkanganyiko.',
+    g7t: 'Weka nafasi mapema', g7p: 'Weka nafasi ya gari lako mapema, hasa msimu wa watalii wengi, ili kuhakikisha linapatikana.'
+  },
+  it: {
+    g_k: 'Guida essenziale', g_h: 'Prima di noleggiare', g_p: 'Sette cose da sapere prima di noleggiare e guidare a Zanzibar.', nav_guide: 'Prima di noleggiare',
+    g1t: 'Permesso di guida', g1p: 'Ogni conducente ha bisogno di un permesso di guida di Zanzibar ($25 a conducente) oltre alla patente del proprio paese. Lo prepariamo prima del tuo arrivo.',
+    g2t: 'Prezzi trasparenti', g2p: 'Confronta il costo totale, non solo la tariffa giornaliera. I nostri prezzi mostrano ogni totale con il permesso incluso e senza deposito.',
+    g3t: 'Il veicolo giusto', g3p: 'Verifica che il veicolo sia adatto al tuo viaggio: tipo di strade, numero di passeggeri e spazio per i bagagli.',
+    g4t: 'Copertura assicurativa', g4p: "Verifica cosa copre l'assicurazione del noleggio. Le nostre auto hanno l'assicurazione RC verso terzi, la copertura base obbligatoria per legge, che non copre i danni all'auto noleggiata. Alcune assicurazioni di viaggio coprono i danni alle auto a noleggio.",
+    g5t: 'Regole della strada e sicurezza', g5p: 'A Zanzibar si guida a sinistra e i posti di blocco della polizia sono frequenti.',
+    g6t: 'Ritiro e riconsegna', g6p: 'Conferma con chiarezza luoghi e orari di ritiro e riconsegna per evitare ritardi o malintesi.',
+    g7t: 'Prenota in anticipo', g7p: "Prenota il veicolo in anticipo, soprattutto in alta stagione, per essere certo della disponibilità."
+  },
+  de: {
+    g_k: 'Wichtiger Ratgeber', g_h: 'Vor der Anmietung', g_p: 'Sieben Dinge, die du wissen solltest, bevor du auf Sansibar ein Auto mietest und fährst.', nav_guide: 'Vor der Anmietung',
+    g1t: 'Fahrerlaubnis', g1p: 'Jeder Fahrer braucht zusätzlich zum heimischen Führerschein eine Sansibar-Fahrerlaubnis ($25 pro Fahrer). Wir besorgen sie vor deiner Ankunft.',
+    g2t: 'Transparente Preise', g2p: 'Vergleiche die Gesamtkosten, nicht nur den Tagespreis. Unsere Mietpreise zeigen jede Summe inklusive Fahrerlaubnis und ohne Kaution.',
+    g3t: 'Das passende Fahrzeug', g3p: 'Prüfe, ob das Fahrzeug zu deiner Reise passt: Gelände, Anzahl der Mitfahrer und Platz für Gepäck.',
+    g4t: 'Versicherungsschutz', g4p: 'Prüfe, was deine Mietwagenversicherung abdeckt. Unsere Autos haben eine Haftpflichtversicherung, den gesetzlich vorgeschriebenen Grundschutz, der Schäden am Mietwagen selbst nicht abdeckt. Manche Reiseversicherungen decken Schäden an Mietwagen ab.',
+    g5t: 'Verkehrsregeln und Sicherheit', g5p: 'Auf Sansibar herrscht Linksverkehr, und Polizeikontrollen sind häufig.',
+    g6t: 'Abholung planen', g6p: 'Lege Abhol- und Rückgabeort sowie die Zeiten klar fest, um Verzögerungen und Missverständnisse zu vermeiden.',
+    g7t: 'Früh buchen', g7p: 'Reserviere dein Fahrzeug rechtzeitig, besonders in der Hauptsaison, damit es sicher verfügbar ist.'
+  },
+  fr: {
+    g_k: 'Guide essentiel', g_h: 'Avant de louer', g_p: 'Sept choses à savoir avant de louer et de conduire à Zanzibar.', nav_guide: 'Avant de louer',
+    g1t: 'Permis de conduire local', g1p: "Chaque conducteur a besoin d'un permis de conduire de Zanzibar (25 $ par conducteur) en plus de son permis national. Nous l'obtenons avant votre arrivée.",
+    g2t: 'Prix transparents', g2p: 'Comparez le coût total, pas seulement le tarif journalier. Nos prix de location affichent chaque total permis compris et sans caution.',
+    g3t: 'Le bon véhicule', g3p: 'Vérifiez que le véhicule correspond à votre voyage : type de routes, nombre de passagers et place pour les bagages.',
+    g4t: 'Assurance', g4p: "Vérifiez ce que couvre l'assurance de votre location. Nos voitures sont assurées au tiers, la couverture de base exigée par la loi, qui ne couvre pas les dommages à la voiture louée elle-même. Certaines assurances voyage couvrent les dommages aux voitures de location.",
+    g5t: 'Code de la route et sécurité', g5p: 'À Zanzibar, on roule à gauche et les contrôles de police sont fréquents.',
+    g6t: 'Prise en charge', g6p: 'Confirmez clairement les lieux et horaires de prise en charge et de retour pour éviter retards et malentendus.',
+    g7t: "Réservez à l'avance", g7p: "Réservez votre véhicule à l'avance, surtout en haute saison, pour être sûr qu'il soit disponible."
+  },
+  es: {
+    g_k: 'Guía esencial', g_h: 'Antes de alquilar', g_p: 'Siete cosas que debes saber antes de alquilar y conducir en Zanzíbar.', nav_guide: 'Antes de alquilar',
+    g1t: 'Permiso de conducir', g1p: 'Cada conductor necesita un permiso de conducir de Zanzíbar (25 $ por conductor) además del carné de su país. Lo tramitamos antes de que llegues.',
+    g2t: 'Precios transparentes', g2p: 'Compara el coste total, no solo la tarifa diaria. Nuestros precios de alquiler muestran cada total con el permiso incluido y sin depósito.',
+    g3t: 'El vehículo adecuado', g3p: 'Comprueba que el vehículo se ajusta a tu viaje: tipo de terreno, número de pasajeros y espacio para el equipaje.',
+    g4t: 'Cobertura del seguro', g4p: 'Comprueba qué cubre el seguro del alquiler. Nuestros coches tienen seguro a terceros, la cobertura básica obligatoria por ley, que no cubre los daños al propio coche alquilado. Algunos seguros de viaje cubren daños a coches de alquiler.',
+    g5t: 'Normas de tráfico y seguridad', g5p: 'En Zanzíbar se conduce por la izquierda y los controles policiales son habituales.',
+    g6t: 'Recogida y devolución', g6p: 'Confirma claramente los lugares y horarios de recogida y devolución para evitar retrasos o confusiones.',
+    g7t: 'Reserva con antelación', g7p: 'Reserva tu vehículo con antelación, sobre todo en temporada alta, para asegurar la disponibilidad.'
+  }
+};
+Object.keys(T3).forEach(l => Object.assign(T[l], T3[l]));
 
 /* ===== Helpers ===== */
 let lang = 'en', filter = 'all';

@@ -1,5 +1,5 @@
 /* =========================================================
-   Zanzibar Drive: design system
+   Rafiki Car Hire: design system
    ========================================================= */
 :root {
   /* colour */
@@ -2523,4 +2523,110 @@ option {
 
 .sum-rows dt::first-letter {
   text-transform: uppercase
+}
+
+/* ===== Brand logo (Rafiki Car Hire) ===== */
+.logo-mark {
+  width: auto;
+  height: 44px;
+  padding: 3px 6px;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 6px 16px -8px rgba(6, 54, 77, .55)
+}
+
+.logo { white-space: nowrap }
+
+.logo-mark { display: flex; overflow: hidden }
+
+.logo-mark img {
+  height: 38px;
+  width: auto;
+  max-width: none;
+  display: block
+}
+
+.foot-logo {
+  display: inline-block;
+  background: #fff;
+  border-radius: 18px;
+  padding: 10px 14px;
+  box-shadow: 0 10px 30px -12px rgba(0, 0, 0, .45)
+}
+
+.foot-logo img {
+  width: 220px;
+  height: auto;
+  display: block
+}
+
+@media (max-width: 400px) {
+  .logo { font-size: 1rem; gap: 8px }
+  .logo-mark { height: 38px; padding: 2px 5px }
+  .logo-mark img { height: 34px }
+}
+
+/* ===== Before you rent guide ===== */
+.guide {
+  background: var(--sand-50)
+}
+
+.eyebrow {
+  font: 700 var(--fs-xs) var(--f-display);
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--ocean);
+  margin-bottom: var(--s3)
+}
+
+.g-grid {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: var(--s5)
+}
+
+.g-card {
+  position: relative;
+  padding: var(--s6) var(--s5) var(--s5);
+  border-radius: var(--r-lg);
+  background: var(--white);
+  border: 1px solid var(--line);
+  transition: transform .35s var(--ease), box-shadow .35s var(--ease), border-color .35s
+}
+
+.g-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--sh-2);
+  border-color: transparent
+}
+
+.g-n {
+  display: inline-grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  margin-bottom: var(--s4);
+  border-radius: 14px;
+  background: linear-gradient(140deg, var(--turq), var(--ocean));
+  color: #fff;
+  font: 800 var(--fs-sm) var(--f-display);
+  box-shadow: 0 10px 22px -10px rgba(11, 110, 153, .75)
+}
+
+.g-card p {
+  margin-top: var(--s2);
+  color: var(--muted);
+  font-size: var(--fs-sm);
+  line-height: 1.6
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .g-card,
+  .g-card:hover {
+    transition: none;
+    transform: none
+  }
 }
