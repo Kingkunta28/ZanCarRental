@@ -205,17 +205,22 @@
                   <input name="to" id="to" type="date" required />
                 </label>
                 <label>
-                  <span data-i18n="f_loc"></span>
-                  <select name="where">
-                    <option value="airport" data-i18n="l_air"></option>
-                    <option value="hotel" data-i18n="l_hotel"></option>
-                    <option value="other" data-i18n="l_other"></option>
-                  </select>
+                  <span class="lbl"><span data-i18n="f_loc"></span><em class="fee-pill" id="pickupFeePill"></em></span>
+                  <select name="pickup_loc" id="pickupLoc" class="loc-select" required></select>
                 </label>
                 <label>
                   <span data-i18n="f_place"></span>
                   <input name="place" data-ph="f_place" />
                 </label>
+                <label>
+                  <span class="lbl"><span data-i18n="f_ret_loc"></span><em class="fee-pill" id="returnFeePill"></em></span>
+                  <select name="return_loc" id="returnLoc" class="loc-select" required></select>
+                </label>
+                <label>
+                  <span data-i18n="f_ret_place"></span>
+                  <input name="return_place" data-ph="f_ret_place" />
+                </label>
+                <p class="full fee-note" id="feeNote"></p>
                 <label class="full">
                   <span data-i18n="f_notes"></span>
                   <textarea name="notes" rows="3"></textarea>
@@ -233,13 +238,10 @@
                 </div>
               </div>
               <p class="sum-car"><b id="sumCar"></b><span id="sumRate"></span></p>
-              <dl class="sum-rows">
-                <div><dt data-i18n="f_pick"></dt><dd id="sumFrom">—</dd></div>
-                <div><dt data-i18n="f_ret"></dt><dd id="sumTo">—</dd></div>
-                <div><dt data-i18n="days"></dt><dd id="sumDays">—</dd></div>
-              </dl>
+              <dl class="sum-rows" id="sumTrip"></dl>
+              <dl class="sum-rows sum-money" id="sumMoney"></dl>
               <div class="sum-total">
-                <span data-i18n="est"></span>
+                <span data-i18n="sum_total"></span>
                 <strong id="total">—</strong>
               </div>
               <p class="sum-hint" id="sumHint"></p>

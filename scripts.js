@@ -5,6 +5,23 @@ const CONFIG = {
   phone: '+255 715 518 980',           // how the number is shown on the site
   address: 'Zanzibar Airport',
   currency: '$',
+  // Delivery / collection: free at locations marked free: true,
+  // deliveryFee is charged separately for EACH location (pickup and return) outside the free zone.
+  deliveryFee: 25,
+  locations: [
+    { id: 'airport', i18n: 'l_air', name: 'Zanzibar Airport', free: true },
+    { id: 'town', i18n: 'l_town', name: 'Zanzibar Town (Stone Town)', free: true },
+    { id: 'nungwi', name: 'Nungwi' },
+    { id: 'kendwa', name: 'Kendwa' },
+    { id: 'matemwe', name: 'Matemwe' },
+    { id: 'pongwe', name: 'Pongwe' },
+    { id: 'paje', name: 'Paje' },
+    { id: 'jambiani', name: 'Jambiani' },
+    { id: 'bwejuu', name: 'Bwejuu' },
+    { id: 'michamvi', name: 'Michamvi' },
+    { id: 'kizimkazi', name: 'Kizimkazi' },
+    { id: 'other', i18n: 'l_other', name: 'Other location' }
+  ],
   // type: 'suv' | 'small' | 'van' | 'pickup' (used by the fleet filter)
   // image: '' uses a placeholder. To use a real photo: image: 'images/vitz.jpg'
   fleet: [
@@ -191,7 +208,8 @@ const T2 = {
     cat_all: 'All', cat_suv: 'SUV & 4x4', cat_small: 'Compact', cat_van: 'Minivan', cat_pickup: 'Pickup',
     empty: 'No cars in this category right now.', details: 'View details', close: 'Close',
     sum_h: 'Your booking', sum_none: 'No car selected yet', why_p: 'A small local team, simple rules and cars we look after ourselves.',
-    cta_h: 'Ready to explore Zanzibar?', foot_explore: 'Explore'
+    cta_h: 'Ready to explore Zanzibar?', foot_explore: 'Explore',
+    l_town: "Zanzibar Town (Stone Town)", f_ret_loc: "Return place", f_ret_place: "Return hotel or address", free: "Free", fee_note: "Delivery and collection are free at Zanzibar Airport and Zanzibar Town. Other locations cost {fee} each, for pickup and for return.", sum_rental: "Car rental", sum_pfee: "Pickup fee", sum_rfee: "Return fee", sum_loc: "Location fees", sum_total: "Final total", fee_zone: "Outside the free zone"
   },
   sw: {
     skip: 'Ruka hadi maudhui', nav_how: 'Jinsi inavyofanya kazi', hero_kicker: 'Kukodisha magari Zanzibar',
@@ -203,7 +221,8 @@ const T2 = {
     cat_all: 'Yote', cat_suv: 'SUV na 4x4', cat_small: 'Magari madogo', cat_van: 'Minivan', cat_pickup: 'Pickup',
     empty: 'Hakuna magari katika kundi hili kwa sasa.', details: 'Tazama maelezo', close: 'Funga',
     sum_h: 'Nafasi yako', sum_none: 'Bado hujachagua gari', why_p: 'Timu ndogo ya hapa, masharti rahisi na magari tunayoyatunza wenyewe.',
-    cta_h: 'Uko tayari kuizunguka Zanzibar?', foot_explore: 'Gundua'
+    cta_h: 'Uko tayari kuizunguka Zanzibar?', foot_explore: 'Gundua',
+    l_town: "Mji wa Zanzibar (Stone Town)", f_ret_loc: "Mahali pa kurudisha", f_ret_place: "Hoteli au anwani ya kurudisha", free: "Bure", fee_note: "Kuleta na kuchukua gari ni bure uwanja wa ndege wa Zanzibar na Mji wa Zanzibar. Maeneo mengine ni {fee} kila moja, kwa kuleta na kwa kurudisha.", sum_rental: "Kukodisha gari", sum_pfee: "Ada ya kuleta", sum_rfee: "Ada ya kurudisha", sum_loc: "Ada za mahali", sum_total: "Jumla kuu", fee_zone: "Nje ya eneo la bure"
   },
   it: {
     skip: 'Vai al contenuto', nav_how: 'Come funziona', hero_kicker: 'Noleggio auto a Zanzibar',
@@ -215,7 +234,8 @@ const T2 = {
     cat_all: 'Tutte', cat_suv: 'SUV e 4x4', cat_small: 'Compatte', cat_van: 'Monovolume', cat_pickup: 'Pick-up',
     empty: 'Nessuna auto in questa categoria al momento.', details: 'Vedi dettagli', close: 'Chiudi',
     sum_h: 'La tua prenotazione', sum_none: 'Nessuna auto selezionata', why_p: 'Un piccolo team locale, regole semplici e auto curate da noi.',
-    cta_h: 'Pronto a scoprire Zanzibar?', foot_explore: 'Esplora'
+    cta_h: 'Pronto a scoprire Zanzibar?', foot_explore: 'Esplora',
+    l_town: "Zanzibar Town (Stone Town)", f_ret_loc: "Luogo di riconsegna", f_ret_place: "Hotel o indirizzo di riconsegna", free: "Gratis", fee_note: "Consegna e ritiro sono gratuiti all'aeroporto di Zanzibar e a Zanzibar Town. Altrove costano {fee} ciascuno, sia per la consegna sia per la riconsegna.", sum_rental: "Noleggio auto", sum_pfee: "Costo consegna", sum_rfee: "Costo riconsegna", sum_loc: "Costi di località", sum_total: "Totale finale", fee_zone: "Fuori dalla zona gratuita"
   },
   de: {
     skip: 'Zum Inhalt springen', nav_how: "So funktioniert's", hero_kicker: 'Autovermietung auf Sansibar',
@@ -227,7 +247,8 @@ const T2 = {
     cat_all: 'Alle', cat_suv: 'SUV & 4x4', cat_small: 'Kompakt', cat_van: 'Van', cat_pickup: 'Pick-up',
     empty: 'Derzeit keine Autos in dieser Kategorie.', details: 'Details ansehen', close: 'Schließen',
     sum_h: 'Deine Buchung', sum_none: 'Noch kein Auto gewählt', why_p: 'Kleines lokales Team, einfache Regeln und Autos, die wir selbst pflegen.',
-    cta_h: 'Bereit, Sansibar zu entdecken?', foot_explore: 'Entdecken'
+    cta_h: 'Bereit, Sansibar zu entdecken?', foot_explore: 'Entdecken',
+    l_town: "Zanzibar Town (Stone Town)", f_ret_loc: "Rückgabeort", f_ret_place: "Hotel oder Adresse für die Rückgabe", free: "Gratis", fee_note: "Zustellung und Abholung sind am Flughafen Sansibar und in Zanzibar Town kostenlos. An anderen Orten kostet es je {fee}, für Übergabe und für Rückgabe.", sum_rental: "Automiete", sum_pfee: "Zustellgebühr", sum_rfee: "Rückgabegebühr", sum_loc: "Ortsgebühren", sum_total: "Gesamtpreis", fee_zone: "Außerhalb der Gratiszone"
   },
   fr: {
     skip: 'Aller au contenu', nav_how: 'Comment ça marche', hero_kicker: 'Location de voitures à Zanzibar',
@@ -239,7 +260,8 @@ const T2 = {
     cat_all: 'Toutes', cat_suv: 'SUV et 4x4', cat_small: 'Citadines', cat_van: 'Monospaces', cat_pickup: 'Pick-up',
     empty: 'Aucune voiture dans cette catégorie pour le moment.', details: 'Voir les détails', close: 'Fermer',
     sum_h: 'Votre réservation', sum_none: 'Aucune voiture choisie', why_p: 'Une petite équipe locale, des règles simples et des voitures que nous entretenons nous-mêmes.',
-    cta_h: 'Prêt à explorer Zanzibar ?', foot_explore: 'Explorer'
+    cta_h: 'Prêt à explorer Zanzibar ?', foot_explore: 'Explorer',
+    l_town: "Zanzibar Town (Stone Town)", f_ret_loc: "Lieu de retour", f_ret_place: "Hôtel ou adresse de retour", free: "Gratuit", fee_note: "La livraison et la reprise sont gratuites à l'aéroport de Zanzibar et à Zanzibar Town. Ailleurs, {fee} par lieu, à la livraison comme au retour.", sum_rental: "Location de la voiture", sum_pfee: "Frais de livraison", sum_rfee: "Frais de retour", sum_loc: "Frais de lieu", sum_total: "Total final", fee_zone: "Hors zone gratuite"
   },
   es: {
     skip: 'Ir al contenido', nav_how: 'Cómo funciona', hero_kicker: 'Alquiler de coches en Zanzíbar',
@@ -251,7 +273,8 @@ const T2 = {
     cat_all: 'Todos', cat_suv: 'SUV y 4x4', cat_small: 'Compactos', cat_van: 'Monovolúmenes', cat_pickup: 'Pick-up',
     empty: 'No hay coches en esta categoría ahora.', details: 'Ver detalles', close: 'Cerrar',
     sum_h: 'Tu reserva', sum_none: 'Aún no has elegido coche', why_p: 'Un pequeño equipo local, normas sencillas y coches que cuidamos nosotros.',
-    cta_h: '¿Listo para descubrir Zanzíbar?', foot_explore: 'Explorar'
+    cta_h: '¿Listo para descubrir Zanzíbar?', foot_explore: 'Explorar',
+    l_town: "Zanzibar Town (Stone Town)", f_ret_loc: "Lugar de devolución", f_ret_place: "Hotel o dirección de devolución", free: "Gratis", fee_note: "La entrega y la recogida son gratis en el aeropuerto de Zanzíbar y en Zanzibar Town. En otros lugares cuestan {fee} cada una, tanto la entrega como la devolución.", sum_rental: "Alquiler del coche", sum_pfee: "Tarifa de entrega", sum_rfee: "Tarifa de devolución", sum_loc: "Tarifas de ubicación", sum_total: "Total final", fee_zone: "Fuera de la zona gratuita"
   }
 };
 Object.keys(T2).forEach(l => Object.assign(T[l], T2[l]));
@@ -361,16 +384,78 @@ function openCar(id) {
 modal.addEventListener('close', () => document.documentElement.classList.remove('lock'));
 modal.addEventListener('click', e => { if (e.target === modal || e.target.closest('[data-close]')) modal.close(); });
 
+/* ===== Pricing (single source of truth) ===== */
+const findLoc = id => CONFIG.locations.find(l => l.id === id);
+const locName = (id, inLang = true) => {
+  const l = findLoc(id);
+  if (!l) return '—';
+  return inLang && l.i18n ? t(l.i18n) : l.name;
+};
+// Unknown or missing locations are never treated as free.
+const locFee = id => (findLoc(id) || {}).free ? 0 : CONFIG.deliveryFee;
+const feeText = fee => fee === 0 ? t('free') : money(fee);
+
+// Builds the full price breakdown from raw inputs. Used for the live summary AND
+// recalculated from scratch on submit, so the WhatsApp message never relies on what is shown on screen.
+function quote({ carId, from, to, pickupLoc, returnLoc }) {
+  const car = CONFIG.fleet.find(x => x.id === carId) || null;
+  const days = from && to ? Math.round((new Date(to + 'T00:00') - new Date(from + 'T00:00')) / 864e5) : 0;
+  const rental = car && days > 0 ? +(car.price * days).toFixed(2) : 0;
+  const pickupFee = locFee(pickupLoc);
+  const returnFee = locFee(returnLoc);
+  const locationFees = pickupFee + returnFee;
+  return {
+    car, days, rental, pickupLoc, returnLoc, pickupFee, returnFee, locationFees,
+    total: +(rental + locationFees).toFixed(2), complete: !!car && days > 0
+  };
+}
+const formQuote = () => quote({
+  carId: $('#car').value, from: $('#from').value, to: $('#to').value,
+  pickupLoc: $('#pickupLoc').value, returnLoc: $('#returnLoc').value
+});
+
+function renderLocations() {
+  const free = CONFIG.locations.filter(l => l.free), paid = CONFIG.locations.filter(l => !l.free);
+  const opts = list => list.map(l => `<option value="${l.id}">${esc(l.i18n ? t(l.i18n) : l.name)}</option>`).join('');
+  $$('.loc-select').forEach(sel => {
+    const keep = sel.value || 'airport';
+    sel.innerHTML =
+      `<optgroup label="${esc(t('free'))}">${opts(free)}</optgroup>` +
+      `<optgroup label="+${esc(money(CONFIG.deliveryFee))} · ${esc(t('fee_zone'))}">${opts(paid)}</optgroup>`;
+    sel.value = keep;
+  });
+  $('#feeNote').textContent = t('fee_note').replace('{fee}', money(CONFIG.deliveryFee));
+}
+
+const pill = (el, fee) => {
+  el.textContent = fee === 0 ? t('free') : '+' + money(fee);
+  el.className = 'fee-pill ' + (fee === 0 ? 'is-free' : 'is-paid');
+};
+
 /* ===== Booking summary ===== */
 function estimate() {
-  const c = CONFIG.fleet.find(x => x.id === $('#car').value), d = dayCount();
-  $('#total').textContent = c && d > 0 ? money(c.price * d) : '—';
-  $('#sumDays').textContent = d > 0 ? `${d} ${t('days')}` : '—';
-  $('#sumFrom').textContent = fmtDate($('#from').value);
-  $('#sumTo').textContent = fmtDate($('#to').value);
+  const q = formQuote(), c = q.car, d = q.days;
+  pill($('#pickupFeePill'), q.pickupFee);
+  pill($('#returnFeePill'), q.returnFee);
+
+  const row = (label, value, cls = '') => `<div class="${cls}"><dt>${esc(label)}</dt><dd>${value}</dd></div>`;
+  const fee = f => `<span class="fee-pill ${f === 0 ? 'is-free' : 'is-paid'}">${esc(feeText(f))}</span>`;
+  $('#sumTrip').innerHTML =
+    row(t('f_pick'), `${esc(fmtDate($('#from').value))}<small>${esc(locName(q.pickupLoc))}</small>`) +
+    row(t('f_ret'), `${esc(fmtDate($('#to').value))}<small>${esc(locName(q.returnLoc))}</small>`) +
+    row(t('days'), d > 0 ? `${d}` : '—');
+  $('#sumMoney').innerHTML =
+    row(t('sum_rental'), c && d > 0 ? `${money(q.rental)}<small>${money(c.price)} × ${d}</small>` : '—') +
+    row(t('sum_pfee'), fee(q.pickupFee)) +
+    row(t('sum_rfee'), fee(q.returnFee)) +
+    row(t('sum_loc'), `<b>${q.locationFees === 0 ? esc(t('free')) : money(q.locationFees)}</b>`, 'sub');
+
+  const tot = $('#total');
+  const next = q.complete ? money(q.total) : '—';
+  if (tot.textContent !== next) { tot.textContent = next; tot.classList.remove('bump'); void tot.offsetWidth; tot.classList.add('bump'); }
   $('#sumCar').textContent = c ? c.name : t('sum_none');
   $('#sumRate').textContent = c ? `${money(c.price)} ${t('per_day')}` : '';
-  $('#sumHint').textContent = c && d > 0 ? '' : t('est_none');
+  $('#sumHint').textContent = q.complete ? '' : t('est_none');
   const img = $('#estImg');
   img.hidden = !c; $('#sumPh').hidden = !!c;
   if (c) { img.src = carImg(c); img.alt = c.name; }
@@ -389,6 +474,7 @@ function applyLang(l) {
   $$('[data-i18n-label]').forEach(e => e.setAttribute('aria-label', t(e.dataset.i18nLabel)));
   $$('.lang').forEach(s => s.value = l);
   renderFleet();
+  renderLocations();
   estimate();
   try { localStorage.setItem('lang', l); } catch (e) { }
 }
@@ -446,6 +532,7 @@ $('#from').min = $('#to').min = todayISO;
 $('#from').addEventListener('change', e => { $('#to').min = e.target.value || todayISO; estimate(); });
 $('#to').addEventListener('change', estimate);
 $('#car').addEventListener('change', estimate);
+$$('.loc-select').forEach(s => s.addEventListener('change', estimate));
 
 // Mobile menu
 const setMenu = open => {
@@ -495,15 +582,39 @@ $('#form').addEventListener('submit', e => {
   if (empty.length) return fail('e_req', empty);
   if (new Date(f.from + 'T00:00') < today) return fail('e_past', ['from']);
   if (dayCount() < 1) return fail('e_date', ['to']);
-  if (f.where !== 'airport' && !f.place.trim()) return fail('e_place', ['place']);
-  const place = f.where === 'airport' ? 'Zanzibar airport' : f.place.trim();
+  if (!findLoc(f.pickup_loc)) return fail('e_req', ['pickup_loc']);
+  if (!findLoc(f.return_loc)) return fail('e_req', ['return_loc']);
+  // A hotel/address is needed everywhere except the airport.
+  if (f.pickup_loc !== 'airport' && !f.place.trim()) return fail('e_place', ['place']);
+  if (f.return_loc !== 'airport' && !f.return_place.trim()) return fail('e_place', ['return_place']);
+
+  // Recalculate everything from the raw form values (not from the on-screen summary).
+  const q = quote({ carId: f.car, from: f.from, to: f.to, pickupLoc: f.pickup_loc, returnLoc: f.return_loc });
+  const where = (id, detail) => locName(id, false) + (detail.trim() ? ` (${detail.trim()})` : '');
+  const fee = n => n === 0 ? 'FREE' : money(n);
+  const booking = {
+    name: f.name.trim(), phone: f.phone.trim(), car: c.name, carId: c.id,
+    pickupDate: f.from, returnDate: f.to, days: q.days,
+    pickupLocation: where(q.pickupLoc, f.place), returnLocation: where(q.returnLoc, f.return_place),
+    rental: q.rental, pickupFee: q.pickupFee, returnFee: q.returnFee,
+    locationFees: q.locationFees, total: q.total, notes: f.notes.trim()
+  };
   const text = [
     `Hello ${CONFIG.business}, I would like to book a car.`,
-    `Name: ${f.name.trim()}`, `Phone: ${f.phone.trim()}`, `Car: ${c.name}`,
-    `Pickup: ${f.from}`, `Return: ${f.to}`, `Pickup place: ${place}`,
-    f.notes.trim() ? `Notes: ${f.notes.trim()}` : '',
-    `Estimated total: ${money(c.price * dayCount())} (${dayCount()} days)`
-  ].filter(Boolean).join('\n');
+    `Name: ${booking.name}`, `Phone: ${booking.phone}`, `Car: ${booking.car}`,
+    '',
+    `Pickup: ${booking.pickupDate}, ${booking.pickupLocation}`,
+    `Return: ${booking.returnDate}, ${booking.returnLocation}`,
+    `Rental duration: ${booking.days} days`,
+    '',
+    `Car rental: ${money(booking.rental)} (${money(c.price)} x ${booking.days} days)`,
+    `Pickup fee: ${fee(booking.pickupFee)}`,
+    `Return fee: ${fee(booking.returnFee)}`,
+    `Total location fees: ${money(booking.locationFees)}`,
+    `FINAL TOTAL: ${money(booking.total)}`,
+    booking.notes ? `\nNotes: ${booking.notes}` : ''
+  ].filter(s => s !== null && s !== undefined && s !== false).join('\n').replace(/\n+$/, '');
+  window.lastBooking = booking; // separate fields, ready for a future backend
   msg.textContent = t('ok'); msg.className = 'msg ok';
   toast(t('ok'), 'ok');
   const btn = $('#sendBtn');
