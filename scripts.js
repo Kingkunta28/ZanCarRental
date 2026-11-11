@@ -25,14 +25,14 @@ const CONFIG = {
   // type: 'suv' | 'small' | 'van' | 'pickup' (used by the fleet filter)
   // image: '' uses a placeholder. To use a real photo: image: 'images/vitz.jpg'
   fleet: [
-    { id: 'nissan-e-class', type: 'small', name: 'Nissan E-Class', seats: 4, trans: 'Automatic', year: 2018, fuel: 'Petrol', price: 28.89, color: '#0B6E99', image: 'images/Nissan E-Class.jpeg' },
+    { id: 'nissan-e-class', type: 'small', name: 'Nissan Juke', seats: 4, trans: 'Automatic', year: 2018, fuel: 'Petrol', price: 28.89, color: '#0B6E99', image: 'images/Nissan E-Class.jpeg' },
     { id: 'rav4-2018', type: 'suv', name: 'Toyota RAV4', seats: 5, trans: 'Automatic', year: 2018, fuel: 'Petrol', price: 26.88, color: '#2EC4D6', image: 'images/Toyota RAV4.jpeg' },
     { id: 'rav4-2016', type: 'suv', name: 'Toyota RAV4', seats: 2, trans: 'Automatic', year: 2016, fuel: 'Petrol', price: 23.70, color: '#06364D', image: 'images/Toyota RAV4 2doors.jpeg' },
     { id: 'suzuki-escudo-2016', type: 'suv', name: 'Suzuki Escudo', seats: 5, trans: 'Automatic', year: 2016, fuel: 'Petrol', price: 28.60, color: '#C9A36A', image: 'images/Toyota Escudo.jpg' },
     { id: 'land-cruiser-2020', type: 'suv', name: 'Toyota Land Cruiser', seats: 5, trans: 'Automatic', year: 2020, fuel: 'Petrol', price: 150.00, color: '#0B6E99', image: 'images/Toyota Land Cruiser.png' },
     { id: 'suzuki-escudo-2019', type: 'suv', name: 'Suzuki Escudo', seats: 3, trans: 'Automatic', year: 2019, fuel: 'Petrol', price: 26.50, color: '#2EC4D6', image: 'images/Suzuki Escudo 2doors.jpeg' },
     { id: 'land-cruiser-2019', type: 'suv', name: 'Toyota Land Cruiser', seats: 5, trans: 'Automatic', year: 2019, fuel: 'Diesel', price: 102.89, color: '#06364D', image: 'images/Toyota Land Cruiser.jpeg' },
-    { id: 'toyota-c-class', type: 'pickup', name: 'Toyota C-Class', seats: 5, trans: 'Automatic', year: 2010, fuel: 'Diesel', price: 90.00, color: '#C9A36A', image: 'images/Toyota C-Class.jpeg' },
+    { id: 'toyota-c-class', type: 'pickup', name: 'Toyota Hilux', seats: 5, trans: 'Automatic', year: 2010, fuel: 'Diesel', price: 90.00, color: '#C9A36A', image: 'images/Toyota C-Class.jpeg' },
     { id: 'toyota-g-class', type: 'suv', name: 'Toyota G-Class', seats: 5, trans: 'Automatic', year: 2015, fuel: 'Petrol', price: 35.00, color: '#0B6E99', image: 'images/Toyota G-Class.jpeg' },
     { id: 'land-cruiser-2013', type: 'suv', name: 'Toyota Land Cruiser', seats: 5, trans: 'Automatic', year: 2013, fuel: 'Petrol', price: 92.55, color: '#2EC4D6', image: 'images/Toyota Land Cruiser.jpeg' },
     { id: 'toyota-escudo-2013', type: 'suv', name: 'Toyota Escudo', seats: 5, trans: 'Automatic', year: 2013, fuel: 'Petrol', price: 25.89, color: '#06364D', image: 'images/Toyota Escudo.jpg' },
