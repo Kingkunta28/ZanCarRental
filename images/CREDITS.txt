@@ -1,0 +1,19 @@
+Image credits (all from Wikimedia Commons; resized/cropped and converted to WebP)
+
+rav4.webp         "2017 Toyota RAV4 Excel TSS VVT-I Automatic 2.0 Front.jpg" by Vauxford, CC BY-SA 4.0
+                  https://commons.wikimedia.org/wiki/File:2017_Toyota_RAV4_Excel_TSS_VVT-I_Automatic_2.0_Front.jpg
+escudo.webp       "Suzuki ESCUDO (4BA-YEA1S-MBTL-2) front.jpg" by Tokumeigakarinoaoshima, CC BY-SA 4.0
+                  https://commons.wikimedia.org/wiki/File:Suzuki_ESCUDO_(4BA-YEA1S-MBTL-2)_front.jpg
+escudo-2013.webp  "Suzuki Escudo XG TDA4-7 0105.JPG" by DY5W-sport, CC BY-SA 4.0
+                  https://commons.wikimedia.org/wiki/File:Suzuki_Escudo_XG_TDA4-7_0105.JPG
+land-cruiser.webp "2016 Toyota Land Cruiser 200 4.5 VX V8, 06-01-2024.jpg" by Ethan Llamas, CC BY-SA 4.0
+                  https://commons.wikimedia.org/wiki/File:2016_Toyota_Land_Cruiser_200_4.5_VX_V8,_06-01-2024.jpg
+alphard.webp      "2008 Toyota Alphard 01.jpg" by Mytho88, CC BY-SA 3.0
+                  https://commons.wikimedia.org/wiki/File:2008_Toyota_Alphard_01.jpg
+ist.webp          "Toyota ist 150G (XP110) front.JPG" by Tokumeigakarinoaoshima, CC0 (no attribution required)
+                  https://commons.wikimedia.org/wiki/File:Toyota_ist_150G_(XP110)_front.JPG
+hero.webp         "Zanzibar beach (33911916866).jpg" by Mussi Katz, Public domain (no attribution required)
+                  https://commons.wikimedia.org/wiki/File:Zanzibar_beach_(33911916866).jpg
+
+CC BY-SA images: credit the author and licence somewhere reachable on the site (e.g. a small "Photo credits" link),
+and the modified versions are shared under the same licence.
