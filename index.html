@@ -1,0 +1,228 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Zanzibar Drive | Car Rental Zanzibar, Airport Pickup</title>
+    <meta
+      name="description"
+      content="Car rental in Zanzibar with airport and hotel delivery. Clear daily prices and easy booking on WhatsApp."
+    />
+    <meta
+      name="keywords"
+      content="car rental Zanzibar, airport pickup Zanzibar, hire a car Zanzibar, gari za kukodisha Zanzibar"
+    />
+    <meta
+      property="og:title"
+      content="Zanzibar Drive | Car Rental in Zanzibar"
+    />
+    <meta
+      property="og:description"
+      content="Clean cars delivered to the airport or your hotel. Book in a minute on WhatsApp."
+    />
+    <meta property="og:type" content="website" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=Poppins:wght@500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css.css" />
+  </head>
+  <body id="top">
+    <header>
+      <div class="wrap bar">
+        <a class="logo" href="#top">🌊 <span data-biz></span></a>
+        <nav class="nav" id="nav">
+          <a href="#fleetsec" data-i18n="nav_fleet"></a>
+          <a href="#book" data-i18n="nav_book"></a>
+          <a href="#terms" data-i18n="nav_terms"></a>
+          <a href="#faq" data-i18n="nav_faq"></a>
+          <a href="#contact" data-i18n="nav_contact"></a>
+          <a class="btn btn-wa sm" data-wa data-i18n="wa"></a>
+        </nav>
+        <div class="tools">
+          <select class="lang" id="lang" aria-label="Language">
+            <option value="en">English</option>
+            <option value="sw">Kiswahili</option>
+            <option value="it">Italiano</option>
+            <option value="de">Deutsch</option>
+            <option value="fr">Français</option>
+            <option value="es">Español</option>
+          </select>
+          <button class="menu" id="menu" type="button" aria-label="Menu">
+            ☰
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <section class="hero">
+      <div class="blob b1"></div>
+      <div class="blob b2"></div>
+      <div class="wrap">
+        <h1 data-i18n="h1"></h1>
+        <p data-i18n="hero_p"></p>
+        <a class="btn btn-sand" href="#book" data-i18n="cta_book"></a>
+        <a class="btn btn-line" href="#fleetsec" data-i18n="cta_fleet"></a>
+      </div>
+      <div class="waves w3"></div>
+      <div class="waves w1"></div>
+      <div class="waves w2"></div>
+    </section>
+
+    <section id="fleetsec">
+      <div class="wrap">
+        <h2 data-i18n="fleet_h"></h2>
+        <p class="lead" data-i18n="fleet_p"></p>
+        <div class="grid" id="fleet"></div>
+      </div>
+    </section>
+
+    <section class="sand" id="book">
+      <div class="wrap">
+        <h2 data-i18n="book_h"></h2>
+        <p class="lead" data-i18n="book_p"></p>
+        <form id="form" class="formcard" novalidate>
+          <div class="fields">
+            <label>
+              <span data-i18n="f_name"></span>
+              <input name="name" autocomplete="name" required />
+            </label>
+            <label>
+              <span data-i18n="f_phone"></span>
+              <input
+                name="phone"
+                type="tel"
+                autocomplete="tel"
+                placeholder="+255 ..."
+                required
+              />
+            </label>
+            <label class="full">
+              <span data-i18n="f_car"></span>
+              <select name="car" id="car" required></select>
+            </label>
+            <label>
+              <span data-i18n="f_pick"></span>
+              <input name="from" id="from" type="date" required />
+            </label>
+            <label>
+              <span data-i18n="f_ret"></span>
+              <input name="to" id="to" type="date" required />
+            </label>
+            <label>
+              <span data-i18n="f_loc"></span>
+              <select name="where">
+                <option value="airport" data-i18n="l_air"></option>
+                <option value="hotel" data-i18n="l_hotel"></option>
+                <option value="other" data-i18n="l_other"></option>
+              </select>
+            </label>
+            <label>
+              <span data-i18n="f_place"></span>
+              <input name="place" data-ph="f_place" />
+            </label>
+            <label class="full">
+              <span data-i18n="f_notes"></span>
+              <textarea name="notes" rows="2"></textarea>
+            </label>
+          </div>
+          <div class="est">
+            <span data-i18n="est"></span><strong id="total"></strong>
+          </div>
+          <button class="btn btn-wa big" type="submit">
+            💬 <span data-i18n="send"></span>
+          </button>
+          <p class="msg" id="msg" role="status" aria-live="polite"></p>
+          <p class="small" data-i18n="note"></p>
+        </form>
+      </div>
+    </section>
+
+    <section>
+      <div class="wrap">
+        <h2 data-i18n="why_h"></h2>
+        <div class="grid why">
+          <div>
+            <span>🏷️</span>
+            <h3 data-i18n="w1t"></h3>
+            <p data-i18n="w1p"></p>
+          </div>
+          <div>
+            <span>✈️</span>
+            <h3 data-i18n="w2t"></h3>
+            <p data-i18n="w2p"></p>
+          </div>
+          <div>
+            <span>🕒</span>
+            <h3 data-i18n="w3t"></h3>
+            <p data-i18n="w3p"></p>
+          </div>
+          <div>
+            <span>🔧</span>
+            <h3 data-i18n="w4t"></h3>
+            <p data-i18n="w4p"></p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="sand" id="terms">
+      <div class="wrap narrow">
+        <h2 data-i18n="terms_h"></h2>
+        <ul class="terms">
+          <li data-i18n="tm1"></li>
+          <li data-i18n="tm2"></li>
+          <li data-i18n="tm3"></li>
+          <li data-i18n="tm4"></li>
+        </ul>
+      </div>
+    </section>
+
+    <section>
+      <div class="wrap">
+        <h2 data-i18n="rev_h"></h2>
+        <!-- PLACEHOLDER reviews: replace with real customer reviews -->
+        <div class="grid reviews">
+          <blockquote data-i18n="r1"></blockquote>
+          <blockquote data-i18n="r2"></blockquote>
+          <blockquote data-i18n="r3"></blockquote>
+        </div>
+      </div>
+    </section>
+
+    <section class="sand" id="faq">
+      <div class="wrap narrow">
+        <h2 data-i18n="faq_h"></h2>
+        <details>
+          <summary data-i18n="q1"></summary>
+          <p data-i18n="a1"></p>
+        </details>
+        <details>
+          <summary data-i18n="q2"></summary>
+          <p data-i18n="a2"></p>
+        </details>
+        <details>
+          <summary data-i18n="q3"></summary>
+          <p data-i18n="a3"></p>
+        </details>
+      </div>
+    </section>
+
+    <footer id="contact">
+      <div class="wrap">
+        <h2 data-i18n="contact_h"></h2>
+        <p data-i18n="contact_p"></p>
+        <div id="contactInfo"></div>
+        <p class="small">
+          © <span id="year"></span> <span data-biz></span>.
+          <span data-i18n="rights"></span>
+        </p>
+      </div>
+    </footer>
+
+    <a class="float" data-wa aria-label="WhatsApp">💬 WhatsApp</a>
+    <script src="scripts.js"></script>
+  </body>
+</html>
