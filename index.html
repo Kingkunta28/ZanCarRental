@@ -50,7 +50,7 @@
             <option value="fr">Français</option>
             <option value="es">Español</option>
           </select>
-          <button class="menu" id="menu" type="button" aria-label="Menu">
+          <button class="menu" id="menu" type="button" aria-label="Menu" aria-controls="nav" aria-expanded="false">
             ☰
           </button>
         </div>
@@ -65,6 +65,11 @@
         <p data-i18n="hero_p"></p>
         <a class="btn btn-sand" href="#book" data-i18n="cta_book"></a>
         <a class="btn btn-line" href="#fleetsec" data-i18n="cta_fleet"></a>
+        <ul class="trust">
+          <li><span data-i18n="w1t"></span></li>
+          <li><span data-i18n="w2t"></span></li>
+          <li><span data-i18n="w3t"></span></li>
+        </ul>
       </div>
       <div class="waves w3"></div>
       <div class="waves w1"></div>
@@ -129,6 +134,7 @@
             </label>
           </div>
           <div class="est">
+            <img id="estImg" alt="" hidden />
             <span data-i18n="est"></span><strong id="total"></strong>
           </div>
           <button class="btn btn-wa big" type="submit">

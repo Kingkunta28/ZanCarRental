@@ -6,19 +6,19 @@ const CONFIG = {
   currency: '$',
   // image: '' uses a placeholder. To use a real photo: image: 'images/vitz.jpg'
   fleet: [
-    { id: 'nissan-e-class', name: 'Nissan E-Class', seats: 4, trans: 'Automatic', year: 2018, fuel: 'Petrol', price: 28.89, color: '#0B6E99', image: '' },
-    { id: 'rav4-2018', name: 'Toyota RAV4', seats: 5, trans: 'Automatic', year: 2018, fuel: 'Petrol', price: 26.88, color: '#2EC4D6', image: 'images/rav4.webp' },
-    { id: 'rav4-2016', name: 'Toyota RAV4', seats: 2, trans: 'Automatic', year: 2016, fuel: 'Petrol', price: 23.70, color: '#06364D', image: 'images/rav4.webp' },
-    { id: 'suzuki-escudo-2016', name: 'Suzuki Escudo', seats: 5, trans: 'Automatic', year: 2016, fuel: 'Petrol', price: 28.60, color: '#C9A36A', image: 'images/escudo.webp' },
-    { id: 'land-cruiser-2020', name: 'Toyota Land Cruiser', seats: 5, trans: 'Automatic', year: 2020, fuel: 'Petrol', price: 150.00, color: '#0B6E99', image: 'images/land-cruiser.webp' },
-    { id: 'suzuki-escudo-2019', name: 'Suzuki Escudo', seats: 3, trans: 'Automatic', year: 2019, fuel: 'Petrol', price: 26.50, color: '#2EC4D6', image: 'images/escudo.webp' },
-    { id: 'land-cruiser-2019', name: 'Toyota Land Cruiser', seats: 5, trans: 'Automatic', year: 2019, fuel: 'Diesel', price: 102.89, color: '#06364D', image: 'images/land-cruiser.webp' },
-    { id: 'toyota-c-class', name: 'Toyota C-Class', seats: 5, trans: 'Automatic', year: 2010, fuel: 'Diesel', price: 90.00, color: '#C9A36A', image: '' },
-    { id: 'toyota-g-class', name: 'Toyota G-Class', seats: 5, trans: 'Automatic', year: 2015, fuel: 'Petrol', price: 35.00, color: '#0B6E99', image: '' },
-    { id: 'land-cruiser-2013', name: 'Toyota Land Cruiser', seats: 5, trans: 'Automatic', year: 2013, fuel: 'Petrol', price: 92.55, color: '#2EC4D6', image: 'images/land-cruiser.webp' },
-    { id: 'toyota-escudo-2013', name: 'Toyota Escudo', seats: 5, trans: 'Automatic', year: 2013, fuel: 'Petrol', price: 25.89, color: '#06364D', image: 'images/escudo-2013.webp' },
-    { id: 'toyota-ist', name: 'Toyota IST', seats: 5, trans: 'Automatic', year: 2018, fuel: 'Petrol', price: 20.00, color: '#C9A36A', image: 'images/ist.webp' },
-    { id: 'toyota-alphad', name: 'Toyota Alphad', seats: 8, trans: 'Automatic', year: 2013, fuel: 'Petrol', price: 35.00, color: '#0B6E99', image: 'images/alphard.webp' }
+    { id: 'nissan-e-class', name: 'Nissan E-Class', seats: 4, trans: 'Automatic', year: 2018, fuel: 'Petrol', price: 28.89, color: '#0B6E99', image: 'images/Nissan E-Class.jpeg' },
+    { id: 'rav4-2018', name: 'Toyota RAV4', seats: 5, trans: 'Automatic', year: 2018, fuel: 'Petrol', price: 26.88, color: '#2EC4D6', image: 'images/Toyota RAV4.jpeg' },
+    { id: 'rav4-2016', name: 'Toyota RAV4', seats: 2, trans: 'Automatic', year: 2016, fuel: 'Petrol', price: 23.70, color: '#06364D', image: 'images/Toyota RAV4 2doors.jpeg' },
+    { id: 'suzuki-escudo-2016', name: 'Suzuki Escudo', seats: 5, trans: 'Automatic', year: 2016, fuel: 'Petrol', price: 28.60, color: '#C9A36A', image: 'images/Toyota Escudo.jpg' },
+    { id: 'land-cruiser-2020', name: 'Toyota Land Cruiser', seats: 5, trans: 'Automatic', year: 2020, fuel: 'Petrol', price: 150.00, color: '#0B6E99', image: 'images/Toyota Land Cruiser.png' },
+    { id: 'suzuki-escudo-2019', name: 'Suzuki Escudo', seats: 3, trans: 'Automatic', year: 2019, fuel: 'Petrol', price: 26.50, color: '#2EC4D6', image: 'images/Suzuki Escudo 2doors.jpeg' },
+    { id: 'land-cruiser-2019', name: 'Toyota Land Cruiser', seats: 5, trans: 'Automatic', year: 2019, fuel: 'Diesel', price: 102.89, color: '#06364D', image: 'images/Toyota Land Cruiser.jpeg' },
+    { id: 'toyota-c-class', name: 'Toyota C-Class', seats: 5, trans: 'Automatic', year: 2010, fuel: 'Diesel', price: 90.00, color: '#C9A36A', image: 'images/Toyota C-Class.jpeg' },
+    { id: 'toyota-g-class', name: 'Toyota G-Class', seats: 5, trans: 'Automatic', year: 2015, fuel: 'Petrol', price: 35.00, color: '#0B6E99', image: 'images/Toyota G-Class.jpeg' },
+    { id: 'land-cruiser-2013', name: 'Toyota Land Cruiser', seats: 5, trans: 'Automatic', year: 2013, fuel: 'Petrol', price: 92.55, color: '#2EC4D6', image: 'images/Toyota Land Cruiser.jpeg' },
+    { id: 'toyota-escudo-2013', name: 'Toyota Escudo', seats: 5, trans: 'Automatic', year: 2013, fuel: 'Petrol', price: 25.89, color: '#06364D', image: 'images/Toyota Escudo.jpg' },
+    { id: 'toyota-ist', name: 'Toyota IST', seats: 5, trans: 'Automatic', year: 2018, fuel: 'Petrol', price: 20.00, color: '#C9A36A', image: 'images/Toyota Ist-card.jpg' },
+    { id: 'toyota-alphad', name: 'Toyota Alphad', seats: 8, trans: 'Automatic', year: 2013, fuel: 'Petrol', price: 35.00, color: '#0B6E99', image: 'images/Toyota Alphard.jpeg' }
   ]
 };
 
@@ -220,6 +220,9 @@ function renderFleet() {
 function estimate() {
   const c = CONFIG.fleet.find(x => x.id === $('#car').value), d = dayCount();
   $('#total').textContent = c && d > 0 ? `${money(c.price * d)} (${d} ${t('days')})` : t('est_none');
+  const img = $('#estImg');
+  img.hidden = !c;
+  if (c) { img.src = carImg(c); img.alt = c.name; }
 }
 
 function applyLang(l) {
@@ -252,11 +255,21 @@ $('#car').addEventListener('change', estimate);
 // "Book this car" buttons preselect the car
 document.addEventListener('click', e => {
   const a = e.target.closest('[data-car]');
-  if (a) { $('#car').value = a.dataset.car; estimate(); }
-  if (e.target.closest('#nav a')) $('#nav').classList.remove('open');
+  if (a) {
+    $('#car').value = a.dataset.car; estimate();
+    const fc = $('#form');
+    fc.classList.remove('flash'); void fc.offsetWidth; fc.classList.add('flash');
+    setTimeout(() => $('#form [name=name]').focus({ preventScroll: true }), 600);
+  }
+  if (e.target.closest('#nav a')) setMenu(false);
 });
 
-$('#menu').addEventListener('click', () => $('#nav').classList.toggle('open'));
+const setMenu = open => {
+  $('#nav').classList.toggle('open', open);
+  $('#menu').setAttribute('aria-expanded', open);
+  $('#menu').textContent = open ? '✕' : '☰';
+};
+$('#menu').addEventListener('click', () => setMenu(!$('#nav').classList.contains('open')));
 $('#lang').addEventListener('change', e => applyLang(e.target.value));
 
 // Submit: validate, then open WhatsApp with a prepared message
@@ -265,11 +278,16 @@ $('#form').addEventListener('submit', e => {
   const f = Object.fromEntries(new FormData(e.target)), msg = $('#msg');
   const c = CONFIG.fleet.find(x => x.id === f.car);
   const today = new Date(); today.setHours(0, 0, 0, 0);
-  const fail = k => { msg.textContent = t(k); msg.className = 'msg err'; };
-  if (!f.name.trim() || !f.phone.trim() || !c || !f.from || !f.to) return fail('e_req');
-  if (new Date(f.from + 'T00:00') < today) return fail('e_past');
-  if (dayCount() < 1) return fail('e_date');
-  if (f.where !== 'airport' && !f.place.trim()) return fail('e_place');
+  const fail = (k, bad) => {
+    msg.textContent = t(k); msg.className = 'msg err';
+    bad.forEach(n => e.target.elements[n].setAttribute('aria-invalid', 'true'));
+    e.target.elements[bad[0]].focus();
+  };
+  const empty = ['name', 'phone', 'car', 'from', 'to'].filter(n => !String(f[n]).trim());
+  if (empty.length) return fail('e_req', empty);
+  if (new Date(f.from + 'T00:00') < today) return fail('e_past', ['from']);
+  if (dayCount() < 1) return fail('e_date', ['to']);
+  if (f.where !== 'airport' && !f.place.trim()) return fail('e_place', ['place']);
   const place = f.where === 'airport' ? 'Zanzibar airport' : f.place.trim();
   const text = [
     `Hello ${CONFIG.business}, I would like to book a car.`,
@@ -281,6 +299,21 @@ $('#form').addEventListener('submit', e => {
   msg.textContent = t('ok'); msg.className = 'msg ok';
   window.open(waLink(text), '_blank', 'noopener');
 });
+
+// Clear the error state of a field as soon as the user fixes it
+$('#form').addEventListener('input', e => e.target.removeAttribute('aria-invalid'));
+$('#form').addEventListener('change', e => e.target.removeAttribute('aria-invalid'));
+
+// Header shadow on scroll + highlight the nav link of the section in view
+const onScroll = () => document.querySelector('header').classList.toggle('scrolled', scrollY > 8);
+addEventListener('scroll', onScroll, { passive: true }); onScroll();
+if ('IntersectionObserver' in window) {
+  const links = $$('#nav a[href^="#"]');
+  const spy = new IntersectionObserver(es => es.forEach(en => {
+    if (en.isIntersecting) links.forEach(l => l.classList.toggle('active', l.getAttribute('href') === '#' + en.target.id));
+  }), { rootMargin: '-45% 0px -50% 0px' });
+  links.forEach(l => { const s = $(l.getAttribute('href')); if (s) spy.observe(s); });
+}
 
 let saved = 'en';
 try { saved = localStorage.getItem('lang') || 'en'; } catch (e) { }

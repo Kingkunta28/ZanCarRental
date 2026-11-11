@@ -414,9 +414,11 @@ header {
 .card img {
   display: block;
   width: 100%;
-  height: 180px;
+  height: auto;
+  aspect-ratio: 3/2;
   object-fit: cover;
-  background: #fff
+  background: #fff;
+  transition: transform .5s ease
 }
 
 .cb {
@@ -739,5 +741,274 @@ footer .small {
 
   html {
     scroll-behavior: auto
+  }
+}
+
+/* ===== UI/UX enhancements ===== */
+header {
+  transition: box-shadow .25s
+}
+
+header.scrolled {
+  box-shadow: 0 6px 24px rgba(6, 54, 77, .1)
+}
+
+.nav a:not(.btn) {
+  position: relative;
+  padding: 4px 0
+}
+
+.nav a:not(.btn)::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -2px;
+  height: 2px;
+  border-radius: 2px;
+  background: var(--turq);
+  transform: scaleX(0);
+  transition: transform .25s
+}
+
+.nav a:not(.btn):hover::after,
+.nav a.active::after {
+  transform: scaleX(1)
+}
+
+.nav a.active {
+  color: var(--ocean)
+}
+
+/* hero */
+.hero h1,
+.hero p {
+  text-shadow: 0 2px 18px rgba(6, 54, 77, .35)
+}
+
+.trust {
+  list-style: none;
+  padding: 0;
+  margin-top: 26px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px
+}
+
+.trust li {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 7px 14px;
+  border-radius: 99px;
+  background: rgba(255, 255, 255, .14);
+  border: 1px solid rgba(255, 255, 255, .28);
+  backdrop-filter: blur(6px);
+  font-size: .9rem;
+  font-weight: 500
+}
+
+.trust li::before {
+  content: "✓";
+  display: grid;
+  place-items: center;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: var(--sand);
+  color: var(--deep);
+  font-size: .7rem;
+  font-weight: 700
+}
+
+/* fleet cards */
+.card:hover img {
+  transform: scale(1.04)
+}
+
+.card {
+  display: flex;
+  flex-direction: column
+}
+
+.cb {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  background: #fff
+}
+
+.cb .btn-b {
+  margin-top: auto
+}
+
+.price {
+  margin-top: auto
+}
+
+/* form */
+input,
+select,
+textarea {
+  transition: border-color .2s, box-shadow .2s
+}
+
+input:hover,
+select:hover,
+textarea:hover {
+  border-color: var(--turq)
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+  outline: none;
+  border-color: var(--ocean);
+  box-shadow: 0 0 0 4px rgba(46, 196, 214, .22)
+}
+
+[aria-invalid="true"] {
+  border-color: #B3261E;
+  background: #FFF6F5
+}
+
+[aria-invalid="true"]:focus {
+  box-shadow: 0 0 0 4px rgba(179, 38, 30, .15)
+}
+
+.est {
+  flex-wrap: wrap
+}
+
+.est img {
+  width: 64px;
+  height: 44px;
+  object-fit: cover;
+  border-radius: 8px;
+  background: #fff;
+  flex: none
+}
+
+.est img+span {
+  flex: 1
+}
+
+.formcard.flash {
+  animation: flash 1.4s ease
+}
+
+@keyframes flash {
+  0%, 100% {
+    box-shadow: 0 10px 30px rgba(6, 54, 77, .12)
+  }
+
+  30% {
+    box-shadow: 0 0 0 5px var(--turq), 0 10px 30px rgba(6, 54, 77, .18)
+  }
+}
+
+/* why us */
+.why>div {
+  background: #fff;
+  border: 1px solid var(--sand2);
+  border-top: 3px solid var(--turq);
+  border-radius: 16px;
+  padding: 22px;
+  transition: transform .2s, box-shadow .2s
+}
+
+.why>div:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 24px rgba(6, 54, 77, .1)
+}
+
+.why span {
+  display: grid;
+  place-items: center;
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  background: var(--sand);
+  font-size: 1.5rem
+}
+
+.why h3 {
+  margin: 14px 0 6px
+}
+
+/* reviews */
+blockquote::before {
+  content: "★★★★★";
+  display: block;
+  margin-bottom: 8px;
+  color: #E0A526;
+  letter-spacing: 2px
+}
+
+/* FAQ */
+details {
+  border: 1px solid transparent;
+  transition: border-color .2s, box-shadow .2s
+}
+
+details[open] {
+  border-color: var(--sand2);
+  box-shadow: 0 6px 18px rgba(6, 54, 77, .06)
+}
+
+summary {
+  list-style: none;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px
+}
+
+summary::-webkit-details-marker {
+  display: none
+}
+
+summary::after {
+  content: "+";
+  flex: none;
+  display: grid;
+  place-items: center;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: var(--sand);
+  color: var(--ocean);
+  font-size: 1.2rem;
+  transition: transform .25s
+}
+
+details[open] summary::after {
+  transform: rotate(45deg)
+}
+
+/* footer contact links */
+#contactInfo a:not(.btn) {
+  text-decoration: none;
+  padding: 12px 18px;
+  border-radius: 99px;
+  border: 1px solid rgba(243, 231, 211, .3)
+}
+
+#contactInfo a:not(.btn):hover {
+  background: rgba(243, 231, 211, .1)
+}
+
+@media(max-width:520px) {
+  .hero .btn {
+    display: block;
+    width: 100%
+  }
+
+  .trust li {
+    font-size: .82rem
+  }
+
+  .formcard {
+    padding: 20px
   }
 }
