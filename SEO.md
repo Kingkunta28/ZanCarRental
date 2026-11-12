@@ -15,6 +15,10 @@ The site still works without running it, but Google would see old prices and tex
 - Cars, prices, phone, delivery fee, locations: `scripts.js` (CONFIG at the top)
 - Website texts in all languages: `scripts.js` (T, T2, T3, T4)
 - Location pages and driving guide (English): `tools/pages.js`
+- Location pages and driving guide (other 5 languages): `tools/pages-i18n.js`. Keep the same sections,
+  paragraphs and list items as the English; the build stops with a message if they don't match.
+
+The visitor's language choice is saved, so it stays the same on every page (home, location pages, 404).
 
 ## Pages
 

@@ -9,9 +9,20 @@ const CONFIG = {
   // Delivery / collection: free at locations marked free: true,
   // deliveryFee is charged separately for EACH location (pickup and return) outside the free zone.
   deliveryFee: 25,
+  // Optional extras (one-off price per booking)
+  babySeatFee: 60,
+  // Default arrival airport shown in the Flight Information section
+  arrivalAirport: 'Abeid Amani Karume International Airport, Zanzibar',
+  // Pickup / return options in the booking form. "outside" covers ANY place outside
+  // Zanzibar Town and the airport; the customer types the exact place in a text field.
   locations: [
-    { id: 'airport', i18n: 'l_air', name: 'Abeid Amani Karume International Airport (Zanzibar)', free: true },
-    { id: 'town', i18n: 'l_town', name: 'Zanzibar Town (Stone Town)', free: true },
+    { id: 'airport', i18n: 'l_air', name: 'Zanzibar Airport', full: 'Abeid Amani Karume International Airport (Zanzibar)', free: true },
+    { id: 'town', i18n: 'l_town', name: 'Zanzibar Town', full: 'Zanzibar Town (Stone Town)', free: true },
+    { id: 'outside', i18n: 'l_outside', name: 'Outside Free Zone', exact: true }
+  ],
+  // Areas outside the free zone. Used for the delivery-area pages and SEO only,
+  // NOT as booking options (they are all booked as "Outside Free Zone").
+  areas: [
     { id: 'nungwi', name: 'Nungwi' },
     { id: 'kendwa', name: 'Kendwa' },
     { id: 'matemwe', name: 'Matemwe' },
@@ -20,8 +31,7 @@ const CONFIG = {
     { id: 'jambiani', name: 'Jambiani' },
     { id: 'bwejuu', name: 'Bwejuu' },
     { id: 'michamvi', name: 'Michamvi' },
-    { id: 'kizimkazi', name: 'Kizimkazi' },
-    { id: 'other', i18n: 'l_other', name: 'Other location' }
+    { id: 'kizimkazi', name: 'Kizimkazi' }
   ],
   // type: 'suv' | 'small' | 'van' | 'pickup' (used by the fleet filter)
   // image: '' uses a placeholder. To use a real photo: image: 'images/vitz.jpg'
@@ -450,11 +460,297 @@ const T4 = {
 };
 Object.keys(T4).forEach(l => Object.assign(T[l], T4[l]));
 
+/* ===== Texts shared by the home page and the location pages ({place}, {price}, {n}, {fee}) ===== */
+const T5 = {
+  en: {
+    meta_title: 'Car Hire Zanzibar | Rafiki Car Hire – Airport & Hotel Delivery',
+    nav_areas: 'Delivery areas',
+    v_Automatic: 'Automatic', v_Manual: 'Manual', v_Petrol: 'Petrol', v_Diesel: 'Diesel', v_Hybrid: 'Hybrid',
+    pg_book: 'Book a car', pg_ask: 'Ask on WhatsApp', pg_deliv_to: 'Delivery to {place}', pg_fees: 'Delivery fees',
+    pg_other: 'Other locations',
+    pg_side_note: 'Pickup and return are charged separately. Zanzibar Airport and Zanzibar Town (Stone Town) are always free.',
+    pg_from: 'Cars from {price} per day', pg_check: 'Check prices and book', pg_rec: 'Recommended cars for {place}',
+    pg_popular: 'Popular rental cars in Zanzibar', pg_all: 'See all {n} cars', pg_more: 'Car hire in other parts of Zanzibar',
+    pg_chip_free: 'Free delivery and return', pg_chip_paid: 'Hotel delivery {fee} each way',
+    pg_cta_p: 'Message us on WhatsApp or book online in a minute.',
+    pg_404_h: 'Sorry, this page does not exist',
+    pg_404_p: 'The link may be old or mistyped. You can still book a car in Zanzibar from our home page.',
+    'lk_car-hire-zanzibar-airport': 'Zanzibar Airport car rental', 'lk_car-hire-stone-town': 'Car hire in Stone Town',
+    'lk_car-hire-nungwi-kendwa': 'Car hire in Nungwi & Kendwa', 'lk_car-hire-matemwe-pongwe': 'Car hire in Matemwe & Pongwe',
+    'lk_car-hire-paje-jambiani': 'Car hire in Paje & Jambiani', 'lk_car-hire-kizimkazi': 'Car hire in Kizimkazi',
+    'lk_driving-in-zanzibar': 'Driving in Zanzibar guide',
+    'lbl_car-hire-zanzibar-airport': 'Zanzibar Airport', 'lbl_car-hire-stone-town': 'Stone Town',
+    'lbl_car-hire-nungwi-kendwa': 'Nungwi & Kendwa', 'lbl_car-hire-matemwe-pongwe': 'Matemwe & Pongwe',
+    'lbl_car-hire-paje-jambiani': 'Paje, Jambiani, Bwejuu & Michamvi', 'lbl_car-hire-kizimkazi': 'Kizimkazi',
+    'lbl_driving-in-zanzibar': 'Driving in Zanzibar',
+    'bk_car-hire-zanzibar-airport': 'Book a car at the airport', 'bk_car-hire-stone-town': 'Book a car for Stone Town',
+    'bk_car-hire-nungwi-kendwa': 'Book a car for Nungwi', 'bk_car-hire-matemwe-pongwe': 'Book a car for Matemwe',
+    'bk_car-hire-paje-jambiani': 'Book a car for Paje', 'bk_car-hire-kizimkazi': 'Book a car for Kizimkazi',
+    'bk_driving-in-zanzibar': 'Book a car'
+  },
+  sw: {
+    meta_title: 'Kukodisha Gari Zanzibar | Rafiki Car Hire – Uwanja wa Ndege na Hotelini',
+    nav_areas: 'Maeneo tunayofikia',
+    v_Automatic: 'Automatiki', v_Manual: 'Manuali', v_Petrol: 'Petroli', v_Diesel: 'Dizeli', v_Hybrid: 'Haibridi',
+    pg_book: 'Weka nafasi ya gari', pg_ask: 'Uliza kupitia WhatsApp', pg_deliv_to: 'Kuleta gari: {place}', pg_fees: 'Ada za kuleta gari',
+    pg_other: 'Maeneo mengine',
+    pg_side_note: 'Kuleta na kurudisha hutozwa kila kimoja. Uwanja wa ndege wa Zanzibar na Mji wa Zanzibar (Stone Town) ni bure kila wakati.',
+    pg_from: 'Magari kuanzia {price} kwa siku', pg_check: 'Angalia bei na weka nafasi', pg_rec: 'Magari tunayopendekeza: {place}',
+    pg_popular: 'Magari maarufu ya kukodisha Zanzibar', pg_all: 'Tazama magari yote {n}', pg_more: 'Kukodisha gari maeneo mengine ya Zanzibar',
+    pg_chip_free: 'Kuleta na kurudisha bure', pg_chip_paid: 'Kuleta hotelini {fee} kila upande',
+    pg_cta_p: 'Tuandikie WhatsApp au weka nafasi mtandaoni kwa dakika moja.',
+    pg_404_h: 'Samahani, ukurasa huu haupo',
+    pg_404_p: 'Huenda kiungo ni cha zamani au kimekosewa. Bado unaweza kukodisha gari Zanzibar kupitia ukurasa wetu wa mwanzo.',
+    'lk_car-hire-zanzibar-airport': 'Kukodisha gari uwanja wa ndege', 'lk_car-hire-stone-town': 'Kukodisha gari Stone Town',
+    'lk_car-hire-nungwi-kendwa': 'Kukodisha gari Nungwi na Kendwa', 'lk_car-hire-matemwe-pongwe': 'Kukodisha gari Matemwe na Pongwe',
+    'lk_car-hire-paje-jambiani': 'Kukodisha gari Paje na Jambiani', 'lk_car-hire-kizimkazi': 'Kukodisha gari Kizimkazi',
+    'lk_driving-in-zanzibar': 'Mwongozo wa kuendesha Zanzibar',
+    'lbl_car-hire-zanzibar-airport': 'Uwanja wa ndege wa Zanzibar', 'lbl_car-hire-stone-town': 'Stone Town',
+    'lbl_car-hire-nungwi-kendwa': 'Nungwi na Kendwa', 'lbl_car-hire-matemwe-pongwe': 'Matemwe na Pongwe',
+    'lbl_car-hire-paje-jambiani': 'Paje, Jambiani, Bwejuu na Michamvi', 'lbl_car-hire-kizimkazi': 'Kizimkazi',
+    'lbl_driving-in-zanzibar': 'Kuendesha gari Zanzibar',
+    'bk_car-hire-zanzibar-airport': 'Weka nafasi uwanja wa ndege', 'bk_car-hire-stone-town': 'Weka nafasi Stone Town',
+    'bk_car-hire-nungwi-kendwa': 'Weka nafasi Nungwi', 'bk_car-hire-matemwe-pongwe': 'Weka nafasi Matemwe',
+    'bk_car-hire-paje-jambiani': 'Weka nafasi Paje', 'bk_car-hire-kizimkazi': 'Weka nafasi Kizimkazi',
+    'bk_driving-in-zanzibar': 'Weka nafasi ya gari'
+  },
+  it: {
+    meta_title: 'Noleggio Auto Zanzibar | Rafiki Car Hire – Consegna in Aeroporto e Hotel',
+    nav_areas: 'Zone di consegna',
+    v_Automatic: 'Automatico', v_Manual: 'Manuale', v_Petrol: 'Benzina', v_Diesel: 'Diesel', v_Hybrid: 'Ibrido',
+    pg_book: "Prenota un'auto", pg_ask: 'Chiedi su WhatsApp', pg_deliv_to: 'Consegna: {place}', pg_fees: 'Costi di consegna',
+    pg_other: 'Altre località',
+    pg_side_note: "Consegna e riconsegna si pagano separatamente. L'aeroporto di Zanzibar e Zanzibar Town (Stone Town) sono sempre gratuiti.",
+    pg_from: 'Auto da {price} al giorno', pg_check: 'Vedi i prezzi e prenota', pg_rec: 'Auto consigliate: {place}',
+    pg_popular: 'Le auto a noleggio più richieste a Zanzibar', pg_all: 'Vedi tutte le {n} auto', pg_more: 'Noleggio auto in altre zone di Zanzibar',
+    pg_chip_free: 'Consegna e riconsegna gratuite', pg_chip_paid: 'Consegna in hotel {fee} a tratta',
+    pg_cta_p: 'Scrivici su WhatsApp o prenota online in un minuto.',
+    pg_404_h: 'Spiacenti, questa pagina non esiste',
+    pg_404_p: "Il link potrebbe essere vecchio o errato. Puoi comunque prenotare un'auto a Zanzibar dalla nostra home page.",
+    'lk_car-hire-zanzibar-airport': "Noleggio auto all'aeroporto di Zanzibar", 'lk_car-hire-stone-town': 'Noleggio auto a Stone Town',
+    'lk_car-hire-nungwi-kendwa': 'Noleggio auto a Nungwi e Kendwa', 'lk_car-hire-matemwe-pongwe': 'Noleggio auto a Matemwe e Pongwe',
+    'lk_car-hire-paje-jambiani': 'Noleggio auto a Paje e Jambiani', 'lk_car-hire-kizimkazi': 'Noleggio auto a Kizimkazi',
+    'lk_driving-in-zanzibar': 'Guidare a Zanzibar: la guida',
+    'lbl_car-hire-zanzibar-airport': 'Aeroporto di Zanzibar', 'lbl_car-hire-stone-town': 'Stone Town',
+    'lbl_car-hire-nungwi-kendwa': 'Nungwi e Kendwa', 'lbl_car-hire-matemwe-pongwe': 'Matemwe e Pongwe',
+    'lbl_car-hire-paje-jambiani': 'Paje, Jambiani, Bwejuu e Michamvi', 'lbl_car-hire-kizimkazi': 'Kizimkazi',
+    'lbl_driving-in-zanzibar': 'Guidare a Zanzibar',
+    'bk_car-hire-zanzibar-airport': "Prenota un'auto in aeroporto", 'bk_car-hire-stone-town': "Prenota un'auto a Stone Town",
+    'bk_car-hire-nungwi-kendwa': "Prenota un'auto a Nungwi", 'bk_car-hire-matemwe-pongwe': "Prenota un'auto a Matemwe",
+    'bk_car-hire-paje-jambiani': "Prenota un'auto a Paje", 'bk_car-hire-kizimkazi': "Prenota un'auto a Kizimkazi",
+    'bk_driving-in-zanzibar': "Prenota un'auto"
+  },
+  de: {
+    meta_title: 'Mietwagen Sansibar | Rafiki Car Hire – Lieferung zu Flughafen & Hotel',
+    nav_areas: 'Liefergebiete',
+    v_Automatic: 'Automatik', v_Manual: 'Schaltgetriebe', v_Petrol: 'Benzin', v_Diesel: 'Diesel', v_Hybrid: 'Hybrid',
+    pg_book: 'Auto buchen', pg_ask: 'Per WhatsApp fragen', pg_deliv_to: 'Lieferung: {place}', pg_fees: 'Liefergebühren',
+    pg_other: 'Andere Orte',
+    pg_side_note: 'Übergabe und Rückgabe werden getrennt berechnet. Der Flughafen Sansibar und Zanzibar Town (Stone Town) sind immer kostenlos.',
+    pg_from: 'Autos ab {price} pro Tag', pg_check: 'Preise prüfen und buchen', pg_rec: 'Empfohlene Autos: {place}',
+    pg_popular: 'Beliebte Mietwagen auf Sansibar', pg_all: 'Alle {n} Autos ansehen', pg_more: 'Mietwagen in anderen Teilen Sansibars',
+    pg_chip_free: 'Lieferung und Rückgabe kostenlos', pg_chip_paid: 'Hotellieferung {fee} pro Strecke',
+    pg_cta_p: 'Schreib uns auf WhatsApp oder buche in einer Minute online.',
+    pg_404_h: 'Diese Seite gibt es leider nicht',
+    pg_404_p: 'Der Link ist vielleicht veraltet oder falsch. Über unsere Startseite kannst du trotzdem ein Auto auf Sansibar buchen.',
+    'lk_car-hire-zanzibar-airport': 'Mietwagen am Flughafen Sansibar', 'lk_car-hire-stone-town': 'Mietwagen in Stone Town',
+    'lk_car-hire-nungwi-kendwa': 'Mietwagen in Nungwi & Kendwa', 'lk_car-hire-matemwe-pongwe': 'Mietwagen in Matemwe & Pongwe',
+    'lk_car-hire-paje-jambiani': 'Mietwagen in Paje & Jambiani', 'lk_car-hire-kizimkazi': 'Mietwagen in Kizimkazi',
+    'lk_driving-in-zanzibar': 'Ratgeber: Autofahren auf Sansibar',
+    'lbl_car-hire-zanzibar-airport': 'Flughafen Sansibar', 'lbl_car-hire-stone-town': 'Stone Town',
+    'lbl_car-hire-nungwi-kendwa': 'Nungwi & Kendwa', 'lbl_car-hire-matemwe-pongwe': 'Matemwe & Pongwe',
+    'lbl_car-hire-paje-jambiani': 'Paje, Jambiani, Bwejuu & Michamvi', 'lbl_car-hire-kizimkazi': 'Kizimkazi',
+    'lbl_driving-in-zanzibar': 'Autofahren auf Sansibar',
+    'bk_car-hire-zanzibar-airport': 'Auto am Flughafen buchen', 'bk_car-hire-stone-town': 'Auto in Stone Town buchen',
+    'bk_car-hire-nungwi-kendwa': 'Auto in Nungwi buchen', 'bk_car-hire-matemwe-pongwe': 'Auto in Matemwe buchen',
+    'bk_car-hire-paje-jambiani': 'Auto in Paje buchen', 'bk_car-hire-kizimkazi': 'Auto in Kizimkazi buchen',
+    'bk_driving-in-zanzibar': 'Auto buchen'
+  },
+  fr: {
+    meta_title: 'Location de Voiture Zanzibar | Rafiki Car Hire – Livraison Aéroport & Hôtel',
+    nav_areas: 'Zones de livraison',
+    v_Automatic: 'Automatique', v_Manual: 'Manuelle', v_Petrol: 'Essence', v_Diesel: 'Diesel', v_Hybrid: 'Hybride',
+    pg_book: 'Réserver une voiture', pg_ask: 'Demander sur WhatsApp', pg_deliv_to: 'Livraison : {place}', pg_fees: 'Frais de livraison',
+    pg_other: 'Autres lieux',
+    pg_side_note: "La livraison et le retour sont facturés séparément. L'aéroport de Zanzibar et Zanzibar Town (Stone Town) sont toujours gratuits.",
+    pg_from: 'Voitures à partir de {price} par jour', pg_check: 'Voir les prix et réserver', pg_rec: 'Voitures recommandées : {place}',
+    pg_popular: 'Voitures de location populaires à Zanzibar', pg_all: 'Voir les {n} voitures', pg_more: 'Location de voiture ailleurs à Zanzibar',
+    pg_chip_free: 'Livraison et retour gratuits', pg_chip_paid: "Livraison à l'hôtel {fee} par trajet",
+    pg_cta_p: 'Écrivez-nous sur WhatsApp ou réservez en ligne en une minute.',
+    pg_404_h: "Désolé, cette page n'existe pas",
+    pg_404_p: "Le lien est peut-être ancien ou erroné. Vous pouvez toujours réserver une voiture à Zanzibar depuis notre page d'accueil.",
+    'lk_car-hire-zanzibar-airport': "Location de voiture à l'aéroport de Zanzibar", 'lk_car-hire-stone-town': 'Location de voiture à Stone Town',
+    'lk_car-hire-nungwi-kendwa': 'Location de voiture à Nungwi et Kendwa', 'lk_car-hire-matemwe-pongwe': 'Location de voiture à Matemwe et Pongwe',
+    'lk_car-hire-paje-jambiani': 'Location de voiture à Paje et Jambiani', 'lk_car-hire-kizimkazi': 'Location de voiture à Kizimkazi',
+    'lk_driving-in-zanzibar': 'Guide : conduire à Zanzibar',
+    'lbl_car-hire-zanzibar-airport': 'Aéroport de Zanzibar', 'lbl_car-hire-stone-town': 'Stone Town',
+    'lbl_car-hire-nungwi-kendwa': 'Nungwi et Kendwa', 'lbl_car-hire-matemwe-pongwe': 'Matemwe et Pongwe',
+    'lbl_car-hire-paje-jambiani': 'Paje, Jambiani, Bwejuu et Michamvi', 'lbl_car-hire-kizimkazi': 'Kizimkazi',
+    'lbl_driving-in-zanzibar': 'Conduire à Zanzibar',
+    'bk_car-hire-zanzibar-airport': "Réserver à l'aéroport", 'bk_car-hire-stone-town': 'Réserver à Stone Town',
+    'bk_car-hire-nungwi-kendwa': 'Réserver à Nungwi', 'bk_car-hire-matemwe-pongwe': 'Réserver à Matemwe',
+    'bk_car-hire-paje-jambiani': 'Réserver à Paje', 'bk_car-hire-kizimkazi': 'Réserver à Kizimkazi',
+    'bk_driving-in-zanzibar': 'Réserver une voiture'
+  },
+  es: {
+    meta_title: 'Alquiler de Coches Zanzíbar | Rafiki Car Hire – Entrega en Aeropuerto y Hotel',
+    nav_areas: 'Zonas de entrega',
+    v_Automatic: 'Automático', v_Manual: 'Manual', v_Petrol: 'Gasolina', v_Diesel: 'Diésel', v_Hybrid: 'Híbrido',
+    pg_book: 'Reservar un coche', pg_ask: 'Preguntar por WhatsApp', pg_deliv_to: 'Entrega: {place}', pg_fees: 'Cargos de entrega',
+    pg_other: 'Otros lugares',
+    pg_side_note: 'La entrega y la devolución se cobran por separado. El aeropuerto de Zanzíbar y Zanzibar Town (Stone Town) son siempre gratis.',
+    pg_from: 'Coches desde {price} al día', pg_check: 'Ver precios y reservar', pg_rec: 'Coches recomendados: {place}',
+    pg_popular: 'Coches de alquiler populares en Zanzíbar', pg_all: 'Ver los {n} coches', pg_more: 'Alquiler de coches en otras zonas de Zanzíbar',
+    pg_chip_free: 'Entrega y devolución gratis', pg_chip_paid: 'Entrega en hotel {fee} por trayecto',
+    pg_cta_p: 'Escríbenos por WhatsApp o reserva online en un minuto.',
+    pg_404_h: 'Lo sentimos, esta página no existe',
+    pg_404_p: 'Puede que el enlace sea antiguo o incorrecto. Aun así puedes reservar un coche en Zanzíbar desde nuestra página de inicio.',
+    'lk_car-hire-zanzibar-airport': 'Alquiler de coches en el aeropuerto de Zanzíbar', 'lk_car-hire-stone-town': 'Alquiler de coches en Stone Town',
+    'lk_car-hire-nungwi-kendwa': 'Alquiler de coches en Nungwi y Kendwa', 'lk_car-hire-matemwe-pongwe': 'Alquiler de coches en Matemwe y Pongwe',
+    'lk_car-hire-paje-jambiani': 'Alquiler de coches en Paje y Jambiani', 'lk_car-hire-kizimkazi': 'Alquiler de coches en Kizimkazi',
+    'lk_driving-in-zanzibar': 'Guía para conducir en Zanzíbar',
+    'lbl_car-hire-zanzibar-airport': 'Aeropuerto de Zanzíbar', 'lbl_car-hire-stone-town': 'Stone Town',
+    'lbl_car-hire-nungwi-kendwa': 'Nungwi y Kendwa', 'lbl_car-hire-matemwe-pongwe': 'Matemwe y Pongwe',
+    'lbl_car-hire-paje-jambiani': 'Paje, Jambiani, Bwejuu y Michamvi', 'lbl_car-hire-kizimkazi': 'Kizimkazi',
+    'lbl_driving-in-zanzibar': 'Conducir en Zanzíbar',
+    'bk_car-hire-zanzibar-airport': 'Reservar en el aeropuerto', 'bk_car-hire-stone-town': 'Reservar en Stone Town',
+    'bk_car-hire-nungwi-kendwa': 'Reservar en Nungwi', 'bk_car-hire-matemwe-pongwe': 'Reservar en Matemwe',
+    'bk_car-hire-paje-jambiani': 'Reservar en Paje', 'bk_car-hire-kizimkazi': 'Reservar en Kizimkazi',
+    'bk_driving-in-zanzibar': 'Reservar un coche'
+  }
+};
+Object.keys(T5).forEach(l => Object.assign(T[l], T5[l]));
+
+/* ===== Booking extras, flight information, simplified locations and the new home hero ===== */
+const T6 = {
+  en: {
+    hh_a: 'Discover Zanzibar', hh_b: 'your way.',
+    hh_p: 'Explore the beauty of Zanzibar with reliable car hire, flexible pickup locations, and the freedom to travel at your own pace.',
+    cta_explore: 'Explore our cars', cta_ride: 'Book your ride', hh_free: 'Free airport & town delivery', hh_scroll: 'Scroll',
+    fs_you: 'Your details', fs_trip: 'Car and dates', fs_loc: 'Pickup and return',
+    f_email: 'Email', opt: 'optional',
+    l_air: 'Zanzibar Airport', l_town: 'Zanzibar Town', l_outside: 'Outside Free Zone',
+    f_exact: 'Enter your exact location', f_exact_ph: 'e.g. Nungwi, Kendwa, Paje or your hotel name',
+    e_exact: 'Please enter your exact location.',
+    fee_note: 'Pickup and return are free at Zanzibar Airport and Zanzibar Town. Anywhere outside the free zone costs {fee} for pickup and {fee} for return.',
+    fl_h: 'Flight information',
+    fl_p: 'Please provide your flight details so we can coordinate your arrival and car pickup smoothly.',
+    fl_air: 'Airline name', fl_air_ph: 'e.g. Qatar Airways', fl_no: 'Flight number', fl_no_ph: 'e.g. QR1349',
+    fl_date: 'Arrival date', fl_time: 'Arrival time', fl_port: 'Arrival airport', fl_notes: 'Additional flight notes',
+    fl_notes_ph: 'Connecting flight, expected delays, number of passengers…',
+    fl_note: 'Flight details help us coordinate your airport pickup, and we track delays so your car is ready when you land.',
+    x_h: 'Optional extras', x_seat: 'Baby seat', x_seat_p: 'Child safety seat, fitted and ready at handover.',
+    sum_car: 'Vehicle', sum_dur: 'Rental duration', sum_pick: 'Pickup', sum_ret: 'Return', sum_seat: 'Baby seat',
+    sel: 'Selected', not_sel: 'Not added', e_email: 'Please check your email address.'
+  },
+  sw: {
+    hh_a: 'Gundua Zanzibar', hh_b: 'kwa njia yako.',
+    hh_p: 'Furahia uzuri wa Zanzibar kwa magari ya kuaminika, sehemu rahisi za kuchukua gari na uhuru wa kusafiri kwa mwendo wako.',
+    cta_explore: 'Tazama magari yetu', cta_ride: 'Weka nafasi ya gari', hh_free: 'Kuleta bure uwanja wa ndege na mjini', hh_scroll: 'Shuka',
+    fs_you: 'Taarifa zako', fs_trip: 'Gari na tarehe', fs_loc: 'Kuchukua na kurudisha',
+    f_email: 'Barua pepe', opt: 'hiari',
+    l_air: 'Uwanja wa Ndege wa Zanzibar', l_town: 'Mji wa Zanzibar', l_outside: 'Nje ya eneo la bure',
+    f_exact: 'Andika mahali hasa ulipo', f_exact_ph: 'mf. Nungwi, Kendwa, Paje au jina la hoteli',
+    e_exact: 'Tafadhali andika mahali hasa ulipo.',
+    fee_note: 'Kuchukua na kurudisha ni bure Uwanja wa Ndege wa Zanzibar na Mji wa Zanzibar. Nje ya eneo la bure ni {fee} kwa kuchukua na {fee} kwa kurudisha.',
+    fl_h: 'Taarifa za ndege',
+    fl_p: 'Tafadhali tupe taarifa za ndege yako ili tupange vizuri kuwasili kwako na kukabidhiwa gari.',
+    fl_air: 'Jina la shirika la ndege', fl_air_ph: 'mf. Qatar Airways', fl_no: 'Namba ya ndege', fl_no_ph: 'mf. QR1349',
+    fl_date: 'Tarehe ya kuwasili', fl_time: 'Saa ya kuwasili', fl_port: 'Uwanja wa kuwasili', fl_notes: 'Maelezo mengine ya ndege',
+    fl_notes_ph: 'Ndege ya kuunganisha, uwezekano wa kuchelewa, idadi ya abiria…',
+    fl_note: 'Taarifa za ndege hutusaidia kupanga kukupokea uwanjani, na tunafuatilia ucheleweshaji ili gari liwe tayari ukitua.',
+    x_h: 'Huduma za ziada', x_seat: 'Kiti cha mtoto', x_seat_p: 'Kiti cha usalama cha mtoto, kimefungwa tayari wakati wa kukabidhi.',
+    sum_car: 'Gari', sum_dur: 'Muda wa kukodi', sum_pick: 'Kuchukua', sum_ret: 'Kurudisha', sum_seat: 'Kiti cha mtoto',
+    sel: 'Kimechaguliwa', not_sel: 'Hakijaongezwa', e_email: "Tafadhali hakiki barua pepe yako."
+  },
+  it: {
+    hh_a: 'Scopri Zanzibar', hh_b: 'a modo tuo.',
+    hh_p: "Esplora la bellezza di Zanzibar con un noleggio auto affidabile, luoghi di ritiro flessibili e la libertà di viaggiare con i tuoi tempi.",
+    cta_explore: 'Scopri le nostre auto', cta_ride: 'Prenota la tua auto', hh_free: 'Consegna gratuita in aeroporto e in città', hh_scroll: 'Scorri',
+    fs_you: 'I tuoi dati', fs_trip: 'Auto e date', fs_loc: 'Ritiro e riconsegna',
+    f_email: 'Email', opt: 'facoltativo',
+    l_air: 'Aeroporto di Zanzibar', l_town: 'Zanzibar Town', l_outside: 'Fuori dalla zona gratuita',
+    f_exact: 'Inserisci il luogo esatto', f_exact_ph: "es. Nungwi, Kendwa, Paje o il nome dell'hotel",
+    e_exact: 'Inserisci il luogo esatto.',
+    fee_note: "Ritiro e riconsegna sono gratuiti all'aeroporto di Zanzibar e a Zanzibar Town. Fuori dalla zona gratuita costano {fee} per il ritiro e {fee} per la riconsegna.",
+    fl_h: 'Informazioni sul volo',
+    fl_p: "Indicaci i dettagli del tuo volo così possiamo coordinare al meglio il tuo arrivo e la consegna dell'auto.",
+    fl_air: 'Compagnia aerea', fl_air_ph: 'es. Qatar Airways', fl_no: 'Numero di volo', fl_no_ph: 'es. QR1349',
+    fl_date: 'Data di arrivo', fl_time: 'Ora di arrivo', fl_port: 'Aeroporto di arrivo', fl_notes: 'Note aggiuntive sul volo',
+    fl_notes_ph: 'Volo in coincidenza, possibili ritardi, numero di passeggeri…',
+    fl_note: "I dettagli del volo ci aiutano a organizzare il ritiro in aeroporto; seguiamo eventuali ritardi così l'auto è pronta quando atterri.",
+    x_h: 'Extra facoltativi', x_seat: 'Seggiolino per bambini', x_seat_p: 'Seggiolino di sicurezza, montato e pronto alla consegna.',
+    sum_car: 'Veicolo', sum_dur: 'Durata del noleggio', sum_pick: 'Ritiro', sum_ret: 'Riconsegna', sum_seat: 'Seggiolino',
+    sel: 'Selezionato', not_sel: 'Non aggiunto', e_email: "Controlla il tuo indirizzo email."
+  },
+  de: {
+    hh_a: 'Entdecke Sansibar', hh_b: 'auf deine Art.',
+    hh_p: 'Erlebe die Schönheit Sansibars mit zuverlässigen Mietwagen, flexiblen Abholorten und der Freiheit, in deinem eigenen Tempo zu reisen.',
+    cta_explore: 'Unsere Autos entdecken', cta_ride: 'Jetzt Auto buchen', hh_free: 'Kostenlose Lieferung an Flughafen & Stadt', hh_scroll: 'Scrollen',
+    fs_you: 'Deine Daten', fs_trip: 'Auto und Daten', fs_loc: 'Abholung und Rückgabe',
+    f_email: 'E-Mail', opt: 'optional',
+    l_air: 'Flughafen Sansibar', l_town: 'Sansibar-Stadt', l_outside: 'Außerhalb der Gratiszone',
+    f_exact: 'Gib deinen genauen Ort ein', f_exact_ph: 'z. B. Nungwi, Kendwa, Paje oder Name des Hotels',
+    e_exact: 'Bitte gib deinen genauen Ort ein.',
+    fee_note: 'Abholung und Rückgabe sind am Flughafen Sansibar und in Sansibar-Stadt kostenlos. Außerhalb der Gratiszone kosten sie {fee} für die Abholung und {fee} für die Rückgabe.',
+    fl_h: 'Fluginformationen',
+    fl_p: 'Bitte gib deine Flugdaten an, damit wir deine Ankunft und die Fahrzeugübergabe reibungslos abstimmen können.',
+    fl_air: 'Fluggesellschaft', fl_air_ph: 'z. B. Qatar Airways', fl_no: 'Flugnummer', fl_no_ph: 'z. B. QR1349',
+    fl_date: 'Ankunftsdatum', fl_time: 'Ankunftszeit', fl_port: 'Ankunftsflughafen', fl_notes: 'Weitere Hinweise zum Flug',
+    fl_notes_ph: 'Anschlussflug, mögliche Verspätung, Anzahl der Reisenden…',
+    fl_note: 'Mit deinen Flugdaten planen wir die Übergabe am Flughafen und verfolgen Verspätungen, damit dein Auto bei der Landung bereitsteht.',
+    x_h: 'Optionale Extras', x_seat: 'Kindersitz', x_seat_p: 'Kindersitz, eingebaut und bereit bei der Übergabe.',
+    sum_car: 'Fahrzeug', sum_dur: 'Mietdauer', sum_pick: 'Abholung', sum_ret: 'Rückgabe', sum_seat: 'Kindersitz',
+    sel: 'Ausgewählt', not_sel: 'Nicht gewählt', e_email: "Bitte überprüfe deine E-Mail-Adresse."
+  },
+  fr: {
+    hh_a: 'Découvrez Zanzibar', hh_b: 'à votre façon.',
+    hh_p: "Explorez la beauté de Zanzibar avec une location de voiture fiable, des lieux de prise en charge flexibles et la liberté de voyager à votre rythme.",
+    cta_explore: 'Découvrir nos voitures', cta_ride: 'Réserver votre voiture', hh_free: "Livraison gratuite à l'aéroport et en ville", hh_scroll: 'Défiler',
+    fs_you: 'Vos coordonnées', fs_trip: 'Voiture et dates', fs_loc: 'Prise en charge et retour',
+    f_email: 'E-mail', opt: 'facultatif',
+    l_air: 'Aéroport de Zanzibar', l_town: 'Zanzibar Town', l_outside: 'Hors zone gratuite',
+    f_exact: 'Indiquez votre lieu exact', f_exact_ph: "ex. Nungwi, Kendwa, Paje ou le nom de l'hôtel",
+    e_exact: 'Veuillez indiquer votre lieu exact.',
+    fee_note: "La prise en charge et le retour sont gratuits à l'aéroport de Zanzibar et à Zanzibar Town. Hors zone gratuite, ils coûtent {fee} pour la prise en charge et {fee} pour le retour.",
+    fl_h: 'Informations de vol',
+    fl_p: 'Indiquez-nous les détails de votre vol afin que nous puissions coordonner votre arrivée et la remise du véhicule en toute simplicité.',
+    fl_air: 'Compagnie aérienne', fl_air_ph: 'ex. Qatar Airways', fl_no: 'Numéro de vol', fl_no_ph: 'ex. QR1349',
+    fl_date: "Date d'arrivée", fl_time: "Heure d'arrivée", fl_port: "Aéroport d'arrivée", fl_notes: 'Remarques sur le vol',
+    fl_notes_ph: 'Vol de correspondance, retard prévu, nombre de passagers…',
+    fl_note: "Les détails du vol nous aident à organiser la remise à l'aéroport, et nous suivons les retards pour que votre voiture soit prête à l'atterrissage.",
+    x_h: 'Options supplémentaires', x_seat: 'Siège bébé', x_seat_p: 'Siège auto pour enfant, installé et prêt à la remise.',
+    sum_car: 'Véhicule', sum_dur: 'Durée de location', sum_pick: 'Prise en charge', sum_ret: 'Retour', sum_seat: 'Siège bébé',
+    sel: 'Sélectionné', not_sel: 'Non ajouté', e_email: "Veuillez vérifier votre adresse e-mail."
+  },
+  es: {
+    hh_a: 'Descubre Zanzíbar', hh_b: 'a tu manera.',
+    hh_p: 'Explora la belleza de Zanzíbar con un alquiler de coches fiable, lugares de recogida flexibles y la libertad de viajar a tu ritmo.',
+    cta_explore: 'Ver nuestros coches', cta_ride: 'Reserva tu coche', hh_free: 'Entrega gratis en aeropuerto y ciudad', hh_scroll: 'Desliza',
+    fs_you: 'Tus datos', fs_trip: 'Coche y fechas', fs_loc: 'Recogida y devolución',
+    f_email: 'Correo electrónico', opt: 'opcional',
+    l_air: 'Aeropuerto de Zanzíbar', l_town: 'Ciudad de Zanzíbar', l_outside: 'Fuera de la zona gratuita',
+    f_exact: 'Indica tu ubicación exacta', f_exact_ph: 'p. ej. Nungwi, Kendwa, Paje o el nombre del hotel',
+    e_exact: 'Indica tu ubicación exacta.',
+    fee_note: 'La recogida y la devolución son gratis en el aeropuerto de Zanzíbar y en la ciudad de Zanzíbar. Fuera de la zona gratuita cuestan {fee} la recogida y {fee} la devolución.',
+    fl_h: 'Información del vuelo',
+    fl_p: 'Indícanos los datos de tu vuelo para coordinar tu llegada y la entrega del coche sin complicaciones.',
+    fl_air: 'Aerolínea', fl_air_ph: 'p. ej. Qatar Airways', fl_no: 'Número de vuelo', fl_no_ph: 'p. ej. QR1349',
+    fl_date: 'Fecha de llegada', fl_time: 'Hora de llegada', fl_port: 'Aeropuerto de llegada', fl_notes: 'Notas adicionales del vuelo',
+    fl_notes_ph: 'Vuelo de conexión, posibles retrasos, número de pasajeros…',
+    fl_note: 'Los datos del vuelo nos ayudan a coordinar la entrega en el aeropuerto, y seguimos los retrasos para que tu coche esté listo al aterrizar.',
+    x_h: 'Extras opcionales', x_seat: 'Silla de bebé', x_seat_p: 'Silla de seguridad infantil, instalada y lista en la entrega.',
+    sum_car: 'Vehículo', sum_dur: 'Duración del alquiler', sum_pick: 'Recogida', sum_ret: 'Devolución', sum_seat: 'Silla de bebé',
+    sel: 'Seleccionada', not_sel: 'No añadida', e_email: "Revisa tu correo electrónico."
+  }
+};
+Object.keys(T6).forEach(l => Object.assign(T[l], T6[l]));
+
 /* ===== Helpers ===== */
 let lang = 'en', filter = 'all';
 const $ = s => document.querySelector(s);
 const $$ = s => [...document.querySelectorAll(s)];
-const t = k => String(T[lang][k] || T.en[k] || k)
+const t = k => String(T[lang][k] || T.en[k] || k.replace(/^v_/, ''))
   .replace(/\{fee2\}/g, money(CONFIG.deliveryFee * 2)).replace(/\{fee\}/g, money(CONFIG.deliveryFee));
 const money = n => CONFIG.currency + Number(n).toFixed(2);
 const waLink = text => `https://wa.me/${CONFIG.whatsapp}` + (text ? `?text=${encodeURIComponent(text)}` : '');
@@ -496,8 +792,8 @@ const track = (name, params) => { try { window.rafikiTrack && window.rafikiTrack
 
 const specsHTML = c => `
   <li>${icon('seats')}${c.seats} ${esc(t('seats'))}</li>
-  <li>${icon('trans')}${esc(c.trans)}</li>
-  ${c.fuel ? `<li>${icon('fuel')}${esc(c.fuel)}</li>` : ''}
+  <li>${icon('trans')}${esc(t('v_' + c.trans))}</li>
+  ${c.fuel ? `<li>${icon('fuel')}${esc(t('v_' + c.fuel))}</li>` : ''}
   ${c.year ? `<li>${icon('year')}${c.year}</li>` : ''}`;
 
 /* ===== Scroll reveal ===== */
@@ -565,6 +861,7 @@ modal.addEventListener('click', e => { if (e.target === modal || e.target.closes
 
 /* ===== Pricing (single source of truth) ===== */
 const findLoc = id => CONFIG.locations.find(l => l.id === id);
+const findArea = id => (CONFIG.areas || []).find(a => a.id === id);
 const locName = (id, inLang = true) => {
   const l = findLoc(id);
   if (!l) return '—';
@@ -573,37 +870,52 @@ const locName = (id, inLang = true) => {
 // Unknown or missing locations are never treated as free.
 const locFee = id => (findLoc(id) || {}).free ? 0 : CONFIG.deliveryFee;
 const feeText = fee => fee === 0 ? t('free') : money(fee);
+const needsExact = id => !!(findLoc(id) || {}).exact;
+const clean = (v, max = 120) => String(v == null ? '' : v).replace(/\s+/g, ' ').trim().slice(0, max);
+const cents = n => Math.max(0, Math.round((Number(n) || 0) * 100) / 100);
 
 // Builds the full price breakdown from raw inputs. Used for the live summary AND
 // recalculated from scratch on submit, so the WhatsApp message never relies on what is shown on screen.
-function quote({ carId, from, to, pickupLoc, returnLoc }) {
+// Pickup and return fees are charged independently (outside -> outside = 2 x fee).
+function quote({ carId, from, to, pickupLoc, returnLoc, babySeat }) {
   const car = CONFIG.fleet.find(x => x.id === carId) || null;
   const days = from && to ? Math.round((new Date(to + 'T00:00') - new Date(from + 'T00:00')) / 864e5) : 0;
-  const rental = car && days > 0 ? +(car.price * days).toFixed(2) : 0;
-  const pickupFee = locFee(pickupLoc);
-  const returnFee = locFee(returnLoc);
-  const locationFees = pickupFee + returnFee;
+  const rental = car && days > 0 ? cents(car.price * days) : 0;
+  const pickupFee = cents(locFee(pickupLoc));
+  const returnFee = cents(locFee(returnLoc));
+  const locationFees = cents(pickupFee + returnFee);
+  const babySeatPrice = babySeat ? cents(CONFIG.babySeatFee) : 0;
   return {
     car, days, rental, pickupLoc, returnLoc, pickupFee, returnFee, locationFees,
-    total: +(rental + locationFees).toFixed(2), complete: !!car && days > 0
+    babySeat: !!babySeat, babySeatPrice,
+    total: cents(rental + locationFees + babySeatPrice), complete: !!car && days > 0
   };
 }
 const formQuote = () => quote({
   carId: $('#car').value, from: $('#from').value, to: $('#to').value,
-  pickupLoc: $('#pickupLoc').value, returnLoc: $('#returnLoc').value
+  pickupLoc: $('#pickupLoc').value, returnLoc: $('#returnLoc').value,
+  babySeat: $('#babySeat').checked
 });
 
 function renderLocations() {
-  const free = CONFIG.locations.filter(l => l.free), paid = CONFIG.locations.filter(l => !l.free);
-  const opts = list => list.map(l => `<option value="${l.id}">${esc(l.i18n ? t(l.i18n) : l.name)}</option>`).join('');
+  const label = l => `${l.i18n ? t(l.i18n) : l.name} · ${l.free ? t('free') : '+' + money(CONFIG.deliveryFee)}`;
   $$('.loc-select').forEach(sel => {
     const keep = sel.value || 'airport';
-    sel.innerHTML =
-      `<optgroup label="${esc(t('free'))}">${opts(free)}</optgroup>` +
-      `<optgroup label="+${esc(money(CONFIG.deliveryFee))} · ${esc(t('fee_zone'))}">${opts(paid)}</optgroup>`;
-    sel.value = keep;
+    sel.innerHTML = CONFIG.locations.map(l => `<option value="${l.id}">${esc(label(l))}</option>`).join('');
+    sel.value = findLoc(keep) ? keep : 'airport';
   });
-  $('#feeNote').textContent = t('fee_note').replace('{fee}', money(CONFIG.deliveryFee));
+  $('#feeNote').textContent = t('fee_note');
+  $('#seatPrice').textContent = '+' + money(CONFIG.babySeatFee);
+}
+
+// Show the "exact location" field only for Outside Free Zone, and make it required there.
+function syncExact() {
+  [['#pickupLoc', '#pickupExactWrap'], ['#returnLoc', '#returnExactWrap']].forEach(([s, w]) => {
+    const wrap = $(w), input = wrap.querySelector('input'), on = needsExact($(s).value);
+    wrap.hidden = !on;
+    input.required = on;
+    if (!on) input.removeAttribute('aria-invalid');
+  });
 }
 
 const pill = (el, fee) => {
@@ -619,15 +931,22 @@ function estimate() {
 
   const row = (label, value, cls = '') => `<div class="${cls}"><dt>${esc(label)}</dt><dd>${value}</dd></div>`;
   const fee = f => `<span class="fee-pill ${f === 0 ? 'is-free' : 'is-paid'}">${esc(feeText(f))}</span>`;
+  const where = (id, exactSel) => {
+    const ex = needsExact(id) ? clean($(exactSel).value) : '';
+    return esc(locName(id)) + (ex ? ` (${esc(ex)})` : '');
+  };
   $('#sumTrip').innerHTML =
-    row(t('f_pick'), `${esc(fmtDate($('#from').value))}<small>${esc(locName(q.pickupLoc))}</small>`) +
-    row(t('f_ret'), `${esc(fmtDate($('#to').value))}<small>${esc(locName(q.returnLoc))}</small>`) +
-    row(t('days'), d > 0 ? `${d}` : '—');
+    row(t('sum_pick'), `${esc(fmtDate($('#from').value))}<small>${where(q.pickupLoc, '#pickupExact')}</small>`) +
+    row(t('sum_ret'), `${esc(fmtDate($('#to').value))}<small>${where(q.returnLoc, '#returnExact')}</small>`) +
+    row(t('sum_dur'), d > 0 ? `${d} ${esc(t('days'))}` : '—');
   $('#sumMoney').innerHTML =
     row(t('sum_rental'), c && d > 0 ? `${money(q.rental)}<small>${money(c.price)} × ${d}</small>` : '—') +
     row(t('sum_pfee'), fee(q.pickupFee)) +
     row(t('sum_rfee'), fee(q.returnFee)) +
-    row(t('sum_loc'), `<b>${q.locationFees === 0 ? esc(t('free')) : money(q.locationFees)}</b>`, 'sub');
+    row(t('sum_loc'), `<b>${q.locationFees === 0 ? esc(t('free')) : money(q.locationFees)}</b>`, 'sub') +
+    row(t('sum_seat'), q.babySeat
+      ? `${money(q.babySeatPrice)}<small>${esc(t('sel'))}</small>`
+      : `<span class="sum-off">${esc(t('not_sel'))}</span>`);
 
   const tot = $('#total');
   const next = q.complete ? money(q.total) : '—';
@@ -644,6 +963,7 @@ function estimate() {
 function applyLang(l) {
   lang = l;
   document.documentElement.lang = l;
+  document.title = t('meta_title');
   $$('[data-i18n]').forEach(e => e.textContent = t(e.dataset.i18n));
   $$('[data-ph]').forEach(e => e.placeholder = t(e.dataset.ph));
   $$('[data-review]').forEach(e => {
@@ -708,11 +1028,25 @@ $$('[data-count]').forEach(el => statIO ? statIO.observe(el) : countUp(el));
 // Date limits (local time)
 const now = new Date();
 const todayISO = new Date(now - now.getTimezoneOffset() * 6e4).toISOString().slice(0, 10);
-$('#from').min = $('#to').min = todayISO;
-$('#from').addEventListener('change', e => { $('#to').min = e.target.value || todayISO; estimate(); });
+$('#from').min = $('#to').min = $('#arrDate').min = todayISO;
+// Arrival date follows the pickup date until the customer sets it themselves.
+let arrTouched = false;
+$('#arrDate').addEventListener('change', () => { arrTouched = true; });
+$('#from').addEventListener('change', e => {
+  $('#to').min = e.target.value || todayISO;
+  if (!arrTouched) $('#arrDate').value = e.target.value;
+  estimate();
+});
 $('#to').addEventListener('change', estimate);
 $('#car').addEventListener('change', estimate);
-$$('.loc-select').forEach(s => s.addEventListener('change', estimate));
+$('#babySeat').addEventListener('change', estimate);
+$$('.loc-select').forEach(s => s.addEventListener('change', () => {
+  syncExact(); estimate();
+  const wrap = s.id === 'pickupLoc' ? $('#pickupExactWrap') : $('#returnExactWrap');
+  if (!wrap.hidden) wrap.querySelector('input').focus({ preventScroll: true });
+}));
+['#pickupExact', '#returnExact'].forEach(id => $(id).addEventListener('input', estimate));
+$('#arrPort').value = CONFIG.arrivalAirport;
 
 // Mobile menu
 const setMenu = open => {
@@ -758,48 +1092,85 @@ $('#form').addEventListener('submit', e => {
     bad.forEach(n => e.target.elements[n].setAttribute('aria-invalid', 'true'));
     e.target.elements[bad[0]].focus();
   };
-  const empty = ['name', 'phone', 'car', 'from', 'to'].filter(n => !String(f[n]).trim());
+  const isDate = v => /^\d{4}-\d{2}-\d{2}$/.test(v || '');
+  const empty = ['name', 'phone', 'car', 'from', 'to'].filter(n => !clean(f[n]));
   if (empty.length) return fail('e_req', empty);
-  if (new Date(f.from + 'T00:00') < today) return fail('e_past', ['from']);
-  if (dayCount() < 1) return fail('e_date', ['to']);
+  if (!c) return fail('e_req', ['car']);
+  if (f.email && !/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(f.email.trim())) return fail('e_email', ['email']);
+  if (!isDate(f.from) || new Date(f.from + 'T00:00') < today) return fail('e_past', ['from']);
+  if (!isDate(f.to) || dayCount() < 1) return fail('e_date', ['to']);
+  // Only the known location types are accepted.
   if (!findLoc(f.pickup_loc)) return fail('e_req', ['pickup_loc']);
   if (!findLoc(f.return_loc)) return fail('e_req', ['return_loc']);
-  // A hotel/address is needed everywhere except the airport.
-  if (f.pickup_loc !== 'airport' && !f.place.trim()) return fail('e_place', ['place']);
-  if (f.return_loc !== 'airport' && !f.return_place.trim()) return fail('e_place', ['return_place']);
+  // Outside Free Zone needs the exact place.
+  if (needsExact(f.pickup_loc) && !clean(f.pickup_exact)) return fail('e_exact', ['pickup_exact']);
+  if (needsExact(f.return_loc) && !clean(f.return_exact)) return fail('e_exact', ['return_exact']);
+  if (f.arrival_date && !isDate(f.arrival_date)) return fail('e_req', ['arrival_date']);
 
   // Recalculate everything from the raw form values (not from the on-screen summary).
-  const q = quote({ carId: f.car, from: f.from, to: f.to, pickupLoc: f.pickup_loc, returnLoc: f.return_loc });
-  const where = (id, detail) => locName(id, false) + (detail.trim() ? ` (${detail.trim()})` : '');
-  const fee = n => n === 0 ? 'FREE' : money(n);
+  const q = quote({ carId: f.car, from: f.from, to: f.to, pickupLoc: f.pickup_loc, returnLoc: f.return_loc, babySeat: f.baby_seat === 'yes' });
+  if (!q.complete || !Number.isFinite(q.total) || q.total < 0) return fail('e_req', ['car']);
+
+  // One record with every field, named for a future backend / database.
   const booking = {
-    name: f.name.trim(), phone: fullPhone(f.phone, f.dial || '255'), car: c.name, carId: c.id,
-    pickupDate: f.from, returnDate: f.to, days: q.days,
-    pickupLocation: where(q.pickupLoc, f.place), returnLocation: where(q.returnLoc, f.return_place),
-    rental: q.rental, pickupFee: q.pickupFee, returnFee: q.returnFee,
-    locationFees: q.locationFees, total: q.total, notes: f.notes.trim()
+    customer_name: clean(f.name, 80), customer_email: clean(f.email, 120), customer_phone: fullPhone(clean(f.phone, 30), f.dial || '255'),
+    car_id: c.id, car_name: c.name, daily_rate: c.price,
+    pickup_date: f.from, return_date: f.to, rental_days: q.days, rental_price: q.rental,
+    pickup_location_type: q.pickupLoc, pickup_exact_location: needsExact(q.pickupLoc) ? clean(f.pickup_exact) : '', pickup_fee: q.pickupFee,
+    return_location_type: q.returnLoc, return_exact_location: needsExact(q.returnLoc) ? clean(f.return_exact) : '', return_fee: q.returnFee,
+    total_location_fee: q.locationFees,
+    baby_seat: q.babySeat, baby_seat_price: q.babySeatPrice,
+    airline_name: clean(f.airline, 60), flight_number: clean(f.flight_no, 20).toUpperCase(),
+    arrival_date: f.arrival_date || '', arrival_time: /^\d{2}:\d{2}/.test(f.arrival_time || '') ? f.arrival_time.slice(0, 5) : '',
+    arrival_airport: clean(f.arrival_airport, 120) || CONFIG.arrivalAirport, flight_notes: clean(f.flight_notes, 400),
+    notes: clean(f.notes, 600), final_total: q.total, currency: 'USD', language: lang, created_at: new Date().toISOString()
   };
+
+  // The message goes to the business, so it is always in English.
+  const enDate = iso => { try { return new Date(iso + 'T00:00').toLocaleDateString('en-GB', { weekday: 'short', day: 'numeric', month: 'short', year: 'numeric' }); } catch (err) { return iso; } };
+  const fee = n => n === 0 ? 'FREE' : money(n);
+  const dur = n => `${n} ${n === 1 ? 'day' : 'days'}`;
+  const locLabel = id => (findLoc(id) || {}).name || id;
+  // [label, value] pairs; empty values are left out, and a section with nothing in it is skipped.
+  const section = (title, pairs) => {
+    const lines = pairs.filter(([, v]) => v !== '' && v !== null && v !== undefined).map(([k, v]) => `${k}: ${v}`);
+    return lines.length ? [title, ...lines].join('\n') : '';
+  };
+  // The arrival date is pre-filled from the pickup date, so on its own it does not count as flight details.
+  const hasFlight = !!(booking.airline_name || booking.flight_number || booking.arrival_time || booking.flight_notes || arrTouched);
+  if (!hasFlight) booking.arrival_date = '';
   const text = [
-    `Hello ${CONFIG.business}, I would like to book a car.`,
-    `Name: ${booking.name}`, `Phone: ${booking.phone}`, `Car: ${booking.car}`,
-    '',
-    `Pickup: ${booking.pickupDate}, ${booking.pickupLocation}`,
-    `Return: ${booking.returnDate}, ${booking.returnLocation}`,
-    `Rental duration: ${booking.days} days`,
-    '',
-    `Car rental: ${money(booking.rental)} (${money(c.price)} x ${booking.days} days)`,
-    `Pickup fee: ${fee(booking.pickupFee)}`,
-    `Return fee: ${fee(booking.returnFee)}`,
-    `Total location fees: ${money(booking.locationFees)}`,
-    `FINAL TOTAL: ${money(booking.total)}`,
-    booking.notes ? `\nNotes: ${booking.notes}` : ''
-  ].filter(s => s !== null && s !== undefined && s !== false).join('\n').replace(/\n+$/, '');
+    `NEW CAR RENTAL BOOKING – ${CONFIG.business.toUpperCase()}`,
+    section('CUSTOMER INFORMATION', [['Name', booking.customer_name], ['Email', booking.customer_email], ['Phone', booking.customer_phone]]),
+    section('VEHICLE INFORMATION', [
+      ['Vehicle', `${c.name}${c.year ? ' (' + c.year + ')' : ''}`],
+      ['Rental Start Date', enDate(booking.pickup_date)], ['Rental End Date', enDate(booking.return_date)],
+      ['Rental Duration', dur(booking.rental_days)]
+    ]),
+    section('PICKUP DETAILS', [['Pickup Location', locLabel(booking.pickup_location_type)], ['Exact Location', booking.pickup_exact_location], ['Pickup Fee', fee(booking.pickup_fee)]]),
+    section('RETURN DETAILS', [['Return Location', locLabel(booking.return_location_type)], ['Exact Location', booking.return_exact_location], ['Return Fee', fee(booking.return_fee)]]),
+    hasFlight ? section('FLIGHT INFORMATION', [
+      ['Airline', booking.airline_name], ['Flight Number', booking.flight_number],
+      ['Arrival Date', booking.arrival_date ? enDate(booking.arrival_date) : ''], ['Arrival Time', booking.arrival_time],
+      ['Arrival Airport', booking.arrival_airport], ['Additional Notes', booking.flight_notes]
+    ]) : '',
+    section('ADDITIONAL SERVICES', [['Baby Seat', booking.baby_seat ? 'Yes' : 'No'], ['Baby Seat Fee', money(booking.baby_seat_price)]]),
+    section('PAYMENT SUMMARY', [
+      ['Vehicle Rental', `${money(booking.rental_price)} (${money(c.price)} x ${dur(booking.rental_days)})`],
+      ['Pickup Fee', fee(booking.pickup_fee)], ['Return Fee', fee(booking.return_fee)],
+      ['Location Fees', money(booking.total_location_fee)],
+      ['Baby Seat', money(booking.baby_seat_price)],
+      ['TOTAL', money(booking.final_total)]
+    ]),
+    booking.notes ? `NOTES\n${booking.notes}` : ''
+  ].filter(Boolean).join('\n\n');
+
   window.lastBooking = booking; // separate fields, ready for a future backend
   msg.textContent = t('ok'); msg.className = 'msg ok';
   toast(t('ok'), 'ok');
   const btn = $('#sendBtn');
   btn.classList.add('is-sent'); setTimeout(() => btn.classList.remove('is-sent'), 2400);
-  track('generate_lead', { value: booking.total, currency: 'USD', item_id: c.id, item_name: c.name, days: booking.days, pickup: q.pickupLoc, return: q.returnLoc });
+  track('generate_lead', { value: booking.final_total, currency: 'USD', item_id: c.id, item_name: c.name, days: booking.rental_days, pickup: q.pickupLoc, return: q.returnLoc, baby_seat: booking.baby_seat });
   window.open(waLink(text), '_blank', 'noopener');
 });
 
@@ -809,8 +1180,8 @@ let ticking = false;
 const onScroll = () => {
   hdr.classList.toggle('scrolled', scrollY > 24);
   if (!reduceMotion && scrollY < innerHeight) {
-    heroBg.style.transform = `translate3d(0, ${scrollY * 0.3}px, 0) scale(1.08)`;
-    heroCar.style.transform = `translate3d(0, ${scrollY * -0.08}px, 0)`;
+    if (heroBg) heroBg.style.transform = `translate3d(0, ${scrollY * 0.3}px, 0)`;
+    if (heroCar) heroCar.style.transform = `translate3d(${scrollY * 0.06}px, ${scrollY * -0.06}px, 0)`;
   }
   ticking = false;
 };
@@ -838,11 +1209,18 @@ try { saved = localStorage.getItem('lang') || 'en'; } catch (e) { }
 applyLang(T[saved] ? saved : 'en');
 
 // Links from the location pages can preselect a car and pickup place: ?car=toyota-ist&pickup=nungwi#book
+// Beach areas (nungwi, paje…) are booked as "Outside Free Zone" with the area as the exact location.
 (() => {
   const p = new URLSearchParams(location.search);
   const car = p.get('car'), pick = p.get('pickup');
   if (car && CONFIG.fleet.some(c => c.id === car)) $('#car').value = car;
+  const area = pick && findArea(pick);
   if (pick && findLoc(pick)) { $('#pickupLoc').value = pick; $('#returnLoc').value = pick; }
+  else if (area) {
+    $('#pickupLoc').value = $('#returnLoc').value = 'outside';
+    $('#pickupExact').value = $('#returnExact').value = area.name;
+  }
+  syncExact();
   if (car || pick) estimate();
 })();
 
@@ -881,13 +1259,23 @@ function ccSet(iso, byUser) {
   if (byUser) cc.touched = true;
   $('#dial').value = c[2];
   ccBtn.innerHTML = `${flag(c[0])}<span class="cc-code">+${c[2]}</span>`;
-  ccBtn.setAttribute('aria-label', `${t('cc_label')}: ${c[1]} +${c[2]}`);
+  ccBtn.setAttribute('aria-label', `${t('cc_label')}: ${ccName(c[0], c[1])} +${c[2]}`);
   $$('#ccList [role=option]').forEach(o => o.setAttribute('aria-selected', o.dataset.iso === c[0]));
 }
 
+let regionNames = null;
+const ccName = (iso, en) => {
+  try {
+    if (!regionNames || regionNames.lang !== lang) regionNames = { lang, dn: new Intl.DisplayNames([lang, 'en'], { type: 'region' }) };
+    return regionNames.dn.of(iso.toUpperCase()) || en;
+  } catch (e) { return en; }
+};
 function ccRender(filter = '') {
   const q = filter.trim().toLowerCase().replace(/^\+/, '');
-  const rows = COUNTRIES.filter(([iso, name, dial]) => !q || name.toLowerCase().includes(q) || dial.startsWith(q) || iso === q);
+  const coll = new Intl.Collator(lang);
+  const list = COUNTRIES.map(([iso, en, dial]) => [iso, ccName(iso, en), dial, en])
+    .sort((a, b) => (a[0] === 'tz' ? -1 : b[0] === 'tz' ? 1 : coll.compare(a[1], b[1])));
+  const rows = list.filter(([iso, name, dial, en]) => !q || name.toLowerCase().includes(q) || en.toLowerCase().includes(q) || dial.startsWith(q) || iso === q);
   ccList.innerHTML = rows.map(([iso, name, dial]) =>
     `<li role="option" tabindex="-1" data-iso="${iso}" aria-selected="${iso === cc.iso}">${flag(iso)}<span class="cc-name">${esc(name)}</span><span class="cc-dial">+${dial}</span></li>`
   ).join('');
@@ -922,7 +1310,7 @@ document.addEventListener('click', e => { if (!ccPop.hidden && !e.target.closest
 
 // Suggest a country from the site language until the visitor picks one.
 const LANG_CC = { sw: 'tz', it: 'it', de: 'de', fr: 'fr', es: 'es', en: 'tz' };
-$$('.lang').forEach(s => s.addEventListener('change', () => ccSet(cc.touched ? cc.iso : (LANG_CC[s.value] || 'tz'))));
+$$('.lang').forEach(s => s.addEventListener('change', () => { ccSet(cc.touched ? cc.iso : (LANG_CC[s.value] || 'tz')); ccRender(ccSearch.value); }));
 ccRender();
 ccSet(LANG_CC[lang] || 'tz');
 $('#ccSearch').placeholder = t('cc_search');

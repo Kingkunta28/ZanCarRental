@@ -34,102 +34,84 @@
     <link rel="stylesheet" href="../css.css" />
   </head>
   <body class="subpage">
-    <a class="skip" href="#main">Skip to content</a>
+    <a class="skip" href="#main" data-t="skip">Skip to content</a>
     <header class="hdr" id="hdr">
       <div class="wrap bar">
         <a class="logo" href="../"><span class="logo-mark"><img src="../images/logo-mark.webp" alt="" width="284" height="160" /></span><span>Rafiki Car Hire</span></a>
         <nav class="nav" id="nav" aria-label="Main">
-          <a href="../">Home</a>
-          <a href="../#fleetsec">Cars</a>
-          <a href="../#how">How it works</a>
-          <a href="../?pickup=matemwe#book">Book</a>
-          <a href="../#areas">Delivery areas</a>
-          <a href="../#faq">FAQ</a>
-          <a href="#contact">Contact</a>
+          <a href="../" data-t="nav_home">Home</a>
+          <a href="../#fleetsec" data-t="nav_fleet">Cars</a>
+          <a href="../#how" data-t="nav_how">How it works</a>
+          <a href="../?pickup=matemwe#book" data-t="nav_book">Book</a>
+          <a href="../#areas" data-t="nav_areas">Delivery areas</a>
+          <a href="../#faq" data-t="nav_faq">FAQ</a>
+          <a href="#contact" data-t="nav_contact">Contact</a>
           <div class="nav-extra">
-            <a class="btn btn-wa" href="https://wa.me/255715518980?text=Hello%20Rafiki%20Car%20Hire%2C%20I%20would%20like%20to%20rent%20a%20car%20in%20Matemwe%20%2F%20Pongwe." target="_blank" rel="noopener">WhatsApp us</a>
+            <select class="lang" aria-label="Language"><option value="en">English</option><option value="sw">Kiswahili</option><option value="it">Italiano</option><option value="de">Deutsch</option><option value="fr">Français</option><option value="es">Español</option></select>
+            <a class="btn btn-wa" href="https://wa.me/255715518980?text=Hello%20Rafiki%20Car%20Hire%2C%20I%20would%20like%20to%20rent%20a%20car%20in%20Matemwe%20%2F%20Pongwe." target="_blank" rel="noopener"><span data-t="wa">WhatsApp us</span></a>
           </div>
         </nav>
         <div class="tools">
-          <a class="btn btn-wa sm hide-m" href="https://wa.me/255715518980?text=Hello%20Rafiki%20Car%20Hire%2C%20I%20would%20like%20to%20rent%20a%20car%20in%20Matemwe%20%2F%20Pongwe." target="_blank" rel="noopener">WhatsApp us</a>
+          <select class="lang" id="lang" aria-label="Language"><option value="en">EN</option><option value="sw">SW</option><option value="it">IT</option><option value="de">DE</option><option value="fr">FR</option><option value="es">ES</option></select>
+          <a class="btn btn-wa sm hide-m" href="https://wa.me/255715518980?text=Hello%20Rafiki%20Car%20Hire%2C%20I%20would%20like%20to%20rent%20a%20car%20in%20Matemwe%20%2F%20Pongwe." target="_blank" rel="noopener"><span data-t="wa">WhatsApp us</span></a>
           <button class="menu" id="menu" type="button" aria-label="Menu" aria-controls="nav" aria-expanded="false"><span></span><span></span></button>
         </div>
       </div>
     </header>
 
     <main id="main">
-      <section class="hero">
-        <div class="hero-bg" aria-hidden="true"></div>
-        <div class="blob b1" aria-hidden="true"></div>
-        <div class="blob b2" aria-hidden="true"></div>
-
-        <div class="wrap hero-grid">
-          <div class="hero-copy">
+      <section class="phero">
+        <div class="wrap phero-grid">
+          <div class="phero-copy">
             <nav class="crumbs" aria-label="Breadcrumb">
-              <ol><li><a href="../">Home</a></li><li aria-current="page">Matemwe &amp; Pongwe</li></ol>
+              <ol><li><a href="../" data-t="nav_home">Home</a></li><li aria-current="page"><span data-t="lbl_car-hire-matemwe-pongwe">Matemwe &amp; Pongwe</span></li></ol>
             </nav>
-            <p class="kicker"><span class="pulse" aria-hidden="true"></span><span>Self-drive car rental in Zanzibar</span></p>
-            <h1>Car Hire in Matemwe and Pongwe, Zanzibar</h1>
-            <p class="hero-p">Matemwe on the north-east coast faces Mnemba Atoll, a favourite for snorkelling and diving trips. Further south, Pongwe is a quiet stretch of beach. We deliver rental cars to hotels in both, so you are not tied to taxis or hotel transfers.</p>
+            <p class="eyebrow"><span data-t="hero_kicker">Self-drive car rental in Zanzibar</span></p>
+            <h1 data-t="h1">Car Hire in Matemwe and Pongwe, Zanzibar</h1>
+            <p class="hero-p" data-t="intro">Matemwe on the north-east coast faces Mnemba Atoll, a favourite for snorkelling and diving trips. Further south, Pongwe is a quiet stretch of beach. We deliver rental cars to hotels in both, so you are not tied to taxis or hotel transfers.</p>
             <div class="hero-cta">
-              <a class="btn btn-sand lg" href="../?pickup=matemwe#book">Book a car for Matemwe<svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
-              <a class="btn btn-glass lg" href="https://wa.me/255715518980?text=Hello%20Rafiki%20Car%20Hire%2C%20I%20would%20like%20to%20rent%20a%20car%20in%20Matemwe%20%2F%20Pongwe." target="_blank" rel="noopener">Ask on WhatsApp</a>
+              <a class="btn btn-sand lg" href="../?pickup=matemwe#book"><span data-t="bk_car-hire-matemwe-pongwe">Book a car for Matemwe</span><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+              <a class="btn btn-glass lg" href="https://wa.me/255715518980?text=Hello%20Rafiki%20Car%20Hire%2C%20I%20would%20like%20to%20rent%20a%20car%20in%20Matemwe%20%2F%20Pongwe." target="_blank" rel="noopener"><span data-t="pg_ask">Ask on WhatsApp</span></a>
             </div>
-            <ul class="trust">
-              <li>Clear prices</li>
-              <li>Support any time</li>
-              <li>Well-kept cars</li>
+            <ul class="phero-facts">
+              <li data-t="w1t">Clear prices</li>
+              <li data-t="w3t">Support any time</li>
+              <li data-t="w4t">Well-kept cars</li>
             </ul>
           </div>
-
-          <div class="hero-visual" aria-hidden="true">
-            <div class="sun"></div>
-            <img class="hero-car" src="../images/toyota-land-cruiser-hero-zanzibar.webp" alt="" width="612" height="408" fetchpriority="high" />
-            <div class="float-chip chip-a">
-              <small>per day, from</small>
-              <b>$20.00</b>
-            </div>
-            <div class="float-chip chip-b">
-              <span class="chip-ic">✈</span><span>Hotel delivery $25.00 each way</span>
-            </div>
-          </div>
+          <figure class="phero-card">
+            <div class="pc-media"><img src="../images/cars/toyota-vanguard-2018-suv-rental-zanzibar.webp" alt="Toyota Vanguard 2018 SUV for hire in Zanzibar" width="800" height="533" fetchpriority="high" decoding="async" /><span class="pc-badge" data-t="chip">Hotel delivery $25.00 each way</span></div>
+            <figcaption>
+              <span><span class="pc-name">Toyota Vanguard</span><span class="pc-meta" data-t="pc_meta">Recommended cars for Matemwe &amp; Pongwe</span></span>
+              <span class="pc-price"><b>$40.00</b><span data-t="per_day">/ day</span></span>
+            </figcaption>
+            <ul class="pc-fees"><li><span>Matemwe</span><span class="fee-pill is-paid" data-t="area_paid">$25.00 each way</span></li><li><span>Pongwe</span><span class="fee-pill is-paid" data-t="area_paid">$25.00 each way</span></li></ul>
+          </figure>
         </div>
-
-        <div class="wrap">
-          <dl class="stats">
-            <div><dt><b>10</b></dt><dd>cars in our fleet</dd></div>
-            <div><dt><b>$20</b></dt><dd>per day, from</dd></div>
-            <div><dt><b>24/7</b></dt><dd>support on WhatsApp</dd></div>
-          </dl>
-        </div>
-
-        <div class="waves w3" aria-hidden="true"></div>
-        <div class="waves w1" aria-hidden="true"></div>
-        <div class="waves w2" aria-hidden="true"></div>
       </section>
 
       <section class="page-body">
         <div class="wrap page-grid">
           <article class="prose">
-          <h2>Delivery to Matemwe and Pongwe</h2>
-          <p>Delivery to your hotel in Matemwe or Pongwe costs $25.00, and collection there costs $25.00. Pickup and return at Zanzibar Airport or in Zanzibar Town are free, so you can, for example, collect the car at the airport and hand it back at your hotel for $25.00 in total.</p>
+          <h2 data-t="s0h">Delivery to Matemwe and Pongwe</h2>
+          <p data-t="s0b0">Delivery to your hotel in Matemwe or Pongwe costs $25.00, and collection there costs $25.00. Pickup and return at Zanzibar Airport or in Zanzibar Town are free, so you can, for example, collect the car at the airport and hand it back at your hotel for $25.00 in total.</p>
 
-          <h2>Getting there</h2>
-          <p>Both villages are about an hour&#39;s drive from Stone Town and the airport. The east coast has big tides: at low tide the sea pulls far back and you will see seaweed farms on the sand, so plan swims and boat trips around the tide times.</p>
+          <h2 data-t="s1h">Getting there</h2>
+          <p data-t="s1b0">Both villages are about an hour&#39;s drive from Stone Town and the airport. The east coast has big tides: at low tide the sea pulls far back and you will see seaweed farms on the sand, so plan swims and boat trips around the tide times.</p>
 
-          <h2>Exploring the east coast by car</h2>
-          <ul><li>Book a boat trip to Mnemba Atoll from Matemwe.</li><li>Drive north to Nungwi and Kendwa for a beach day with less tidal change.</li><li>Head south to Paje and the Michamvi peninsula.</li><li>Visit Stone Town for a day of markets and history.</li></ul>
+          <h2 data-t="s2h">Exploring the east coast by car</h2>
+          <ul><li data-t="s2b0i0">Book a boat trip to Mnemba Atoll from Matemwe.</li><li data-t="s2b0i1">Drive north to Nungwi and Kendwa for a beach day with less tidal change.</li><li data-t="s2b0i2">Head south to Paje and the Michamvi peninsula.</li><li data-t="s2b0i3">Visit Stone Town for a day of markets and history.</li></ul>
 
-          <h2>Which car for Matemwe and Pongwe?</h2>
-          <p>An SUV such as the Toyota Vanguard handles village and beach roads comfortably. The Toyota Land Cruiser is the most capable choice for larger groups, and the Toyota IST is an economical option if you will mostly drive on the main roads.</p>
+          <h2 data-t="s3h">Which car for Matemwe and Pongwe?</h2>
+          <p data-t="s3b0">An SUV such as the Toyota Vanguard handles village and beach roads comfortably. The Toyota Land Cruiser is the most capable choice for larger groups, and the Toyota IST is an economical option if you will mostly drive on the main roads.</p>
           </article>
           <aside class="page-side">
             <div class="side-card">
-              <h2>Delivery to Matemwe &amp; Pongwe</h2>
-              <ul class="fee-list"><li><span>Matemwe</span><span class="fee-pill is-paid">$25.00 each way</span></li><li><span>Pongwe</span><span class="fee-pill is-paid">$25.00 each way</span></li></ul>
-              <p class="side-note">Pickup and return are charged separately. Zanzibar Airport and Zanzibar Town (Stone Town) are always free.</p>
-              <p class="side-from">Cars from <b>$20.00</b> per day</p>
-              <a class="btn btn-sand" href="../?pickup=matemwe#book">Check prices and book</a>
+              <h2 data-t="side_h">Delivery to Matemwe &amp; Pongwe</h2>
+              <ul class="fee-list"><li><span>Matemwe</span><span class="fee-pill is-paid" data-t="area_paid">$25.00 each way</span></li><li><span>Pongwe</span><span class="fee-pill is-paid" data-t="area_paid">$25.00 each way</span></li></ul>
+              <p class="side-note" data-t="pg_side_note">Pickup and return are charged separately. Zanzibar Airport and Zanzibar Town (Stone Town) are always free.</p>
+              <p class="side-from" data-th="side_from">Cars from <b>$20.00</b> per day</p>
+              <a class="btn btn-sand" href="../?pickup=matemwe#book"><span data-t="pg_check">Check prices and book</span></a>
               <a class="btn btn-wa" href="https://wa.me/255715518980?text=Hello%20Rafiki%20Car%20Hire%2C%20I%20would%20like%20to%20rent%20a%20car%20in%20Matemwe%20%2F%20Pongwe." target="_blank" rel="noopener">WhatsApp +255 715 518 980</a>
             </div>
           </aside>
@@ -138,62 +120,62 @@
 
       <section class="page-cars">
         <div class="wrap">
-          <h2>Recommended cars for Matemwe &amp; Pongwe</h2>
+          <h2 data-t="cars_h">Recommended cars for Matemwe &amp; Pongwe</h2>
           <div class="grid">
     <article class="card">
-      <div class="card-media"><img src="../images/cars/toyota-vanguard-2018-suv-rental-zanzibar.webp" alt="Toyota Vanguard 2018 SUV for hire in Zanzibar" width="800" height="533" loading="lazy" decoding="async"><span class="tag">SUV &amp; 4x4</span></div>
+      <div class="card-media"><img src="../images/cars/toyota-vanguard-2018-suv-rental-zanzibar.webp" alt="Toyota Vanguard 2018 SUV for hire in Zanzibar" width="800" height="533" loading="lazy" decoding="async"><span class="tag" data-t="cat_suv">SUV &amp; 4x4</span></div>
       <div class="cb">
         <h3>Toyota Vanguard</h3>
         <ul class="specs">
-          <li><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg>5 seats</li>
-          <li><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><circle cx="6" cy="6" r="2"/><circle cx="12" cy="6" r="2"/><circle cx="18" cy="6" r="2"/><circle cx="6" cy="18" r="2"/><circle cx="12" cy="18" r="2"/><path d="M6 8v8M12 8v8M18 8v3a1 1 0 0 1-1 1H6"/></svg>Automatic</li>
-          <li><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 22V4a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v18M2 22h14M6 7h6M15 10h2a2 2 0 0 1 2 2v5a1.5 1.5 0 0 0 3 0V8l-3-3"/></svg>Petrol</li>
+          <li><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg>5 <span data-t="seats">seats</span></li>
+          <li><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><circle cx="6" cy="6" r="2"/><circle cx="12" cy="6" r="2"/><circle cx="18" cy="6" r="2"/><circle cx="6" cy="18" r="2"/><circle cx="12" cy="18" r="2"/><path d="M6 8v8M12 8v8M18 8v3a1 1 0 0 1-1 1H6"/></svg><span data-t="v_Automatic">Automatic</span></li>
+          <li><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 22V4a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v18M2 22h14M6 7h6M15 10h2a2 2 0 0 1 2 2v5a1.5 1.5 0 0 0 3 0V8l-3-3"/></svg><span data-t="v_Petrol">Petrol</span></li>
           <li><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>2018</li></ul>
         <div class="card-foot">
-          <p class="price"><b>$40.00</b><span>/ day</span></p>
-          <a class="btn btn-b" href="../?car=vanguard-2018&pickup=matemwe#book" data-car="vanguard-2018">Book this car<svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+          <p class="price"><b>$40.00</b><span data-t="per_day">/ day</span></p>
+          <a class="btn btn-b" href="../?car=vanguard-2018&pickup=matemwe#book"><span data-t="book_car">Book this car</span><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
         </div>
       </div>
     </article>
     <article class="card">
-      <div class="card-media"><img src="../images/cars/toyota-land-cruiser-2020-4x4-rental-zanzibar.webp" alt="Toyota Land Cruiser 2020 SUV for hire in Zanzibar" width="800" height="533" loading="lazy" decoding="async"><span class="tag">SUV &amp; 4x4</span></div>
+      <div class="card-media"><img src="../images/cars/toyota-land-cruiser-2020-4x4-rental-zanzibar.webp" alt="Toyota Land Cruiser 2020 SUV for hire in Zanzibar" width="800" height="533" loading="lazy" decoding="async"><span class="tag" data-t="cat_suv">SUV &amp; 4x4</span></div>
       <div class="cb">
         <h3>Toyota Land Cruiser</h3>
         <ul class="specs">
-          <li><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg>5 seats</li>
-          <li><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><circle cx="6" cy="6" r="2"/><circle cx="12" cy="6" r="2"/><circle cx="18" cy="6" r="2"/><circle cx="6" cy="18" r="2"/><circle cx="12" cy="18" r="2"/><path d="M6 8v8M12 8v8M18 8v3a1 1 0 0 1-1 1H6"/></svg>Automatic</li>
-          <li><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 22V4a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v18M2 22h14M6 7h6M15 10h2a2 2 0 0 1 2 2v5a1.5 1.5 0 0 0 3 0V8l-3-3"/></svg>Petrol</li>
+          <li><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg>5 <span data-t="seats">seats</span></li>
+          <li><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><circle cx="6" cy="6" r="2"/><circle cx="12" cy="6" r="2"/><circle cx="18" cy="6" r="2"/><circle cx="6" cy="18" r="2"/><circle cx="12" cy="18" r="2"/><path d="M6 8v8M12 8v8M18 8v3a1 1 0 0 1-1 1H6"/></svg><span data-t="v_Automatic">Automatic</span></li>
+          <li><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 22V4a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v18M2 22h14M6 7h6M15 10h2a2 2 0 0 1 2 2v5a1.5 1.5 0 0 0 3 0V8l-3-3"/></svg><span data-t="v_Petrol">Petrol</span></li>
           <li><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>2020</li></ul>
         <div class="card-foot">
-          <p class="price"><b>$150.00</b><span>/ day</span></p>
-          <a class="btn btn-b" href="../?car=land-cruiser-2020&pickup=matemwe#book" data-car="land-cruiser-2020">Book this car<svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+          <p class="price"><b>$150.00</b><span data-t="per_day">/ day</span></p>
+          <a class="btn btn-b" href="../?car=land-cruiser-2020&pickup=matemwe#book"><span data-t="book_car">Book this car</span><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
         </div>
       </div>
     </article>
     <article class="card">
-      <div class="card-media"><img src="../images/cars/toyota-ist-2018-compact-car-hire-zanzibar.webp" alt="Toyota IST 2018 compact car for hire in Zanzibar" width="800" height="533" loading="lazy" decoding="async"><span class="tag">Compact</span></div>
+      <div class="card-media"><img src="../images/cars/toyota-ist-2018-compact-car-hire-zanzibar.webp" alt="Toyota IST 2018 compact car for hire in Zanzibar" width="800" height="533" loading="lazy" decoding="async"><span class="tag" data-t="cat_small">Compact</span></div>
       <div class="cb">
         <h3>Toyota IST</h3>
         <ul class="specs">
-          <li><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg>5 seats</li>
-          <li><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><circle cx="6" cy="6" r="2"/><circle cx="12" cy="6" r="2"/><circle cx="18" cy="6" r="2"/><circle cx="6" cy="18" r="2"/><circle cx="12" cy="18" r="2"/><path d="M6 8v8M12 8v8M18 8v3a1 1 0 0 1-1 1H6"/></svg>Automatic</li>
-          <li><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 22V4a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v18M2 22h14M6 7h6M15 10h2a2 2 0 0 1 2 2v5a1.5 1.5 0 0 0 3 0V8l-3-3"/></svg>Petrol</li>
+          <li><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg>5 <span data-t="seats">seats</span></li>
+          <li><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><circle cx="6" cy="6" r="2"/><circle cx="12" cy="6" r="2"/><circle cx="18" cy="6" r="2"/><circle cx="6" cy="18" r="2"/><circle cx="12" cy="18" r="2"/><path d="M6 8v8M12 8v8M18 8v3a1 1 0 0 1-1 1H6"/></svg><span data-t="v_Automatic">Automatic</span></li>
+          <li><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 22V4a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v18M2 22h14M6 7h6M15 10h2a2 2 0 0 1 2 2v5a1.5 1.5 0 0 0 3 0V8l-3-3"/></svg><span data-t="v_Petrol">Petrol</span></li>
           <li><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>2018</li></ul>
         <div class="card-foot">
-          <p class="price"><b>$20.00</b><span>/ day</span></p>
-          <a class="btn btn-b" href="../?car=toyota-ist&pickup=matemwe#book" data-car="toyota-ist">Book this car<svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+          <p class="price"><b>$20.00</b><span data-t="per_day">/ day</span></p>
+          <a class="btn btn-b" href="../?car=toyota-ist&pickup=matemwe#book"><span data-t="book_car">Book this car</span><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
         </div>
       </div>
     </article>
           </div>
-          <p class="all-cars"><a href="../#fleetsec">See all 10 cars<svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></p>
+          <p class="all-cars"><a href="../#fleetsec"><span data-t="all_cars">See all 10 cars</span><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></p>
         </div>
       </section>
 
       <section class="page-more">
         <div class="wrap">
-          <h2>Car hire in other parts of Zanzibar</h2>
-          <ul class="area-links"><li><a href="../car-hire-zanzibar-airport/">Zanzibar Airport car rental<svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></li><li><a href="../car-hire-stone-town/">Car hire in Stone Town<svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></li><li><a href="../car-hire-nungwi-kendwa/">Car hire in Nungwi &amp; Kendwa<svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></li><li><a href="../car-hire-paje-jambiani/">Car hire in Paje &amp; Jambiani<svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></li><li><a href="../car-hire-kizimkazi/">Car hire in Kizimkazi<svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></li><li><a href="../driving-in-zanzibar/">Driving in Zanzibar guide<svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></li></ul>
+          <h2 data-t="pg_more">Car hire in other parts of Zanzibar</h2>
+          <ul class="area-links"><li><a href="../car-hire-zanzibar-airport/"><span data-t="lk_car-hire-zanzibar-airport">Zanzibar Airport car rental</span><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></li><li><a href="../car-hire-stone-town/"><span data-t="lk_car-hire-stone-town">Car hire in Stone Town</span><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></li><li><a href="../car-hire-nungwi-kendwa/"><span data-t="lk_car-hire-nungwi-kendwa">Car hire in Nungwi &amp; Kendwa</span><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></li><li><a href="../car-hire-paje-jambiani/"><span data-t="lk_car-hire-paje-jambiani">Car hire in Paje &amp; Jambiani</span><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></li><li><a href="../car-hire-kizimkazi/"><span data-t="lk_car-hire-kizimkazi">Car hire in Kizimkazi</span><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></li><li><a href="../driving-in-zanzibar/"><span data-t="lk_driving-in-zanzibar">Driving in Zanzibar guide</span><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></li></ul>
         </div>
       </section>
     </main>
@@ -202,18 +184,18 @@
       <div class="wrap">
         <div class="cta-band">
           <div>
-            <h2>Ready to explore Zanzibar?</h2>
-            <p>Message us on WhatsApp or book online in a minute.</p>
+            <h2 data-t="cta_h">Ready to explore Zanzibar?</h2>
+            <p data-t="pg_cta_p">Message us on WhatsApp or book online in a minute.</p>
           </div>
           <div class="cta-actions">
-            <a class="btn btn-sand lg" href="../?pickup=matemwe#book">Book now</a>
-            <a class="btn btn-wa lg" href="https://wa.me/255715518980?text=Hello%20Rafiki%20Car%20Hire%2C%20I%20would%20like%20to%20rent%20a%20car%20in%20Matemwe%20%2F%20Pongwe." target="_blank" rel="noopener">WhatsApp us</a>
+            <a class="btn btn-sand lg" href="../?pickup=matemwe#book"><span data-t="cta_book">Book now</span></a>
+            <a class="btn btn-wa lg" href="https://wa.me/255715518980?text=Hello%20Rafiki%20Car%20Hire%2C%20I%20would%20like%20to%20rent%20a%20car%20in%20Matemwe%20%2F%20Pongwe." target="_blank" rel="noopener"><span data-t="wa">WhatsApp us</span></a>
           </div>
         </div>
         <div class="foot-contact page-contact"><a class="btn btn-wa" href="https://wa.me/255715518980" target="_blank" rel="noopener">💬 +255 715 518 980</a>
    <a class="addr" href="tel:+255715518980">📞 +255 715 518 980</a>
    <a class="addr" href="https://maps.google.com/?q=Abeid%20Amani%20Karume%20International%20Airport%2C%20Zanzibar" target="_blank" rel="noopener">📍 Abeid Amani Karume International Airport, Zanzibar</a></div>
-        <p class="copy">© 2026 Rafiki Car Hire. All rights reserved.</p>
+        <p class="copy">© 2026 Rafiki Car Hire. <span data-t="rights">All rights reserved.</span></p>
       </div>
     </footer>
 
@@ -221,6 +203,7 @@
       <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z" /></svg>
       <span>WhatsApp</span>
     </a>
+    <script type="application/json" id="i18n">{"en":{"__title":"Car Hire Matemwe & Pongwe, Zanzibar | Rafiki Car Hire","s0h":"Delivery to Matemwe and Pongwe","s0b0":"Delivery to your hotel in Matemwe or Pongwe costs $25.00, and collection there costs $25.00. Pickup and return at Zanzibar Airport or in Zanzibar Town are free, so you can, for example, collect the car at the airport and hand it back at your hotel for $25.00 in total.","s1h":"Getting there","s1b0":"Both villages are about an hour's drive from Stone Town and the airport. The east coast has big tides: at low tide the sea pulls far back and you will see seaweed farms on the sand, so plan swims and boat trips around the tide times.","s2h":"Exploring the east coast by car","s2b0i0":"Book a boat trip to Mnemba Atoll from Matemwe.","s2b0i1":"Drive north to Nungwi and Kendwa for a beach day with less tidal change.","s2b0i2":"Head south to Paje and the Michamvi peninsula.","s2b0i3":"Visit Stone Town for a day of markets and history.","s3h":"Which car for Matemwe and Pongwe?","s3b0":"An SUV such as the Toyota Vanguard handles village and beach roads comfortably. The Toyota Land Cruiser is the most capable choice for larger groups, and the Toyota IST is an economical option if you will mostly drive on the main roads.","area_paid":"$25.00 each way","lk_car-hire-zanzibar-airport":"Zanzibar Airport car rental","lk_car-hire-stone-town":"Car hire in Stone Town","lk_car-hire-nungwi-kendwa":"Car hire in Nungwi & Kendwa","lk_car-hire-paje-jambiani":"Car hire in Paje & Jambiani","lk_car-hire-kizimkazi":"Car hire in Kizimkazi","lk_driving-in-zanzibar":"Driving in Zanzibar guide","chip":"Hotel delivery $25.00 each way","pc_meta":"Recommended cars for Matemwe & Pongwe","per_day":"/ day","skip":"Skip to content","nav_home":"Home","nav_fleet":"Cars","nav_how":"How it works","nav_book":"Book","nav_areas":"Delivery areas","nav_faq":"FAQ","nav_contact":"Contact","wa":"WhatsApp us","lbl_car-hire-matemwe-pongwe":"Matemwe & Pongwe","hero_kicker":"Self-drive car rental in Zanzibar","h1":"Car Hire in Matemwe and Pongwe, Zanzibar","intro":"Matemwe on the north-east coast faces Mnemba Atoll, a favourite for snorkelling and diving trips. Further south, Pongwe is a quiet stretch of beach. We deliver rental cars to hotels in both, so you are not tied to taxis or hotel transfers.","bk_car-hire-matemwe-pongwe":"Book a car for Matemwe","pg_ask":"Ask on WhatsApp","w1t":"Clear prices","w3t":"Support any time","w4t":"Well-kept cars","side_h":"Delivery to Matemwe & Pongwe","pg_side_note":"Pickup and return are charged separately. Zanzibar Airport and Zanzibar Town (Stone Town) are always free.","side_from":"Cars from \u003cb>$20.00\u003c/b> per day","pg_check":"Check prices and book","cars_h":"Recommended cars for Matemwe & Pongwe","cat_suv":"SUV & 4x4","seats":"seats","v_Automatic":"Automatic","v_Petrol":"Petrol","book_car":"Book this car","cat_small":"Compact","all_cars":"See all 10 cars","pg_more":"Car hire in other parts of Zanzibar","cta_h":"Ready to explore Zanzibar?","pg_cta_p":"Message us on WhatsApp or book online in a minute.","cta_book":"Book now","rights":"All rights reserved."},"sw":{"__title":"Kukodisha Gari Matemwe na Pongwe, Zanzibar | Rafiki Car Hire","s0h":"Kuleta gari Matemwe na Pongwe","s0b0":"Kuleta gari hotelini kwako Matemwe au Pongwe ni $25.00, na kulichukua huko ni $25.00. Kuchukua na kurudisha uwanja wa ndege wa Zanzibar au Mji wa Zanzibar ni bure, hivyo kwa mfano unaweza kuchukua gari uwanja wa ndege na kulirudisha hotelini kwako kwa $25.00 jumla.","s1h":"Jinsi ya kufika","s1b0":"Vijiji vyote viwili viko takriban saa moja kwa gari kutoka Stone Town na uwanja wa ndege. Pwani ya mashariki ina maji kupwa na kujaa kwa kiwango kikubwa: maji yakipwa bahari hurudi mbali na utaona mashamba ya mwani mchangani, hivyo panga kuogelea na safari za mashua kulingana na muda wa maji.","s2h":"Kuzunguka pwani ya mashariki kwa gari","s2b0i0":"Panga safari ya mashua kwenda kisiwa cha Mnemba kutoka Matemwe.","s2b0i1":"Endesha kaskazini hadi Nungwi na Kendwa kwa siku ya ufukweni yenye mabadiliko madogo ya maji.","s2b0i2":"Elekea kusini hadi Paje na rasi ya Michamvi.","s2b0i3":"Tembelea Stone Town kwa siku ya masoko na historia.","s3h":"Gari gani kwa Matemwe na Pongwe?","s3b0":"SUV kama Toyota Vanguard inamudu barabara za vijijini na za ufukweni kwa urahisi. Toyota Land Cruiser ndiyo imara zaidi kwa makundi makubwa, na Toyota IST ni chaguo la gharama nafuu kama utaendesha zaidi barabara kuu.","area_paid":"$25.00 kila upande","lk_car-hire-zanzibar-airport":"Kukodisha gari uwanja wa ndege","lk_car-hire-stone-town":"Kukodisha gari Stone Town","lk_car-hire-nungwi-kendwa":"Kukodisha gari Nungwi na Kendwa","lk_car-hire-paje-jambiani":"Kukodisha gari Paje na Jambiani","lk_car-hire-kizimkazi":"Kukodisha gari Kizimkazi","lk_driving-in-zanzibar":"Mwongozo wa kuendesha Zanzibar","chip":"Kuleta hotelini $25.00 kila upande","pc_meta":"Magari tunayopendekeza: Matemwe na Pongwe","per_day":"/ siku","skip":"Ruka hadi maudhui","nav_home":"Nyumbani","nav_fleet":"Magari","nav_how":"Jinsi inavyofanya kazi","nav_book":"Weka nafasi","nav_areas":"Maeneo tunayofikia","nav_faq":"Maswali","nav_contact":"Mawasiliano","wa":"Tuandikie WhatsApp","lbl_car-hire-matemwe-pongwe":"Matemwe na Pongwe","hero_kicker":"Kukodisha magari Zanzibar","h1":"Kukodisha gari Matemwe na Pongwe, Zanzibar","intro":"Matemwe kwenye pwani ya kaskazini-mashariki inatazamana na kisiwa cha Mnemba, kipenzi cha wanaozamia na kupiga mbizi. Kusini zaidi, Pongwe ni ufukwe tulivu. Tunaleta magari ya kukodi hotelini katika maeneo yote mawili, ili usitegemee teksi au usafiri wa hoteli.","bk_car-hire-matemwe-pongwe":"Weka nafasi Matemwe","pg_ask":"Uliza kupitia WhatsApp","w1t":"Bei wazi","w3t":"Msaada wakati wowote","w4t":"Magari yaliyotunzwa","side_h":"Kuleta gari: Matemwe na Pongwe","pg_side_note":"Kuleta na kurudisha hutozwa kila kimoja. Uwanja wa ndege wa Zanzibar na Mji wa Zanzibar (Stone Town) ni bure kila wakati.","side_from":"Magari kuanzia \u003cb>$20.00\u003c/b> kwa siku","pg_check":"Angalia bei na weka nafasi","cars_h":"Magari tunayopendekeza: Matemwe na Pongwe","cat_suv":"SUV na 4x4","seats":"viti","v_Automatic":"Automatiki","v_Petrol":"Petroli","book_car":"Chagua gari hili","cat_small":"Magari madogo","all_cars":"Tazama magari yote 10","pg_more":"Kukodisha gari maeneo mengine ya Zanzibar","cta_h":"Uko tayari kuizunguka Zanzibar?","pg_cta_p":"Tuandikie WhatsApp au weka nafasi mtandaoni kwa dakika moja.","cta_book":"Weka nafasi","rights":"Haki zote zimehifadhiwa."},"it":{"__title":"Noleggio Auto Matemwe e Pongwe, Zanzibar | Rafiki Car Hire","s0h":"Consegna a Matemwe e Pongwe","s0b0":"La consegna al tuo hotel a Matemwe o Pongwe costa $25.00, e il ritiro lì costa $25.00. Ritiro e riconsegna all'aeroporto di Zanzibar o a Zanzibar Town sono gratuiti: per esempio puoi ritirare l'auto in aeroporto e riconsegnarla al tuo hotel per $25.00 in totale.","s1h":"Come arrivare","s1b0":"Entrambi i villaggi distano circa un'ora di auto da Stone Town e dall'aeroporto. La costa orientale ha maree importanti: con la bassa marea il mare si ritira molto e sulla sabbia si vedono le coltivazioni di alghe, quindi organizza bagni e uscite in barca in base agli orari delle maree.","s2h":"Esplorare la costa orientale in auto","s2b0i0":"Prenota un'uscita in barca all'atollo di Mnemba da Matemwe.","s2b0i1":"Sali a nord fino a Nungwi e Kendwa per una giornata di mare con meno escursione di marea.","s2b0i2":"Scendi a sud verso Paje e la penisola di Michamvi.","s2b0i3":"Visita Stone Town per una giornata di mercati e storia.","s3h":"Quale auto per Matemwe e Pongwe?","s3b0":"Un SUV come la Toyota Vanguard affronta comodamente le strade dei villaggi e delle spiagge. La Toyota Land Cruiser è la scelta più robusta per i gruppi numerosi, mentre la Toyota IST è un'opzione economica se guiderai soprattutto sulle strade principali.","area_paid":"$25.00 a tratta","lk_car-hire-zanzibar-airport":"Noleggio auto all'aeroporto di Zanzibar","lk_car-hire-stone-town":"Noleggio auto a Stone Town","lk_car-hire-nungwi-kendwa":"Noleggio auto a Nungwi e Kendwa","lk_car-hire-paje-jambiani":"Noleggio auto a Paje e Jambiani","lk_car-hire-kizimkazi":"Noleggio auto a Kizimkazi","lk_driving-in-zanzibar":"Guidare a Zanzibar: la guida","chip":"Consegna in hotel $25.00 a tratta","pc_meta":"Auto consigliate: Matemwe e Pongwe","per_day":"/ giorno","skip":"Vai al contenuto","nav_home":"Home","nav_fleet":"Auto","nav_how":"Come funziona","nav_book":"Prenota","nav_areas":"Zone di consegna","nav_faq":"FAQ","nav_contact":"Contatti","wa":"Scrivici su WhatsApp","lbl_car-hire-matemwe-pongwe":"Matemwe e Pongwe","hero_kicker":"Noleggio auto a Zanzibar","h1":"Noleggio auto a Matemwe e Pongwe, Zanzibar","intro":"Matemwe, sulla costa nord-orientale, si affaccia sull'atollo di Mnemba, meta preferita per snorkeling e immersioni. Più a sud, Pongwe è un tratto di spiaggia tranquillo. Consegniamo auto a noleggio negli hotel di entrambe, così non dipendi da taxi o transfer.","bk_car-hire-matemwe-pongwe":"Prenota un'auto a Matemwe","pg_ask":"Chiedi su WhatsApp","w1t":"Prezzi chiari","w3t":"Assistenza sempre","w4t":"Auto ben curate","side_h":"Consegna: Matemwe e Pongwe","pg_side_note":"Consegna e riconsegna si pagano separatamente. L'aeroporto di Zanzibar e Zanzibar Town (Stone Town) sono sempre gratuiti.","side_from":"Auto da \u003cb>$20.00\u003c/b> al giorno","pg_check":"Vedi i prezzi e prenota","cars_h":"Auto consigliate: Matemwe e Pongwe","cat_suv":"SUV e 4x4","seats":"posti","v_Automatic":"Automatico","v_Petrol":"Benzina","book_car":"Prenota questa auto","cat_small":"Compatte","all_cars":"Vedi tutte le 10 auto","pg_more":"Noleggio auto in altre zone di Zanzibar","cta_h":"Pronto a scoprire Zanzibar?","pg_cta_p":"Scrivici su WhatsApp o prenota online in un minuto.","cta_book":"Prenota ora","rights":"Tutti i diritti riservati."},"de":{"__title":"Mietwagen Matemwe & Pongwe, Sansibar | Rafiki Car Hire","s0h":"Lieferung nach Matemwe und Pongwe","s0b0":"Die Lieferung zu deinem Hotel in Matemwe oder Pongwe kostet $25.00, die Abholung dort $25.00. Übernahme und Rückgabe am Flughafen Sansibar oder in Zanzibar Town sind kostenlos. Du kannst das Auto also zum Beispiel am Flughafen übernehmen und für insgesamt $25.00 an deinem Hotel zurückgeben.","s1h":"Anfahrt","s1b0":"Beide Orte liegen etwa eine Autostunde von Stone Town und dem Flughafen entfernt. An der Ostküste gibt es starke Gezeiten: Bei Ebbe zieht sich das Meer weit zurück, und auf dem Sand siehst du Seetangfarmen. Plane Baden und Bootsausflüge deshalb nach den Gezeiten.","s2h":"Die Ostküste mit dem Auto erkunden","s2b0i0":"Buche ab Matemwe einen Bootsausflug zum Mnemba-Atoll.","s2b0i1":"Fahr nach Norden nach Nungwi und Kendwa für einen Strandtag mit weniger Gezeitenunterschied.","s2b0i2":"Fahr nach Süden nach Paje und zur Halbinsel Michamvi.","s2b0i3":"Besuch Stone Town für einen Tag voller Märkte und Geschichte.","s3h":"Welches Auto für Matemwe und Pongwe?","s3b0":"Ein SUV wie der Toyota Vanguard meistert Dorf- und Strandwege bequem. Der Toyota Land Cruiser ist die robusteste Wahl für größere Gruppen, und der Toyota IST ist eine sparsame Option, wenn du vor allem Hauptstraßen fährst.","area_paid":"$25.00 pro Strecke","lk_car-hire-zanzibar-airport":"Mietwagen am Flughafen Sansibar","lk_car-hire-stone-town":"Mietwagen in Stone Town","lk_car-hire-nungwi-kendwa":"Mietwagen in Nungwi & Kendwa","lk_car-hire-paje-jambiani":"Mietwagen in Paje & Jambiani","lk_car-hire-kizimkazi":"Mietwagen in Kizimkazi","lk_driving-in-zanzibar":"Ratgeber: Autofahren auf Sansibar","chip":"Hotellieferung $25.00 pro Strecke","pc_meta":"Empfohlene Autos: Matemwe & Pongwe","per_day":"/ Tag","skip":"Zum Inhalt springen","nav_home":"Startseite","nav_fleet":"Autos","nav_how":"So funktioniert's","nav_book":"Buchen","nav_areas":"Liefergebiete","nav_faq":"FAQ","nav_contact":"Kontakt","wa":"Schreib uns auf WhatsApp","lbl_car-hire-matemwe-pongwe":"Matemwe & Pongwe","hero_kicker":"Autovermietung auf Sansibar","h1":"Mietwagen in Matemwe und Pongwe, Sansibar","intro":"Matemwe an der Nordostküste liegt gegenüber dem Mnemba-Atoll, einem beliebten Ziel für Schnorchel- und Tauchausflüge. Weiter südlich ist Pongwe ein ruhiger Strandabschnitt. Wir liefern Mietwagen zu Hotels an beiden Orten, damit du nicht auf Taxis oder Hoteltransfers angewiesen bist.","bk_car-hire-matemwe-pongwe":"Auto in Matemwe buchen","pg_ask":"Per WhatsApp fragen","w1t":"Klare Preise","w3t":"Jederzeit Hilfe","w4t":"Gepflegte Autos","side_h":"Lieferung: Matemwe & Pongwe","pg_side_note":"Übergabe und Rückgabe werden getrennt berechnet. Der Flughafen Sansibar und Zanzibar Town (Stone Town) sind immer kostenlos.","side_from":"Autos ab \u003cb>$20.00\u003c/b> pro Tag","pg_check":"Preise prüfen und buchen","cars_h":"Empfohlene Autos: Matemwe & Pongwe","cat_suv":"SUV & 4x4","seats":"Sitze","v_Automatic":"Automatik","v_Petrol":"Benzin","book_car":"Dieses Auto buchen","cat_small":"Kompakt","all_cars":"Alle 10 Autos ansehen","pg_more":"Mietwagen in anderen Teilen Sansibars","cta_h":"Bereit, Sansibar zu entdecken?","pg_cta_p":"Schreib uns auf WhatsApp oder buche in einer Minute online.","cta_book":"Jetzt buchen","rights":"Alle Rechte vorbehalten."},"fr":{"__title":"Location de Voiture Matemwe et Pongwe, Zanzibar | Rafiki Car Hire","s0h":"Livraison à Matemwe et Pongwe","s0b0":"La livraison à votre hôtel à Matemwe ou Pongwe coûte $25.00, et la reprise sur place coûte $25.00. La prise en charge et le retour à l'aéroport de Zanzibar ou à Zanzibar Town sont gratuits : vous pouvez par exemple prendre la voiture à l'aéroport et la rendre à votre hôtel pour $25.00 au total.","s1h":"Comment s'y rendre","s1b0":"Les deux villages sont à environ une heure de route de Stone Town et de l'aéroport. La côte est connaît de fortes marées : à marée basse, la mer se retire loin et l'on voit les cultures d'algues sur le sable. Prévoyez baignades et sorties en bateau selon les horaires des marées.","s2h":"Explorer la côte est en voiture","s2b0i0":"Réservez une sortie en bateau vers l'atoll de Mnemba depuis Matemwe.","s2b0i1":"Montez au nord vers Nungwi et Kendwa pour une journée plage avec moins de marée.","s2b0i2":"Descendez au sud vers Paje et la péninsule de Michamvi.","s2b0i3":"Visitez Stone Town pour une journée de marchés et d'histoire.","s3h":"Quelle voiture pour Matemwe et Pongwe ?","s3b0":"Un SUV comme le Toyota Vanguard circule confortablement sur les routes de village et de plage. Le Toyota Land Cruiser est le choix le plus robuste pour les grands groupes, et la Toyota IST est une option économique si vous roulez surtout sur les routes principales.","area_paid":"$25.00 par trajet","lk_car-hire-zanzibar-airport":"Location de voiture à l'aéroport de Zanzibar","lk_car-hire-stone-town":"Location de voiture à Stone Town","lk_car-hire-nungwi-kendwa":"Location de voiture à Nungwi et Kendwa","lk_car-hire-paje-jambiani":"Location de voiture à Paje et Jambiani","lk_car-hire-kizimkazi":"Location de voiture à Kizimkazi","lk_driving-in-zanzibar":"Guide : conduire à Zanzibar","chip":"Livraison à l'hôtel $25.00 par trajet","pc_meta":"Voitures recommandées : Matemwe et Pongwe","per_day":"/ jour","skip":"Aller au contenu","nav_home":"Accueil","nav_fleet":"Voitures","nav_how":"Comment ça marche","nav_book":"Réserver","nav_areas":"Zones de livraison","nav_faq":"FAQ","nav_contact":"Contact","wa":"Écrivez-nous sur WhatsApp","lbl_car-hire-matemwe-pongwe":"Matemwe et Pongwe","hero_kicker":"Location de voitures à Zanzibar","h1":"Location de voiture à Matemwe et Pongwe, Zanzibar","intro":"Matemwe, sur la côte nord-est, fait face à l'atoll de Mnemba, très prisé pour le snorkeling et la plongée. Plus au sud, Pongwe est une plage tranquille. Nous livrons des voitures de location aux hôtels des deux villages, pour ne pas dépendre des taxis ou des transferts.","bk_car-hire-matemwe-pongwe":"Réserver à Matemwe","pg_ask":"Demander sur WhatsApp","w1t":"Prix clairs","w3t":"Assistance à toute heure","w4t":"Voitures bien entretenues","side_h":"Livraison : Matemwe et Pongwe","pg_side_note":"La livraison et le retour sont facturés séparément. L'aéroport de Zanzibar et Zanzibar Town (Stone Town) sont toujours gratuits.","side_from":"Voitures à partir de \u003cb>$20.00\u003c/b> par jour","pg_check":"Voir les prix et réserver","cars_h":"Voitures recommandées : Matemwe et Pongwe","cat_suv":"SUV et 4x4","seats":"places","v_Automatic":"Automatique","v_Petrol":"Essence","book_car":"Réserver cette voiture","cat_small":"Citadines","all_cars":"Voir les 10 voitures","pg_more":"Location de voiture ailleurs à Zanzibar","cta_h":"Prêt à explorer Zanzibar ?","pg_cta_p":"Écrivez-nous sur WhatsApp ou réservez en ligne en une minute.","cta_book":"Réserver","rights":"Tous droits réservés."},"es":{"__title":"Alquiler de Coches Matemwe y Pongwe, Zanzíbar | Rafiki Car Hire","s0h":"Entrega en Matemwe y Pongwe","s0b0":"La entrega en tu hotel de Matemwe o Pongwe cuesta $25.00, y la recogida allí cuesta $25.00. La recogida y la devolución en el aeropuerto de Zanzíbar o en Zanzibar Town son gratis, así que puedes, por ejemplo, recoger el coche en el aeropuerto y devolverlo en tu hotel por $25.00 en total.","s1h":"Cómo llegar","s1b0":"Ambos pueblos están a una hora en coche de Stone Town y del aeropuerto. La costa este tiene mareas grandes: con marea baja el mar se retira mucho y verás cultivos de algas sobre la arena, así que planifica baños y salidas en barco según las mareas.","s2h":"Recorrer la costa este en coche","s2b0i0":"Reserva una salida en barco al atolón de Mnemba desde Matemwe.","s2b0i1":"Sube al norte hasta Nungwi y Kendwa para un día de playa con menos marea.","s2b0i2":"Baja al sur hacia Paje y la península de Michamvi.","s2b0i3":"Visita Stone Town para un día de mercados e historia.","s3h":"¿Qué coche para Matemwe y Pongwe?","s3b0":"Un SUV como el Toyota Vanguard se mueve con comodidad por caminos de pueblo y de playa. El Toyota Land Cruiser es la opción más robusta para grupos grandes, y el Toyota IST es una alternativa económica si vas a conducir sobre todo por carreteras principales.","area_paid":"$25.00 por trayecto","lk_car-hire-zanzibar-airport":"Alquiler de coches en el aeropuerto de Zanzíbar","lk_car-hire-stone-town":"Alquiler de coches en Stone Town","lk_car-hire-nungwi-kendwa":"Alquiler de coches en Nungwi y Kendwa","lk_car-hire-paje-jambiani":"Alquiler de coches en Paje y Jambiani","lk_car-hire-kizimkazi":"Alquiler de coches en Kizimkazi","lk_driving-in-zanzibar":"Guía para conducir en Zanzíbar","chip":"Entrega en hotel $25.00 por trayecto","pc_meta":"Coches recomendados: Matemwe y Pongwe","per_day":"/ día","skip":"Ir al contenido","nav_home":"Inicio","nav_fleet":"Coches","nav_how":"Cómo funciona","nav_book":"Reservar","nav_areas":"Zonas de entrega","nav_faq":"Preguntas","nav_contact":"Contacto","wa":"Escríbenos por WhatsApp","lbl_car-hire-matemwe-pongwe":"Matemwe y Pongwe","hero_kicker":"Alquiler de coches en Zanzíbar","h1":"Alquiler de coches en Matemwe y Pongwe, Zanzíbar","intro":"Matemwe, en la costa noreste, está frente al atolón de Mnemba, uno de los lugares favoritos para hacer snorkel y bucear. Más al sur, Pongwe es un tramo de playa tranquilo. Entregamos coches de alquiler en hoteles de ambos, para que no dependas de taxis ni traslados.","bk_car-hire-matemwe-pongwe":"Reservar en Matemwe","pg_ask":"Preguntar por WhatsApp","w1t":"Precios claros","w3t":"Ayuda a cualquier hora","w4t":"Coches bien cuidados","side_h":"Entrega: Matemwe y Pongwe","pg_side_note":"La entrega y la devolución se cobran por separado. El aeropuerto de Zanzíbar y Zanzibar Town (Stone Town) son siempre gratis.","side_from":"Coches desde \u003cb>$20.00\u003c/b> al día","pg_check":"Ver precios y reservar","cars_h":"Coches recomendados: Matemwe y Pongwe","cat_suv":"SUV y 4x4","seats":"plazas","v_Automatic":"Automático","v_Petrol":"Gasolina","book_car":"Reservar este coche","cat_small":"Compactos","all_cars":"Ver los 10 coches","pg_more":"Alquiler de coches en otras zonas de Zanzíbar","cta_h":"¿Listo para descubrir Zanzíbar?","pg_cta_p":"Escríbenos por WhatsApp o reserva online en un minuto.","cta_book":"Reservar ahora","rights":"Todos los derechos reservados."}}</script>
     <script src="../analytics.js"></script>
     <script src="../page.js"></script>
   </body>

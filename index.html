@@ -100,11 +100,11 @@
     </header>
 
     <main id="main">
-      <!-- ============ Hero ============ -->
-      <section class="hero">
-        <div class="hero-bg" aria-hidden="true"></div>
-        <div class="blob b1" aria-hidden="true"></div>
-        <div class="blob b2" aria-hidden="true"></div>
+      <!-- ============ Hero (home only: cinematic) ============ -->
+      <section class="hero hero-home">
+        <div class="hero-bg" aria-hidden="true"><div class="hero-photo"></div></div>
+        <div class="hero-shade" aria-hidden="true"></div>
+        <div class="hero-glow" aria-hidden="true"></div>
 
         <div class="wrap hero-grid">
           <div class="hero-copy">
@@ -112,29 +112,21 @@
               <span class="pulse" aria-hidden="true"></span
               ><span data-i18n="hero_kicker">Self-drive car rental in Zanzibar</span>
             </p>
-            <h1 data-i18n="h1">Car hire in Zanzibar, your way</h1>
-            <p class="hero-p" data-i18n="hero_p">Clean, well-kept cars delivered to the airport or your hotel. Book in a minute on WhatsApp.</p>
+            <h1 class="hh"><span class="hh-a" data-i18n="hh_a">Discover Zanzibar</span> <em class="hh-b" data-i18n="hh_b">your way.</em></h1>
+            <p class="hero-p" data-i18n="hh_p">Explore the beauty of Zanzibar with reliable car hire, flexible pickup locations, and the freedom to travel at your own pace.</p>
             <div class="hero-cta">
-              <a class="btn btn-sand lg" href="#book"
-                ><span data-i18n="cta_book">Book now</span>
+              <a class="btn btn-sand lg" href="#fleetsec"
+                ><span data-i18n="cta_explore">Explore our cars</span>
                 <svg class="ic" viewBox="0 0 24 24" aria-hidden="true">
                   <path d="M5 12h14M13 6l6 6-6 6" /></svg
               ></a>
-              <a
-                class="btn btn-glass lg"
-                href="#fleetsec"
-                data-i18n="cta_fleet"
-              >See the cars</a>
+              <a class="btn btn-glass lg" href="#book" data-i18n="cta_ride">Book your ride</a>
             </div>
-            <ul class="trust">
-              <li data-i18n="w1t">Clear prices</li>
-              <li data-i18n="w3t">Support any time</li>
-              <li data-i18n="w4t">Well-kept cars</li>
-            </ul>
           </div>
 
           <div class="hero-visual" aria-hidden="true">
-            <div class="sun"></div>
+            <div class="hero-halo"></div>
+            <div class="hero-road"></div>
             <img
               class="hero-car"
               src="images/toyota-land-cruiser-hero-zanzibar.webp"
@@ -147,14 +139,11 @@
               <small data-i18n="stat_from">per day, from</small>
               <b id="heroFrom">$20.00</b>
             </div>
-            <div class="float-chip chip-b">
-              <span class="chip-ic">✈</span><span data-i18n="w2t">Airport and hotel delivery</span>
-            </div>
           </div>
         </div>
 
-        <div class="wrap">
-          <dl class="stats">
+        <div class="wrap hero-rail-wrap">
+          <dl class="stats hero-rail">
             <div>
               <dt><b id="statCars" data-count="0">10</b></dt>
               <dd data-i18n="stat_cars">cars in our fleet</dd>
@@ -167,12 +156,12 @@
               <dt><b>24/7</b></dt>
               <dd data-i18n="stat_support">support on WhatsApp</dd>
             </div>
+            <div class="rail-free">
+              <dt><b>$0</b></dt>
+              <dd data-i18n="hh_free">Free airport &amp; town delivery</dd>
+            </div>
           </dl>
         </div>
-
-        <div class="waves w3" aria-hidden="true"></div>
-        <div class="waves w1" aria-hidden="true"></div>
-        <div class="waves w2" aria-hidden="true"></div>
       </section>
 
       <!-- ============ How it works ============ -->
@@ -400,93 +389,152 @@
 
           <div class="book-grid reveal">
             <form id="form" class="formcard" novalidate>
-              <div class="fields">
-                <label>
-                  <span data-i18n="f_name">Full name</span>
-                  <input name="name" autocomplete="name" required />
-                </label>
-                <div class="tel-field">
-                  <label for="phone"><span data-i18n="f_phone">Phone number</span></label>
-                  <div class="tel-group" id="telGroup">
-                    <button
-                      type="button"
-                      class="cc-btn"
-                      id="ccBtn"
-                      aria-haspopup="listbox"
-                      aria-expanded="false"
-                      aria-controls="ccPop"
-                    ></button>
-                    <input
-                      id="phone"
-                      name="phone"
-                      type="tel"
-                      autocomplete="tel-national"
-                      inputmode="tel"
-                      placeholder="712 345 678"
-                      required
-                    />
-                    <input type="hidden" name="dial" id="dial" value="255" />
-                    <div class="cc-pop" id="ccPop" hidden>
+              <fieldset class="fset">
+                <legend class="fset-h"><span class="fset-n" aria-hidden="true">1</span><span data-i18n="fs_you">Your details</span></legend>
+                <div class="fields">
+                  <label>
+                    <span data-i18n="f_name">Full name</span>
+                    <input name="name" autocomplete="name" maxlength="80" required />
+                  </label>
+                  <div class="tel-field">
+                    <label for="phone"><span data-i18n="f_phone">Phone number</span></label>
+                    <div class="tel-group" id="telGroup">
+                      <button
+                        type="button"
+                        class="cc-btn"
+                        id="ccBtn"
+                        aria-haspopup="listbox"
+                        aria-expanded="false"
+                        aria-controls="ccPop"
+                      ></button>
                       <input
-                        type="search"
-                        class="cc-search"
-                        id="ccSearch"
-                        data-ph="cc_search"
-                        autocomplete="off" placeholder="Search country or code" />
-                      <ul class="cc-list" id="ccList" role="listbox"></ul>
+                        id="phone"
+                        name="phone"
+                        type="tel"
+                        autocomplete="tel-national"
+                        inputmode="tel"
+                        maxlength="30"
+                        placeholder="712 345 678"
+                        required
+                      />
+                      <input type="hidden" name="dial" id="dial" value="255" />
+                      <div class="cc-pop" id="ccPop" hidden>
+                        <input
+                          type="search"
+                          class="cc-search"
+                          id="ccSearch"
+                          data-ph="cc_search"
+                          autocomplete="off" placeholder="Search country or code" />
+                        <ul class="cc-list" id="ccList" role="listbox"></ul>
+                      </div>
                     </div>
                   </div>
+                  <label class="full">
+                    <span class="lbl"><span data-i18n="f_email">Email</span><em class="opt" data-i18n="opt">optional</em></span>
+                    <input name="email" id="email" type="email" autocomplete="email" inputmode="email" maxlength="120" placeholder="you@example.com" />
+                  </label>
                 </div>
-                <label class="full">
-                  <span data-i18n="f_car">Car</span>
-                  <select name="car" id="car" required><option value="">Choose a car</option><option value="nissan-e-class">Nissan Juke (2018) · $25.00 / day</option><option value="rav4-2018">Toyota RAV4 New (2018) · $35.00 / day</option><option value="vanguard-2018">Toyota Vanguard (2018) · $40.00 / day</option><option value="rav4-2016">Toyota RAV4 (2016) · $30.00 / day</option><option value="land-cruiser-2020">Toyota Land Cruiser (2020) · $150.00 / day</option><option value="suzuki-escudo-2019">Suzuki Escudo (2019) · $26.00 / day</option><option value="toyota-c-class">Toyota Hilux (2010) · $90.00 / day</option><option value="toyota-g-class">Toyota Harrier (2015) · $45.00 / day</option><option value="toyota-ist">Toyota IST (2018) · $20.00 / day</option><option value="toyota-alphad">Toyota Alphard (2013) · $45.00 / day</option></select>
-                </label>
-                <label>
-                  <span data-i18n="f_pick">Pickup date</span>
-                  <input name="from" id="from" type="date" required />
-                </label>
-                <label>
-                  <span data-i18n="f_ret">Return date</span>
-                  <input name="to" id="to" type="date" required />
-                </label>
-                <label>
-                  <span class="lbl"
-                    ><span data-i18n="f_loc">Pickup place</span
-                    ><em class="fee-pill" id="pickupFeePill"></em
-                  ></span>
-                  <select
-                    name="pickup_loc"
-                    id="pickupLoc"
-                    class="loc-select"
-                    required
-                  ><optgroup label="Free"><option value="airport">Zanzibar airport</option><option value="town">Zanzibar Town (Stone Town)</option></optgroup><optgroup label="+$25.00 · Outside the free zone"><option value="nungwi">Nungwi</option><option value="kendwa">Kendwa</option><option value="matemwe">Matemwe</option><option value="pongwe">Pongwe</option><option value="paje">Paje</option><option value="jambiani">Jambiani</option><option value="bwejuu">Bwejuu</option><option value="michamvi">Michamvi</option><option value="kizimkazi">Kizimkazi</option><option value="other">Other address</option></optgroup></select>
-                </label>
-                <label>
-                  <span data-i18n="f_place">Hotel name or address</span>
-                  <input name="place" data-ph="f_place" placeholder="Hotel name or address" />
-                </label>
-                <label>
-                  <span class="lbl"
-                    ><span data-i18n="f_ret_loc">Return place</span
-                    ><em class="fee-pill" id="returnFeePill"></em
-                  ></span>
-                  <select
-                    name="return_loc"
-                    id="returnLoc"
-                    class="loc-select"
-                    required
-                  ><optgroup label="Free"><option value="airport">Zanzibar airport</option><option value="town">Zanzibar Town (Stone Town)</option></optgroup><optgroup label="+$25.00 · Outside the free zone"><option value="nungwi">Nungwi</option><option value="kendwa">Kendwa</option><option value="matemwe">Matemwe</option><option value="pongwe">Pongwe</option><option value="paje">Paje</option><option value="jambiani">Jambiani</option><option value="bwejuu">Bwejuu</option><option value="michamvi">Michamvi</option><option value="kizimkazi">Kizimkazi</option><option value="other">Other address</option></optgroup></select>
-                </label>
-                <label>
-                  <span data-i18n="f_ret_place">Return hotel or address</span>
-                  <input name="return_place" data-ph="f_ret_place" placeholder="Return hotel or address" />
-                </label>
-                <p class="full fee-note" id="feeNote">Delivery and collection are free at Zanzibar Airport and Zanzibar Town. Other locations cost $25.00 each, for pickup and for return.</p>
-                <label class="full">
-                  <span data-i18n="f_notes">Notes (optional)</span>
-                  <textarea name="notes" rows="3"></textarea>
-                </label>
-              </div>
+              </fieldset>
+
+              <fieldset class="fset">
+                <legend class="fset-h"><span class="fset-n" aria-hidden="true">2</span><span data-i18n="fs_trip">Car and dates</span></legend>
+                <div class="fields">
+                  <label class="full">
+                    <span data-i18n="f_car">Car</span>
+                    <select name="car" id="car" required><option value="">Choose a car</option><option value="nissan-e-class">Nissan Juke (2018) · $25.00 / day</option><option value="rav4-2018">Toyota RAV4 New (2018) · $35.00 / day</option><option value="vanguard-2018">Toyota Vanguard (2018) · $40.00 / day</option><option value="rav4-2016">Toyota RAV4 (2016) · $30.00 / day</option><option value="land-cruiser-2020">Toyota Land Cruiser (2020) · $150.00 / day</option><option value="suzuki-escudo-2019">Suzuki Escudo (2019) · $26.00 / day</option><option value="toyota-c-class">Toyota Hilux (2010) · $90.00 / day</option><option value="toyota-g-class">Toyota Harrier (2015) · $45.00 / day</option><option value="toyota-ist">Toyota IST (2018) · $20.00 / day</option><option value="toyota-alphad">Toyota Alphard (2013) · $45.00 / day</option></select>
+                  </label>
+                  <label>
+                    <span data-i18n="f_pick">Pickup date</span>
+                    <input name="from" id="from" type="date" required />
+                  </label>
+                  <label>
+                    <span data-i18n="f_ret">Return date</span>
+                    <input name="to" id="to" type="date" required />
+                  </label>
+                </div>
+              </fieldset>
+
+              <fieldset class="fset">
+                <legend class="fset-h"><span class="fset-n" aria-hidden="true">3</span><span data-i18n="fs_loc">Pickup and return</span></legend>
+                <div class="fields">
+                  <div class="loc-group">
+                    <label>
+                      <span class="lbl"
+                        ><span data-i18n="f_loc">Pickup place</span
+                        ><em class="fee-pill" id="pickupFeePill"></em
+                      ></span>
+                      <select name="pickup_loc" id="pickupLoc" class="loc-select" required><option value="airport">Zanzibar Airport · Free</option><option value="town">Zanzibar Town · Free</option><option value="outside">Outside Free Zone · +$25.00</option></select>
+                    </label>
+                    <label class="exact" id="pickupExactWrap" hidden>
+                      <span data-i18n="f_exact">Enter your exact location</span>
+                      <input name="pickup_exact" id="pickupExact" maxlength="120" autocomplete="off" data-ph="f_exact_ph" placeholder="e.g. Nungwi, Kendwa, Paje or your hotel name" />
+                    </label>
+                  </div>
+                  <div class="loc-group">
+                    <label>
+                      <span class="lbl"
+                        ><span data-i18n="f_ret_loc">Return place</span
+                        ><em class="fee-pill" id="returnFeePill"></em
+                      ></span>
+                      <select name="return_loc" id="returnLoc" class="loc-select" required><option value="airport">Zanzibar Airport · Free</option><option value="town">Zanzibar Town · Free</option><option value="outside">Outside Free Zone · +$25.00</option></select>
+                    </label>
+                    <label class="exact" id="returnExactWrap" hidden>
+                      <span data-i18n="f_exact">Enter your exact location</span>
+                      <input name="return_exact" id="returnExact" maxlength="120" autocomplete="off" data-ph="f_exact_ph" placeholder="e.g. Nungwi, Kendwa, Paje or your hotel name" />
+                    </label>
+                  </div>
+                  <p class="full fee-note" id="feeNote">Pickup and return are free at Zanzibar Airport and Zanzibar Town. Anywhere outside the free zone costs $25.00 for pickup and $25.00 for return.</p>
+                </div>
+              </fieldset>
+
+              <fieldset class="fset">
+                <legend class="fset-h"><span class="fset-n" aria-hidden="true">4</span><span data-i18n="fl_h">Flight information</span><em class="opt" data-i18n="opt">optional</em></legend>
+                <p class="fset-p" data-i18n="fl_p">Please provide your flight details so we can coordinate your arrival and car pickup smoothly.</p>
+                <div class="fields">
+                  <label>
+                    <span data-i18n="fl_air">Airline name</span>
+                    <input name="airline" id="airline" maxlength="60" autocomplete="off" data-ph="fl_air_ph" placeholder="e.g. Qatar Airways" />
+                  </label>
+                  <label>
+                    <span data-i18n="fl_no">Flight number</span>
+                    <input name="flight_no" id="flightNo" maxlength="20" autocomplete="off" autocapitalize="characters" spellcheck="false" data-ph="fl_no_ph" placeholder="e.g. QR1349" />
+                  </label>
+                  <label>
+                    <span data-i18n="fl_date">Arrival date</span>
+                    <input name="arrival_date" id="arrDate" type="date" />
+                  </label>
+                  <label>
+                    <span data-i18n="fl_time">Arrival time</span>
+                    <input name="arrival_time" id="arrTime" type="time" />
+                  </label>
+                  <label class="full">
+                    <span data-i18n="fl_port">Arrival airport</span>
+                    <input name="arrival_airport" id="arrPort" maxlength="120" value="Abeid Amani Karume International Airport, Zanzibar" />
+                  </label>
+                  <label class="full">
+                    <span data-i18n="fl_notes">Additional flight notes</span>
+                    <textarea name="flight_notes" id="flightNotes" rows="2" maxlength="400" data-ph="fl_notes_ph" placeholder="Connecting flight, expected delays, number of passengers…" /></textarea>
+                  </label>
+                  <p class="full fee-note flight-note" data-i18n="fl_note">Flight details help us coordinate your airport pickup, and we track delays so your car is ready when you land.</p>
+                </div>
+              </fieldset>
+
+              <fieldset class="fset">
+                <legend class="fset-h"><span class="fset-n" aria-hidden="true">5</span><span data-i18n="x_h">Optional extras</span></legend>
+                <div class="fields">
+                  <label class="extra full">
+                    <input type="checkbox" name="baby_seat" id="babySeat" value="yes" />
+                    <span class="extra-ic" aria-hidden="true"><svg class="ic" viewBox="0 0 24 24"><circle cx="12" cy="5" r="2.5"/><path d="M7 21v-4a2 2 0 0 1 2-2h6a2 2 0 0 1 2 2v4M8 10.5l1.5 4.5M16 10.5 14.5 15M6 21h12"/></svg></span>
+                    <span class="extra-txt"><b data-i18n="x_seat">Baby seat</b><small data-i18n="x_seat_p">Child safety seat, fitted and ready at handover.</small></span>
+                    <span class="extra-price" id="seatPrice">+$60.00</span>
+                    <span class="switch" aria-hidden="true"></span>
+                  </label>
+                  <label class="full">
+                    <span data-i18n="f_notes">Notes (optional)</span>
+                    <textarea name="notes" rows="3" maxlength="600"></textarea>
+                  </label>
+                </div>
+              </fieldset>
               <p class="msg" id="msg" role="status" aria-live="polite"></p>
             </form>
 
@@ -593,19 +641,19 @@
           </div>
           <!--build:areas-->
           <ul class="area-grid">
-            <li><a class="area-card" href="car-hire-zanzibar-airport/"><span class="area-name">Zanzibar Airport</span><span class="fee-pill is-free" data-i18n="free">Free</span><span class="area-go">Zanzibar Airport car rental<svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a></li>
-            <li><a class="area-card" href="car-hire-stone-town/"><span class="area-name">Zanzibar Town (Stone Town)</span><span class="fee-pill is-free" data-i18n="free">Free</span><span class="area-go">Car hire in Stone Town<svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a></li>
-            <li><a class="area-card" href="car-hire-nungwi-kendwa/"><span class="area-name">Nungwi</span><span class="fee-pill is-paid" data-i18n="area_paid">$25.00 each way</span><span class="area-go">Car hire in Nungwi &amp; Kendwa<svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a></li>
-            <li><a class="area-card" href="car-hire-nungwi-kendwa/"><span class="area-name">Kendwa</span><span class="fee-pill is-paid" data-i18n="area_paid">$25.00 each way</span><span class="area-go">Car hire in Nungwi &amp; Kendwa<svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a></li>
-            <li><a class="area-card" href="car-hire-matemwe-pongwe/"><span class="area-name">Matemwe</span><span class="fee-pill is-paid" data-i18n="area_paid">$25.00 each way</span><span class="area-go">Car hire in Matemwe &amp; Pongwe<svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a></li>
-            <li><a class="area-card" href="car-hire-matemwe-pongwe/"><span class="area-name">Pongwe</span><span class="fee-pill is-paid" data-i18n="area_paid">$25.00 each way</span><span class="area-go">Car hire in Matemwe &amp; Pongwe<svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a></li>
-            <li><a class="area-card" href="car-hire-paje-jambiani/"><span class="area-name">Paje</span><span class="fee-pill is-paid" data-i18n="area_paid">$25.00 each way</span><span class="area-go">Car hire in Paje &amp; Jambiani<svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a></li>
-            <li><a class="area-card" href="car-hire-paje-jambiani/"><span class="area-name">Jambiani</span><span class="fee-pill is-paid" data-i18n="area_paid">$25.00 each way</span><span class="area-go">Car hire in Paje &amp; Jambiani<svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a></li>
-            <li><a class="area-card" href="car-hire-paje-jambiani/"><span class="area-name">Bwejuu</span><span class="fee-pill is-paid" data-i18n="area_paid">$25.00 each way</span><span class="area-go">Car hire in Paje &amp; Jambiani<svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a></li>
-            <li><a class="area-card" href="car-hire-paje-jambiani/"><span class="area-name">Michamvi</span><span class="fee-pill is-paid" data-i18n="area_paid">$25.00 each way</span><span class="area-go">Car hire in Paje &amp; Jambiani<svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a></li>
-            <li><a class="area-card" href="car-hire-kizimkazi/"><span class="area-name">Kizimkazi</span><span class="fee-pill is-paid" data-i18n="area_paid">$25.00 each way</span><span class="area-go">Car hire in Kizimkazi<svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a></li>
+            <li><a class="area-card" href="car-hire-zanzibar-airport/"><span class="area-name" data-i18n="lbl_car-hire-zanzibar-airport">Zanzibar Airport</span><span class="fee-pill is-free" data-i18n="free">Free</span><span class="area-go"><span data-i18n="lk_car-hire-zanzibar-airport">Zanzibar Airport car rental</span><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a></li>
+            <li><a class="area-card" href="car-hire-stone-town/"><span class="area-name" data-i18n="l_town">Zanzibar Town</span><span class="fee-pill is-free" data-i18n="free">Free</span><span class="area-go"><span data-i18n="lk_car-hire-stone-town">Car hire in Stone Town</span><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a></li>
+            <li><a class="area-card" href="car-hire-nungwi-kendwa/"><span class="area-name">Nungwi</span><span class="fee-pill is-paid" data-i18n="area_paid">$25.00 each way</span><span class="area-go"><span data-i18n="lk_car-hire-nungwi-kendwa">Car hire in Nungwi &amp; Kendwa</span><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a></li>
+            <li><a class="area-card" href="car-hire-nungwi-kendwa/"><span class="area-name">Kendwa</span><span class="fee-pill is-paid" data-i18n="area_paid">$25.00 each way</span><span class="area-go"><span data-i18n="lk_car-hire-nungwi-kendwa">Car hire in Nungwi &amp; Kendwa</span><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a></li>
+            <li><a class="area-card" href="car-hire-matemwe-pongwe/"><span class="area-name">Matemwe</span><span class="fee-pill is-paid" data-i18n="area_paid">$25.00 each way</span><span class="area-go"><span data-i18n="lk_car-hire-matemwe-pongwe">Car hire in Matemwe &amp; Pongwe</span><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a></li>
+            <li><a class="area-card" href="car-hire-matemwe-pongwe/"><span class="area-name">Pongwe</span><span class="fee-pill is-paid" data-i18n="area_paid">$25.00 each way</span><span class="area-go"><span data-i18n="lk_car-hire-matemwe-pongwe">Car hire in Matemwe &amp; Pongwe</span><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a></li>
+            <li><a class="area-card" href="car-hire-paje-jambiani/"><span class="area-name">Paje</span><span class="fee-pill is-paid" data-i18n="area_paid">$25.00 each way</span><span class="area-go"><span data-i18n="lk_car-hire-paje-jambiani">Car hire in Paje &amp; Jambiani</span><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a></li>
+            <li><a class="area-card" href="car-hire-paje-jambiani/"><span class="area-name">Jambiani</span><span class="fee-pill is-paid" data-i18n="area_paid">$25.00 each way</span><span class="area-go"><span data-i18n="lk_car-hire-paje-jambiani">Car hire in Paje &amp; Jambiani</span><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a></li>
+            <li><a class="area-card" href="car-hire-paje-jambiani/"><span class="area-name">Bwejuu</span><span class="fee-pill is-paid" data-i18n="area_paid">$25.00 each way</span><span class="area-go"><span data-i18n="lk_car-hire-paje-jambiani">Car hire in Paje &amp; Jambiani</span><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a></li>
+            <li><a class="area-card" href="car-hire-paje-jambiani/"><span class="area-name">Michamvi</span><span class="fee-pill is-paid" data-i18n="area_paid">$25.00 each way</span><span class="area-go"><span data-i18n="lk_car-hire-paje-jambiani">Car hire in Paje &amp; Jambiani</span><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a></li>
+            <li><a class="area-card" href="car-hire-kizimkazi/"><span class="area-name">Kizimkazi</span><span class="fee-pill is-paid" data-i18n="area_paid">$25.00 each way</span><span class="area-go"><span data-i18n="lk_car-hire-kizimkazi">Car hire in Kizimkazi</span><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a></li>
           </ul>
-          <p class="area-guide"><a href="driving-in-zanzibar/">Driving in Zanzibar guide<svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></p>
+          <p class="area-guide"><a href="driving-in-zanzibar/"><span data-i18n="lk_driving-in-zanzibar">Driving in Zanzibar guide</span><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></p>
           <!--/build:areas-->
         </div>
       </section>
@@ -756,13 +804,13 @@
           <nav class="foot-links" aria-label="Car hire by area">
             <h3 data-i18n="foot_areas">Car hire by area</h3>
             <!--build:footareas-->
-            <a href="car-hire-zanzibar-airport/">Zanzibar Airport car rental</a>
-            <a href="car-hire-stone-town/">Car hire in Stone Town</a>
-            <a href="car-hire-nungwi-kendwa/">Car hire in Nungwi &amp; Kendwa</a>
-            <a href="car-hire-matemwe-pongwe/">Car hire in Matemwe &amp; Pongwe</a>
-            <a href="car-hire-paje-jambiani/">Car hire in Paje &amp; Jambiani</a>
-            <a href="car-hire-kizimkazi/">Car hire in Kizimkazi</a>
-            <a href="driving-in-zanzibar/">Driving in Zanzibar guide</a>
+            <a href="car-hire-zanzibar-airport/" data-i18n="lk_car-hire-zanzibar-airport">Zanzibar Airport car rental</a>
+            <a href="car-hire-stone-town/" data-i18n="lk_car-hire-stone-town">Car hire in Stone Town</a>
+            <a href="car-hire-nungwi-kendwa/" data-i18n="lk_car-hire-nungwi-kendwa">Car hire in Nungwi &amp; Kendwa</a>
+            <a href="car-hire-matemwe-pongwe/" data-i18n="lk_car-hire-matemwe-pongwe">Car hire in Matemwe &amp; Pongwe</a>
+            <a href="car-hire-paje-jambiani/" data-i18n="lk_car-hire-paje-jambiani">Car hire in Paje &amp; Jambiani</a>
+            <a href="car-hire-kizimkazi/" data-i18n="lk_car-hire-kizimkazi">Car hire in Kizimkazi</a>
+            <a href="driving-in-zanzibar/" data-i18n="lk_driving-in-zanzibar">Driving in Zanzibar guide</a>
             <!--/build:footareas-->
           </nav>
           <div class="foot-contact">

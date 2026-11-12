@@ -34,110 +34,92 @@
     <link rel="stylesheet" href="../css.css" />
   </head>
   <body class="subpage">
-    <a class="skip" href="#main">Skip to content</a>
+    <a class="skip" href="#main" data-t="skip">Skip to content</a>
     <header class="hdr" id="hdr">
       <div class="wrap bar">
         <a class="logo" href="../"><span class="logo-mark"><img src="../images/logo-mark.webp" alt="" width="284" height="160" /></span><span>Rafiki Car Hire</span></a>
         <nav class="nav" id="nav" aria-label="Main">
-          <a href="../">Home</a>
-          <a href="../#fleetsec">Cars</a>
-          <a href="../#how">How it works</a>
-          <a href="../?#book">Book</a>
-          <a href="../#areas">Delivery areas</a>
-          <a href="../#faq">FAQ</a>
-          <a href="#contact">Contact</a>
+          <a href="../" data-t="nav_home">Home</a>
+          <a href="../#fleetsec" data-t="nav_fleet">Cars</a>
+          <a href="../#how" data-t="nav_how">How it works</a>
+          <a href="../?#book" data-t="nav_book">Book</a>
+          <a href="../#areas" data-t="nav_areas">Delivery areas</a>
+          <a href="../#faq" data-t="nav_faq">FAQ</a>
+          <a href="#contact" data-t="nav_contact">Contact</a>
           <div class="nav-extra">
-            <a class="btn btn-wa" href="https://wa.me/255715518980?text=Hello%20Rafiki%20Car%20Hire%2C%20I%20would%20like%20to%20rent%20a%20car%20in%20Zanzibar." target="_blank" rel="noopener">WhatsApp us</a>
+            <select class="lang" aria-label="Language"><option value="en">English</option><option value="sw">Kiswahili</option><option value="it">Italiano</option><option value="de">Deutsch</option><option value="fr">Français</option><option value="es">Español</option></select>
+            <a class="btn btn-wa" href="https://wa.me/255715518980?text=Hello%20Rafiki%20Car%20Hire%2C%20I%20would%20like%20to%20rent%20a%20car%20in%20Zanzibar." target="_blank" rel="noopener"><span data-t="wa">WhatsApp us</span></a>
           </div>
         </nav>
         <div class="tools">
-          <a class="btn btn-wa sm hide-m" href="https://wa.me/255715518980?text=Hello%20Rafiki%20Car%20Hire%2C%20I%20would%20like%20to%20rent%20a%20car%20in%20Zanzibar." target="_blank" rel="noopener">WhatsApp us</a>
+          <select class="lang" id="lang" aria-label="Language"><option value="en">EN</option><option value="sw">SW</option><option value="it">IT</option><option value="de">DE</option><option value="fr">FR</option><option value="es">ES</option></select>
+          <a class="btn btn-wa sm hide-m" href="https://wa.me/255715518980?text=Hello%20Rafiki%20Car%20Hire%2C%20I%20would%20like%20to%20rent%20a%20car%20in%20Zanzibar." target="_blank" rel="noopener"><span data-t="wa">WhatsApp us</span></a>
           <button class="menu" id="menu" type="button" aria-label="Menu" aria-controls="nav" aria-expanded="false"><span></span><span></span></button>
         </div>
       </div>
     </header>
 
     <main id="main">
-      <section class="hero">
-        <div class="hero-bg" aria-hidden="true"></div>
-        <div class="blob b1" aria-hidden="true"></div>
-        <div class="blob b2" aria-hidden="true"></div>
-
-        <div class="wrap hero-grid">
-          <div class="hero-copy">
+      <section class="phero">
+        <div class="wrap phero-grid">
+          <div class="phero-copy">
             <nav class="crumbs" aria-label="Breadcrumb">
-              <ol><li><a href="../">Home</a></li><li aria-current="page">Driving in Zanzibar</li></ol>
+              <ol><li><a href="../" data-t="nav_home">Home</a></li><li aria-current="page"><span data-t="lbl_driving-in-zanzibar">Driving in Zanzibar</span></li></ol>
             </nav>
-            <p class="kicker"><span class="pulse" aria-hidden="true"></span><span>Essential guide</span></p>
-            <h1>Driving in Zanzibar: A Guide for Visitors</h1>
-            <p class="hero-p">Renting a car is one of the easiest ways to see Zanzibar, from Stone Town to the beaches of Nungwi, Paje and Kizimkazi. Here is what to know before you rent and drive.</p>
+            <p class="eyebrow"><span data-t="g_k">Essential guide</span></p>
+            <h1 data-t="h1">Driving in Zanzibar: A Guide for Visitors</h1>
+            <p class="hero-p" data-t="intro">Renting a car is one of the easiest ways to see Zanzibar, from Stone Town to the beaches of Nungwi, Paje and Kizimkazi. Here is what to know before you rent and drive.</p>
             <div class="hero-cta">
-              <a class="btn btn-sand lg" href="../?#book">Book a car<svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
-              <a class="btn btn-glass lg" href="https://wa.me/255715518980?text=Hello%20Rafiki%20Car%20Hire%2C%20I%20would%20like%20to%20rent%20a%20car%20in%20Zanzibar." target="_blank" rel="noopener">Ask on WhatsApp</a>
+              <a class="btn btn-sand lg" href="../?#book"><span data-t="bk_driving-in-zanzibar">Book a car</span><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+              <a class="btn btn-glass lg" href="https://wa.me/255715518980?text=Hello%20Rafiki%20Car%20Hire%2C%20I%20would%20like%20to%20rent%20a%20car%20in%20Zanzibar." target="_blank" rel="noopener"><span data-t="pg_ask">Ask on WhatsApp</span></a>
             </div>
-            <ul class="trust">
-              <li>Clear prices</li>
-              <li>Support any time</li>
-              <li>Well-kept cars</li>
+            <ul class="phero-facts">
+              <li data-t="w1t">Clear prices</li>
+              <li data-t="w3t">Support any time</li>
+              <li data-t="w4t">Well-kept cars</li>
             </ul>
           </div>
-
-          <div class="hero-visual" aria-hidden="true">
-            <div class="sun"></div>
-            <img class="hero-car" src="../images/toyota-land-cruiser-hero-zanzibar.webp" alt="" width="612" height="408" fetchpriority="high" />
-            <div class="float-chip chip-a">
-              <small>per day, from</small>
-              <b>$20.00</b>
-            </div>
-            <div class="float-chip chip-b">
-              <span class="chip-ic">✈</span><span>Airport and hotel delivery</span>
-            </div>
-          </div>
+          <figure class="phero-card pc-photo">
+            <div class="pc-media"><img src="../images/hero.webp" alt="Turquoise lagoon and palm-lined beach on Zanzibar's east coast" width="1600" height="1000" fetchpriority="high" decoding="async" /><span class="pc-badge" data-t="g_k">Essential guide</span></div>
+            <figcaption>
+              <span><span class="pc-name"><span data-t="lbl_driving-in-zanzibar">Driving in Zanzibar</span></span><span class="pc-meta" data-t="g_p">Seven things to know before you rent and drive in Zanzibar.</span></span>
+              <span class="pc-price"><span data-t="stat_from">per day, from</span><b>$20.00</b></span>
+            </figcaption>
+            <ul class="pc-fees"><li><span data-t="lbl_car-hire-zanzibar-airport">Zanzibar Airport</span><span class="fee-pill is-free" data-t="free">Free</span></li><li><span data-t="l_town">Zanzibar Town</span><span class="fee-pill is-free" data-t="free">Free</span></li><li><span data-t="pg_other">Other locations</span><span class="fee-pill is-paid" data-t="area_paid">$25.00 each way</span></li></ul>
+          </figure>
         </div>
-
-        <div class="wrap">
-          <dl class="stats">
-            <div><dt><b>10</b></dt><dd>cars in our fleet</dd></div>
-            <div><dt><b>$20</b></dt><dd>per day, from</dd></div>
-            <div><dt><b>24/7</b></dt><dd>support on WhatsApp</dd></div>
-          </dl>
-        </div>
-
-        <div class="waves w3" aria-hidden="true"></div>
-        <div class="waves w1" aria-hidden="true"></div>
-        <div class="waves w2" aria-hidden="true"></div>
       </section>
 
       <section class="page-body">
         <div class="wrap page-grid">
           <article class="prose">
-          <h2>Driving permit and licence</h2>
-          <p>Every driver needs a Zanzibar driving permit ($25 per driver) in addition to their home licence. We arrange the permit before you arrive. Bring your licence and passport and keep them with you while driving.</p>
+          <h2 data-t="s0h">Driving permit and licence</h2>
+          <p data-t="s0b0">Every driver needs a Zanzibar driving permit ($25 per driver) in addition to their home licence. We arrange the permit before you arrive. Bring your licence and passport and keep them with you while driving.</p>
 
-          <h2>Road rules and safety</h2>
-          <p>Zanzibar drives on the left. Police checkpoints are common, so slow down and stop when asked. Outside the towns you will share the road with pedestrians, cyclists, motorbikes and animals, and many rural roads have no street lights, so take extra care after dark.</p>
+          <h2 data-t="s1h">Road rules and safety</h2>
+          <p data-t="s1b0">Zanzibar drives on the left. Police checkpoints are common, so slow down and stop when asked. Outside the towns you will share the road with pedestrians, cyclists, motorbikes and animals, and many rural roads have no street lights, so take extra care after dark.</p>
 
-          <h2>Choosing the right vehicle</h2>
-          <p>Check that the vehicle fits your trip: the roads you will drive, the number of passengers and how much luggage you carry.</p>
-          <ul><li>Compact cars (Toyota IST, Nissan Juke): economical for couples and main roads.</li><li>SUVs and 4x4s (Toyota RAV4, Vanguard, Harrier, Land Cruiser, Suzuki Escudo): more comfortable on sandy village and hotel roads.</li><li>Minivan (Toyota Alphard): up to eight passengers.</li><li>Pickup (Toyota Hilux): room for kitesurf boards and gear.</li></ul>
+          <h2 data-t="s2h">Choosing the right vehicle</h2>
+          <p data-t="s2b0">Check that the vehicle fits your trip: the roads you will drive, the number of passengers and how much luggage you carry.</p>
+          <ul><li data-t="s2b1i0">Compact cars (Toyota IST, Nissan Juke): economical for couples and main roads.</li><li data-t="s2b1i1">SUVs and 4x4s (Toyota RAV4, Vanguard, Harrier, Land Cruiser, Suzuki Escudo): more comfortable on sandy village and hotel roads.</li><li data-t="s2b1i2">Minivan (Toyota Alphard): up to eight passengers.</li><li data-t="s2b1i3">Pickup (Toyota Hilux): room for kitesurf boards and gear.</li></ul>
 
-          <h2>Pickup, return and delivery fees</h2>
-          <p>Confirm clear pickup and return places and times when you book to avoid delays. Delivery and collection are free at Zanzibar Airport and in Zanzibar Town (Stone Town). Anywhere else costs $25.00 for the pickup and $25.00 for the return, so both outside the free zone comes to $50.00.</p>
+          <h2 data-t="s3h">Pickup, return and delivery fees</h2>
+          <p data-t="s3b0">Confirm clear pickup and return places and times when you book to avoid delays. Delivery and collection are free at Zanzibar Airport and in Zanzibar Town (Stone Town). Anywhere else costs $25.00 for the pickup and $25.00 for the return, so both outside the free zone comes to $50.00.</p>
 
-          <h2>What a rental costs</h2>
-          <p>Your total is the daily rate multiplied by the number of days, plus any delivery fees. The booking form shows the full breakdown before you send it, and we confirm availability, payment and any other details with you on WhatsApp.</p>
-          <p>Fuel is not included: return the car with the same fuel level as at pickup.</p>
+          <h2 data-t="s4h">What a rental costs</h2>
+          <p data-t="s4b0">Your total is the daily rate multiplied by the number of days, plus any delivery fees. The booking form shows the full breakdown before you send it, and we confirm availability, payment and any other details with you on WhatsApp.</p>
+          <p data-t="s4b1">Fuel is not included: return the car with the same fuel level as at pickup.</p>
 
-          <h2>Book ahead</h2>
-          <p>Reserve your car in advance, especially in the busy tourist season, to make sure the vehicle you want is available.</p>
+          <h2 data-t="s5h">Book ahead</h2>
+          <p data-t="s5b0">Reserve your car in advance, especially in the busy tourist season, to make sure the vehicle you want is available.</p>
           </article>
           <aside class="page-side">
             <div class="side-card">
-              <h2>Delivery fees</h2>
-              <ul class="fee-list"><li><span>Zanzibar Airport</span><span class="fee-pill is-free">Free</span></li><li><span>Zanzibar Town (Stone Town)</span><span class="fee-pill is-free">Free</span></li><li><span>Other locations</span><span class="fee-pill is-paid">$25.00 each way</span></li></ul>
-              <p class="side-note">Pickup and return are charged separately. Zanzibar Airport and Zanzibar Town (Stone Town) are always free.</p>
-              <p class="side-from">Cars from <b>$20.00</b> per day</p>
-              <a class="btn btn-sand" href="../?#book">Check prices and book</a>
+              <h2 data-t="side_h">Delivery fees</h2>
+              <ul class="fee-list"><li><span data-t="lbl_car-hire-zanzibar-airport">Zanzibar Airport</span><span class="fee-pill is-free" data-t="free">Free</span></li><li><span data-t="l_town">Zanzibar Town</span><span class="fee-pill is-free" data-t="free">Free</span></li><li><span data-t="pg_other">Other locations</span><span class="fee-pill is-paid" data-t="area_paid">$25.00 each way</span></li></ul>
+              <p class="side-note" data-t="pg_side_note">Pickup and return are charged separately. Zanzibar Airport and Zanzibar Town (Stone Town) are always free.</p>
+              <p class="side-from" data-th="side_from">Cars from <b>$20.00</b> per day</p>
+              <a class="btn btn-sand" href="../?#book"><span data-t="pg_check">Check prices and book</span></a>
               <a class="btn btn-wa" href="https://wa.me/255715518980?text=Hello%20Rafiki%20Car%20Hire%2C%20I%20would%20like%20to%20rent%20a%20car%20in%20Zanzibar." target="_blank" rel="noopener">WhatsApp +255 715 518 980</a>
             </div>
           </aside>
@@ -146,62 +128,62 @@
 
       <section class="page-cars">
         <div class="wrap">
-          <h2>Popular rental cars in Zanzibar</h2>
+          <h2 data-t="cars_h">Popular rental cars in Zanzibar</h2>
           <div class="grid">
     <article class="card">
-      <div class="card-media"><img src="../images/cars/toyota-ist-2018-compact-car-hire-zanzibar.webp" alt="Toyota IST 2018 compact car for hire in Zanzibar" width="800" height="533" loading="lazy" decoding="async"><span class="tag">Compact</span></div>
+      <div class="card-media"><img src="../images/cars/toyota-ist-2018-compact-car-hire-zanzibar.webp" alt="Toyota IST 2018 compact car for hire in Zanzibar" width="800" height="533" loading="lazy" decoding="async"><span class="tag" data-t="cat_small">Compact</span></div>
       <div class="cb">
         <h3>Toyota IST</h3>
         <ul class="specs">
-          <li><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg>5 seats</li>
-          <li><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><circle cx="6" cy="6" r="2"/><circle cx="12" cy="6" r="2"/><circle cx="18" cy="6" r="2"/><circle cx="6" cy="18" r="2"/><circle cx="12" cy="18" r="2"/><path d="M6 8v8M12 8v8M18 8v3a1 1 0 0 1-1 1H6"/></svg>Automatic</li>
-          <li><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 22V4a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v18M2 22h14M6 7h6M15 10h2a2 2 0 0 1 2 2v5a1.5 1.5 0 0 0 3 0V8l-3-3"/></svg>Petrol</li>
+          <li><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg>5 <span data-t="seats">seats</span></li>
+          <li><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><circle cx="6" cy="6" r="2"/><circle cx="12" cy="6" r="2"/><circle cx="18" cy="6" r="2"/><circle cx="6" cy="18" r="2"/><circle cx="12" cy="18" r="2"/><path d="M6 8v8M12 8v8M18 8v3a1 1 0 0 1-1 1H6"/></svg><span data-t="v_Automatic">Automatic</span></li>
+          <li><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 22V4a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v18M2 22h14M6 7h6M15 10h2a2 2 0 0 1 2 2v5a1.5 1.5 0 0 0 3 0V8l-3-3"/></svg><span data-t="v_Petrol">Petrol</span></li>
           <li><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>2018</li></ul>
         <div class="card-foot">
-          <p class="price"><b>$20.00</b><span>/ day</span></p>
-          <a class="btn btn-b" href="../?car=toyota-ist#book" data-car="toyota-ist">Book this car<svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+          <p class="price"><b>$20.00</b><span data-t="per_day">/ day</span></p>
+          <a class="btn btn-b" href="../?car=toyota-ist#book"><span data-t="book_car">Book this car</span><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
         </div>
       </div>
     </article>
     <article class="card">
-      <div class="card-media"><img src="../images/cars/toyota-rav4-2018-suv-rental-zanzibar.webp" alt="Toyota RAV4 New 2018 SUV for hire in Zanzibar" width="800" height="533" loading="lazy" decoding="async"><span class="tag">SUV &amp; 4x4</span></div>
+      <div class="card-media"><img src="../images/cars/toyota-rav4-2018-suv-rental-zanzibar.webp" alt="Toyota RAV4 New 2018 SUV for hire in Zanzibar" width="800" height="533" loading="lazy" decoding="async"><span class="tag" data-t="cat_suv">SUV &amp; 4x4</span></div>
       <div class="cb">
         <h3>Toyota RAV4 New</h3>
         <ul class="specs">
-          <li><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg>5 seats</li>
-          <li><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><circle cx="6" cy="6" r="2"/><circle cx="12" cy="6" r="2"/><circle cx="18" cy="6" r="2"/><circle cx="6" cy="18" r="2"/><circle cx="12" cy="18" r="2"/><path d="M6 8v8M12 8v8M18 8v3a1 1 0 0 1-1 1H6"/></svg>Automatic</li>
-          <li><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 22V4a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v18M2 22h14M6 7h6M15 10h2a2 2 0 0 1 2 2v5a1.5 1.5 0 0 0 3 0V8l-3-3"/></svg>Petrol</li>
+          <li><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg>5 <span data-t="seats">seats</span></li>
+          <li><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><circle cx="6" cy="6" r="2"/><circle cx="12" cy="6" r="2"/><circle cx="18" cy="6" r="2"/><circle cx="6" cy="18" r="2"/><circle cx="12" cy="18" r="2"/><path d="M6 8v8M12 8v8M18 8v3a1 1 0 0 1-1 1H6"/></svg><span data-t="v_Automatic">Automatic</span></li>
+          <li><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 22V4a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v18M2 22h14M6 7h6M15 10h2a2 2 0 0 1 2 2v5a1.5 1.5 0 0 0 3 0V8l-3-3"/></svg><span data-t="v_Petrol">Petrol</span></li>
           <li><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>2018</li></ul>
         <div class="card-foot">
-          <p class="price"><b>$35.00</b><span>/ day</span></p>
-          <a class="btn btn-b" href="../?car=rav4-2018#book" data-car="rav4-2018">Book this car<svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+          <p class="price"><b>$35.00</b><span data-t="per_day">/ day</span></p>
+          <a class="btn btn-b" href="../?car=rav4-2018#book"><span data-t="book_car">Book this car</span><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
         </div>
       </div>
     </article>
     <article class="card">
-      <div class="card-media"><img src="../images/cars/toyota-alphard-minivan-rental-zanzibar.webp" alt="Toyota Alphard 2013 minivan for hire in Zanzibar" width="800" height="533" loading="lazy" decoding="async"><span class="tag">Minivan</span></div>
+      <div class="card-media"><img src="../images/cars/toyota-alphard-minivan-rental-zanzibar.webp" alt="Toyota Alphard 2013 minivan for hire in Zanzibar" width="800" height="533" loading="lazy" decoding="async"><span class="tag" data-t="cat_van">Minivan</span></div>
       <div class="cb">
         <h3>Toyota Alphard</h3>
         <ul class="specs">
-          <li><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg>8 seats</li>
-          <li><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><circle cx="6" cy="6" r="2"/><circle cx="12" cy="6" r="2"/><circle cx="18" cy="6" r="2"/><circle cx="6" cy="18" r="2"/><circle cx="12" cy="18" r="2"/><path d="M6 8v8M12 8v8M18 8v3a1 1 0 0 1-1 1H6"/></svg>Automatic</li>
-          <li><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 22V4a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v18M2 22h14M6 7h6M15 10h2a2 2 0 0 1 2 2v5a1.5 1.5 0 0 0 3 0V8l-3-3"/></svg>Petrol</li>
+          <li><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg>8 <span data-t="seats">seats</span></li>
+          <li><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><circle cx="6" cy="6" r="2"/><circle cx="12" cy="6" r="2"/><circle cx="18" cy="6" r="2"/><circle cx="6" cy="18" r="2"/><circle cx="12" cy="18" r="2"/><path d="M6 8v8M12 8v8M18 8v3a1 1 0 0 1-1 1H6"/></svg><span data-t="v_Automatic">Automatic</span></li>
+          <li><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 22V4a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v18M2 22h14M6 7h6M15 10h2a2 2 0 0 1 2 2v5a1.5 1.5 0 0 0 3 0V8l-3-3"/></svg><span data-t="v_Petrol">Petrol</span></li>
           <li><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>2013</li></ul>
         <div class="card-foot">
-          <p class="price"><b>$45.00</b><span>/ day</span></p>
-          <a class="btn btn-b" href="../?car=toyota-alphad#book" data-car="toyota-alphad">Book this car<svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+          <p class="price"><b>$45.00</b><span data-t="per_day">/ day</span></p>
+          <a class="btn btn-b" href="../?car=toyota-alphad#book"><span data-t="book_car">Book this car</span><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
         </div>
       </div>
     </article>
           </div>
-          <p class="all-cars"><a href="../#fleetsec">See all 10 cars<svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></p>
+          <p class="all-cars"><a href="../#fleetsec"><span data-t="all_cars">See all 10 cars</span><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></p>
         </div>
       </section>
 
       <section class="page-more">
         <div class="wrap">
-          <h2>Car hire in other parts of Zanzibar</h2>
-          <ul class="area-links"><li><a href="../car-hire-zanzibar-airport/">Zanzibar Airport car rental<svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></li><li><a href="../car-hire-stone-town/">Car hire in Stone Town<svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></li><li><a href="../car-hire-nungwi-kendwa/">Car hire in Nungwi &amp; Kendwa<svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></li><li><a href="../car-hire-matemwe-pongwe/">Car hire in Matemwe &amp; Pongwe<svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></li><li><a href="../car-hire-paje-jambiani/">Car hire in Paje &amp; Jambiani<svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></li><li><a href="../car-hire-kizimkazi/">Car hire in Kizimkazi<svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></li></ul>
+          <h2 data-t="pg_more">Car hire in other parts of Zanzibar</h2>
+          <ul class="area-links"><li><a href="../car-hire-zanzibar-airport/"><span data-t="lk_car-hire-zanzibar-airport">Zanzibar Airport car rental</span><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></li><li><a href="../car-hire-stone-town/"><span data-t="lk_car-hire-stone-town">Car hire in Stone Town</span><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></li><li><a href="../car-hire-nungwi-kendwa/"><span data-t="lk_car-hire-nungwi-kendwa">Car hire in Nungwi &amp; Kendwa</span><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></li><li><a href="../car-hire-matemwe-pongwe/"><span data-t="lk_car-hire-matemwe-pongwe">Car hire in Matemwe &amp; Pongwe</span><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></li><li><a href="../car-hire-paje-jambiani/"><span data-t="lk_car-hire-paje-jambiani">Car hire in Paje &amp; Jambiani</span><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></li><li><a href="../car-hire-kizimkazi/"><span data-t="lk_car-hire-kizimkazi">Car hire in Kizimkazi</span><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></li></ul>
         </div>
       </section>
     </main>
@@ -210,18 +192,18 @@
       <div class="wrap">
         <div class="cta-band">
           <div>
-            <h2>Ready to explore Zanzibar?</h2>
-            <p>Message us on WhatsApp or book online in a minute.</p>
+            <h2 data-t="cta_h">Ready to explore Zanzibar?</h2>
+            <p data-t="pg_cta_p">Message us on WhatsApp or book online in a minute.</p>
           </div>
           <div class="cta-actions">
-            <a class="btn btn-sand lg" href="../?#book">Book now</a>
-            <a class="btn btn-wa lg" href="https://wa.me/255715518980?text=Hello%20Rafiki%20Car%20Hire%2C%20I%20would%20like%20to%20rent%20a%20car%20in%20Zanzibar." target="_blank" rel="noopener">WhatsApp us</a>
+            <a class="btn btn-sand lg" href="../?#book"><span data-t="cta_book">Book now</span></a>
+            <a class="btn btn-wa lg" href="https://wa.me/255715518980?text=Hello%20Rafiki%20Car%20Hire%2C%20I%20would%20like%20to%20rent%20a%20car%20in%20Zanzibar." target="_blank" rel="noopener"><span data-t="wa">WhatsApp us</span></a>
           </div>
         </div>
         <div class="foot-contact page-contact"><a class="btn btn-wa" href="https://wa.me/255715518980" target="_blank" rel="noopener">💬 +255 715 518 980</a>
    <a class="addr" href="tel:+255715518980">📞 +255 715 518 980</a>
    <a class="addr" href="https://maps.google.com/?q=Abeid%20Amani%20Karume%20International%20Airport%2C%20Zanzibar" target="_blank" rel="noopener">📍 Abeid Amani Karume International Airport, Zanzibar</a></div>
-        <p class="copy">© 2026 Rafiki Car Hire. All rights reserved.</p>
+        <p class="copy">© 2026 Rafiki Car Hire. <span data-t="rights">All rights reserved.</span></p>
       </div>
     </footer>
 
@@ -229,6 +211,7 @@
       <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z" /></svg>
       <span>WhatsApp</span>
     </a>
+    <script type="application/json" id="i18n">{"en":{"__title":"Driving in Zanzibar: A Guide for Visitors | Rafiki Car Hire","s0h":"Driving permit and licence","s0b0":"Every driver needs a Zanzibar driving permit ($25 per driver) in addition to their home licence. We arrange the permit before you arrive. Bring your licence and passport and keep them with you while driving.","s1h":"Road rules and safety","s1b0":"Zanzibar drives on the left. Police checkpoints are common, so slow down and stop when asked. Outside the towns you will share the road with pedestrians, cyclists, motorbikes and animals, and many rural roads have no street lights, so take extra care after dark.","s2h":"Choosing the right vehicle","s2b0":"Check that the vehicle fits your trip: the roads you will drive, the number of passengers and how much luggage you carry.","s2b1i0":"Compact cars (Toyota IST, Nissan Juke): economical for couples and main roads.","s2b1i1":"SUVs and 4x4s (Toyota RAV4, Vanguard, Harrier, Land Cruiser, Suzuki Escudo): more comfortable on sandy village and hotel roads.","s2b1i2":"Minivan (Toyota Alphard): up to eight passengers.","s2b1i3":"Pickup (Toyota Hilux): room for kitesurf boards and gear.","s3h":"Pickup, return and delivery fees","s3b0":"Confirm clear pickup and return places and times when you book to avoid delays. Delivery and collection are free at Zanzibar Airport and in Zanzibar Town (Stone Town). Anywhere else costs $25.00 for the pickup and $25.00 for the return, so both outside the free zone comes to $50.00.","s4h":"What a rental costs","s4b0":"Your total is the daily rate multiplied by the number of days, plus any delivery fees. The booking form shows the full breakdown before you send it, and we confirm availability, payment and any other details with you on WhatsApp.","s4b1":"Fuel is not included: return the car with the same fuel level as at pickup.","s5h":"Book ahead","s5b0":"Reserve your car in advance, especially in the busy tourist season, to make sure the vehicle you want is available.","lbl_car-hire-zanzibar-airport":"Zanzibar Airport","free":"Free","l_town":"Zanzibar Town","pg_other":"Other locations","area_paid":"$25.00 each way","lk_car-hire-zanzibar-airport":"Zanzibar Airport car rental","lk_car-hire-stone-town":"Car hire in Stone Town","lk_car-hire-nungwi-kendwa":"Car hire in Nungwi & Kendwa","lk_car-hire-matemwe-pongwe":"Car hire in Matemwe & Pongwe","lk_car-hire-paje-jambiani":"Car hire in Paje & Jambiani","lk_car-hire-kizimkazi":"Car hire in Kizimkazi","chip":"Airport and hotel delivery","g_k":"Essential guide","lbl_driving-in-zanzibar":"Driving in Zanzibar","g_p":"Seven things to know before you rent and drive in Zanzibar.","stat_from":"per day, from","skip":"Skip to content","nav_home":"Home","nav_fleet":"Cars","nav_how":"How it works","nav_book":"Book","nav_areas":"Delivery areas","nav_faq":"FAQ","nav_contact":"Contact","wa":"WhatsApp us","h1":"Driving in Zanzibar: A Guide for Visitors","intro":"Renting a car is one of the easiest ways to see Zanzibar, from Stone Town to the beaches of Nungwi, Paje and Kizimkazi. Here is what to know before you rent and drive.","bk_driving-in-zanzibar":"Book a car","pg_ask":"Ask on WhatsApp","w1t":"Clear prices","w3t":"Support any time","w4t":"Well-kept cars","side_h":"Delivery fees","pg_side_note":"Pickup and return are charged separately. Zanzibar Airport and Zanzibar Town (Stone Town) are always free.","side_from":"Cars from \u003cb>$20.00\u003c/b> per day","pg_check":"Check prices and book","cars_h":"Popular rental cars in Zanzibar","cat_small":"Compact","seats":"seats","v_Automatic":"Automatic","v_Petrol":"Petrol","per_day":"/ day","book_car":"Book this car","cat_suv":"SUV & 4x4","cat_van":"Minivan","all_cars":"See all 10 cars","pg_more":"Car hire in other parts of Zanzibar","cta_h":"Ready to explore Zanzibar?","pg_cta_p":"Message us on WhatsApp or book online in a minute.","cta_book":"Book now","rights":"All rights reserved."},"sw":{"__title":"Kuendesha Gari Zanzibar: Mwongozo kwa Wageni | Rafiki Car Hire","s0h":"Kibali cha udereva na leseni","s0b0":"Kila dereva anahitaji kibali cha udereva cha Zanzibar ($25 kwa kila dereva) pamoja na leseni ya nchini kwake. Tunaandaa kibali kabla hujafika. Beba leseni na pasipoti yako na uwe nazo unapoendesha.","s1h":"Sheria za barabarani na usalama","s1b0":"Zanzibar magari huendeshwa upande wa kushoto. Vizuizi vya polisi ni vya kawaida, hivyo punguza mwendo na simama unapoombwa. Nje ya miji utashiriki barabara na watembea kwa miguu, waendesha baiskeli, pikipiki na wanyama, na barabara nyingi za vijijini hazina taa, hivyo kuwa mwangalifu zaidi baada ya giza kuingia.","s2h":"Kuchagua gari linalofaa","s2b0":"Hakikisha gari linafaa safari yako: barabara utakazopita, idadi ya abiria na kiasi cha mizigo.","s2b1i0":"Magari madogo (Toyota IST, Nissan Juke): ya gharama nafuu kwa watu wawili na barabara kuu.","s2b1i1":"SUV na 4x4 (Toyota RAV4, Vanguard, Harrier, Land Cruiser, Suzuki Escudo): rahisi zaidi kwenye barabara za mchanga za vijijini na hoteli.","s2b1i2":"Minivan (Toyota Alphard): hadi abiria wanane.","s2b1i3":"Pickup (Toyota Hilux): nafasi ya mbao na vifaa vya kitesurf.","s3h":"Kuchukua, kurudisha na ada za kuleta","s3b0":"Thibitisha mahali na muda wa kuchukua na kurudisha unapoweka nafasi ili kuepuka ucheleweshaji. Kuleta na kuchukua gari ni bure uwanja wa ndege wa Zanzibar na Mji wa Zanzibar (Stone Town). Maeneo mengine ni $25.00 kwa kuleta na $25.00 kwa kurudisha, hivyo yote mawili nje ya eneo la bure ni $50.00.","s4h":"Gharama ya kukodisha","s4b0":"Jumla yako ni bei ya siku mara idadi ya siku, pamoja na ada zozote za kuleta. Fomu ya nafasi inaonyesha mchanganuo kamili kabla hujatuma, na tunathibitisha upatikanaji, malipo na maelezo mengine nawe kupitia WhatsApp.","s4b1":"Mafuta hayajajumuishwa: rudisha gari na kiwango cha mafuta kilekile kama wakati wa kuchukua.","s5h":"Weka nafasi mapema","s5b0":"Weka nafasi ya gari lako mapema, hasa msimu wa watalii wengi, ili kuhakikisha gari unalotaka linapatikana.","lbl_car-hire-zanzibar-airport":"Uwanja wa ndege wa Zanzibar","free":"Bure","l_town":"Mji wa Zanzibar","pg_other":"Maeneo mengine","area_paid":"$25.00 kila upande","lk_car-hire-zanzibar-airport":"Kukodisha gari uwanja wa ndege","lk_car-hire-stone-town":"Kukodisha gari Stone Town","lk_car-hire-nungwi-kendwa":"Kukodisha gari Nungwi na Kendwa","lk_car-hire-matemwe-pongwe":"Kukodisha gari Matemwe na Pongwe","lk_car-hire-paje-jambiani":"Kukodisha gari Paje na Jambiani","lk_car-hire-kizimkazi":"Kukodisha gari Kizimkazi","chip":"Tunaleta uwanja wa ndege au hotelini","g_k":"Mwongozo muhimu","lbl_driving-in-zanzibar":"Kuendesha gari Zanzibar","g_p":"Mambo saba ya kujua kabla ya kukodisha na kuendesha gari Zanzibar.","stat_from":"kwa siku, kuanzia","skip":"Ruka hadi maudhui","nav_home":"Nyumbani","nav_fleet":"Magari","nav_how":"Jinsi inavyofanya kazi","nav_book":"Weka nafasi","nav_areas":"Maeneo tunayofikia","nav_faq":"Maswali","nav_contact":"Mawasiliano","wa":"Tuandikie WhatsApp","h1":"Kuendesha gari Zanzibar: mwongozo kwa wageni","intro":"Kukodisha gari ni mojawapo ya njia rahisi zaidi za kuiona Zanzibar, kutoka Stone Town hadi fukwe za Nungwi, Paje na Kizimkazi. Haya ndiyo ya kujua kabla ya kukodisha na kuendesha.","bk_driving-in-zanzibar":"Weka nafasi ya gari","pg_ask":"Uliza kupitia WhatsApp","w1t":"Bei wazi","w3t":"Msaada wakati wowote","w4t":"Magari yaliyotunzwa","side_h":"Ada za kuleta gari","pg_side_note":"Kuleta na kurudisha hutozwa kila kimoja. Uwanja wa ndege wa Zanzibar na Mji wa Zanzibar (Stone Town) ni bure kila wakati.","side_from":"Magari kuanzia \u003cb>$20.00\u003c/b> kwa siku","pg_check":"Angalia bei na weka nafasi","cars_h":"Magari maarufu ya kukodisha Zanzibar","cat_small":"Magari madogo","seats":"viti","v_Automatic":"Automatiki","v_Petrol":"Petroli","per_day":"/ siku","book_car":"Chagua gari hili","cat_suv":"SUV na 4x4","cat_van":"Minivan","all_cars":"Tazama magari yote 10","pg_more":"Kukodisha gari maeneo mengine ya Zanzibar","cta_h":"Uko tayari kuizunguka Zanzibar?","pg_cta_p":"Tuandikie WhatsApp au weka nafasi mtandaoni kwa dakika moja.","cta_book":"Weka nafasi","rights":"Haki zote zimehifadhiwa."},"it":{"__title":"Guidare a Zanzibar: Guida per i Visitatori | Rafiki Car Hire","s0h":"Permesso di guida e patente","s0b0":"Ogni conducente ha bisogno di un permesso di guida di Zanzibar ($25 a conducente) oltre alla patente del proprio paese. Prepariamo il permesso prima del tuo arrivo. Porta patente e passaporto e tienili con te mentre guidi.","s1h":"Regole della strada e sicurezza","s1b0":"A Zanzibar si guida a sinistra. I posti di blocco della polizia sono frequenti: rallenta e fermati quando richiesto. Fuori dai centri abitati condividerai la strada con pedoni, ciclisti, moto e animali, e molte strade rurali non sono illuminate, quindi fai particolare attenzione dopo il tramonto.","s2h":"Scegliere il veicolo giusto","s2b0":"Verifica che il veicolo sia adatto al tuo viaggio: le strade che percorrerai, il numero di passeggeri e quanti bagagli porti.","s2b1i0":"Auto compatte (Toyota IST, Nissan Juke): economiche per coppie e strade principali.","s2b1i1":"SUV e 4x4 (Toyota RAV4, Vanguard, Harrier, Land Cruiser, Suzuki Escudo): più comodi sulle strade sabbiose di villaggi e hotel.","s2b1i2":"Monovolume (Toyota Alphard): fino a otto passeggeri.","s2b1i3":"Pick-up (Toyota Hilux): spazio per tavole e attrezzatura da kitesurf.","s3h":"Ritiro, riconsegna e costi di consegna","s3b0":"Concorda con chiarezza luoghi e orari di ritiro e riconsegna al momento della prenotazione per evitare ritardi. Consegna e ritiro sono gratuiti all'aeroporto di Zanzibar e a Zanzibar Town (Stone Town). Altrove costano $25.00 per la consegna e $25.00 per la riconsegna, quindi entrambi fuori dalla zona gratuita fanno $50.00.","s4h":"Quanto costa un noleggio","s4b0":"Il totale è la tariffa giornaliera moltiplicata per il numero di giorni, più gli eventuali costi di consegna. Il modulo di prenotazione mostra il dettaglio completo prima dell'invio, e confermiamo con te disponibilità, pagamento e ogni altro dettaglio su WhatsApp.","s4b1":"Il carburante non è incluso: riconsegna l'auto con lo stesso livello che aveva al ritiro.","s5h":"Prenota in anticipo","s5b0":"Prenota l'auto in anticipo, soprattutto in alta stagione, per essere sicuro che il veicolo che desideri sia disponibile.","lbl_car-hire-zanzibar-airport":"Aeroporto di Zanzibar","free":"Gratis","l_town":"Zanzibar Town","pg_other":"Altre località","area_paid":"$25.00 a tratta","lk_car-hire-zanzibar-airport":"Noleggio auto all'aeroporto di Zanzibar","lk_car-hire-stone-town":"Noleggio auto a Stone Town","lk_car-hire-nungwi-kendwa":"Noleggio auto a Nungwi e Kendwa","lk_car-hire-matemwe-pongwe":"Noleggio auto a Matemwe e Pongwe","lk_car-hire-paje-jambiani":"Noleggio auto a Paje e Jambiani","lk_car-hire-kizimkazi":"Noleggio auto a Kizimkazi","chip":"Consegna in aeroporto e hotel","g_k":"Guida essenziale","lbl_driving-in-zanzibar":"Guidare a Zanzibar","g_p":"Sette cose da sapere prima di noleggiare e guidare a Zanzibar.","stat_from":"al giorno, da","skip":"Vai al contenuto","nav_home":"Home","nav_fleet":"Auto","nav_how":"Come funziona","nav_book":"Prenota","nav_areas":"Zone di consegna","nav_faq":"FAQ","nav_contact":"Contatti","wa":"Scrivici su WhatsApp","h1":"Guidare a Zanzibar: guida per i visitatori","intro":"Noleggiare un'auto è uno dei modi più semplici per scoprire Zanzibar, da Stone Town alle spiagge di Nungwi, Paje e Kizimkazi. Ecco cosa sapere prima di noleggiare e guidare.","bk_driving-in-zanzibar":"Prenota un'auto","pg_ask":"Chiedi su WhatsApp","w1t":"Prezzi chiari","w3t":"Assistenza sempre","w4t":"Auto ben curate","side_h":"Costi di consegna","pg_side_note":"Consegna e riconsegna si pagano separatamente. L'aeroporto di Zanzibar e Zanzibar Town (Stone Town) sono sempre gratuiti.","side_from":"Auto da \u003cb>$20.00\u003c/b> al giorno","pg_check":"Vedi i prezzi e prenota","cars_h":"Le auto a noleggio più richieste a Zanzibar","cat_small":"Compatte","seats":"posti","v_Automatic":"Automatico","v_Petrol":"Benzina","per_day":"/ giorno","book_car":"Prenota questa auto","cat_suv":"SUV e 4x4","cat_van":"Monovolume","all_cars":"Vedi tutte le 10 auto","pg_more":"Noleggio auto in altre zone di Zanzibar","cta_h":"Pronto a scoprire Zanzibar?","pg_cta_p":"Scrivici su WhatsApp o prenota online in un minuto.","cta_book":"Prenota ora","rights":"Tutti i diritti riservati."},"de":{"__title":"Autofahren auf Sansibar: Ratgeber für Besucher | Rafiki Car Hire","s0h":"Fahrerlaubnis und Führerschein","s0b0":"Jeder Fahrer braucht zusätzlich zum heimischen Führerschein eine Sansibar-Fahrerlaubnis ($25 pro Fahrer). Wir besorgen sie vor deiner Ankunft. Bring Führerschein und Reisepass mit und hab beides beim Fahren dabei.","s1h":"Verkehrsregeln und Sicherheit","s1b0":"Auf Sansibar herrscht Linksverkehr. Polizeikontrollen sind häufig, also fahr langsamer und halte an, wenn du dazu aufgefordert wirst. Außerhalb der Orte teilst du die Straße mit Fußgängern, Radfahrern, Motorrädern und Tieren, und viele Landstraßen sind unbeleuchtet. Sei nach Einbruch der Dunkelheit besonders vorsichtig.","s2h":"Das passende Fahrzeug wählen","s2b0":"Prüfe, ob das Fahrzeug zu deiner Reise passt: die Straßen, die du fährst, die Zahl der Mitfahrer und wie viel Gepäck du hast.","s2b1i0":"Kompaktwagen (Toyota IST, Nissan Juke): sparsam für Paare und Hauptstraßen.","s2b1i1":"SUVs und 4x4 (Toyota RAV4, Vanguard, Harrier, Land Cruiser, Suzuki Escudo): bequemer auf sandigen Dorf- und Hotelwegen.","s2b1i2":"Van (Toyota Alphard): bis zu acht Mitfahrer.","s2b1i3":"Pick-up (Toyota Hilux): Platz für Kiteboards und Ausrüstung.","s3h":"Übergabe, Rückgabe und Liefergebühren","s3b0":"Lege bei der Buchung Übergabe- und Rückgabeort und -zeit klar fest, um Verzögerungen zu vermeiden. Lieferung und Abholung sind am Flughafen Sansibar und in Zanzibar Town (Stone Town) kostenlos. Überall sonst kosten die Übergabe $25.00 und die Rückgabe $25.00; liegen beide außerhalb der kostenlosen Zone, sind es $50.00.","s4h":"Was eine Anmietung kostet","s4b0":"Der Gesamtpreis ist der Tagespreis mal die Anzahl der Tage plus eventuelle Liefergebühren. Das Buchungsformular zeigt die vollständige Aufstellung vor dem Senden, und Verfügbarkeit, Zahlung und alle weiteren Details bestätigen wir mit dir über WhatsApp.","s4b1":"Kraftstoff ist nicht inbegriffen: Gib das Auto mit demselben Tankstand zurück wie bei der Übernahme.","s5h":"Früh buchen","s5b0":"Reserviere dein Auto rechtzeitig, besonders in der Hauptsaison, damit das gewünschte Fahrzeug sicher verfügbar ist.","lbl_car-hire-zanzibar-airport":"Flughafen Sansibar","free":"Gratis","l_town":"Sansibar-Stadt","pg_other":"Andere Orte","area_paid":"$25.00 pro Strecke","lk_car-hire-zanzibar-airport":"Mietwagen am Flughafen Sansibar","lk_car-hire-stone-town":"Mietwagen in Stone Town","lk_car-hire-nungwi-kendwa":"Mietwagen in Nungwi & Kendwa","lk_car-hire-matemwe-pongwe":"Mietwagen in Matemwe & Pongwe","lk_car-hire-paje-jambiani":"Mietwagen in Paje & Jambiani","lk_car-hire-kizimkazi":"Mietwagen in Kizimkazi","chip":"Lieferung zu Flughafen und Hotel","g_k":"Wichtiger Ratgeber","lbl_driving-in-zanzibar":"Autofahren auf Sansibar","g_p":"Sieben Dinge, die du wissen solltest, bevor du auf Sansibar ein Auto mietest und fährst.","stat_from":"pro Tag, ab","skip":"Zum Inhalt springen","nav_home":"Startseite","nav_fleet":"Autos","nav_how":"So funktioniert's","nav_book":"Buchen","nav_areas":"Liefergebiete","nav_faq":"FAQ","nav_contact":"Kontakt","wa":"Schreib uns auf WhatsApp","h1":"Autofahren auf Sansibar: Ratgeber für Besucher","intro":"Ein Mietwagen ist eine der einfachsten Möglichkeiten, Sansibar zu entdecken, von Stone Town bis zu den Stränden von Nungwi, Paje und Kizimkazi. Das solltest du wissen, bevor du mietest und losfährst.","bk_driving-in-zanzibar":"Auto buchen","pg_ask":"Per WhatsApp fragen","w1t":"Klare Preise","w3t":"Jederzeit Hilfe","w4t":"Gepflegte Autos","side_h":"Liefergebühren","pg_side_note":"Übergabe und Rückgabe werden getrennt berechnet. Der Flughafen Sansibar und Zanzibar Town (Stone Town) sind immer kostenlos.","side_from":"Autos ab \u003cb>$20.00\u003c/b> pro Tag","pg_check":"Preise prüfen und buchen","cars_h":"Beliebte Mietwagen auf Sansibar","cat_small":"Kompakt","seats":"Sitze","v_Automatic":"Automatik","v_Petrol":"Benzin","per_day":"/ Tag","book_car":"Dieses Auto buchen","cat_suv":"SUV & 4x4","cat_van":"Van","all_cars":"Alle 10 Autos ansehen","pg_more":"Mietwagen in anderen Teilen Sansibars","cta_h":"Bereit, Sansibar zu entdecken?","pg_cta_p":"Schreib uns auf WhatsApp oder buche in einer Minute online.","cta_book":"Jetzt buchen","rights":"Alle Rechte vorbehalten."},"fr":{"__title":"Conduire à Zanzibar : Guide pour les Visiteurs | Rafiki Car Hire","s0h":"Autorisation de conduire et permis","s0b0":"Chaque conducteur a besoin d'un permis de conduire de Zanzibar (25 $ par conducteur) en plus de son permis national. Nous l'obtenons avant votre arrivée. Apportez votre permis et votre passeport et gardez-les sur vous au volant.","s1h":"Code de la route et sécurité","s1b0":"À Zanzibar, on roule à gauche. Les contrôles de police sont fréquents : ralentissez et arrêtez-vous si on vous le demande. Hors des villes, vous partagerez la route avec des piétons, des cyclistes, des motos et des animaux, et de nombreuses routes rurales ne sont pas éclairées : soyez particulièrement prudent après la tombée de la nuit.","s2h":"Choisir le bon véhicule","s2b0":"Vérifiez que le véhicule convient à votre voyage : les routes empruntées, le nombre de passagers et la quantité de bagages.","s2b1i0":"Citadines (Toyota IST, Nissan Juke) : économiques pour les couples et les routes principales.","s2b1i1":"SUV et 4x4 (Toyota RAV4, Vanguard, Harrier, Land Cruiser, Suzuki Escudo) : plus confortables sur les pistes de sable des villages et des hôtels.","s2b1i2":"Monospace (Toyota Alphard) : jusqu'à huit passagers.","s2b1i3":"Pick-up (Toyota Hilux) : de la place pour les planches et le matériel de kitesurf.","s3h":"Prise en charge, retour et frais de livraison","s3b0":"Confirmez clairement lieux et horaires de prise en charge et de retour lors de la réservation pour éviter les retards. La livraison et la reprise sont gratuites à l'aéroport de Zanzibar et à Zanzibar Town (Stone Town). Ailleurs, elles coûtent $25.00 pour la prise en charge et $25.00 pour le retour, soit $50.00 si les deux sont hors de la zone gratuite.","s4h":"Combien coûte une location","s4b0":"Le total correspond au tarif journalier multiplié par le nombre de jours, plus les éventuels frais de livraison. Le formulaire affiche le détail complet avant l'envoi, et nous confirmons avec vous la disponibilité, le paiement et tout autre détail sur WhatsApp.","s4b1":"Le carburant n'est pas inclus : rendez la voiture avec le même niveau qu'à la prise en charge.","s5h":"Réservez à l'avance","s5b0":"Réservez votre voiture à l'avance, surtout en haute saison, pour être sûr que le véhicule souhaité soit disponible.","lbl_car-hire-zanzibar-airport":"Aéroport de Zanzibar","free":"Gratuit","l_town":"Zanzibar Town","pg_other":"Autres lieux","area_paid":"$25.00 par trajet","lk_car-hire-zanzibar-airport":"Location de voiture à l'aéroport de Zanzibar","lk_car-hire-stone-town":"Location de voiture à Stone Town","lk_car-hire-nungwi-kendwa":"Location de voiture à Nungwi et Kendwa","lk_car-hire-matemwe-pongwe":"Location de voiture à Matemwe et Pongwe","lk_car-hire-paje-jambiani":"Location de voiture à Paje et Jambiani","lk_car-hire-kizimkazi":"Location de voiture à Kizimkazi","chip":"Livraison aéroport et hôtel","g_k":"Guide essentiel","lbl_driving-in-zanzibar":"Conduire à Zanzibar","g_p":"Sept choses à savoir avant de louer et de conduire à Zanzibar.","stat_from":"par jour, dès","skip":"Aller au contenu","nav_home":"Accueil","nav_fleet":"Voitures","nav_how":"Comment ça marche","nav_book":"Réserver","nav_areas":"Zones de livraison","nav_faq":"FAQ","nav_contact":"Contact","wa":"Écrivez-nous sur WhatsApp","h1":"Conduire à Zanzibar : guide pour les visiteurs","intro":"Louer une voiture est l'un des moyens les plus simples de découvrir Zanzibar, de Stone Town aux plages de Nungwi, Paje et Kizimkazi. Voici ce qu'il faut savoir avant de louer et de prendre la route.","bk_driving-in-zanzibar":"Réserver une voiture","pg_ask":"Demander sur WhatsApp","w1t":"Prix clairs","w3t":"Assistance à toute heure","w4t":"Voitures bien entretenues","side_h":"Frais de livraison","pg_side_note":"La livraison et le retour sont facturés séparément. L'aéroport de Zanzibar et Zanzibar Town (Stone Town) sont toujours gratuits.","side_from":"Voitures à partir de \u003cb>$20.00\u003c/b> par jour","pg_check":"Voir les prix et réserver","cars_h":"Voitures de location populaires à Zanzibar","cat_small":"Citadines","seats":"places","v_Automatic":"Automatique","v_Petrol":"Essence","per_day":"/ jour","book_car":"Réserver cette voiture","cat_suv":"SUV et 4x4","cat_van":"Monospaces","all_cars":"Voir les 10 voitures","pg_more":"Location de voiture ailleurs à Zanzibar","cta_h":"Prêt à explorer Zanzibar ?","pg_cta_p":"Écrivez-nous sur WhatsApp ou réservez en ligne en une minute.","cta_book":"Réserver","rights":"Tous droits réservés."},"es":{"__title":"Conducir en Zanzíbar: Guía para Visitantes | Rafiki Car Hire","s0h":"Permiso de conducir y carné","s0b0":"Cada conductor necesita un permiso de conducir de Zanzíbar (25 $ por conductor) además del carné de su país. Tramitamos el permiso antes de que llegues. Trae tu carné y tu pasaporte y llévalos contigo mientras conduces.","s1h":"Normas de tráfico y seguridad","s1b0":"En Zanzíbar se conduce por la izquierda. Los controles policiales son habituales, así que reduce la velocidad y detente cuando te lo pidan. Fuera de las ciudades compartirás la carretera con peatones, ciclistas, motos y animales, y muchas carreteras rurales no tienen iluminación, así que ten especial cuidado de noche.","s2h":"Elegir el vehículo adecuado","s2b0":"Comprueba que el vehículo se ajusta a tu viaje: las carreteras que recorrerás, el número de pasajeros y cuánto equipaje llevas.","s2b1i0":"Compactos (Toyota IST, Nissan Juke): económicos para parejas y carreteras principales.","s2b1i1":"SUV y 4x4 (Toyota RAV4, Vanguard, Harrier, Land Cruiser, Suzuki Escudo): más cómodos en los caminos de arena de pueblos y hoteles.","s2b1i2":"Monovolumen (Toyota Alphard): hasta ocho pasajeros.","s2b1i3":"Pickup (Toyota Hilux): espacio para tablas y equipo de kitesurf.","s3h":"Recogida, devolución y cargos de entrega","s3b0":"Confirma claramente los lugares y horarios de recogida y devolución al reservar para evitar retrasos. La entrega y la recogida son gratis en el aeropuerto de Zanzíbar y en Zanzibar Town (Stone Town). En otros lugares cuestan $25.00 la recogida y $25.00 la devolución, así que ambas fuera de la zona gratuita suman $50.00.","s4h":"Cuánto cuesta un alquiler","s4b0":"Tu total es la tarifa diaria multiplicada por el número de días, más los cargos de entrega que correspondan. El formulario de reserva muestra el desglose completo antes de enviarlo, y confirmamos contigo la disponibilidad, el pago y cualquier otro detalle por WhatsApp.","s4b1":"El combustible no está incluido: devuelve el coche con el mismo nivel que al recogerlo.","s5h":"Reserva con antelación","s5b0":"Reserva tu coche con antelación, sobre todo en temporada alta, para asegurarte de que el vehículo que quieres esté disponible.","lbl_car-hire-zanzibar-airport":"Aeropuerto de Zanzíbar","free":"Gratis","l_town":"Ciudad de Zanzíbar","pg_other":"Otros lugares","area_paid":"$25.00 por trayecto","lk_car-hire-zanzibar-airport":"Alquiler de coches en el aeropuerto de Zanzíbar","lk_car-hire-stone-town":"Alquiler de coches en Stone Town","lk_car-hire-nungwi-kendwa":"Alquiler de coches en Nungwi y Kendwa","lk_car-hire-matemwe-pongwe":"Alquiler de coches en Matemwe y Pongwe","lk_car-hire-paje-jambiani":"Alquiler de coches en Paje y Jambiani","lk_car-hire-kizimkazi":"Alquiler de coches en Kizimkazi","chip":"Entrega en aeropuerto y hotel","g_k":"Guía esencial","lbl_driving-in-zanzibar":"Conducir en Zanzíbar","g_p":"Siete cosas que debes saber antes de alquilar y conducir en Zanzíbar.","stat_from":"por día, desde","skip":"Ir al contenido","nav_home":"Inicio","nav_fleet":"Coches","nav_how":"Cómo funciona","nav_book":"Reservar","nav_areas":"Zonas de entrega","nav_faq":"Preguntas","nav_contact":"Contacto","wa":"Escríbenos por WhatsApp","h1":"Conducir en Zanzíbar: guía para visitantes","intro":"Alquilar un coche es una de las formas más fáciles de conocer Zanzíbar, desde Stone Town hasta las playas de Nungwi, Paje y Kizimkazi. Esto es lo que debes saber antes de alquilar y conducir.","bk_driving-in-zanzibar":"Reservar un coche","pg_ask":"Preguntar por WhatsApp","w1t":"Precios claros","w3t":"Ayuda a cualquier hora","w4t":"Coches bien cuidados","side_h":"Cargos de entrega","pg_side_note":"La entrega y la devolución se cobran por separado. El aeropuerto de Zanzíbar y Zanzibar Town (Stone Town) son siempre gratis.","side_from":"Coches desde \u003cb>$20.00\u003c/b> al día","pg_check":"Ver precios y reservar","cars_h":"Coches de alquiler populares en Zanzíbar","cat_small":"Compactos","seats":"plazas","v_Automatic":"Automático","v_Petrol":"Gasolina","per_day":"/ día","book_car":"Reservar este coche","cat_suv":"SUV y 4x4","cat_van":"Monovolúmenes","all_cars":"Ver los 10 coches","pg_more":"Alquiler de coches en otras zonas de Zanzíbar","cta_h":"¿Listo para descubrir Zanzíbar?","pg_cta_p":"Escríbenos por WhatsApp o reserva online en un minuto.","cta_book":"Reservar ahora","rights":"Todos los derechos reservados."}}</script>
     <script src="../analytics.js"></script>
     <script src="../page.js"></script>
   </body>

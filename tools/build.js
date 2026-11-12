@@ -22,6 +22,7 @@ const cut = src.indexOf('/* ===== Helpers ===== */');
 const { CONFIG, T } = vm.runInNewContext(src.slice(0, cut) + '\n;({ CONFIG, T })');
 const ICONS = vm.runInNewContext('(' + src.match(/const ICONS = (\{[\s\S]*?\n\});/)[1] + ')');
 const PAGES = require('./pages.js');
+const PAGES_I18N = require('./pages-i18n.js');
 
 const SITE = CONFIG.siteUrl.replace(/\/?$/, '/');
 const BASE_PATH = new URL(SITE).pathname;          // e.g. /ZanCarRental/
@@ -43,6 +44,9 @@ const TYPE_ALT = { suv: 'SUV', small: 'compact car', van: 'minivan', pickup: 'pi
 const carAlt = c => `${c.name}${c.year ? ' ' + c.year : ''} ${TYPE_ALT[c.type] || 'car'} for hire in Zanzibar`;
 const findCar = id => CONFIG.fleet.find(c => c.id === id);
 const findLoc = id => CONFIG.locations.find(l => l.id === id);
+// Booking locations (airport, town, outside) plus the named beach areas used by the area pages
+const findPlace = id => findLoc(id) || (CONFIG.areas || []).find(a => a.id === id);
+const PLACES = CONFIG.locations.filter(l => l.free).concat(CONFIG.areas || []);
 const locLabel = l => l.i18n ? tx(l.i18n) : l.name;
 const waLink = text => `https://wa.me/${CONFIG.whatsapp}` + (text ? `?text=${encodeURIComponent(text)}` : '');
 const pageFor = locId => PAGES.find(p => p.locs.includes(locId));
@@ -59,7 +63,7 @@ const jsonld = obj => `<script type="application/ld+json">${JSON.stringify(obj).
 /* ---------- Shared pieces ---------- */
 const specs = c => `
           <li>${icon('seats')}${c.seats} ${esc(tx('seats'))}</li>
-          <li>${icon('trans')}${esc(c.trans)}</li>${c.fuel ? `\n          <li>${icon('fuel')}${esc(c.fuel)}</li>` : ''}${c.year ? `\n          <li>${icon('year')}${c.year}</li>` : ''}`;
+          <li>${icon('trans')}${esc(tx('v_' + c.trans))}</li>${c.fuel ? `\n          <li>${icon('fuel')}${esc(tx('v_' + c.fuel))}</li>` : ''}${c.year ? `\n          <li>${icon('year')}${c.year}</li>` : ''}`;
 
 const carCard = (c, { prefix = '', bookHref = '#book', media = 'button' } = {}) => {
   const img = `<img src="${prefix}${esc(c.image)}" alt="${esc(carAlt(c))}" width="800" height="533" loading="lazy" decoding="async">`;
@@ -100,7 +104,7 @@ const business = () => ({
     addressCountry: 'TZ'
   },
   areaServed: [{ '@type': 'Place', name: 'Zanzibar, Tanzania' }]
-    .concat(CONFIG.locations.filter(l => l.id !== 'other').map(l => ({ '@type': 'Place', name: l.name.replace(/ \(Zanzibar\)$/, '') + ', Zanzibar' }))),
+    .concat(PLACES.map(l => ({ '@type': 'Place', name: (l.full || l.name).replace(/ \(Zanzibar\)$/, '') + ', Zanzibar' }))),
   priceRange: `${short(minPrice)} - ${short(maxPrice)} per day`,
   contactPoint: { '@type': 'ContactPoint', telephone: '+' + CONFIG.whatsapp, contactType: 'reservations' },
   hasOfferCatalog: {
@@ -149,7 +153,7 @@ const OG_IMAGE = SITE + 'images/rafiki-car-hire-zanzibar-og.jpg';
 /* ---------- 1. index.html ---------- */
 function buildIndex() {
   let h = read('index.html');
-  const title = `Car Hire Zanzibar | ${CONFIG.business} – Airport & Hotel Delivery`;
+  const title = tx('meta_title');
   const desc = `Self-drive car rental in Zanzibar from ${short(minPrice)}/day. SUVs, 4x4s, compact cars and minivans, with free delivery at Zanzibar Airport and Stone Town. Book on WhatsApp.`;
   const graph = {
     '@context': 'https://schema.org',
@@ -176,6 +180,8 @@ function buildIndex() {
   h = h.replace(/(<b id="statFrom"[^>]*>)[^<]*(<\/b>)/, (m, a, b) => a + CONFIG.currency + Math.round(minPrice) + b);
   h = h.replace(/(<b id="heroFrom">)[^<]*(<\/b>)/, (m, a, b) => a + money(minPrice) + b);
   h = h.replace(/(<p class="full fee-note" id="feeNote">)[^<]*(<\/p>)/, (m, a, b) => a + esc(tx('fee_note')) + b);
+  h = h.replace(/(<span class="extra-price" id="seatPrice">)[^<]*(<\/span>)/, (m, a, b) => a + '+' + money(CONFIG.babySeatFee) + b);
+  h = h.replace(/(<input name="arrival_airport" id="arrPort"[^>]*?value=")[^"]*(")/, (m, a, b) => a + esc(CONFIG.arrivalAirport) + b);
   // WhatsApp links get a real href even before JavaScript runs
   h = h.replace(/<a\b([^>]*?)\sdata-wa\b([^>]*)>/g, (m, a, b) => {
     const attrs = (a + b).replace(/\s(href|target|rel)="[^"]*"/g, '');
@@ -187,27 +193,25 @@ function buildIndex() {
   const carOptions = `<option value="">${esc(tx('f_choose'))}</option>` +
     CONFIG.fleet.map(c => `<option value="${c.id}">${esc(c.name)} ${c.year ? '(' + c.year + ') ' : ''}· ${money(c.price)} ${esc(tx('per_day'))}</option>`).join('');
   h = h.replace(/(<select name="car" id="car" required>)[\s\S]*?(<\/select>)/, (m, a, b) => a + carOptions + b);
-  const free = CONFIG.locations.filter(l => l.free), paid = CONFIG.locations.filter(l => !l.free);
-  const opts = list => list.map(l => `<option value="${l.id}">${esc(locLabel(l))}</option>`).join('');
-  const locOptions = `<optgroup label="${esc(tx('free'))}">${opts(free)}</optgroup><optgroup label="+${esc(money(CONFIG.deliveryFee))} · ${esc(tx('fee_zone'))}">${opts(paid)}</optgroup>`;
+  const locOptions = CONFIG.locations.map(l => `<option value="${l.id}">${esc(locLabel(l))} · ${esc(l.free ? tx('free') : '+' + money(CONFIG.deliveryFee))}</option>`).join('');
   h = h.replace(/(<select[^>]*class="loc-select"[^>]*>)[\s\S]*?(<\/select>)/g, (m, a, b) => a + locOptions + b);
 
   // Delivery areas + footer links
-  const areaCards = CONFIG.locations.filter(l => l.id !== 'other').map(l => {
+  const areaCards = PLACES.map(l => {
     const p = pageFor(l.id);
     const pill = l.free
       ? `<span class="fee-pill is-free" data-i18n="free">${esc(tx('free'))}</span>`
       : `<span class="fee-pill is-paid" data-i18n="area_paid">${esc(tx('area_paid'))}</span>`;
     return `
-            <li><a class="area-card" href="${p.slug}/"><span class="area-name">${esc(l.name.replace(/ \(Zanzibar\)$/, '').replace('Abeid Amani Karume International Airport', 'Zanzibar Airport'))}</span>${pill}<span class="area-go">${esc(p.linkText)}${icon('arrow')}</span></a></li>`;
+            <li><a class="area-card" href="${p.slug}/">${l.id === 'airport' ? `<span class="area-name" data-i18n="lbl_car-hire-zanzibar-airport">${esc(tx('lbl_car-hire-zanzibar-airport'))}</span>` : l.id === 'town' ? `<span class="area-name" data-i18n="l_town">${esc(tx('l_town'))}</span>` : `<span class="area-name">${esc(l.name)}</span>`}${pill}<span class="area-go"><span data-i18n="lk_${p.slug}">${esc(tx('lk_' + p.slug))}</span>${icon('arrow')}</span></a></li>`;
   }).join('');
   const guide = PAGES.find(p => p.guide);
   h = replaceBlock(h, 'areas', `
           <ul class="area-grid">${areaCards}
           </ul>
-          <p class="area-guide"><a href="${guide.slug}/">${esc(guide.linkText)}${icon('arrow')}</a></p>
+          <p class="area-guide"><a href="${guide.slug}/"><span data-i18n="lk_${guide.slug}">${esc(tx('lk_' + guide.slug))}</span>${icon('arrow')}</a></p>
           `);
-  h = replaceBlock(h, 'footareas', PAGES.map(p => `\n            <a href="${p.slug}/">${esc(p.linkText)}</a>`).join('') + '\n            ');
+  h = replaceBlock(h, 'footareas', PAGES.map(p => `\n            <a href="${p.slug}/" data-i18n="lk_${p.slug}">${esc(tx('lk_' + p.slug))}</a>`).join('') + '\n            ');
   h = replaceBlock(h, 'contact', contactHTML());
   write('index.html', h);
 }
@@ -219,36 +223,93 @@ function contactHTML(prefix = '') {
 }
 
 /* ---------- 2. Location pages ---------- */
+// Every visible text on these pages is stored in all languages inside the page (script#i18n);
+// page.js switches it, using the same saved language as the home page.
+const LANGS = Object.keys(T);
+const tl = (l, k) => fill((T[l] && T[l][k] !== undefined) ? T[l][k] : (en[k] !== undefined ? en[k] : k));
+const LANG_SELECT = id => `<select class="lang"${id ? ` id="${id}"` : ''} aria-label="Language">${[['en', 'English', 'EN'], ['sw', 'Kiswahili', 'SW'], ['it', 'Italiano', 'IT'], ['de', 'Deutsch', 'DE'], ['fr', 'Français', 'FR'], ['es', 'Español', 'ES']]
+  .map(([v, long, s]) => `<option value="${v}">${id ? s : long}</option>`).join('')}</select>`;
+
+function dictionary() {
+  const dict = Object.fromEntries(LANGS.map(l => [l, {}]));
+  const put = (key, fn) => { LANGS.forEach(l => { dict[l][key] = fn(l); }); return dict.en[key]; };
+  // text element: <tag data-t="key">English</tag>
+  const tt = (key, fn, tag = 'span', attrs = '') => `<${tag}${attrs} data-t="${key}">${esc(put(key, fn))}</${tag}>`;
+  // plain T key
+  const tk = (key, tag = 'span', attrs = '') => tt(key, l => tl(l, key), tag, attrs);
+  // element whose translation contains markup (already escaped)
+  const th = (key, fn, tag = 'span', attrs = '') => `<${tag}${attrs} data-th="${key}">${put(key, fn)}</${tag}>`;
+  const script = () => `<script type="application/json" id="i18n">${JSON.stringify(dict).replace(/</g, '\\u003c')}</script>`;
+  return { dict, put, tt, tk, th, script };
+}
+
+function pageText(p, l) {
+  if (l === 'en') return p;
+  const tr = (PAGES_I18N[p.slug] || {})[l];
+  if (!tr) throw new Error(`Missing ${l} translation for ${p.slug} in tools/pages-i18n.js`);
+  // same shape as the English, or the build stops
+  if (tr.sections.length !== p.sections.length) throw new Error(`${p.slug}/${l}: ${tr.sections.length} sections, English has ${p.sections.length}`);
+  p.sections.forEach(([, blocks], i) => {
+    const b2 = tr.sections[i][1];
+    if (b2.length !== blocks.length) throw new Error(`${p.slug}/${l} section ${i + 1}: block count differs from English`);
+    blocks.forEach((b, j) => {
+      if (Array.isArray(b) !== Array.isArray(b2[j]) || (Array.isArray(b) && b.length !== b2[j].length))
+        throw new Error(`${p.slug}/${l} section ${i + 1} block ${j + 1}: list differs from English`);
+    });
+  });
+  return tr;
+}
+
+function specsT(c, D) {
+  return `
+          <li>${icon('seats')}${c.seats} ${D.tk('seats')}</li>
+          <li>${icon('trans')}${D.tk('v_' + c.trans)}</li>${c.fuel ? `\n          <li>${icon('fuel')}${D.tk('v_' + c.fuel)}</li>` : ''}${c.year ? `\n          <li>${icon('year')}${c.year}</li>` : ''}`;
+}
+
+function carCardT(c, D, { prefix, bookHref }) {
+  return `
+    <article class="card">
+      <div class="card-media"><img src="${prefix}${esc(c.image)}" alt="${esc(carAlt(c))}" width="800" height="533" loading="lazy" decoding="async">${c.type ? D.tk('cat_' + c.type, 'span', ' class="tag"') : ''}</div>
+      <div class="cb">
+        <h3>${esc(c.name)}</h3>
+        <ul class="specs">${specsT(c, D)}</ul>
+        <div class="card-foot">
+          <p class="price"><b>${money(c.price)}</b>${D.tk('per_day')}</p>
+          <a class="btn btn-b" href="${bookHref}">${D.tk('book_car')}${icon('arrow')}</a>
+        </div>
+      </div>
+    </article>`;
+}
+
 function buildPage(p) {
   const url = SITE + p.slug + '/';
   const pre = '../';
   const firstLoc = p.locs[0];
   const bookHref = (car) => `${pre}?${[car ? 'car=' + car : '', firstLoc ? 'pickup=' + firstLoc : ''].filter(Boolean).join('&')}#book`;
+  // The WhatsApp message goes to the business, so it stays in English.
   const waText = `Hello ${CONFIG.business}, I would like to rent a car` + (p.guide ? ' in Zanzibar.' : ` in ${p.label.replace(' & ', ' / ')}.`);
   const crumbs = [{ name: 'Home', url: SITE }, { name: p.label, url }];
-  const allFree = p.locs.length && p.locs.every(id => findLoc(id).free);
-  const chipText = p.guide || !p.locs.length ? tx('w2t')
-    : allFree ? 'Free delivery and return'
-    : `Hotel delivery ${money(CONFIG.deliveryFee)} each way`;
+  const allFree = p.locs.length && p.locs.every(id => findPlace(id).free);
+  const D = dictionary();
+  const C = l => pageText(p, l);
+  const place = l => tl(l, 'lbl_' + p.slug);
 
-  const sections = p.sections.map(([h2, blocks]) => `
-          <h2>${esc(h2)}</h2>` + blocks.map(b => Array.isArray(b)
-    ? `\n          <ul>${b.map(li => `<li>${esc(fill(li))}</li>`).join('')}</ul>`
-    : `\n          <p>${esc(fill(b))}</p>`).join('')).join('\n');
+  D.put('__title', l => fill(C(l).title));
 
-  const feeRows = p.locs.map(id => {
-    const l = findLoc(id);
-    const label = id === 'airport' ? 'Zanzibar Airport' : l.name;
-    return `<li><span>${esc(label)}</span>${l.free
-      ? '<span class="fee-pill is-free">Free</span>'
-      : `<span class="fee-pill is-paid">${money(CONFIG.deliveryFee)} each way</span>`}</li>`;
-  }).join('');
+  const sections = p.sections.map(([, blocks], i) => `
+          ${D.tt(`s${i}h`, l => fill(C(l).sections[i][0]), 'h2')}` + blocks.map((b, j) => Array.isArray(b)
+    ? `\n          <ul>${b.map((_, k) => D.tt(`s${i}b${j}i${k}`, l => fill(C(l).sections[i][1][j][k]), 'li')).join('')}</ul>`
+    : `\n          ${D.tt(`s${i}b${j}`, l => fill(C(l).sections[i][1][j]), 'p')}`).join('')).join('\n');
+
+  const feeName = id => id === 'airport' ? D.tk('lbl_car-hire-zanzibar-airport')
+    : id === 'town' ? D.tk('l_town') : `<span>${esc(findPlace(id).name)}</span>`;
+  const pill = free => free ? D.tk('free', 'span', ' class="fee-pill is-free"') : D.tk('area_paid', 'span', ' class="fee-pill is-paid"');
   const sideFees = p.guide
-    ? `<li><span>Zanzibar Airport</span><span class="fee-pill is-free">Free</span></li><li><span>Zanzibar Town (Stone Town)</span><span class="fee-pill is-free">Free</span></li><li><span>Other locations</span><span class="fee-pill is-paid">${money(CONFIG.deliveryFee)} each way</span></li>`
-    : feeRows;
+    ? `<li>${feeName('airport')}${pill(true)}</li><li>${feeName('town')}${pill(true)}</li><li>${D.tk('pg_other')}${pill(false)}</li>`
+    : p.locs.map(id => `<li>${feeName(id)}${pill(findPlace(id).free)}</li>`).join('');
 
   const others = PAGES.filter(o => o.slug !== p.slug)
-    .map(o => `<li><a href="${pre}${o.slug}/">${esc(o.linkText)}${icon('arrow')}</a></li>`).join('');
+    .map(o => `<li><a href="${pre}${o.slug}/">${D.tk('lk_' + o.slug)}${icon('arrow')}</a></li>`).join('');
 
   const graph = {
     '@context': 'https://schema.org',
@@ -259,9 +320,30 @@ function buildPage(p) {
       { '@type': 'BreadcrumbList', '@id': url + '#breadcrumb',
         itemListElement: crumbs.map((c, i) => ({ '@type': 'ListItem', position: i + 1, name: c.name, item: c.url })) },
       { '@type': 'AutoRental', '@id': BIZ_ID, name: CONFIG.business, url: SITE, telephone: '+' + CONFIG.whatsapp,
-        ...(p.locs.length ? { areaServed: p.locs.map(id => ({ '@type': 'Place', name: findLoc(id).name.replace(/ \(Zanzibar\)$/, '') + ', Zanzibar' })) } : {}) }
+        ...(p.locs.length ? { areaServed: p.locs.map(id => ({ '@type': 'Place', name: (findPlace(id).full || findPlace(id).name).replace(/ \(Zanzibar\)$/, '') + ', Zanzibar' })) } : {}) }
     ]
   };
+
+  const waBtn = (cls) => `<a class="${cls}" href="${waLink(waText)}" target="_blank" rel="noopener">${D.tk('wa')}</a>`;
+
+  // Page hero card: the recommended car for an area page, or a Zanzibar photo for the guide.
+  const star = findCar(p.cars[0]);
+  const badge = D.tt('chip', l => tl(l, p.guide || !p.locs.length ? 'w2t' : allFree ? 'pg_chip_free' : 'pg_chip_paid'), 'span', ' class="pc-badge"');
+  const heroCard = p.guide ? `<figure class="phero-card pc-photo">
+            <div class="pc-media"><img src="${pre}images/hero.webp" alt="Turquoise lagoon and palm-lined beach on Zanzibar's east coast" width="1600" height="1000" fetchpriority="high" decoding="async" />${D.tk('g_k', 'span', ' class="pc-badge"')}</div>
+            <figcaption>
+              <span><span class="pc-name">${D.tk('lbl_' + p.slug)}</span>${D.tk('g_p', 'span', ' class="pc-meta"')}</span>
+              <span class="pc-price">${D.tk('stat_from')}<b>${money(minPrice)}</b></span>
+            </figcaption>
+            <ul class="pc-fees">${sideFees}</ul>
+          </figure>` : `<figure class="phero-card">
+            <div class="pc-media"><img src="${pre}${esc(star.image)}" alt="${esc(carAlt(star))}" width="800" height="533" fetchpriority="high" decoding="async" />${badge}</div>
+            <figcaption>
+              <span><span class="pc-name">${esc(star.name)}</span>${D.tt('pc_meta', l => tl(l, 'pg_rec').replace('{place}', place(l)), 'span', ' class="pc-meta"')}</span>
+              <span class="pc-price"><b>${money(star.price)}</b>${D.tk('per_day')}</span>
+            </figcaption>
+            <ul class="pc-fees">${sideFees}</ul>
+          </figure>`;
 
   const html = `<!doctype html>
 <html lang="en">
@@ -274,83 +356,58 @@ function buildPage(p) {
     <link rel="apple-touch-icon" href="${pre}images/favicon.png" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" onload="this.onload=null;this.rel=\'stylesheet\'" />
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" onload="this.onload=null;this.rel='stylesheet'" />
     <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" /></noscript>
     <link rel="stylesheet" href="${pre}css.css" />
   </head>
   <body class="subpage">
-    <a class="skip" href="#main">Skip to content</a>
+    ${D.tk('skip', 'a', ' class="skip" href="#main"')}
     <header class="hdr" id="hdr">
       <div class="wrap bar">
         <a class="logo" href="${pre}"><span class="logo-mark"><img src="${pre}images/logo-mark.webp" alt="" width="284" height="160" /></span><span>${esc(CONFIG.business)}</span></a>
         <nav class="nav" id="nav" aria-label="Main">
-          <a href="${pre}">Home</a>
-          <a href="${pre}#fleetsec">Cars</a>
-          <a href="${pre}#how">How it works</a>
-          <a href="${bookHref()}">Book</a>
-          <a href="${pre}#areas">Delivery areas</a>
-          <a href="${pre}#faq">FAQ</a>
-          <a href="#contact">Contact</a>
+          ${D.tk('nav_home', 'a', ` href="${pre}"`)}
+          ${D.tk('nav_fleet', 'a', ` href="${pre}#fleetsec"`)}
+          ${D.tk('nav_how', 'a', ` href="${pre}#how"`)}
+          ${D.tk('nav_book', 'a', ` href="${bookHref()}"`)}
+          ${D.tk('nav_areas', 'a', ` href="${pre}#areas"`)}
+          ${D.tk('nav_faq', 'a', ` href="${pre}#faq"`)}
+          ${D.tk('nav_contact', 'a', ' href="#contact"')}
           <div class="nav-extra">
-            <a class="btn btn-wa" href="${waLink(waText)}" target="_blank" rel="noopener">WhatsApp us</a>
+            ${LANG_SELECT('')}
+            ${waBtn('btn btn-wa')}
           </div>
         </nav>
         <div class="tools">
-          <a class="btn btn-wa sm hide-m" href="${waLink(waText)}" target="_blank" rel="noopener">WhatsApp us</a>
+          ${LANG_SELECT('lang')}
+          ${waBtn('btn btn-wa sm hide-m')}
           <button class="menu" id="menu" type="button" aria-label="Menu" aria-controls="nav" aria-expanded="false"><span></span><span></span></button>
         </div>
       </div>
     </header>
 
     <main id="main">
-      <section class="hero">
-        <div class="hero-bg" aria-hidden="true"></div>
-        <div class="blob b1" aria-hidden="true"></div>
-        <div class="blob b2" aria-hidden="true"></div>
-
-        <div class="wrap hero-grid">
-          <div class="hero-copy">
+      <section class="phero">
+        <div class="wrap phero-grid">
+          <div class="phero-copy">
             <nav class="crumbs" aria-label="Breadcrumb">
-              <ol><li><a href="${pre}">Home</a></li><li aria-current="page">${esc(p.label)}</li></ol>
+              <ol><li>${D.tk('nav_home', 'a', ` href="${pre}"`)}</li><li aria-current="page">${D.tk('lbl_' + p.slug)}</li></ol>
             </nav>
-            <p class="kicker"><span class="pulse" aria-hidden="true"></span><span>${p.guide ? 'Essential guide' : esc(tx('hero_kicker'))}</span></p>
-            <h1>${esc(p.h1)}</h1>
-            <p class="hero-p">${esc(fill(p.intro))}</p>
+            <p class="eyebrow">${D.tk(p.guide ? 'g_k' : 'hero_kicker')}</p>
+            ${D.tt('h1', l => fill(C(l).h1), 'h1')}
+            ${D.tt('intro', l => fill(C(l).intro), 'p', ' class="hero-p"')}
             <div class="hero-cta">
-              <a class="btn btn-sand lg" href="${bookHref()}">${p.guide ? 'Book a car' : 'Book a car for ' + esc(p.label.split(',')[0].split(' & ')[0])}${icon('arrow')}</a>
-              <a class="btn btn-glass lg" href="${waLink(waText)}" target="_blank" rel="noopener">Ask on WhatsApp</a>
+              <a class="btn btn-sand lg" href="${bookHref()}">${D.tk('bk_' + p.slug)}${icon('arrow')}</a>
+              <a class="btn btn-glass lg" href="${waLink(waText)}" target="_blank" rel="noopener">${D.tk('pg_ask')}</a>
             </div>
-            <ul class="trust">
-              <li>${esc(tx('w1t'))}</li>
-              <li>${esc(tx('w3t'))}</li>
-              <li>${esc(tx('w4t'))}</li>
+            <ul class="phero-facts">
+              ${D.tk('w1t', 'li')}
+              ${D.tk('w3t', 'li')}
+              ${D.tk('w4t', 'li')}
             </ul>
           </div>
-
-          <div class="hero-visual" aria-hidden="true">
-            <div class="sun"></div>
-            <img class="hero-car" src="${pre}images/toyota-land-cruiser-hero-zanzibar.webp" alt="" width="612" height="408" fetchpriority="high" />
-            <div class="float-chip chip-a">
-              <small>${esc(tx('stat_from'))}</small>
-              <b>${money(minPrice)}</b>
-            </div>
-            <div class="float-chip chip-b">
-              <span class="chip-ic">✈</span><span>${esc(chipText)}</span>
-            </div>
-          </div>
+          ${heroCard}
         </div>
-
-        <div class="wrap">
-          <dl class="stats">
-            <div><dt><b>${CONFIG.fleet.length}</b></dt><dd>${esc(tx('stat_cars'))}</dd></div>
-            <div><dt><b>${CONFIG.currency}${Math.round(minPrice)}</b></dt><dd>${esc(tx('stat_from'))}</dd></div>
-            <div><dt><b>24/7</b></dt><dd>${esc(tx('stat_support'))}</dd></div>
-          </dl>
-        </div>
-
-        <div class="waves w3" aria-hidden="true"></div>
-        <div class="waves w1" aria-hidden="true"></div>
-        <div class="waves w2" aria-hidden="true"></div>
       </section>
 
       <section class="page-body">
@@ -359,11 +416,11 @@ function buildPage(p) {
           </article>
           <aside class="page-side">
             <div class="side-card">
-              <h2>${p.guide ? 'Delivery fees' : 'Delivery to ' + esc(p.label)}</h2>
+              ${D.tt('side_h', l => p.guide ? tl(l, 'pg_fees') : tl(l, 'pg_deliv_to').replace('{place}', place(l)), 'h2')}
               <ul class="fee-list">${sideFees}</ul>
-              <p class="side-note">Pickup and return are charged separately. Zanzibar Airport and Zanzibar Town (Stone Town) are always free.</p>
-              <p class="side-from">Cars from <b>${money(minPrice)}</b> per day</p>
-              <a class="btn btn-sand" href="${bookHref()}">Check prices and book</a>
+              ${D.tk('pg_side_note', 'p', ' class="side-note"')}
+              ${D.th('side_from', l => esc(tl(l, 'pg_from')).replace('{price}', `<b>${money(minPrice)}</b>`), 'p', ' class="side-from"')}
+              <a class="btn btn-sand" href="${bookHref()}">${D.tk('pg_check')}</a>
               <a class="btn btn-wa" href="${waLink(waText)}" target="_blank" rel="noopener">WhatsApp ${esc(CONFIG.phone)}</a>
             </div>
           </aside>
@@ -372,16 +429,16 @@ function buildPage(p) {
 
       <section class="page-cars">
         <div class="wrap">
-          <h2>${p.guide ? 'Popular rental cars in Zanzibar' : 'Recommended cars for ' + esc(p.label)}</h2>
-          <div class="grid">${p.cars.map(id => carCard(findCar(id), { prefix: pre, bookHref: bookHref(id), media: 'div' })).join('')}
+          ${D.tt('cars_h', l => p.guide ? tl(l, 'pg_popular') : tl(l, 'pg_rec').replace('{place}', place(l)), 'h2')}
+          <div class="grid">${p.cars.map(id => carCardT(findCar(id), D, { prefix: pre, bookHref: bookHref(id) })).join('')}
           </div>
-          <p class="all-cars"><a href="${pre}#fleetsec">See all ${CONFIG.fleet.length} cars${icon('arrow')}</a></p>
+          <p class="all-cars"><a href="${pre}#fleetsec">${D.tt('all_cars', l => tl(l, 'pg_all').replace('{n}', CONFIG.fleet.length))}${icon('arrow')}</a></p>
         </div>
       </section>
 
       <section class="page-more">
         <div class="wrap">
-          <h2>Car hire in other parts of Zanzibar</h2>
+          ${D.tk('pg_more', 'h2')}
           <ul class="area-links">${others}</ul>
         </div>
       </section>
@@ -391,16 +448,16 @@ function buildPage(p) {
       <div class="wrap">
         <div class="cta-band">
           <div>
-            <h2>Ready to explore Zanzibar?</h2>
-            <p>Message us on WhatsApp or book online in a minute.</p>
+            ${D.tk('cta_h', 'h2')}
+            ${D.tk('pg_cta_p', 'p')}
           </div>
           <div class="cta-actions">
-            <a class="btn btn-sand lg" href="${bookHref()}">Book now</a>
-            <a class="btn btn-wa lg" href="${waLink(waText)}" target="_blank" rel="noopener">WhatsApp us</a>
+            <a class="btn btn-sand lg" href="${bookHref()}">${D.tk('cta_book')}</a>
+            ${waBtn('btn btn-wa lg')}
           </div>
         </div>
         <div class="foot-contact page-contact">${contactHTML(pre)}</div>
-        <p class="copy">© ${new Date().getFullYear()} ${esc(CONFIG.business)}. All rights reserved.</p>
+        <p class="copy">© ${new Date().getFullYear()} ${esc(CONFIG.business)}. ${D.tk('rights')}</p>
       </div>
     </footer>
 
@@ -408,6 +465,7 @@ function buildPage(p) {
       <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z" /></svg>
       <span>WhatsApp</span>
     </a>
+    ${D.script()}
     <script src="${pre}analytics.js"></script>
     <script src="${pre}page.js"></script>
   </body>
@@ -420,13 +478,15 @@ function buildPage(p) {
 /* ---------- 3. 404, sitemap, robots ---------- */
 function build404() {
   const b = BASE_PATH;
-  const links = PAGES.map(p => `<li><a href="${b}${p.slug}/">${esc(p.linkText)}</a></li>`).join('');
+  const D = dictionary();
+  D.put('__title', l => `${tl(l, 'pg_404_h')} | ${CONFIG.business}`);
+  const links = PAGES.map(p => `<li><a href="${b}${p.slug}/">${D.tk('lk_' + p.slug)}</a></li>`).join('');
   write('404.html', `<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Page not found | ${esc(CONFIG.business)}</title>
+    <title>${esc(tl('en', 'pg_404_h'))} | ${esc(CONFIG.business)}</title>
     <meta name="robots" content="noindex" />
     <link rel="icon" type="image/png" href="${b}images/favicon.png" />
     <link rel="stylesheet" href="${b}css.css" />
@@ -435,12 +495,14 @@ function build404() {
     <main id="main" class="page-404">
       <div class="wrap">
         <a class="foot-logo" href="${b}"><img src="${b}images/logo.webp" alt="${esc(CONFIG.business)}" width="760" height="582" /></a>
-        <h1>Sorry, this page does not exist</h1>
-        <p>The link may be old or mistyped. You can still book a car in Zanzibar from our home page.</p>
-        <p class="hero-cta"><a class="btn btn-sand lg" href="${b}#book">Book a car</a> <a class="btn btn-wa lg" href="${waLink()}">WhatsApp us</a></p>
+        ${D.tk('pg_404_h', 'h1')}
+        ${D.tk('pg_404_p', 'p')}
+        <p class="hero-cta"><a class="btn btn-sand lg" href="${b}#book">${D.tk('pg_book')}</a> <a class="btn btn-wa lg" href="${waLink()}">${D.tk('wa')}</a></p>
         <ul class="area-links">${links}</ul>
       </div>
     </main>
+    ${D.script()}
+    <script src="${b}page.js"></script>
   </body>
 </html>
 `);
