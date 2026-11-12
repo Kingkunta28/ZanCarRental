@@ -10,15 +10,18 @@ const CONFIG = {
   // deliveryFee is charged separately for EACH location (pickup and return) outside the free zone.
   deliveryFee: 25,
   // Optional extras (one-off price per booking)
-  babySeatFee: 60,
+  babySeatFee: 60,     // per seat, per booking (1 seat)
+  babySeatMultiFee: 50, // per seat when 2 or more seats are booked
+  babySeatMax: 5,      // most seats one booking can ask for
   // Default arrival airport shown in the Flight Information section
   arrivalAirport: 'Abeid Amani Karume International Airport, Zanzibar',
   // Pickup / return options in the booking form. "outside" covers ANY place outside
-  // Zanzibar Town and the airport; the customer types the exact place in a text field.
+  // Zanzibar Town and the airport; the customer types the area and exact address by hand.
+  // address: an exact address is required. area: an area / destination is required too.
   locations: [
     { id: 'airport', i18n: 'l_air', name: 'Zanzibar Airport', full: 'Abeid Amani Karume International Airport (Zanzibar)', free: true },
-    { id: 'town', i18n: 'l_town', name: 'Zanzibar Town', full: 'Zanzibar Town (Stone Town)', free: true },
-    { id: 'outside', i18n: 'l_outside', name: 'Outside Free Zone', exact: true }
+    { id: 'town', i18n: 'l_town', name: 'Zanzibar Town', full: 'Zanzibar Town (Stone Town)', free: true, address: true },
+    { id: 'outside', i18n: 'l_outside', name: 'Outside Free Zone', address: true, area: true }
   ],
   // Areas outside the free zone. Used for the delivery-area pages and SEO only,
   // NOT as booking options (they are all booked as "Outside Free Zone").
@@ -339,7 +342,9 @@ Object.keys(T2).forEach(l => Object.assign(T[l], T2[l]));
 const T3 = {
   en: {
     g_k: 'Essential guide', g_h: 'Before you rent', g_p: 'Seven things to know before you rent and drive in Zanzibar.', nav_guide: 'Before you rent',
-    g1t: 'Driving permit', g1p: 'Every driver needs a Zanzibar driving permit ($25 per driver) on top of their home licence. We arrange it before you arrive.',
+    g1t: 'Driving permit', g1p: "To drive legally in Zanzibar, you may need a local driving permit. If you need assistance arranging one through Rafiki Car Hire, please provide:",
+    g1a: "A copy of your passport.", g1b: "A copy of your valid driving licence.", g1c: "Driving permit arrangement fee",
+    g1n: "Please provide the required documents in advance to allow enough time for the arrangement.",
     g2t: 'Transparent pricing', g2p: 'Compare the full cost, not just the daily rate. Our car rental prices show every total with the permit included and no deposit.',
     g3t: 'Right vehicle', g3p: 'Check that the vehicle meets your travel needs. Consider terrain, passenger count and luggage space.',
     g4t: 'Insurance coverage', g4p: 'Check what your rental insurance covers. Our cars have third-party insurance, the basic cover required by law, which does not cover damage to the rental car itself. Some travel insurance policies offer cover for rental car damage.',
@@ -349,7 +354,9 @@ const T3 = {
   },
   sw: {
     g_k: 'Mwongozo muhimu', g_h: 'Kabla ya kukodisha', g_p: 'Mambo saba ya kujua kabla ya kukodisha na kuendesha gari Zanzibar.', nav_guide: 'Kabla ya kukodisha',
-    g1t: 'Kibali cha udereva', g1p: 'Kila dereva anahitaji kibali cha udereva cha Zanzibar ($25 kwa kila dereva) pamoja na leseni ya nchini kwake. Tunakiandaa kabla hujafika.',
+    g1t: 'Kibali cha udereva', g1p: "Ili kuendesha gari kihalali Zanzibar, huenda ukahitaji kibali cha udereva cha ndani. Ukihitaji msaada wa kukipata kupitia Rafiki Car Hire, tafadhali tuma:",
+    g1a: "Nakala ya pasipoti yako.", g1b: "Nakala ya leseni yako halali ya udereva.", g1c: "Ada ya kushughulikia kibali cha udereva",
+    g1n: "Tafadhali tuma nyaraka zinazohitajika mapema ili kuwe na muda wa kutosha wa kushughulikia.",
     g2t: 'Bei za wazi', g2p: 'Linganisha gharama yote, si bei ya siku pekee. Bei zetu zinaonyesha jumla yote pamoja na kibali na bila amana.',
     g3t: 'Gari linalokufaa', g3p: 'Hakikisha gari linakidhi mahitaji ya safari yako. Fikiria aina ya barabara, idadi ya abiria na nafasi ya mizigo.',
     g4t: 'Bima', g4p: 'Hakikisha unajua bima ya gari inashughulikia nini. Magari yetu yana bima ya mtu wa tatu, bima ya msingi inayotakiwa kisheria, ambayo haishughulikii uharibifu wa gari lenyewe. Baadhi ya bima za safari hushughulikia uharibifu wa gari la kukodi.',
@@ -359,7 +366,9 @@ const T3 = {
   },
   it: {
     g_k: 'Guida essenziale', g_h: 'Prima di noleggiare', g_p: 'Sette cose da sapere prima di noleggiare e guidare a Zanzibar.', nav_guide: 'Prima di noleggiare',
-    g1t: 'Permesso di guida', g1p: 'Ogni conducente ha bisogno di un permesso di guida di Zanzibar ($25 a conducente) oltre alla patente del proprio paese. Lo prepariamo prima del tuo arrivo.',
+    g1t: 'Permesso di guida', g1p: "Per guidare legalmente a Zanzibar potrebbe servirti un permesso di guida locale. Se vuoi che Rafiki Car Hire ti aiuti a ottenerlo, inviaci:",
+    g1a: "Una copia del passaporto.", g1b: "Una copia della tua patente di guida valida.", g1c: "Costo per la pratica del permesso di guida",
+    g1n: "Invia i documenti richiesti in anticipo, così abbiamo il tempo necessario per la pratica.",
     g2t: 'Prezzi trasparenti', g2p: 'Confronta il costo totale, non solo la tariffa giornaliera. I nostri prezzi mostrano ogni totale con il permesso incluso e senza deposito.',
     g3t: 'Il veicolo giusto', g3p: 'Verifica che il veicolo sia adatto al tuo viaggio: tipo di strade, numero di passeggeri e spazio per i bagagli.',
     g4t: 'Copertura assicurativa', g4p: "Verifica cosa copre l'assicurazione del noleggio. Le nostre auto hanno l'assicurazione RC verso terzi, la copertura base obbligatoria per legge, che non copre i danni all'auto noleggiata. Alcune assicurazioni di viaggio coprono i danni alle auto a noleggio.",
@@ -369,7 +378,9 @@ const T3 = {
   },
   de: {
     g_k: 'Wichtiger Ratgeber', g_h: 'Vor der Anmietung', g_p: 'Sieben Dinge, die du wissen solltest, bevor du auf Sansibar ein Auto mietest und fährst.', nav_guide: 'Vor der Anmietung',
-    g1t: 'Fahrerlaubnis', g1p: 'Jeder Fahrer braucht zusätzlich zum heimischen Führerschein eine Sansibar-Fahrerlaubnis ($25 pro Fahrer). Wir besorgen sie vor deiner Ankunft.',
+    g1t: 'Fahrerlaubnis', g1p: "Um auf Sansibar legal zu fahren, brauchst du eventuell eine lokale Fahrerlaubnis. Wenn Rafiki Car Hire dir bei der Beantragung helfen soll, schick uns bitte:",
+    g1a: "Eine Kopie deines Reisepasses.", g1b: "Eine Kopie deines gültigen Führerscheins.", g1c: "Gebühr für die Beantragung der Fahrerlaubnis",
+    g1n: "Bitte schick die Unterlagen frühzeitig, damit genug Zeit für die Beantragung bleibt.",
     g2t: 'Transparente Preise', g2p: 'Vergleiche die Gesamtkosten, nicht nur den Tagespreis. Unsere Mietpreise zeigen jede Summe inklusive Fahrerlaubnis und ohne Kaution.',
     g3t: 'Das passende Fahrzeug', g3p: 'Prüfe, ob das Fahrzeug zu deiner Reise passt: Gelände, Anzahl der Mitfahrer und Platz für Gepäck.',
     g4t: 'Versicherungsschutz', g4p: 'Prüfe, was deine Mietwagenversicherung abdeckt. Unsere Autos haben eine Haftpflichtversicherung, den gesetzlich vorgeschriebenen Grundschutz, der Schäden am Mietwagen selbst nicht abdeckt. Manche Reiseversicherungen decken Schäden an Mietwagen ab.',
@@ -379,7 +390,9 @@ const T3 = {
   },
   fr: {
     g_k: 'Guide essentiel', g_h: 'Avant de louer', g_p: 'Sept choses à savoir avant de louer et de conduire à Zanzibar.', nav_guide: 'Avant de louer',
-    g1t: 'Permis de conduire local', g1p: "Chaque conducteur a besoin d'un permis de conduire de Zanzibar (25 $ par conducteur) en plus de son permis national. Nous l'obtenons avant votre arrivée.",
+    g1t: 'Permis de conduire local', g1p: "Pour conduire légalement à Zanzibar, vous pourriez avoir besoin d'un permis de conduire local. Si vous souhaitez que Rafiki Car Hire vous aide à l'obtenir, merci de fournir :",
+    g1a: "Une copie de votre passeport.", g1b: "Une copie de votre permis de conduire valide.", g1c: "Frais de démarche pour le permis de conduire",
+    g1n: "Merci d'envoyer les documents demandés à l'avance pour laisser le temps nécessaire à la démarche.",
     g2t: 'Prix transparents', g2p: 'Comparez le coût total, pas seulement le tarif journalier. Nos prix de location affichent chaque total permis compris et sans caution.',
     g3t: 'Le bon véhicule', g3p: 'Vérifiez que le véhicule correspond à votre voyage : type de routes, nombre de passagers et place pour les bagages.',
     g4t: 'Assurance', g4p: "Vérifiez ce que couvre l'assurance de votre location. Nos voitures sont assurées au tiers, la couverture de base exigée par la loi, qui ne couvre pas les dommages à la voiture louée elle-même. Certaines assurances voyage couvrent les dommages aux voitures de location.",
@@ -389,7 +402,9 @@ const T3 = {
   },
   es: {
     g_k: 'Guía esencial', g_h: 'Antes de alquilar', g_p: 'Siete cosas que debes saber antes de alquilar y conducir en Zanzíbar.', nav_guide: 'Antes de alquilar',
-    g1t: 'Permiso de conducir', g1p: 'Cada conductor necesita un permiso de conducir de Zanzíbar (25 $ por conductor) además del carné de su país. Lo tramitamos antes de que llegues.',
+    g1t: 'Permiso de conducir', g1p: "Para conducir legalmente en Zanzíbar, es posible que necesites un permiso de conducir local. Si quieres que Rafiki Car Hire te ayude a tramitarlo, envíanos:",
+    g1a: "Una copia de tu pasaporte.", g1b: "Una copia de tu permiso de conducir vigente.", g1c: "Tarifa de gestión del permiso de conducir",
+    g1n: "Envía los documentos necesarios con antelación para que haya tiempo suficiente para la gestión.",
     g2t: 'Precios transparentes', g2p: 'Compara el coste total, no solo la tarifa diaria. Nuestros precios de alquiler muestran cada total con el permiso incluido y sin depósito.',
     g3t: 'El vehículo adecuado', g3p: 'Comprueba que el vehículo se ajusta a tu viaje: tipo de terreno, número de pasajeros y espacio para el equipaje.',
     g4t: 'Cobertura del seguro', g4p: 'Comprueba qué cubre el seguro del alquiler. Nuestros coches tienen seguro a terceros, la cobertura básica obligatoria por ley, que no cubre los daños al propio coche alquilado. Algunos seguros de viaje cubren daños a coches de alquiler.',
@@ -630,8 +645,6 @@ const T6 = {
     fs_you: 'Your details', fs_trip: 'Car and dates', fs_loc: 'Pickup and return',
     f_email: 'Email', opt: 'optional',
     l_air: 'Zanzibar Airport', l_town: 'Zanzibar Town', l_outside: 'Outside Free Zone',
-    f_exact: 'Enter your exact location', f_exact_ph: 'e.g. Nungwi, Kendwa, Paje or your hotel name',
-    e_exact: 'Please enter your exact location.',
     fee_note: 'Pickup and return are free at Zanzibar Airport and Zanzibar Town. Anywhere outside the free zone costs {fee} for pickup and {fee} for return.',
     fl_h: 'Flight information',
     fl_p: 'Please provide your flight details so we can coordinate your arrival and car pickup smoothly.',
@@ -650,8 +663,6 @@ const T6 = {
     fs_you: 'Taarifa zako', fs_trip: 'Gari na tarehe', fs_loc: 'Kuchukua na kurudisha',
     f_email: 'Barua pepe', opt: 'hiari',
     l_air: 'Uwanja wa Ndege wa Zanzibar', l_town: 'Mji wa Zanzibar', l_outside: 'Nje ya eneo la bure',
-    f_exact: 'Andika mahali hasa ulipo', f_exact_ph: 'mf. Nungwi, Kendwa, Paje au jina la hoteli',
-    e_exact: 'Tafadhali andika mahali hasa ulipo.',
     fee_note: 'Kuchukua na kurudisha ni bure Uwanja wa Ndege wa Zanzibar na Mji wa Zanzibar. Nje ya eneo la bure ni {fee} kwa kuchukua na {fee} kwa kurudisha.',
     fl_h: 'Taarifa za ndege',
     fl_p: 'Tafadhali tupe taarifa za ndege yako ili tupange vizuri kuwasili kwako na kukabidhiwa gari.',
@@ -670,8 +681,6 @@ const T6 = {
     fs_you: 'I tuoi dati', fs_trip: 'Auto e date', fs_loc: 'Ritiro e riconsegna',
     f_email: 'Email', opt: 'facoltativo',
     l_air: 'Aeroporto di Zanzibar', l_town: 'Zanzibar Town', l_outside: 'Fuori dalla zona gratuita',
-    f_exact: 'Inserisci il luogo esatto', f_exact_ph: "es. Nungwi, Kendwa, Paje o il nome dell'hotel",
-    e_exact: 'Inserisci il luogo esatto.',
     fee_note: "Ritiro e riconsegna sono gratuiti all'aeroporto di Zanzibar e a Zanzibar Town. Fuori dalla zona gratuita costano {fee} per il ritiro e {fee} per la riconsegna.",
     fl_h: 'Informazioni sul volo',
     fl_p: "Indicaci i dettagli del tuo volo così possiamo coordinare al meglio il tuo arrivo e la consegna dell'auto.",
@@ -690,8 +699,6 @@ const T6 = {
     fs_you: 'Deine Daten', fs_trip: 'Auto und Daten', fs_loc: 'Abholung und Rückgabe',
     f_email: 'E-Mail', opt: 'optional',
     l_air: 'Flughafen Sansibar', l_town: 'Sansibar-Stadt', l_outside: 'Außerhalb der Gratiszone',
-    f_exact: 'Gib deinen genauen Ort ein', f_exact_ph: 'z. B. Nungwi, Kendwa, Paje oder Name des Hotels',
-    e_exact: 'Bitte gib deinen genauen Ort ein.',
     fee_note: 'Abholung und Rückgabe sind am Flughafen Sansibar und in Sansibar-Stadt kostenlos. Außerhalb der Gratiszone kosten sie {fee} für die Abholung und {fee} für die Rückgabe.',
     fl_h: 'Fluginformationen',
     fl_p: 'Bitte gib deine Flugdaten an, damit wir deine Ankunft und die Fahrzeugübergabe reibungslos abstimmen können.',
@@ -710,8 +717,6 @@ const T6 = {
     fs_you: 'Vos coordonnées', fs_trip: 'Voiture et dates', fs_loc: 'Prise en charge et retour',
     f_email: 'E-mail', opt: 'facultatif',
     l_air: 'Aéroport de Zanzibar', l_town: 'Zanzibar Town', l_outside: 'Hors zone gratuite',
-    f_exact: 'Indiquez votre lieu exact', f_exact_ph: "ex. Nungwi, Kendwa, Paje ou le nom de l'hôtel",
-    e_exact: 'Veuillez indiquer votre lieu exact.',
     fee_note: "La prise en charge et le retour sont gratuits à l'aéroport de Zanzibar et à Zanzibar Town. Hors zone gratuite, ils coûtent {fee} pour la prise en charge et {fee} pour le retour.",
     fl_h: 'Informations de vol',
     fl_p: 'Indiquez-nous les détails de votre vol afin que nous puissions coordonner votre arrivée et la remise du véhicule en toute simplicité.',
@@ -730,8 +735,6 @@ const T6 = {
     fs_you: 'Tus datos', fs_trip: 'Coche y fechas', fs_loc: 'Recogida y devolución',
     f_email: 'Correo electrónico', opt: 'opcional',
     l_air: 'Aeropuerto de Zanzíbar', l_town: 'Ciudad de Zanzíbar', l_outside: 'Fuera de la zona gratuita',
-    f_exact: 'Indica tu ubicación exacta', f_exact_ph: 'p. ej. Nungwi, Kendwa, Paje o el nombre del hotel',
-    e_exact: 'Indica tu ubicación exacta.',
     fee_note: 'La recogida y la devolución son gratis en el aeropuerto de Zanzíbar y en la ciudad de Zanzíbar. Fuera de la zona gratuita cuestan {fee} la recogida y {fee} la devolución.',
     fl_h: 'Información del vuelo',
     fl_p: 'Indícanos los datos de tu vuelo para coordinar tu llegada y la entrega del coche sin complicaciones.',
@@ -745,6 +748,112 @@ const T6 = {
   }
 };
 Object.keys(T6).forEach(l => Object.assign(T[l], T6[l]));
+
+// Pickup / return address fields (shown per location type)
+const T7 = {
+  en: {
+    ad_air_pickup: 'We meet you in the arrivals hall with a name sign. Add your flight in step 4 so we can follow any delays.',
+    ad_air_return: 'Return the car at the airport before your flight. We meet you at the departures drop-off.',
+    ad_area: 'Area / destination', ad_area_ph: 'e.g. Nungwi, Paje, Kendwa...',
+    ad_ins: 'Additional instructions',
+    ad_pickup_town: 'Pickup address', ad_pickup_outside: 'Exact pickup address',
+    ad_return_town: 'Return address', ad_return_outside: 'Exact return address',
+    adp_pickup_town: 'Enter your hotel name, street, building or exact pickup address in Zanzibar Town.',
+    adp_pickup_outside: 'Enter your hotel name, resort, street or exact pickup location.',
+    adp_return_town: 'Enter your hotel name, street, building or exact return address in Zanzibar Town.',
+    adp_return_outside: 'Enter your hotel name, resort, street or exact return location.',
+    adi_pickup_air: 'e.g. Meet me at the arrivals exit', adi_return_air: 'e.g. Meet me at the departures drop-off',
+    adi_ph: 'e.g. Meet at main reception',
+    e_area: 'Please enter the area or destination.', e_addr: 'Please enter the exact address.'
+  },
+  sw: {
+    ad_air_pickup: 'Tutakupokea ukumbi wa kuwasili tukiwa na kibao chenye jina lako. Andika ndege yako katika hatua ya 4 ili tufuatilie ucheleweshaji.',
+    ad_air_return: 'Rudisha gari uwanja wa ndege kabla ya safari yako. Tutakutana nawe eneo la kushukia abiria wanaoondoka.',
+    ad_area: 'Eneo / unakoenda', ad_area_ph: 'mf. Nungwi, Paje, Kendwa...',
+    ad_ins: 'Maelekezo ya ziada',
+    ad_pickup_town: 'Anwani ya kuchukua gari', ad_pickup_outside: 'Anwani kamili ya kuchukua gari',
+    ad_return_town: 'Anwani ya kurudisha gari', ad_return_outside: 'Anwani kamili ya kurudisha gari',
+    adp_pickup_town: 'Andika jina la hoteli, mtaa, jengo au anwani kamili ya kuchukua gari Mji wa Zanzibar.',
+    adp_pickup_outside: 'Andika jina la hoteli, resort, mtaa au mahali kamili pa kuchukua gari.',
+    adp_return_town: 'Andika jina la hoteli, mtaa, jengo au anwani kamili ya kurudisha gari Mji wa Zanzibar.',
+    adp_return_outside: 'Andika jina la hoteli, resort, mtaa au mahali kamili pa kurudisha gari.',
+    adi_pickup_air: 'mf. Nikute mlango wa kutokea wa wanaowasili', adi_return_air: 'mf. Nikute eneo la kushukia wanaoondoka',
+    adi_ph: 'mf. Mapokezi makuu, nipigie ukifika',
+    e_area: 'Tafadhali andika eneo au unakoenda.', e_addr: 'Tafadhali andika anwani kamili.'
+  },
+  it: {
+    ad_air_pickup: "Ti aspettiamo nella sala arrivi con un cartello con il tuo nome. Aggiungi il volo al punto 4 così seguiamo eventuali ritardi.",
+    ad_air_return: "Riconsegna l'auto in aeroporto prima del volo. Ci troviamo all'area di sosta delle partenze.",
+    ad_area: 'Zona / destinazione', ad_area_ph: 'es. Nungwi, Paje, Kendwa...',
+    ad_ins: 'Istruzioni aggiuntive',
+    ad_pickup_town: 'Indirizzo di consegna', ad_pickup_outside: 'Indirizzo esatto di consegna',
+    ad_return_town: 'Indirizzo di riconsegna', ad_return_outside: 'Indirizzo esatto di riconsegna',
+    adp_pickup_town: "Inserisci il nome dell'hotel, la via, l'edificio o l'indirizzo esatto di consegna a Zanzibar Town.",
+    adp_pickup_outside: "Inserisci il nome dell'hotel, del resort, la via o il luogo esatto di consegna.",
+    adp_return_town: "Inserisci il nome dell'hotel, la via, l'edificio o l'indirizzo esatto di riconsegna a Zanzibar Town.",
+    adp_return_outside: "Inserisci il nome dell'hotel, del resort, la via o il luogo esatto di riconsegna.",
+    adi_pickup_air: "es. Incontriamoci all'uscita arrivi", adi_return_air: "es. Incontriamoci all'area partenze",
+    adi_ph: "es. Reception principale, chiamami quando arrivi",
+    e_area: 'Inserisci la zona o la destinazione.', e_addr: "Inserisci l'indirizzo esatto."
+  },
+  de: {
+    ad_air_pickup: 'Wir erwarten dich in der Ankunftshalle mit einem Namensschild. Gib in Schritt 4 deinen Flug an, damit wir Verspätungen verfolgen können.',
+    ad_air_return: 'Gib das Auto vor deinem Abflug am Flughafen zurück. Wir treffen dich an der Abflug-Vorfahrt.',
+    ad_area: 'Gebiet / Ziel', ad_area_ph: 'z. B. Nungwi, Paje, Kendwa...',
+    ad_ins: 'Zusätzliche Hinweise',
+    ad_pickup_town: 'Übergabeadresse', ad_pickup_outside: 'Genaue Übergabeadresse',
+    ad_return_town: 'Rückgabeadresse', ad_return_outside: 'Genaue Rückgabeadresse',
+    adp_pickup_town: 'Hotelname, Straße, Gebäude oder genaue Übergabeadresse in Zanzibar Town eingeben.',
+    adp_pickup_outside: 'Hotel, Resort, Straße oder genauen Übergabeort eingeben.',
+    adp_return_town: 'Hotelname, Straße, Gebäude oder genaue Rückgabeadresse in Zanzibar Town eingeben.',
+    adp_return_outside: 'Hotel, Resort, Straße oder genauen Rückgabeort eingeben.',
+    adi_pickup_air: 'z. B. Treffpunkt am Ausgang der Ankunftshalle', adi_return_air: 'z. B. Treffpunkt an der Abflug-Vorfahrt',
+    adi_ph: 'z. B. Hauptrezeption, bitte bei Ankunft anrufen',
+    e_area: 'Bitte gib das Gebiet oder Ziel ein.', e_addr: 'Bitte gib die genaue Adresse ein.'
+  },
+  fr: {
+    ad_air_pickup: "Nous vous attendons dans le hall des arrivées avec une pancarte à votre nom. Indiquez votre vol à l'étape 4 pour que nous suivions les retards.",
+    ad_air_return: "Rendez la voiture à l'aéroport avant votre vol. Nous vous retrouvons au dépose-minute des départs.",
+    ad_area: 'Zone / destination', ad_area_ph: 'ex. Nungwi, Paje, Kendwa...',
+    ad_ins: 'Instructions supplémentaires',
+    ad_pickup_town: 'Adresse de livraison', ad_pickup_outside: 'Adresse exacte de livraison',
+    ad_return_town: 'Adresse de retour', ad_return_outside: 'Adresse exacte de retour',
+    adp_pickup_town: "Indiquez le nom de l'hôtel, la rue, le bâtiment ou l'adresse exacte de livraison à Zanzibar Town.",
+    adp_pickup_outside: "Indiquez l'hôtel, le resort, la rue ou le lieu exact de livraison.",
+    adp_return_town: "Indiquez le nom de l'hôtel, la rue, le bâtiment ou l'adresse exacte de retour à Zanzibar Town.",
+    adp_return_outside: "Indiquez l'hôtel, le resort, la rue ou le lieu exact de retour.",
+    adi_pickup_air: 'ex. Retrouvez-moi à la sortie des arrivées', adi_return_air: 'ex. Retrouvez-moi au dépose-minute des départs',
+    adi_ph: "ex. Réception principale, appelez-moi à l'arrivée",
+    e_area: 'Veuillez indiquer la zone ou la destination.', e_addr: "Veuillez indiquer l'adresse exacte."
+  },
+  es: {
+    ad_air_pickup: 'Te esperamos en la sala de llegadas con un cartel con tu nombre. Añade tu vuelo en el paso 4 para seguir posibles retrasos.',
+    ad_air_return: 'Devuelve el coche en el aeropuerto antes de tu vuelo. Nos vemos en la zona de salidas.',
+    ad_area: 'Zona / destino', ad_area_ph: 'p. ej. Nungwi, Paje, Kendwa...',
+    ad_ins: 'Instrucciones adicionales',
+    ad_pickup_town: 'Dirección de entrega', ad_pickup_outside: 'Dirección exacta de entrega',
+    ad_return_town: 'Dirección de devolución', ad_return_outside: 'Dirección exacta de devolución',
+    adp_pickup_town: 'Escribe el nombre del hotel, la calle, el edificio o la dirección exacta de entrega en Zanzibar Town.',
+    adp_pickup_outside: 'Escribe el hotel, resort, calle o lugar exacto de entrega.',
+    adp_return_town: 'Escribe el nombre del hotel, la calle, el edificio o la dirección exacta de devolución en Zanzibar Town.',
+    adp_return_outside: 'Escribe el hotel, resort, calle o lugar exacto de devolución.',
+    adi_pickup_air: 'p. ej. Nos vemos en la salida de llegadas', adi_return_air: 'p. ej. Nos vemos en la zona de salidas',
+    adi_ph: 'p. ej. Recepción principal, llámame al llegar',
+    e_area: 'Indica la zona o el destino.', e_addr: 'Indica la dirección exacta.'
+  }
+};
+Object.keys(T7).forEach(l => Object.assign(T[l], T7[l]));
+
+// Baby seats quantity selector
+const T8 = {
+  en: { x_multi: "{seat} each when you take 2 or more", x_seat: 'Baby seats', x_seat_p: 'Child safety seats, fitted and ready at handover.', x_each: 'per seat, per booking', x_less: 'Remove a baby seat', x_more: 'Add a baby seat', sum_seat: 'Baby seats', e_seat: 'Please choose a valid number of baby seats.' },
+  sw: { x_multi: "{seat} kila kimoja ukichukua viti 2 au zaidi", x_seat: 'Viti vya watoto', x_seat_p: 'Viti vya usalama vya watoto, vimefungwa tayari wakati wa kukabidhi.', x_each: 'kwa kiti, kwa oda', x_less: 'Punguza kiti cha mtoto', x_more: 'Ongeza kiti cha mtoto', sum_seat: 'Viti vya watoto', e_seat: 'Tafadhali chagua idadi sahihi ya viti vya watoto.' },
+  it: { x_multi: "{seat} ciascuno se ne prendi 2 o più", x_seat: 'Seggiolini per bambini', x_seat_p: 'Seggiolini di sicurezza, montati e pronti alla consegna.', x_each: 'a seggiolino, per prenotazione', x_less: 'Togli un seggiolino', x_more: 'Aggiungi un seggiolino', sum_seat: 'Seggiolini', e_seat: 'Scegli un numero valido di seggiolini.' },
+  de: { x_multi: "{seat} pro Sitz ab 2 Sitzen", x_seat: 'Kindersitze', x_seat_p: 'Kindersitze, eingebaut und bereit bei der Übergabe.', x_each: 'pro Sitz, pro Buchung', x_less: 'Einen Kindersitz entfernen', x_more: 'Einen Kindersitz hinzufügen', sum_seat: 'Kindersitze', e_seat: 'Bitte wähle eine gültige Anzahl Kindersitze.' },
+  fr: { x_multi: "{seat} chacun à partir de 2 sièges", x_seat: 'Sièges bébé', x_seat_p: 'Sièges auto pour enfant, installés et prêts à la remise.', x_each: 'par siège, par réservation', x_less: 'Retirer un siège bébé', x_more: 'Ajouter un siège bébé', sum_seat: 'Sièges bébé', e_seat: 'Veuillez choisir un nombre valide de sièges bébé.' },
+  es: { x_multi: "{seat} cada una si llevas 2 o más", x_seat: 'Sillas de bebé', x_seat_p: 'Sillas de seguridad infantil, instaladas y listas en la entrega.', x_each: 'por silla, por reserva', x_less: 'Quitar una silla de bebé', x_more: 'Añadir una silla de bebé', sum_seat: 'Sillas de bebé', e_seat: 'Elige un número válido de sillas de bebé.' }
+};
+Object.keys(T8).forEach(l => Object.assign(T[l], T8[l]));
 
 /* ===== Helpers ===== */
 let lang = 'en', filter = 'all';
@@ -870,31 +979,36 @@ const locName = (id, inLang = true) => {
 // Unknown or missing locations are never treated as free.
 const locFee = id => (findLoc(id) || {}).free ? 0 : CONFIG.deliveryFee;
 const feeText = fee => fee === 0 ? t('free') : money(fee);
-const needsExact = id => !!(findLoc(id) || {}).exact;
+const needsAddr = id => !!(findLoc(id) || {}).address;
+const needsArea = id => !!(findLoc(id) || {}).area;
+const SIDES = ['pickup', 'return'];
 const clean = (v, max = 120) => String(v == null ? '' : v).replace(/\s+/g, ' ').trim().slice(0, max);
 const cents = n => Math.max(0, Math.round((Number(n) || 0) * 100) / 100);
 
 // Builds the full price breakdown from raw inputs. Used for the live summary AND
 // recalculated from scratch on submit, so the WhatsApp message never relies on what is shown on screen.
 // Pickup and return fees are charged independently (outside -> outside = 2 x fee).
-function quote({ carId, from, to, pickupLoc, returnLoc, babySeat }) {
+// Whole number of baby seats between 0 and CONFIG.babySeatMax (anything else becomes 0 / the max).
+const seatQty = v => Math.min(CONFIG.babySeatMax, Math.max(0, Math.floor(Number(v)) || 0));
+function quote({ carId, from, to, pickupLoc, returnLoc, babySeats }) {
   const car = CONFIG.fleet.find(x => x.id === carId) || null;
   const days = from && to ? Math.round((new Date(to + 'T00:00') - new Date(from + 'T00:00')) / 864e5) : 0;
   const rental = car && days > 0 ? cents(car.price * days) : 0;
   const pickupFee = cents(locFee(pickupLoc));
   const returnFee = cents(locFee(returnLoc));
   const locationFees = cents(pickupFee + returnFee);
-  const babySeatPrice = babySeat ? cents(CONFIG.babySeatFee) : 0;
+  // Baby Seat Total = number of seats x price per seat
+  const seats = seatQty(babySeats), seatPrice = cents(seats > 1 ? CONFIG.babySeatMultiFee : CONFIG.babySeatFee), babySeatTotal = cents(seats * seatPrice);
   return {
     car, days, rental, pickupLoc, returnLoc, pickupFee, returnFee, locationFees,
-    babySeat: !!babySeat, babySeatPrice,
-    total: cents(rental + locationFees + babySeatPrice), complete: !!car && days > 0
+    babySeats: seats, seatPrice, babySeatTotal,
+    total: cents(rental + locationFees + babySeatTotal), complete: !!car && days > 0
   };
 }
 const formQuote = () => quote({
   carId: $('#car').value, from: $('#from').value, to: $('#to').value,
   pickupLoc: $('#pickupLoc').value, returnLoc: $('#returnLoc').value,
-  babySeat: $('#babySeat').checked
+  babySeats: $('#babySeats').value
 });
 
 function renderLocations() {
@@ -905,18 +1019,41 @@ function renderLocations() {
     sel.value = findLoc(keep) ? keep : 'airport';
   });
   $('#feeNote').textContent = t('fee_note');
-  $('#seatPrice').textContent = '+' + money(CONFIG.babySeatFee);
+  $('#seatPrice').textContent = money(CONFIG.babySeatFee);
+  $('#seatDeal').textContent = t('x_multi').replace('{seat}', money(CONFIG.babySeatMultiFee));
+  $('#babySeats').max = CONFIG.babySeatMax;
 }
 
-// Show the "exact location" field only for Outside Free Zone, and make it required there.
+// Show only the address fields that fit the chosen location, for pickup and return separately:
+// airport -> info + optional instructions; town -> address (required); outside -> area + exact address (required).
 function syncExact() {
-  [['#pickupLoc', '#pickupExactWrap'], ['#returnLoc', '#returnExactWrap']].forEach(([s, w]) => {
-    const wrap = $(w), input = wrap.querySelector('input'), on = needsExact($(s).value);
-    wrap.hidden = !on;
-    input.required = on;
-    if (!on) input.removeAttribute('aria-invalid');
+  SIDES.forEach(s => {
+    const type = $(`#${s}Loc`).value, air = type === 'airport';
+    const toggle = (wrap, on) => {
+      const input = wrap.querySelector('input, textarea');
+      wrap.hidden = !on; input.required = on;
+      if (!on) input.removeAttribute('aria-invalid');
+    };
+    $(`#${s}Box`).dataset.type = type;
+    $(`#${s}Info`).hidden = !air;
+    toggle($(`#${s}AreaWrap`), needsArea(type));
+    toggle($(`#${s}AddrWrap`), needsAddr(type));
+    if (needsAddr(type)) {
+      $(`#${s}AddrLbl`).textContent = t(`ad_${s}_${type}`);
+      $(`#${s}Addr`).placeholder = t(`adp_${s}_${type}`);
+    }
+    $(`#${s}Ins`).placeholder = t(air ? `adi_${s}_air` : 'adi_ph');
   });
 }
+// The address details of one side, cleaned and limited to what the location type uses.
+const addrOf = (s, type, src) => ({
+  area: needsArea(type) ? clean(src[`${s}_area`], 80) : '',
+  address: needsAddr(type) ? clean(src[`${s}_address`], 160) : '',
+  instructions: clean(src[`${s}_instructions`], 200)
+});
+const addrForm = s => addrOf(s, $(`#${s}Loc`).value, {
+  [`${s}_area`]: $(`#${s}Area`).value, [`${s}_address`]: $(`#${s}Addr`).value, [`${s}_instructions`]: $(`#${s}Ins`).value
+});
 
 const pill = (el, fee) => {
   el.textContent = fee === 0 ? t('free') : '+' + money(fee);
@@ -931,22 +1068,27 @@ function estimate() {
 
   const row = (label, value, cls = '') => `<div class="${cls}"><dt>${esc(label)}</dt><dd>${value}</dd></div>`;
   const fee = f => `<span class="fee-pill ${f === 0 ? 'is-free' : 'is-paid'}">${esc(feeText(f))}</span>`;
-  const where = (id, exactSel) => {
-    const ex = needsExact(id) ? clean($(exactSel).value) : '';
-    return esc(locName(id)) + (ex ? ` (${esc(ex)})` : '');
+  const where = (id, s) => {
+    const a = addrForm(s);
+    return [locName(id), a.area, a.address].filter(Boolean).map(esc).join(' · ');
   };
   $('#sumTrip').innerHTML =
-    row(t('sum_pick'), `${esc(fmtDate($('#from').value))}<small>${where(q.pickupLoc, '#pickupExact')}</small>`) +
-    row(t('sum_ret'), `${esc(fmtDate($('#to').value))}<small>${where(q.returnLoc, '#returnExact')}</small>`) +
+    row(t('sum_pick'), `${esc(fmtDate($('#from').value))}<small>${where(q.pickupLoc, 'pickup')}</small>`) +
+    row(t('sum_ret'), `${esc(fmtDate($('#to').value))}<small>${where(q.returnLoc, 'return')}</small>`) +
     row(t('sum_dur'), d > 0 ? `${d} ${esc(t('days'))}` : '—');
   $('#sumMoney').innerHTML =
     row(t('sum_rental'), c && d > 0 ? `${money(q.rental)}<small>${money(c.price)} × ${d}</small>` : '—') +
     row(t('sum_pfee'), fee(q.pickupFee)) +
     row(t('sum_rfee'), fee(q.returnFee)) +
     row(t('sum_loc'), `<b>${q.locationFees === 0 ? esc(t('free')) : money(q.locationFees)}</b>`, 'sub') +
-    row(t('sum_seat'), q.babySeat
-      ? `${money(q.babySeatPrice)}<small>${esc(t('sel'))}</small>`
+    row(t('sum_seat'), q.babySeats
+      ? `${money(q.babySeatTotal)}<small>${q.babySeats} × ${money(q.seatPrice)}</small>`
       : `<span class="sum-off">${esc(t('not_sel'))}</span>`);
+  // Quantity selector state
+  $('#seatTotal').textContent = money(q.babySeatTotal);
+  $('#seatMinus').disabled = q.babySeats <= 0;
+  $('#seatPlus').disabled = q.babySeats >= CONFIG.babySeatMax;
+  $('#seatCard').classList.toggle('is-on', q.babySeats > 0);
 
   const tot = $('#total');
   const next = q.complete ? money(q.total) : '—';
@@ -974,6 +1116,7 @@ function applyLang(l) {
   $$('.lang').forEach(s => s.value = l);
   renderFleet();
   renderLocations();
+  syncExact();
   estimate();
   try { localStorage.setItem('lang', l); } catch (e) { }
 }
@@ -1039,13 +1182,28 @@ $('#from').addEventListener('change', e => {
 });
 $('#to').addEventListener('change', estimate);
 $('#car').addEventListener('change', estimate);
-$('#babySeat').addEventListener('change', estimate);
+// Baby seats: − / + buttons, typing and arrow keys all stay within 0..max.
+const seatsInput = $('#babySeats');
+const setSeats = n => {
+  const next = seatQty(n);
+  if (String(next) !== seatsInput.value) seatsInput.value = next;
+  seatsInput.removeAttribute('aria-invalid');
+  estimate();
+};
+$$('.qty-btn').forEach(b => b.addEventListener('click', () => {
+  setSeats(seatQty(seatsInput.value) + Number(b.dataset.step));
+  const card = $('#seatCard'); card.classList.remove('pop'); void card.offsetWidth; card.classList.add('pop');
+}));
+seatsInput.addEventListener('input', () => { if (seatsInput.value !== '') setSeats(seatsInput.value); else estimate(); });
+seatsInput.addEventListener('change', () => setSeats(seatsInput.value));
+seatsInput.addEventListener('focus', () => seatsInput.select());
 $$('.loc-select').forEach(s => s.addEventListener('change', () => {
   syncExact(); estimate();
-  const wrap = s.id === 'pickupLoc' ? $('#pickupExactWrap') : $('#returnExactWrap');
-  if (!wrap.hidden) wrap.querySelector('input').focus({ preventScroll: true });
+  // Jump to the first address field the customer now has to fill in.
+  const first = $$(`#${s.id.replace('Loc', 'Box')} .exact:not([hidden]) :is(input, textarea)`).find(i => !i.value.trim());
+  if (first) first.focus({ preventScroll: true });
 }));
-['#pickupExact', '#returnExact'].forEach(id => $(id).addEventListener('input', estimate));
+SIDES.forEach(s => ['Area', 'Addr'].forEach(k => $(`#${s}${k}`).addEventListener('input', estimate)));
 $('#arrPort').value = CONFIG.arrivalAirport;
 
 // Mobile menu
@@ -1102,13 +1260,20 @@ $('#form').addEventListener('submit', e => {
   // Only the known location types are accepted.
   if (!findLoc(f.pickup_loc)) return fail('e_req', ['pickup_loc']);
   if (!findLoc(f.return_loc)) return fail('e_req', ['return_loc']);
-  // Outside Free Zone needs the exact place.
-  if (needsExact(f.pickup_loc) && !clean(f.pickup_exact)) return fail('e_exact', ['pickup_exact']);
-  if (needsExact(f.return_loc) && !clean(f.return_exact)) return fail('e_exact', ['return_exact']);
+  // Zanzibar Town needs an exact address; Outside Free Zone needs the area and the exact address.
+  const addr = {};
+  for (const s of SIDES) {
+    const type = f[`${s}_loc`], a = addr[s] = addrOf(s, type, f);
+    if (needsArea(type) && !a.area) return fail('e_area', [`${s}_area`]);
+    if (needsAddr(type) && !a.address) return fail('e_addr', [`${s}_address`]);
+  }
   if (f.arrival_date && !isDate(f.arrival_date)) return fail('e_req', ['arrival_date']);
 
   // Recalculate everything from the raw form values (not from the on-screen summary).
-  const q = quote({ carId: f.car, from: f.from, to: f.to, pickupLoc: f.pickup_loc, returnLoc: f.return_loc, babySeat: f.baby_seat === 'yes' });
+  // Baby seats must be a whole number from 0 to the maximum.
+  const seatsRaw = String(f.baby_seats == null || f.baby_seats === '' ? '0' : f.baby_seats).trim();
+  if (!/^\d{1,2}$/.test(seatsRaw) || +seatsRaw > CONFIG.babySeatMax) return fail('e_seat', ['baby_seats']);
+  const q = quote({ carId: f.car, from: f.from, to: f.to, pickupLoc: f.pickup_loc, returnLoc: f.return_loc, babySeats: +seatsRaw });
   if (!q.complete || !Number.isFinite(q.total) || q.total < 0) return fail('e_req', ['car']);
 
   // One record with every field, named for a future backend / database.
@@ -1116,10 +1281,12 @@ $('#form').addEventListener('submit', e => {
     customer_name: clean(f.name, 80), customer_email: clean(f.email, 120), customer_phone: fullPhone(clean(f.phone, 30), f.dial || '255'),
     car_id: c.id, car_name: c.name, daily_rate: c.price,
     pickup_date: f.from, return_date: f.to, rental_days: q.days, rental_price: q.rental,
-    pickup_location_type: q.pickupLoc, pickup_exact_location: needsExact(q.pickupLoc) ? clean(f.pickup_exact) : '', pickup_fee: q.pickupFee,
-    return_location_type: q.returnLoc, return_exact_location: needsExact(q.returnLoc) ? clean(f.return_exact) : '', return_fee: q.returnFee,
+    pickup_location_type: q.pickupLoc, pickup_area: addr.pickup.area, pickup_exact_address: addr.pickup.address,
+    pickup_instructions: addr.pickup.instructions, pickup_fee: q.pickupFee,
+    return_location_type: q.returnLoc, return_area: addr.return.area, return_exact_address: addr.return.address,
+    return_instructions: addr.return.instructions, return_fee: q.returnFee,
     total_location_fee: q.locationFees,
-    baby_seat: q.babySeat, baby_seat_price: q.babySeatPrice,
+    baby_seat_quantity: q.babySeats, baby_seat_unit_price: q.seatPrice, baby_seat_total: q.babySeatTotal,
     airline_name: clean(f.airline, 60), flight_number: clean(f.flight_no, 20).toUpperCase(),
     arrival_date: f.arrival_date || '', arrival_time: /^\d{2}:\d{2}/.test(f.arrival_time || '') ? f.arrival_time.slice(0, 5) : '',
     arrival_airport: clean(f.arrival_airport, 120) || CONFIG.arrivalAirport, flight_notes: clean(f.flight_notes, 400),
@@ -1147,19 +1314,30 @@ $('#form').addEventListener('submit', e => {
       ['Rental Start Date', enDate(booking.pickup_date)], ['Rental End Date', enDate(booking.return_date)],
       ['Rental Duration', dur(booking.rental_days)]
     ]),
-    section('PICKUP DETAILS', [['Pickup Location', locLabel(booking.pickup_location_type)], ['Exact Location', booking.pickup_exact_location], ['Pickup Fee', fee(booking.pickup_fee)]]),
-    section('RETURN DETAILS', [['Return Location', locLabel(booking.return_location_type)], ['Exact Location', booking.return_exact_location], ['Return Fee', fee(booking.return_fee)]]),
+    section('PICKUP DETAILS', [
+      ['Location Type', locLabel(booking.pickup_location_type)], ['Area', booking.pickup_area],
+      ['Exact Address', booking.pickup_exact_address], ['Instructions', booking.pickup_instructions],
+      ['Pickup Fee', fee(booking.pickup_fee)]
+    ]),
+    section('RETURN DETAILS', [
+      ['Location Type', locLabel(booking.return_location_type)], ['Area', booking.return_area],
+      ['Exact Address', booking.return_exact_address], ['Return Instructions', booking.return_instructions],
+      ['Return Fee', fee(booking.return_fee)]
+    ]),
     hasFlight ? section('FLIGHT INFORMATION', [
       ['Airline', booking.airline_name], ['Flight Number', booking.flight_number],
       ['Arrival Date', booking.arrival_date ? enDate(booking.arrival_date) : ''], ['Arrival Time', booking.arrival_time],
       ['Arrival Airport', booking.arrival_airport], ['Additional Notes', booking.flight_notes]
     ]) : '',
-    section('ADDITIONAL SERVICES', [['Baby Seat', booking.baby_seat ? 'Yes' : 'No'], ['Baby Seat Fee', money(booking.baby_seat_price)]]),
+    section('ADDITIONAL SERVICES', [
+      ['Baby Seats', booking.baby_seat_quantity ? `${booking.baby_seat_quantity} x ${money(booking.baby_seat_unit_price)}${booking.baby_seat_quantity > 1 ? ' (multi-seat price)' : ''}` : 'None'],
+      ['Baby Seat Total', money(booking.baby_seat_total)]
+    ]),
     section('PAYMENT SUMMARY', [
       ['Vehicle Rental', `${money(booking.rental_price)} (${money(c.price)} x ${dur(booking.rental_days)})`],
       ['Pickup Fee', fee(booking.pickup_fee)], ['Return Fee', fee(booking.return_fee)],
       ['Location Fees', money(booking.total_location_fee)],
-      ['Baby Seat', money(booking.baby_seat_price)],
+      ['Baby Seats', money(booking.baby_seat_total)],
       ['TOTAL', money(booking.final_total)]
     ]),
     booking.notes ? `NOTES\n${booking.notes}` : ''
@@ -1170,7 +1348,7 @@ $('#form').addEventListener('submit', e => {
   toast(t('ok'), 'ok');
   const btn = $('#sendBtn');
   btn.classList.add('is-sent'); setTimeout(() => btn.classList.remove('is-sent'), 2400);
-  track('generate_lead', { value: booking.final_total, currency: 'USD', item_id: c.id, item_name: c.name, days: booking.rental_days, pickup: q.pickupLoc, return: q.returnLoc, baby_seat: booking.baby_seat });
+  track('generate_lead', { value: booking.final_total, currency: 'USD', item_id: c.id, item_name: c.name, days: booking.rental_days, pickup: q.pickupLoc, return: q.returnLoc, baby_seats: booking.baby_seat_quantity });
   window.open(waLink(text), '_blank', 'noopener');
 });
 
@@ -1209,7 +1387,7 @@ try { saved = localStorage.getItem('lang') || 'en'; } catch (e) { }
 applyLang(T[saved] ? saved : 'en');
 
 // Links from the location pages can preselect a car and pickup place: ?car=toyota-ist&pickup=nungwi#book
-// Beach areas (nungwi, paje…) are booked as "Outside Free Zone" with the area as the exact location.
+// Beach areas (nungwi, paje…) are booked as "Outside Free Zone" with the area filled in; the customer adds the exact address.
 (() => {
   const p = new URLSearchParams(location.search);
   const car = p.get('car'), pick = p.get('pickup');
@@ -1218,7 +1396,7 @@ applyLang(T[saved] ? saved : 'en');
   if (pick && findLoc(pick)) { $('#pickupLoc').value = pick; $('#returnLoc').value = pick; }
   else if (area) {
     $('#pickupLoc').value = $('#returnLoc').value = 'outside';
-    $('#pickupExact').value = $('#returnExact').value = area.name;
+    $('#pickupArea').value = $('#returnArea').value = area.name;
   }
   syncExact();
   if (car || pick) estimate();

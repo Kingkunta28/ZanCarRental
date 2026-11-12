@@ -2624,6 +2624,67 @@ option {
   line-height: 1.6
 }
 
+/* Driving permit checklist (card 01) */
+.g-list {
+  list-style: none;
+  margin: var(--s3) 0 0;
+  padding: 0;
+  display: grid;
+  gap: 8px;
+  font-size: var(--fs-sm);
+  line-height: 1.5;
+  color: var(--ink)
+}
+
+.g-list li {
+  position: relative;
+  padding-left: 26px
+}
+
+.g-list li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: .15em;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: var(--turq-50) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%230B6E99' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 12.5l4 4 8-9'/%3E%3C/svg%3E") center / 12px no-repeat
+}
+
+.g-list .g-fee-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 6px 10px;
+  margin-top: 4px;
+  padding: 10px 12px 10px 38px;
+  border-radius: 12px;
+  background: color-mix(in srgb, var(--gold) 12%, #fff);
+  box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--gold) 35%, transparent);
+  font-weight: 600
+}
+
+.g-list .g-fee-row::before {
+  left: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: var(--gold) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23fff' stroke-width='3' stroke-linecap='round'%3E%3Cpath d='M12 5v14M16 8.5c0-1.5-1.8-2.5-4-2.5s-4 1-4 2.8c0 3.7 8 2 8 5.9 0 1.8-1.8 2.8-4 2.8s-4-1-4-2.5'/%3E%3C/svg%3E") center / 12px no-repeat
+}
+
+.g-fee {
+  font: 800 var(--fs-md) var(--f-display);
+  color: var(--deep);
+  white-space: nowrap
+}
+
+.g-card .g-note {
+  margin-top: var(--s3);
+  font-size: var(--fs-xs);
+  line-height: 1.5
+}
+
 @media (prefers-reduced-motion: reduce) {
   .g-card,
   .g-card:hover {
@@ -3626,23 +3687,86 @@ option {
   }
 }
 
+/* Address details under each location select (pickup and return) */
+.addr-box {
+  display: flex;
+  flex-direction: column;
+  gap: var(--s3);
+  padding: var(--s3);
+  border-radius: 14px;
+  background: var(--sand-50);
+  box-shadow: inset 0 0 0 1px var(--line);
+  min-width: 0;
+  transition: background .25s var(--ease)
+}
+
+.addr-box[data-type="outside"] {
+  background: color-mix(in srgb, var(--gold) 8%, var(--sand-50))
+}
+
+.addr-box>label {
+  min-width: 0
+}
+
+.addr-box input,
+.addr-box textarea {
+  width: 100%;
+  min-width: 0
+}
+
+.addr-box textarea.addr-ta {
+  min-height: 100px;
+  line-height: 1.45
+}
+
+.addr-info {
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+  margin: 0;
+  font-size: var(--fs-xs);
+  line-height: 1.5;
+  color: var(--deep);
+  animation: exactIn .35s var(--ease) both
+}
+
+.addr-info[hidden] {
+  display: none
+}
+
+.addr-info::before {
+  content: "✈";
+  flex: none;
+  display: grid;
+  place-items: center;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: var(--ocean);
+  color: #fff;
+  font-size: .7rem
+}
+
+.addr-ins>.lbl {
+  font-weight: 600
+}
+
 .flight-note::before {
   content: "✈";
   font-size: .7rem
 }
 
-/* baby seat toggle card */
+/* baby seats quantity card */
 .extra {
   position: relative;
   display: grid;
-  grid-template-columns: auto minmax(0, 1fr) auto auto;
+  grid-template-columns: auto minmax(0, 1fr) auto minmax(5.5rem, auto);
   align-items: center;
-  gap: 14px;
-  padding: 14px 16px;
+  gap: 14px 18px;
+  padding: 16px 18px;
   border: 1.5px solid var(--line);
   border-radius: 16px;
   background: var(--sand-50);
-  cursor: pointer;
   transition: border-color .2s, background-color .2s, box-shadow .2s
 }
 
@@ -3654,25 +3778,19 @@ option {
   margin: 0
 }
 
-.extra input {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  min-height: 0;
-  margin: 0;
-  opacity: 0;
-  cursor: pointer
-}
-
-.extra:has(input:focus-visible) {
-  box-shadow: 0 0 0 4px rgba(46, 196, 214, .25);
-  border-color: var(--ocean)
-}
-
-.extra:has(input:checked) {
+.extra.is-on {
   border-color: var(--ocean);
   background: var(--turq-50)
+}
+
+.extra.pop .extra-ic {
+  animation: seatPop .35s var(--ease)
+}
+
+@keyframes seatPop {
+  40% {
+    transform: scale(1.12) rotate(-6deg)
+  }
 }
 
 .extra-ic {
@@ -3698,40 +3816,128 @@ option {
   color: var(--muted)
 }
 
+.extra-txt .extra-rate {
+  margin-top: 4px;
+  color: var(--deep)
+}
+
+.extra-rate #seatPrice {
+  font-weight: 700
+}
+
+.extra-txt .extra-deal {
+  display: inline-block;
+  margin-top: 6px;
+  padding: 2px 10px;
+  border-radius: var(--r-pill);
+  background: color-mix(in srgb, var(--gold) 16%, #fff);
+  box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--gold) 40%, transparent);
+  color: var(--deep);
+  font-weight: 600
+}
+
 .extra-price {
   font: 800 var(--fs-md) var(--f-display);
-  color: var(--ink);
-  white-space: nowrap
+  color: var(--muted);
+  text-align: right;
+  white-space: nowrap;
+  font-variant-numeric: tabular-nums;
+  transition: color .2s
 }
 
-.switch {
-  position: relative;
-  width: 46px;
-  height: 26px;
+.extra.is-on .extra-price {
+  color: var(--ink)
+}
+
+/* − [ n ] + stepper */
+.qty {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 4px;
   border-radius: var(--r-pill);
-  background: #CBD6DB;
-  transition: background-color .25s
-}
-
-.switch::after {
-  content: "";
-  position: absolute;
-  top: 3px;
-  left: 3px;
-  width: 20px;
-  height: 20px;
-  border-radius: 50%;
   background: #fff;
-  box-shadow: 0 1px 3px rgba(6, 40, 58, .3);
-  transition: transform .25s var(--ease)
+  box-shadow: inset 0 0 0 1.5px var(--line), var(--sh-1)
 }
 
-.extra:has(input:checked) .switch {
-  background: var(--ocean)
+.qty-btn {
+  display: grid;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: var(--ocean);
+  color: #fff;
+  cursor: pointer;
+  touch-action: manipulation;
+  transition: background-color .2s, transform .15s var(--ease), opacity .2s
 }
 
-.extra:has(input:checked) .switch::after {
-  transform: translateX(20px)
+.qty-btn svg {
+  width: 18px;
+  height: 18px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2.4;
+  stroke-linecap: round
+}
+
+.qty-btn:hover:not(:disabled) {
+  background: var(--deep)
+}
+
+.qty-btn:active:not(:disabled) {
+  transform: scale(.9)
+}
+
+.qty-btn:focus-visible {
+  outline: 3px solid rgba(46, 196, 214, .45);
+  outline-offset: 2px
+}
+
+.qty-btn:disabled {
+  background: var(--sand-50);
+  color: #A9B6BD;
+  cursor: not-allowed
+}
+
+.qty input {
+  width: 3ch;
+  min-width: 2.6rem;
+  min-height: 0;
+  height: 40px;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  box-shadow: none;
+  text-align: center;
+  font: 800 1.15rem var(--f-display);
+  color: var(--ink);
+  font-variant-numeric: tabular-nums;
+  -moz-appearance: textfield;
+  appearance: textfield
+}
+
+.qty input::-webkit-outer-spin-button,
+.qty input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0
+}
+
+.qty input:focus {
+  outline: none;
+  box-shadow: none;
+  border: 0
+}
+
+.qty:focus-within {
+  box-shadow: inset 0 0 0 1.5px var(--ocean), 0 0 0 4px rgba(46, 196, 214, .2)
+}
+
+.qty input[aria-invalid="true"] {
+  color: #C0392B
 }
 
 .sum-off {
@@ -3741,19 +3947,27 @@ option {
 
 @media (max-width: 560px) {
   .extra {
-    grid-template-columns: auto minmax(0, 1fr) auto;
-    gap: 6px 12px
+    grid-template-columns: auto minmax(0, 1fr);
+    gap: 14px 12px;
+    padding: 14px
+  }
+
+  .qty {
+    grid-column: 1 / -1;
+    grid-row: 2;
+    justify-self: start
   }
 
   .extra-price {
     grid-column: 2;
     grid-row: 2;
-    font-size: var(--fs-sm)
+    justify-self: end;
+    align-self: center
   }
 
-  .switch {
-    grid-column: 3;
-    grid-row: 1 / span 2
+  .qty-btn {
+    width: 44px;
+    height: 44px
   }
 
   .fset+.fset {

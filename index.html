@@ -465,10 +465,21 @@
                       ></span>
                       <select name="pickup_loc" id="pickupLoc" class="loc-select" required><option value="airport">Zanzibar Airport · Free</option><option value="town">Zanzibar Town · Free</option><option value="outside">Outside Free Zone · +$25.00</option></select>
                     </label>
-                    <label class="exact" id="pickupExactWrap" hidden>
-                      <span data-i18n="f_exact">Enter your exact location</span>
-                      <input name="pickup_exact" id="pickupExact" maxlength="120" autocomplete="off" data-ph="f_exact_ph" placeholder="e.g. Nungwi, Kendwa, Paje or your hotel name" />
-                    </label>
+                    <div class="addr-box" id="pickupBox" data-type="airport">
+                      <p class="addr-info" id="pickupInfo" data-i18n="ad_air_pickup">We meet you in the arrivals hall with a name sign. Add your flight in step 4 so we can follow any delays.</p>
+                      <label class="exact" id="pickupAreaWrap" hidden>
+                        <span data-i18n="ad_area">Area / destination</span>
+                        <input name="pickup_area" id="pickupArea" maxlength="80" autocomplete="off" data-ph="ad_area_ph" placeholder="e.g. Nungwi, Paje, Kendwa..." />
+                      </label>
+                      <label class="exact" id="pickupAddrWrap" hidden>
+                        <span id="pickupAddrLbl">Pickup address</span>
+                        <textarea name="pickup_address" id="pickupAddr" maxlength="160" autocomplete="off" placeholder="Enter your hotel name, street, building or exact pickup address in Zanzibar Town." rows="2" class="addr-ta"></textarea>
+                      </label>
+                      <label class="addr-ins">
+                        <span class="lbl"><span data-i18n="ad_ins">Additional instructions</span><em class="opt" data-i18n="opt">optional</em></span>
+                        <input name="pickup_instructions" id="pickupIns" maxlength="200" autocomplete="off" placeholder="e.g. Meet me at the arrivals exit" />
+                      </label>
+                    </div>
                   </div>
                   <div class="loc-group">
                     <label>
@@ -478,10 +489,21 @@
                       ></span>
                       <select name="return_loc" id="returnLoc" class="loc-select" required><option value="airport">Zanzibar Airport · Free</option><option value="town">Zanzibar Town · Free</option><option value="outside">Outside Free Zone · +$25.00</option></select>
                     </label>
-                    <label class="exact" id="returnExactWrap" hidden>
-                      <span data-i18n="f_exact">Enter your exact location</span>
-                      <input name="return_exact" id="returnExact" maxlength="120" autocomplete="off" data-ph="f_exact_ph" placeholder="e.g. Nungwi, Kendwa, Paje or your hotel name" />
-                    </label>
+                    <div class="addr-box" id="returnBox" data-type="airport">
+                      <p class="addr-info" id="returnInfo" data-i18n="ad_air_return">Return the car at the airport before your flight. We meet you at the departures drop-off.</p>
+                      <label class="exact" id="returnAreaWrap" hidden>
+                        <span data-i18n="ad_area">Area / destination</span>
+                        <input name="return_area" id="returnArea" maxlength="80" autocomplete="off" data-ph="ad_area_ph" placeholder="e.g. Nungwi, Paje, Kendwa..." />
+                      </label>
+                      <label class="exact" id="returnAddrWrap" hidden>
+                        <span id="returnAddrLbl">Return address</span>
+                        <textarea name="return_address" id="returnAddr" maxlength="160" autocomplete="off" placeholder="Enter your hotel name, street, building or exact return address in Zanzibar Town." rows="2" class="addr-ta"></textarea>
+                      </label>
+                      <label class="addr-ins">
+                        <span class="lbl"><span data-i18n="ad_ins">Additional instructions</span><em class="opt" data-i18n="opt">optional</em></span>
+                        <input name="return_instructions" id="returnIns" maxlength="200" autocomplete="off" placeholder="e.g. Meet me at the departures drop-off" />
+                      </label>
+                    </div>
                   </div>
                   <p class="full fee-note" id="feeNote">Pickup and return are free at Zanzibar Airport and Zanzibar Town. Anywhere outside the free zone costs $25.00 for pickup and $25.00 for return.</p>
                 </div>
@@ -522,13 +544,21 @@
               <fieldset class="fset">
                 <legend class="fset-h"><span class="fset-n" aria-hidden="true">5</span><span data-i18n="x_h">Optional extras</span></legend>
                 <div class="fields">
-                  <label class="extra full">
-                    <input type="checkbox" name="baby_seat" id="babySeat" value="yes" />
+                  <div class="extra extra-qty full" id="seatCard" role="group" aria-labelledby="seatLbl">
                     <span class="extra-ic" aria-hidden="true"><svg class="ic" viewBox="0 0 24 24"><circle cx="12" cy="5" r="2.5"/><path d="M7 21v-4a2 2 0 0 1 2-2h6a2 2 0 0 1 2 2v4M8 10.5l1.5 4.5M16 10.5 14.5 15M6 21h12"/></svg></span>
-                    <span class="extra-txt"><b data-i18n="x_seat">Baby seat</b><small data-i18n="x_seat_p">Child safety seat, fitted and ready at handover.</small></span>
-                    <span class="extra-price" id="seatPrice">+$60.00</span>
-                    <span class="switch" aria-hidden="true"></span>
-                  </label>
+                    <span class="extra-txt">
+                      <b id="seatLbl" data-i18n="x_seat">Baby seats</b>
+                      <small data-i18n="x_seat_p">Child safety seats, fitted and ready at handover.</small>
+                      <small class="extra-rate"><span id="seatPrice">$60.00</span> <span data-i18n="x_each">per seat, per booking</span></small>
+                      <small class="extra-deal" id="seatDeal">$50.00 each when you take 2 or more</small>
+                    </span>
+                    <div class="qty">
+                      <button type="button" class="qty-btn" data-step="-1" id="seatMinus" data-i18n-label="x_less" aria-label="Remove a baby seat" disabled><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 12h12"/></svg></button>
+                      <input type="number" name="baby_seats" id="babySeats" value="0" min="0" max="5" step="1" inputmode="numeric" aria-labelledby="seatLbl" />
+                      <button type="button" class="qty-btn" data-step="1" id="seatPlus" data-i18n-label="x_more" aria-label="Add a baby seat"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 6v12M6 12h12"/></svg></button>
+                    </div>
+                    <span class="extra-price" id="seatTotal" aria-live="polite">$0.00</span>
+                  </div>
                   <label class="full">
                     <span data-i18n="f_notes">Notes (optional)</span>
                     <textarea name="notes" rows="3" maxlength="600"></textarea>
@@ -670,7 +700,13 @@
             <li class="g-card reveal" style="--i: 0">
               <span class="g-n" aria-hidden="true">01</span>
               <h3 data-i18n="g1t">Driving permit</h3>
-              <p data-i18n="g1p">Every driver needs a Zanzibar driving permit ($25 per driver) on top of their home licence. We arrange it before you arrive.</p>
+              <p data-i18n="g1p">To drive legally in Zanzibar, you may need a local driving permit. If you need assistance arranging one through Rafiki Car Hire, please provide:</p>
+              <ul class="g-list">
+                <li data-i18n="g1a">A copy of your passport.</li>
+                <li data-i18n="g1b">A copy of your valid driving licence.</li>
+                <li class="g-fee-row"><span data-i18n="g1c">Driving permit arrangement fee</span><strong class="g-fee">$25</strong></li>
+              </ul>
+              <p class="g-note" data-i18n="g1n">Please provide the required documents in advance to allow enough time for the arrangement.</p>
             </li>
             <li class="g-card reveal" style="--i: 1">
               <span class="g-n" aria-hidden="true">02</span>

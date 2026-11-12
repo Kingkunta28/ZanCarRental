@@ -180,7 +180,9 @@ function buildIndex() {
   h = h.replace(/(<b id="statFrom"[^>]*>)[^<]*(<\/b>)/, (m, a, b) => a + CONFIG.currency + Math.round(minPrice) + b);
   h = h.replace(/(<b id="heroFrom">)[^<]*(<\/b>)/, (m, a, b) => a + money(minPrice) + b);
   h = h.replace(/(<p class="full fee-note" id="feeNote">)[^<]*(<\/p>)/, (m, a, b) => a + esc(tx('fee_note')) + b);
-  h = h.replace(/(<span class="extra-price" id="seatPrice">)[^<]*(<\/span>)/, (m, a, b) => a + '+' + money(CONFIG.babySeatFee) + b);
+  h = h.replace(/(<span id="seatPrice">)[^<]*(<\/span>)/, (m, a, b) => a + money(CONFIG.babySeatFee) + b);
+  h = h.replace(/(<small class="extra-deal" id="seatDeal">)[^<]*(<\/small>)/, (m, a, b) => a + esc(tx('x_multi').replace('{seat}', money(CONFIG.babySeatMultiFee))) + b);
+  h = h.replace(/(<input type="number" name="baby_seats" id="babySeats"[^>]*?max=")\d*(")/, (m, a, b) => a + CONFIG.babySeatMax + b);
   h = h.replace(/(<input name="arrival_airport" id="arrPort"[^>]*?value=")[^"]*(")/, (m, a, b) => a + esc(CONFIG.arrivalAirport) + b);
   // WhatsApp links get a real href even before JavaScript runs
   h = h.replace(/<a\b([^>]*?)\sdata-wa\b([^>]*)>/g, (m, a, b) => {
